@@ -45,7 +45,7 @@ def calc_cumulants_from_moments(moment_set, highest_order):
     '''
     k_set = {}
     for order in range(1, highest_order + 1):
-        k_set[order] = np.int64(m_set[order] - np.sum(np.array([scipy.special.comb(order-1,i)*k_set[order-i]*m_set[i] for i in range(1,order)]),axis=0))
+        k_set[order] = np.int64(moment_set[order] - np.sum(np.array([scipy.special.comb(order-1,i)*k_set[order-i]*moment_set[i] for i in range(1,order)]),axis=0))
     
     return k_set
 

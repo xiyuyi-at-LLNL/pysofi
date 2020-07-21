@@ -1,16 +1,11 @@
-impot numpy as np
-from skimage.external import tifffile as tif
-from scipy.io import loadmat, savemat
+import numpy as np
 try:
     import pyfftw
-    from pyfftw.interfaces.numpy_fft import (fftshift, ifftshift, fftn, ifftn,
-                                             rfftn, irfftn)
+    from pyfftw.interfaces.numpy_fft import (fftshift, ifftshift, fftn, ifftn, rfftn, irfftn)
     # Turn on the cache for optimum performance
     pyfftw.interfaces.cache.enable()
 except ImportError:
-    from numpy.fft import (fftshift, ifftshift, fftn, ifftn,
-                           rfftn, irfftn)
-#from dphutils import fft_pad
+    from numpy.fft import (fftshift, ifftshift, fftn, ifftn, rfftn, irfftn)
 import scipy.signal.signaltools as sig
 from scipy.signal import fftconvolve
 from scipy.ndimage import convolve
@@ -18,7 +13,7 @@ from scipy.ndimage import convolve
 def fft_pad(psf, out_shape, mode='constant'):
     psf_shape = np.shape(psf)
     shape_diff = (out_shape[0]-psf_shape[0], out_shape[1]-psf_shape[1])
-    #out_psf = np.pad(psf, ((0,shape_diff[0]), (0,shape_diff[1])), mode)
+    # out_psf = np.pad(psf, ((0,shape_diff[0]), (0,shape_diff[1])), mode)
     out_psf = np.pad(psf, ((shape_diff[0]//2+1,shape_diff[0]//2), (shape_diff[1]//2+1,shape_diff[1]//2)), mode)
     return out_psf
 
@@ -160,3 +155,15 @@ def richardson_lucy(image, psf, iterations=10, prediction_order=1,
         
     # return final estimate
     return u_t
+
+def deconvsk(est_psf, input_im, deconv_lambda, deconv_iter):
+    xdim, ydim = np.shape(input_im)
+    deconv_im = np.append(np.append(input_im, np.fliplr(input_im), axis=1), np.append(np.flipud(input_im), np.rot90(input_im, 2), axis=1), axis=0)
+    # perform mirror extension to the image in order to surpress ringing artifacts associated with fourier transform due to truncation effect.
+    psf0 = est_psf / np.max(est_psf)
+    for iter_num in range(deconv_iter):
+        alpha = deconv_lambda**(iter_num+1) / (deconv_lambda - 1)
+        deconv_im = richardson_lucy(deconv_im, psf0**alpha, 1)    
+    
+    deconv_im = deconv_im[0:xdim, 0:ydim]
+    return deconv_im

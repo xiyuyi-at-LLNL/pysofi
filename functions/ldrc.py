@@ -1,7 +1,7 @@
 import numpy as np
 from scipy.interpolate import griddata
 
-def ldrc(input_im, mask_im, order, window_size):
+def ldrc(mask_im, input_im, order, window_size):
     xdim_mask, ydim_mask = np.shape(mask_im)
     xdim, ydim = np.shape(input_im)
     if xdim == xdim_mask and ydim == ydim_mask:

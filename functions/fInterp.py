@@ -73,7 +73,8 @@ def fourier_interp_tiffimage(im, interp_num_lst, save_option = False, filename =
         ifx, ify = ift_matrix2D(xrange, yrange, interp_num)
         interp_im = interpolate_image(im, fx, fy, ifx, ify, xdim, ydim, interp_num)
         interp_im_lst.append(interp_im.astype(np.int64))
-        if save_option == True:
+    
+    if save_option == True:
             imageio.imwrite(filename + '_InterpNum' + str(interp_num) + '.tif', interp_im.astype(np.int64))
             
     if return_option == True:
