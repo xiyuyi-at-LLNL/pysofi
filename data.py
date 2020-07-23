@@ -56,7 +56,7 @@ class Data:
     def deconvsk(self, est_psf = masks.gauss2D_mask((51, 51), 2), input_im = None, deconv_lambda = 1.5, deconv_iter = 20):
         if input_im is None:
             if self.moments_set is not None:
-                input_im = self.moments_set[morder]
+                input_im = self.moments_set[self.morder]
             elif self.ave is not None:
                 input_im = self.ave
             else:
@@ -80,3 +80,8 @@ class Data:
         else:
             self.finterp = finterp.fourier_interp_tiffimage(input_im, interp_num_lst, save_option, filename, return_option)
             return self.finterp
+
+
+    def add_filtered(self, image, filter_name='noise filter'):
+        self.filter_name = filter_name
+        self.filtered = image
