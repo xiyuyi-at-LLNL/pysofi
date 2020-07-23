@@ -14,3 +14,5 @@ def gauss2D_mask(shape = (3,3), sigma = 0.5):
         h /= sumh
     return h
 
+def gauss1D_mask(shape = (1,3), sigma = 0.5):
+    return gauss2D_mask(shape, sigma)[0]
