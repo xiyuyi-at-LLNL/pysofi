@@ -6,8 +6,8 @@ from numpy.fft import (fftshift, ifftshift, fft, ifft)
 def base_vect_generator2D(xrange, yrange):
     bx, by = np.zeros(xrange), np.zeros(yrange)
     bx[1], by[1] = 1, 1
-    # bx, by = np.fft.fft(bx), np.fft.fft(by)
-    bx, by = fftshift(fft(ifftshift(bx))), fftshift(fft(ifftshift(by)))
+    bx, by = np.fft.fft(bx), np.fft.fft(by)
+    # bx, by = fftshift(fft(ifftshift(bx))), fftshift(fft(ifftshift(by)))
     return bx, by
 
 # Define Fourier transform metrix.
@@ -63,7 +63,7 @@ def interpolate_image(im, fx, fy, ifx, ify, xdim, ydim, interp_num):
     
     return interp_im
 
-def fourier_interp_tiffimage(im, interp_num_lst, save_option = False, filename = 'Image', return_option = True):
+def fourier_interp_tiffimage(im, interp_num_lst):
     # get dimensions and number of frames
     xdim, ydim = im.shape
     xrange, yrange = 2 * xdim, 2 * ydim    # define the ft spectrum span
@@ -71,14 +71,10 @@ def fourier_interp_tiffimage(im, interp_num_lst, save_option = False, filename =
     interp_im_lst = []
     for interp_num in interp_num_lst:
         ifx, ify = ift_matrix2D(xrange, yrange, interp_num)
-        interp_im = interpolate_image(im, fx, fy, ifx, ify, xdim, ydim, interp_num)
-        interp_im_lst.append(interp_im.astype(np.int64))
-    
-    if save_option == True:
-            imageio.imwrite(filename + '_InterpNum' + str(interp_num) + '.tif', interp_im.astype(np.int64))
+        interp_im = interpolate_image(im, fx, fy, ifx, ify, xdim, ydim, interp_num)       
+        interp_im_lst.append(np.int_(np.around(interp_im)))
             
-    if return_option == True:
-        return interp_im_lst
+    return interp_im_lst
 
 def fourier_interp_tiffstack(filepath, filename, interp_num_lst, mvlength = None, save_option = True, return_option = False):
 
@@ -105,11 +101,11 @@ def fourier_interp_tiffstack(filepath, filename, interp_num_lst, mvlength = None
                 break
             
         if save_option == True:
-            imageio.mimwrite(filename + '_InterpNum' + str(interp_num) + '.tif', interp_imstack.astype(np.int64))
+            #imageio.mimwrite(filename + '_InterpNum' + str(interp_num) + '.tif', np.int16(interp_imstack))
+            imageio.mimwrite(filename + '_InterpNum' + str(interp_num) + '.tif', np.int_(np.around(interp_imstack)))
             
-        interp_imstack_lst.append(interp_imstack.astype(np.int64))  
+        interp_imstack_lst.append(np.int_(np.around(interp_imstack)))  
     
     if return_option == True:
         return interp_imstack_lst
-            
 
