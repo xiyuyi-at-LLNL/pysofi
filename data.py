@@ -1,4 +1,6 @@
 from functions import (deconvsk, finterp, ldrc, masks, reconstruction)
+import imageio
+import numpy as np
 
 class Data:
     def __init__(self, filepath, filename):
@@ -9,9 +11,6 @@ class Data:
         self.cumulants_set = None
         self.morder = 0
         self.corder = 0
-        
-    # TODO: get movie length
-    # def: get_length(self):
         
     def average_image(self):
         self.ave = reconstruction.average_image(self.filepath, self.filename)
@@ -65,23 +64,26 @@ class Data:
         return self.deconv
     
     def finterp_tiffstack(self, interp_num_lst = [2,4], mvlength = None, save_option = True, return_option = False):
+        filename = self.filename[:-4]
         if return_option == False:
-            finterp.fourier_interp_tiffstack(self.filepath, self.filename, interp_num_lst, mvlength, save_option, return_option)
+            finterp.fourier_interp_tiffstack(self.filepath, filename, interp_num_lst, mvlength, save_option, return_option)
         else:
-            self.finterps = finterp.fourier_interp_tiffstack(self.filepath, self.filename, interp_num_lst, mvlength, save_option, return_option)
+            self.finterps = finterp.fourier_interp_tiffstack(self.filepath, filename, interp_num_lst, mvlength, save_option, return_option)
             return self.finterps
        
-    def finterp_image(self, input_im = None, interp_num_lst = [2,4], save_option = False, filename = 'Image', return_option = True):
+    def finterp_image(self, input_im = None, interp_num_lst = [2,4]):
         if input_im is None:
             input_im = self.average_image()
             
-        if return_option == False:
-            finterp.fourier_interp_tiffimage(input_im, interp_num_lst, save_option, filename, return_option)
-        else:
-            self.finterp = finterp.fourier_interp_tiffimage(input_im, interp_num_lst, save_option, filename, return_option)
-            return self.finterp
-
-
+        self.finterp = finterp.fourier_interp_tiffimage(input_im, interp_num_lst)
+        return self.finterp
+        
     def add_filtered(self, image, filter_name='noise filter'):
         self.filter_name = filter_name
-        self.filtered = image
+        self.filtered = image        
+
+    def get_length(self):
+        im = imageio.imread(self.filepath + '/' + self.filename)
+        im.load()
+        self.n_frames = im.n_frames
+        return self.n_frames
