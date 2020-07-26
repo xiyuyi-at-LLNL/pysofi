@@ -78,34 +78,31 @@ def fourier_interp_tiffimage(im, interp_num_lst):
 
 def fourier_interp_tiffstack(filepath, filename, interp_num_lst, mvlength = None, save_option = True, return_option = False):
 
-    imstack = imageio.mimread(filepath + '/' + filename + '.tif')
-    xdim, ydim = np.shape(imstack[0])
+    imstack = tiff.TiffFile(filepath + '/' + filename + '.tif')
+    xdim, ydim = np.shape(imstack.pages[0])
     xrange, yrange = 2 * xdim, 2 * ydim
     fx, fy = ft_matrix2D(xrange, yrange)
     interp_imstack_lst = []
     
     # if user did not select the video length, process on the whole video
     if mvlength == None:
-        mvlength = len(imstack)
+        mvlength = len(imstack.pages)
         
     for interp_num in interp_num_lst:
         ifx, ify = ift_matrix2D(xrange, yrange, interp_num)
         interp_imstack = []
-        frame_num = 0
-        for im in imstack:
-            frame_num = frame_num + 1
+
+        for frame in range(mvlength):
+            im = tiff.imread(filepath + '/' + filename + '.tif', key=frame)
             interp_im = interpolate_image(im, fx, fy, ifx, ify, xdim, ydim, interp_num)
-            interp_imstack.append(interp_im)
-            
-            if frame_num >= mvlength:
-                break
-            
-        if save_option == True:
-            #imageio.mimwrite(filename + '_InterpNum' + str(interp_num) + '.tif', np.int16(interp_imstack))
-            imageio.mimwrite(filename + '_InterpNum' + str(interp_num) + '.tif', np.int_(np.around(interp_imstack)))
-            
-        interp_imstack_lst.append(np.int_(np.around(interp_imstack)))  
+            interp_im = np.int_(np.around(interp_im))
+            if save_option == True:
+                tiff.imwrite(filename + '_InterpNum' + str(interp_num) + '.tif', interp_im, dtype='int', append=True)
+            if return_option == True:
+                interp_imstack.append(interp_im)
+                
+        if return_option == True:  
+            interp_imstack_lst.append(interp_imstack) 
     
     if return_option == True:
         return interp_imstack_lst
-
