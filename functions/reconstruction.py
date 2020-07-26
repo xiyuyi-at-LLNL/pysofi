@@ -1,5 +1,6 @@
 import numpy as np
 import imageio
+import tifffile as tiff
 import scipy.special
 
 def average_image(filepath, filename):
@@ -7,14 +8,15 @@ def average_image(filepath, filename):
     Get the average image for a video file (tiff stack).
     '''
     # TODO: the user can define the number of sub-blocks, and get average image for each bloack.
-    im = imageio.imread(filepath + '/' + filename)
-    xdim, ydim = np.shape(im)    # get dimensions
-    mean_im = np.zeros((im.shape))
+    imstack = tiff.TiffFile(filepath + '/' + filename)
+    xdim, ydim = np.shape(imstack.pages[0])
+    mvlength = len(imstack.pages)
+    mean_im = np.zeros((xdim, ydim))
     
-    vid_reader = imageio.get_reader(filepath + '/' + filename)
-    mvlength = vid_reader.get_length()
-    for frame in vid_reader:
-        mean_im = mean_im + frame    
+    for frame_num in range(mvlength):
+        im = tiff.imread(filepath + '/' + filename, key=frame_num)
+        mean_im = mean_im + im
+
     mean_im = mean_im / mvlength
     
     return mean_im
@@ -27,14 +29,16 @@ def calc_moments(filepath, filename, highest_order):
     mean_im = average_image(filepath, filename)
     xdim, ydim = np.shape(mean_im)
     m_set = {}
-    calculated_moment_images = []
-    vid_reader = imageio.get_reader(filepath + '/' + filename)
-    mvlength = vid_reader.get_length()
+
+    imstack = tiff.TiffFile(filepath + '/' + filename)
+    xdim, ydim = np.shape(imstack.pages[0])
+    mvlength = len(imstack.pages)
     
     for order in range(highest_order):
         m_set[order+1] = np.zeros((xdim, ydim))
-        for frame in vid_reader:
-            m_set[order+1] = m_set[order+1] + np.power(frame - mean_im, order+1)
+        for frame_num in range(mvlength):
+            im = tiff.imread(filepath + '/' + filename, key=frame_num)
+            m_set[order+1] = m_set[order+1] + np.power(im - mean_im, order+1)
         
         m_set[order+1] = np.int64(m_set[order+1] / mvlength)
     return m_set

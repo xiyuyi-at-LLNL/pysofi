@@ -1,7 +1,7 @@
 import numpy as np
 import imageio
 from numpy.fft import (fftshift, ifftshift, fft, ifft)
-import tifffile as tiff 
+import tifffile as tiff
 
 # Set up base vectors.
 def base_vect_generator2D(xrange, yrange):
