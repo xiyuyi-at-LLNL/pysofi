@@ -1,5 +1,5 @@
 from functions import (deconvsk, finterp, ldrc, masks, reconstruction)
-import imageio
+import tifffile as tiff
 import numpy as np
 
 class Data:
@@ -83,7 +83,6 @@ class Data:
         self.filtered = image        
 
     def get_length(self):
-        im = imageio.imread(self.filepath + '/' + self.filename)
-        im.load()
-        self.n_frames = im.n_frames
+        imstack = tiff.TiffFile(filepath + '/' + filename)
+        self.n_frames = len(imstack.pages)
         return self.n_frames
