@@ -7,33 +7,58 @@ class Data:
         self.filename = filename
         self.filepath = filepath
         self.ave = None
-        self.moments_set = None
-        self.cumulants_set = None
+        self.moments_set = {}
+        self.cumulants_set = {}
         self.morder = 0
         self.corder = 0
+        self.current_order = 0
         
     def average_image(self):
         self.ave = reconstruction.average_image(self.filepath, self.filename)
         return self.ave
     
-    def moments_images(self, highest_order = 6):
+    def moments_images(self, highest_order = 6, mean_im = None):
+        self.current_order = self.morder
+        if mean_im is None and self.ave is not None:
+            mean_im = self.ave
+        self.moments_set = reconstruction.calc_moments(self.filepath, self.filename, highest_order, self.current_order, mean_im, self.moments_set)
         self.morder = highest_order
-        self.moments_set = reconstruction.calc_moments(self.filepath, self.filename, highest_order)
         return self.moments_set
     
     def cumulants_images(self, highest_order = 6, m_set = None, same_order = True):
         self.corder = highest_order
-        if m_set is None:
-            if self.moments_set is not None and self.morder >= self.corder: 
-                m_set = self.moments_set
-            else:
+        if m_set is None:    # moments not provided
+            if self.moments_set == {}:    # moments have not calculated
                 m_set = self.moments_images(highest_order)
-              
-        if same_order is False:
-            m_set = self.moments_images(highest_order)
+            else:
+                if self.corder > self.morder:
+                    m_set = self.moments_images(highest_order)
+                else:
+                    m_set = self.moments_set
+        else:
+            if self.corder > self.morder:
+                m_set = self.moments_images(highest_order)
+            else:
+                m_set = self.moments_set
             
         self.cumulants_set = reconstruction.calc_cumulants_from_moments(m_set, highest_order)
         return self.cumulants_set
+    
+    
+#     def cumulants_images_olderversion(self, highest_order = 6, m_set = None, same_order = True):
+#         self.corder = highest_order
+#         if m_set is None:
+#             if self.moments_set is not None and self.morder >= self.corder: 
+#                 m_set = self.moments_set
+#             else:
+#                 m_set = self.moments_images(highest_order)
+#               
+#         if same_order is False:
+#             m_set = self.moments_images(highest_order)
+#             
+#         self.cumulants_set = reconstruction.calc_cumulants_from_moments(m_set, highest_order)
+#         return self.cumulants_set
+    
             
     def ldrc(self, order = 6, window_size = 25, mask_im = None, input_im = None):      
         if input_im is None: 
