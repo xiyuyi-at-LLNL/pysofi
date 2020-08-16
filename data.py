@@ -21,7 +21,7 @@ class Data:
         self.current_order = self.morder
         if mean_im is None and self.ave is not None:
             mean_im = self.ave
-        self.moments_set = reconstruction.calc_moments(self.filepath, self.filename, highest_order, self.current_order, mean_im, self.moments_set)
+        self.moments_set = reconstruction.calc_moments(self.filepath, self.filename, highest_order, self.moments_set, mean_im)
         self.morder = highest_order
         return self.moments_set
     
@@ -41,23 +41,8 @@ class Data:
             else:
                 m_set = self.moments_set
             
-        self.cumulants_set = reconstruction.calc_cumulants_from_moments(m_set, highest_order)
+        self.cumulants_set = reconstruction.calc_cumulants_from_moments(m_set)
         return self.cumulants_set
-    
-    
-#     def cumulants_images_olderversion(self, highest_order = 6, m_set = None, same_order = True):
-#         self.corder = highest_order
-#         if m_set is None:
-#             if self.moments_set is not None and self.morder >= self.corder: 
-#                 m_set = self.moments_set
-#             else:
-#                 m_set = self.moments_images(highest_order)
-#               
-#         if same_order is False:
-#             m_set = self.moments_images(highest_order)
-#             
-#         self.cumulants_set = reconstruction.calc_cumulants_from_moments(m_set, highest_order)
-#         return self.cumulants_set
     
             
     def ldrc(self, order = 6, window_size = 25, mask_im = None, input_im = None):      

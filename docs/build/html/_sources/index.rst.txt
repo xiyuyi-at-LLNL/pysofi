@@ -6,9 +6,24 @@
 Welcome to pysofi's documentation!
 ==================================
 
+Another header
+=================
+Here is some text for demo.::
+    print 'hello' 
+    >> hello
+
+
+
+Guide
+^^^^^
+
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
+
+   help
+
+   
 
 
 

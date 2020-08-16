@@ -9,8 +9,9 @@ Welcome to pysofi's documentation!
 Another header
 =================
 Here is some text for demo.::
-    print 'hello'
+    print 'hello' 
     >> hello
+
 
 
 Guide
@@ -19,8 +20,10 @@ Guide
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
-   license
+
    help
+
+   
 
 
 
