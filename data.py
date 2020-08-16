@@ -45,7 +45,7 @@ class Data:
         return self.cumulants_set
     
             
-    def ldrc(self, order = 6, window_size = 25, mask_im = None, input_im = None):      
+    def ldrc(self, order = 6, window_size = [25, 25], mask_im = None, input_im = None):      
         if input_im is None: 
             if self.moments_set is not None:
                 if self.morder >= order:

@@ -14,20 +14,40 @@ import tifffile as tiff
 from bokeh.plotting import figure, output_file, show, output_notebook
 
 def ensure_positive(data):
-    """Make sure data is positive and has no zeros
-
-    For numerical stability
-
-    If we realize that mutating data is not a problem
-    and that changing in place could lead to signifcant
-    speed ups we can lose the data.copy() line"""
-    # make a copy of the data
+    """
+    Make sure data is positive and has no zeros.
+    """
     data = data.copy()
-    data[data <= 0] = np.finfo(data.dtype).eps
+    data[data <= 0] = np.finfo(float).eps
     return data
 
 def bokeh_visualization(image, palette = None, save_option = False, filename = 'Image', imshow_same = True):
-    # palette list in bokeh documentation: https://docs.bokeh.org/en/latest/docs/reference/palettes.html
+    '''
+    Show interactive grayscale image with Bokeh in Jupyter Notebook.
+
+    Parameters
+    ----------
+    image: ndarray
+        The grayscale image array for visualization.
+    palette: str
+        Name of the Bokeh palettes. The default palette is 'pink' from matplotlib.
+        For a complete palette list in bokeh documentation: 
+            https://docs.bokeh.org/en/latest/docs/reference/palettes.html
+    save_option: bool
+        Whether to save the Bokeh image as a .html file.
+    filename: str 
+        Name of the .html file.
+    imshow_same: bool
+        Whether to reversse y-axis to show the same image as using matplotlib.
+
+    Examples
+    --------
+    TODO: Please refer to the demo Jupyter Notebook ''.
+
+    Notes
+    -----
+    For more information about interactive visualization library Bokeh: https://docs.bokeh.org/en/latest/index.html.
+    '''
     image = ensure_positive(image)
     xdim, ydim = np.shape(image)
     TOOLTIPS = [("x", "$x{int}"), ("y", "$y{int}"), ("value", "@image")]
@@ -56,7 +76,29 @@ def bokeh_visualization(image, palette = None, save_option = False, filename = '
         
     show(p, notebook_handle=True)
 
-def bokeh_visualization_rgba(image, save_option = False, filename = 'RGBAimage', imshow_same = True):    
+def bokeh_visualization_rgba(image, save_option = False, filename = 'RGBAimage', imshow_same = True):
+    '''
+    Show interactive RGBA image with Bokeh in Jupyter Notebook.
+
+    Parameters
+    ----------
+    image: ndarray
+        The RGBA image array for visualization.
+    save_option: bool
+        Whether to save the Bokeh image as a .html file.
+    filename: str 
+        Name of the .html file.
+    imshow_same: bool
+        Whether to reversse y-axis to show the same image as using matplotlib.
+
+    Examples
+    --------
+    TODO: Please refer to the demo Jupyter Notebook ''.
+
+    Notes
+    -----
+    For more information about interactive visualization library Bokeh: https://docs.bokeh.org/en/latest/index.html.
+    '''    
     image = ensure_positive(image)
     image[image>255] = 255
     assert (np.sum(image != np.uint8(image)) == 0), "Converting image dtype to uint8"
@@ -84,13 +126,18 @@ def bokeh_visualization_rgba(image, save_option = False, filename = 'RGBAimage',
     show(p, notebook_handle=True)
     
 def ind2cmap(im, cmap = 'pink'):
-    # convert greyscale image to rgba image in (0,1) float range with pre-defined colormap
+    '''
+    Convert a grayscale image array to a rgba color image(float in (0,1)range).
+    '''
     norm_im = (im - np.min(im)) / (np.max(im) - np.min(im))
     im_cmap = cm.get_cmap(cmap) 
     color_im = im_cmap(norm_im)
     return color_im
 
 def save_png(im, cmap = 'pink', filename = 'output.png', display_contrast = 1):
+    '''
+    Save a image with a specific colormap. Please refer to the demo Jupyter Notebook for examples.
+    '''
     im = ensure_positive(im)
     color_img = ind2cmap(im, cmap)
     color_img = color_img * 255 * display_contrast
@@ -99,6 +146,9 @@ def save_png(im, cmap = 'pink', filename = 'output.png', display_contrast = 1):
     plt.imsave(filename, color_img)
     
 def save_avi(vid_array, cmap = 'pink', filename = 'output.avi', display_contrast = 1):
+    '''
+    Save a image stack with a specific colormap. Please refer to the demo Jupyter Notebook for examples.
+    '''
     frame, xdim, ydim = np.shape(vid_array)
     out = cv2.VideoWriter(filename,cv2.VideoWriter_fourcc('M','J','P','G'), frame, (xdim,ydim))
     for i in range(frame):
