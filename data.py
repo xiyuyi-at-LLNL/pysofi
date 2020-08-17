@@ -76,16 +76,16 @@ class Data:
     def finterp_tiffstack(self, interp_num_lst = [2,4], mvlength = None, save_option = True, return_option = False):
         filename = self.filename[:-4]
         if return_option == False:
-            finterp.fourier_interp_tiffstack(self.filepath, filename, interp_num_lst, mvlength, save_option, return_option)
+            finterp.fourier_interp_tiff(self.filepath, filename, interp_num_lst, mvlength, save_option, return_option)
         else:
-            self.finterps = finterp.fourier_interp_tiffstack(self.filepath, filename, interp_num_lst, mvlength, save_option, return_option)
+            self.finterps = finterp.fourier_interp_tiff(self.filepath, filename, interp_num_lst, mvlength, save_option, return_option)
             return self.finterps
        
     def finterp_image(self, input_im = None, interp_num_lst = [2,4]):
         if input_im is None:
             input_im = self.average_image()
             
-        self.finterp = finterp.fourier_interp_tiffimage(input_im, interp_num_lst)
+        self.finterp = finterp.fourier_interp_array(input_im, interp_num_lst)
         return self.finterp
         
     def add_filtered(self, image, filter_name='noise filter'):
