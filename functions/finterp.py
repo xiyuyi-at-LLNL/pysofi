@@ -1,10 +1,14 @@
 '''
-This module performs fourier interpolation on a single image or a image stack (tiff file).
-Interpolated image (stack) can be saved into a new tiff file or return as a numpy array.
-Fourier interpolation was implemented with transformation matrix operation, where the 
-Fourier transformation matrix was constructed with the original matrix size without 
-interpolation grids, and the inverse Fourier transformation matrix encodes the extra 
-interpolation position coordinates.
+This module performs fourier interpolation on a single image 
+or a image stack (tiff file). Interpolated image (stack) can be 
+saved into a new tiff file or return as a numpy array.
+
+Fourier interpolation was implemented with transformation matrix 
+operation, where the Fourier transformation matrix was constructed 
+with the original matrix size without interpolation grids, and the 
+inverse Fourier transformation matrix encodes the extra interpolation
+position coordinates.
+
 Adapted from https://github.com/xiyuyi/xy_fInterp_forTIFF.
 '''
 
@@ -21,19 +25,23 @@ def _base_vect_generator2D(xrange, yrange):
     return bx, by
 
 def _calc_ft_matrix(base, spectrum_range):
-    '''Calculate fourier transform matrix without center shift from base vectors.'''
+    '''
+    Calculate fourier transform matrix without center shift from base vectors.
+    '''
     power_matrix = np.ones((spectrum_range, spectrum_range))
-    power_matrix = np.arange(spectrum_range).reshape(spectrum_range, 1) * power_matrix
+    power_matrix = np.arange(spectrum_range).reshape(spectrum_range, 1) * \
+                   power_matrix
     ft_matrix = np.power(base, power_matrix)
     return ft_matrix
 
 def _calc_ift_matrix(base, spectrum_range, interp_num):
     '''
-    Calculate inverse fourier transform matrix without center shift from base vectors
-    for a given fold of interpolation.
+    Calculate inverse fourier transform matrix without center shift from base
+    vectors for a given fold of interpolation.
     '''
     conj_base = np.reshape(np.conj(base), (1, spectrum_range))
-    ift = np.matmul(np.ones(((spectrum_range - 1) * interp_num + 1, 1)),conj_base)
+    ift = np.matmul(np.ones(((spectrum_range - 1) * interp_num + 1, 1)),
+                    conj_base)
     iftp = np.arange(0, spectrum_range - 1 + 1e-10, 1/interp_num)
     iftp = np.matmul(iftp.reshape(-1, 1), np.ones((1, spectrum_range)))
     ift = np.power(ift, iftp) / spectrum_range
@@ -48,11 +56,11 @@ def ft_matrix2D(xrange, yrange):
 
 def ift_matrix2D(xrange, yrange, interp_num):
     '''
-    Calculate inverse fourier transform matrix without center shift for a given fold 
-    of interpolation for x- and y-dimension. Here we use 2 times the x-dimension of a
-    frame image for xrange and 2 times of y for yrange. interp_num is the number of 
-    times the resolution enhanced. For instance, when interp_num = 2, d' = d / 2, the 
-    resolution i two times the original one.
+    Calculate inverse fourier transform matrix without center shift for a 
+    given fold of interpolation for x- and y-dimension. Here we use 2 times 
+    the x-dimension of a frame image for xrange and 2 times of y for yrange. 
+    interp_num is the number of times the resolution enhanced. For instance, 
+    when interp_num = 2, the resolution is two times the original one.
     '''
     bx, by = _base_vect_generator2D(xrange, yrange)
     ifx = _calc_ift_matrix(bx, xrange, interp_num)
@@ -62,8 +70,9 @@ def ift_matrix2D(xrange, yrange, interp_num):
 
 def interpolate_image(im, fx, fy, ifx, ify, interp_num):
     '''
-    Performs fourier interpolation to increase the resolution of the image. The 
-    interpolated image can be further processed by SOFI for super-resolution imaging.
+    Performs fourier interpolation to increase the resolution of the image. 
+    The interpolated image can be further processed by SOFI for 
+    super-resolution imaging.
 
     Parameters
     ----------
@@ -74,9 +83,9 @@ def interpolate_image(im, fx, fy, ifx, ify, interp_num):
     fy: ndarray
         Fourier transform matrix in y generated from ft_matrix2D function.
     ifx: ndarray
-        Inverse fourier transform matrix in x generated from ift_matrix2D function.
+        Inverse fourier transform matrix in x from ift_matrix2D function.
     ify: ndarray
-        Inverse fourier transform matrix in y generated from ift_matrix2D function.
+        Inverse fourier transform matrix in y from ift_matrix2D function.
     interp_num: int
         The number of pixels to be interpolated between two adjacent pixels.
 
@@ -118,7 +127,8 @@ def interpolate_image(im, fx, fy, ifx, ify, interp_num):
     # 1. Extend im to create the natural peoriocity in the resulting image 
     # to avoid ringing artifacts after fourier interpolation.
     ext_im = np.append(np.append(im, np.fliplr(im), axis=1), 
-                       np.append(np.flipud(im), np.rot90(im, 2), axis=1), axis=0)
+                       np.append(np.flipud(im), np.rot90(im, 2), 
+                       axis=1), axis=0)
 
     # 2. Fourier transform
     fall = np.matmul(np.matmul(fx, ext_im), fy)     
@@ -136,8 +146,8 @@ def interpolate_image(im, fx, fy, ifx, ify, interp_num):
 
 def fourier_interp_array(im, interp_num_lst):
     '''
-    Performs fourier interpolation on an image array with a list of interpolation 
-    factors.
+    Performs fourier interpolation on an image array with a list of 
+    interpolation factors.
     '''
     xdim, ydim = im.shape
     xrange, yrange = 2 * xdim, 2 * ydim    # define the ft spectrum span
@@ -150,10 +160,12 @@ def fourier_interp_array(im, interp_num_lst):
             
     return interp_im_lst
 
-def fourier_interp_tiff(filepath, filename, interp_num_lst, mvlength = None, save_option = True, return_option = False):
+def fourier_interp_tiff(filepath, filename, interp_num_lst, mvlength = None, 
+                        save_option = True, return_option = False):
     '''
-    Performs fourier interpolation on a tiff image (stack) with a list of interpolation 
-    factors (the number of pixels to be interpolated between two adjacent pixels).
+    Performs fourier interpolation on a tiff image (stack) with a list of 
+    interpolation factors (the number of pixels to be interpolated between 
+    two adjacent pixels).
 
     Parameters
     ----------
@@ -166,8 +178,8 @@ def fourier_interp_tiff(filepath, filename, interp_num_lst, mvlength = None, sav
     mvlength: int
         The frame number of the tiff file (1 for images).
     save_option: bool
-        Whether to save the interpolated images into tiff files (each interpolation factor
-        seperately).
+        Whether to save the interpolated images into tiff files (each 
+        interpolation factor seperately).
     return_option: bool
         Whether to return the interpolated image series as 3d arrays.
 
@@ -200,7 +212,8 @@ def fourier_interp_tiff(filepath, filename, interp_num_lst, mvlength = None, sav
             interp_im = interpolate_image(im, fx, fy, ifx, ify, interp_num)
             interp_im = np.int_(np.around(interp_im))
             if save_option == True:
-                tiff.imwrite(filename + '_InterpNum' + str(interp_num) + '.tif', interp_im, dtype='int', append=True)
+                tiff.imwrite(filename +'_InterpNum'+ str(interp_num) +'.tif',
+                             interp_im, dtype='int', append=True)
             if return_option == True:
                 interp_imstack.append(interp_im)
                 

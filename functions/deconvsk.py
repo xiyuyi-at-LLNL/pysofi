@@ -4,9 +4,9 @@ import numpy as np
 def _prep_img_and_psf(image, psf):
     '''
     From https://github.com/david-hoffman/pyDecon.
-    Do basic data checking, convert data to float, normalize psf and make sure data are positive.
+    Do basic data checking, convert data to float, normalize psf and make sure
+    data are positive.
     '''
-    #assert psf.ndim == image.ndim, ("image and psf do not have the same number of dimensions")
     image = image.astype(np.float)
     psf = psf.astype(np.float)
     # need to make sure both image and PSF are totally positive.
@@ -196,9 +196,9 @@ def corelucy(image, H):
     
     References
     ----------
-    "Acceleration of iterative image restoration algorithms, by D.S.C. Biggs 
+    .. [1] Acceleration of iterative image restoration algorithms, by D.S.C. Biggs 
     and M. Andrews, Applied Optics, Vol. 36, No. 8, 1997.
-    "Deconvolutions of Hubble Space Telescope Images and Spectra",
+    .. [2] Deconvolutions of Hubble Space Telescope Images and Spectra,
     R.J. Hanisch, R.L. White, and R.L. Gilliland. in "Deconvolution of Images 
     and Spectra", Ed. P.A. Jansson, 2nd ed., Academic Press, CA, 1997.
     '''
@@ -286,23 +286,71 @@ def richardson_lucy(image, psf, iterations=10):
         CC = corelucy(Y, H)
         # 2c. Determine next iteration image & apply positivity constraint
         J[3] = J[2]
-        scale = np.real(ifftn(np.multiply(np.conj(H),fw))) + np.sqrt(np.finfo(H.dtype).eps)
-        J[2] = np.maximum(np.multiply(image, np.real(ifftn(np.multiply(np.conj(H), CC))))/scale, 0)
+        scale = np.real(ifftn(np.multiply(np.conj(H),fw))) + \
+                np.sqrt(np.finfo(H.dtype).eps)
+        J[2] = np.maximum(np.multiply(image, 
+               np.real(ifftn(np.multiply(np.conj(H), CC)))) / scale, 0)
         J[4] = np.vstack([J[2].T.reshape(-1,) - Y.T.reshape(-1,), J[4][:,1]]).T
-        # 2d. Determine next iteration PSF & apply positivity constraint + normalization
+        # 2d. Determine next iteration PSF &
+        #     Apply positivity constraint + normalization
         P[3] = P[2]
         H = fftn(J[3])
-        scale = otf2psf(np.multiply(np.conj(H),fw), sizePSF) + np.sqrt(np.finfo(H.dtype).eps)
-        P[2] = np.maximum(np.multiply(B, otf2psf(np.multiply(np.conj(H),CC), sizePSF))/scale, 0)
+        scale = otf2psf(np.multiply(np.conj(H),fw), sizePSF) + \
+                        np.sqrt(np.finfo(H.dtype).eps)
+        P[2] = np.maximum(np.multiply(B, 
+               otf2psf(np.multiply(np.conj(H),CC), sizePSF))/scale, 0)
         P[2] /= P[2].sum()
         P[4] = np.vstack([P[2].T.reshape(-1,) - B.T.reshape(-1,), P[4][:,1]]).T
     P, J = P[2], J[2]  # PSF and updated image
     return P, J  
 
 def deconvsk(est_psf, input_im, deconv_lambda, deconv_iter):
+    '''
+    Perform serial Richardson-Lucy deconvolution with shrinking PSFs. 
+    U = (U**(l/(l-1))) * (U**(l**2/(l-1))) * ... * (U**(l**n/(l-1))).
+    The PSF of the imaging system U can be decomposed into a series a 
+    smaller (shrinking) PSF U**r where r > 1, and the image can be 
+    deconvolved by these PSFs in sequence. 
+    In this way, the result is more similar to the input image, so each 
+    individual deconvolution step is a lighter deconcolution task.
+
+    Parameters
+    ----------
+    est_psf: ndarray
+        Estimated PSF.
+    input_im: ndarray
+        Input image that need deconvolution.
+    deconv_lambda: float
+        Lambda for the exponent between. It is an empirical parameter
+        within the range of (1,2).
+    deconv_iter: int
+        Number of iterations for each deconvolution.
+
+    Returns
+    -------
+    deconv_im: ndarray
+        Deconvoluted image.
+
+    Notes
+    -----
+    The quality of the deconvolution result is greatly dependent on the initial 
+    PSF size instead of the value. We recommend to calibrate PSF of the imaging
+    system and use that as the initial PSF guess. Otherwise, generating a PSF 
+    according to the magnification of the imaging system is an option. For more
+    details on the shrinking kernel deconvolution method, please refer to [1].
+
+    References
+    ----------
+    .. [1] Xiyu Yi, Sungho Son, Ryoko Ando, Atsushi Miyawaki, and Shimon Weiss, 
+    "Moments reconstruction and local dynamic range compression of high order 
+    superresolution optical fluctuation imaging," Biomed. Opt. Express 10, 
+    2430-2445 (2019).
+    '''
     xdim, ydim = np.shape(input_im)
-    deconv_im = np.append(np.append(input_im, np.fliplr(input_im), axis=1), np.append(np.flipud(input_im), np.rot90(input_im, 2), axis=1), axis=0)
-    # perform mirror extension to the image in order to surpress ringing artifacts associated with fourier transform due to truncation effect.
+    deconv_im = np.append(np.append(input_im, np.fliplr(input_im), axis=1), 
+        np.append(np.flipud(input_im), np.rot90(input_im, 2), axis=1), axis=0)
+    # Perform mirror extension to the image in order to surpress ringing 
+    # artifacts associated with fourier transform due to truncation effect.
     psf0 = est_psf / np.max(est_psf)
     for iter_num in range(deconv_iter):
         alpha = deconv_lambda**(iter_num+1) / (deconv_lambda - 1)
