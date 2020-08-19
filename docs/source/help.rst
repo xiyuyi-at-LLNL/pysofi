@@ -1,5 +1,5 @@
 Need Help
 =========
 
-If you have any problems, please email ytmiao@ucla.edu
+If you have any questions, please email ytmiao@ucla.edu
 
