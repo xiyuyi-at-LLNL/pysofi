@@ -15,6 +15,8 @@ Adapted from https://github.com/xiyuyi/xy_fInterp_forTIFF.
 import numpy as np
 from numpy.fft import (fftshift, ifftshift, fft, ifft)
 import tifffile as tiff
+from time import sleep
+import sys
 
 def _base_vect_generator2D(xrange, yrange):
     '''Generate base vectors for x- and y-dimension.'''
@@ -212,7 +214,8 @@ def fourier_interp_tiff(filepath, filename, interp_num_lst, mvlength = None,
             interp_im = interpolate_image(im, fx, fy, ifx, ify, interp_num)
             interp_im = np.int_(np.around(interp_im))
             sys.stdout.write('\r')
-            sys.stdout.write("[{:{}}] {:.1f}%".format("="*int(30/(mvlength-1)*frame), 29, (100/(mvlength-1)*frame)))
+            sys.stdout.write("[{:{}}] {:.1f}%".format(
+                "="*int(30/(mvlength-1)*frame), 29, (100/(mvlength-1)*frame)))
             sys.stdout.flush()
             if save_option == True:
                 tiff.imwrite(filename +'_InterpNum'+ str(interp_num) +'.tif',

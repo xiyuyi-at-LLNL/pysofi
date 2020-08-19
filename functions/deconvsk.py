@@ -1,5 +1,7 @@
 from numpy.fft import (fftshift, ifftshift, fftn, ifftn, rfftn, irfftn)
 import numpy as np
+from time import sleep
+import sys
 
 def _prep_img_and_psf(image, psf):
     '''
@@ -357,7 +359,8 @@ def deconvsk(est_psf, input_im, deconv_lambda, deconv_iter):
         deconv_psf, deconv_im = richardson_lucy(deconv_im, psf0**alpha, 1)    
         sys.stdout.write('\r')
         sys.stdout.write('Calculating ')
-        sys.stdout.write("[%-20s] %d%%" % ('='*iter_num, 100/(deconv_iter-1)*iter_num))
+        sys.stdout.write("[%-20s] %d%%" % ('='*iter_num, 
+                         100/(deconv_iter-1)*iter_num))
         sys.stdout.flush()
     deconv_im = deconv_im[0:xdim, 0:ydim]
     return deconv_im
