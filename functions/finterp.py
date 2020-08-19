@@ -206,11 +206,14 @@ def fourier_interp_tiff(filepath, filename, interp_num_lst, mvlength = None,
     for interp_num in interp_num_lst:
         ifx, ify = ift_matrix2D(xrange, yrange, interp_num)
         interp_imstack = []
-
+        print('Calculating interpolation factor = %d...' % interp_num)
         for frame in range(mvlength):
             im = tiff.imread(filepath + '/' + filename + '.tif', key=frame)
             interp_im = interpolate_image(im, fx, fy, ifx, ify, interp_num)
             interp_im = np.int_(np.around(interp_im))
+            sys.stdout.write('\r')
+            sys.stdout.write("[{:{}}] {:.1f}%".format("="*int(30/(mvlength-1)*frame), 29, (100/(mvlength-1)*frame)))
+            sys.stdout.flush()
             if save_option == True:
                 tiff.imwrite(filename +'_InterpNum'+ str(interp_num) +'.tif',
                              interp_im, dtype='int', append=True)
@@ -219,6 +222,6 @@ def fourier_interp_tiff(filepath, filename, interp_num_lst, mvlength = None,
                 
         if return_option == True:  
             interp_imstack_lst.append(interp_imstack) 
-    
+        print('\n')
     if return_option == True:
         return interp_imstack_lst

@@ -57,10 +57,14 @@ def noise_filter1d(dset, im_set, noise_filter=masks.gauss1D_mask((1,21), 2),
     xdim, ydim = np.shape(im_set[filenames[0]])
     m_length = len(filenames)
     m_filtered = np.zeros((m_length, xdim, ydim))
+    print('Calculating ...')
     for i in range(xdim):
         for j in range(ydim):
             time_series = get_series(i,j)
             m_filtered[:,i,j] = filter1d_same(time_series, noise_filter)
+        sys.stdout.write('\r')
+        sys.stdout.write("[%-20s] %d%%" % ('='*int(20*(i+1)/xdim), 100*(i+1)/xdim))
+        sys.stdout.flush()
     for k in range(m_length):
         dset[filenames[k]].add_filtered(m_filtered[k], filtername)
         

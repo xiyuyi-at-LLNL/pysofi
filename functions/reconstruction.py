@@ -1,6 +1,8 @@
 import numpy as np
 import tifffile as tiff
 import scipy.special
+from time import sleep
+import sys
 
 def average_image(filepath, filename):
     '''
@@ -59,16 +61,26 @@ def calc_moments(filepath, filename, highest_order, m_set={}, mean_im=None):
     imstack = tiff.TiffFile(filepath + '/' + filename)
     xdim, ydim = np.shape(imstack.pages[0])
     mvlength = len(imstack.pages)
-                
+     # print out the progress
+    ordinal = lambda n: "%d%s" % (n,"tsnrhtdd"[(n//10%10!=1)*(n%10<4)*n%10::4])
+    order_lst = [ordinal(n+1) for n in range(highest_order)]
+
     if highest_order > current_order:
         for order in range(current_order, highest_order):
+        	print('Calculating the %s-order moment reconstruction...' % 
+        		   order_lst[order])
             m_set[order+1] = np.zeros((xdim, ydim))
             for frame_num in range(mvlength):
                 im = tiff.imread(filepath + '/' + filename, key=frame_num)
                 m_set[order+1] = m_set[order+1] + \
                                  np.power(im - mean_im, order+1)
-        
+        		sys.stdout.write('\r')
+                sys.stdout.write("[{:{}}] {:.1f}%".format(
+                				 "="*int(30/(mvlength-1)*frame_num), 29, 
+                				 (100/(mvlength-1)*frame_num)))
+                sys.stdout.flush()
             m_set[order+1] = np.int64(m_set[order+1] / mvlength)
+            print('\n')
     return m_set
 
 

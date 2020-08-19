@@ -355,6 +355,9 @@ def deconvsk(est_psf, input_im, deconv_lambda, deconv_iter):
     for iter_num in range(deconv_iter):
         alpha = deconv_lambda**(iter_num+1) / (deconv_lambda - 1)
         deconv_psf, deconv_im = richardson_lucy(deconv_im, psf0**alpha, 1)    
-    
+        sys.stdout.write('\r')
+        sys.stdout.write('Calculating ')
+        sys.stdout.write("[%-20s] %d%%" % ('='*iter_num, 100/(deconv_iter-1)*iter_num))
+        sys.stdout.flush()
     deconv_im = deconv_im[0:xdim, 0:ydim]
     return deconv_im

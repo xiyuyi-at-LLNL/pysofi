@@ -73,6 +73,7 @@ def ldrc(mask_im, input_im, order, window_size = [25, 25]):
     # ldrc
     seq_map = np.zeros((xdim, ydim))
     ldrc_im = np.zeros((xdim, ydim))
+    print('Calculating ...')
     for i in range(xdim - window_size[0] + 1):
         for j in range(ydim - window_size[1] + 1):
             window = input_im[i:i+window_size[0], j:j+window_size[1]]
@@ -84,7 +85,11 @@ def ldrc(mask_im, input_im, order, window_size = [25, 25]):
             norm_window * np.max(mask[i:i+window_size[0], j:j+window_size[1]])
             seq_map[i:i+window_size[0], j:j+window_size[1]] = \
             seq_map[i:i+window_size[0], j:j+window_size[1]] + 1
-        
+        sys.stdout.write('\r')
+        sys.stdout.write("[%-20s] %d%%" % 
+                                ('='*int(20*(i+1)/(xdim - window_size + 1)), 
+                                100*(i+1)/(xdim - window_size + 1)))
+        sys.stdout.flush()
     ldrc_im = ldrc_im / seq_map  
     return ldrc_im
 
