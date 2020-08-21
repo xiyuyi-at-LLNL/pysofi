@@ -21,7 +21,8 @@ def average_image(filepath, filename):
     
     return mean_im
 
-def calc_moments(filepath, filename, highest_order, m_set={}, mean_im=None):
+def calc_moments(filepath, filename, highest_order, 
+				 m_set = {}, mean_im = None, int_option = False):
     '''
     Get all moment-reconstructed images to the user-defined highest order for
     a video file(tiff stack).
@@ -39,6 +40,9 @@ def calc_moments(filepath, filename, highest_order, m_set={}, mean_im=None):
         A dictionary of previously calcualted moment-reconstructed images.
     mean_im: ndarray
         Average image of the tiff stack.
+    int_option: bool
+        Whether to convert all float arrays to int64. This is helpful when
+        saving moment-reconstructions as tiff files.
 
     Returns
     -------
@@ -79,12 +83,15 @@ def calc_moments(filepath, filename, highest_order, m_set={}, mean_im=None):
                 				 "="*int(30/(mvlength-1)*frame_num), 29, 
                 				 (100/(mvlength-1)*frame_num)))
                 sys.stdout.flush()
-            m_set[order+1] = np.int64(m_set[order+1] / mvlength)
+            if int_option == True:
+            	m_set[order+1] = np.int64(m_set[order+1] / mvlength)
+            else:
+            	m_set[order+1] = m_set[order+1] / mvlength
             print('\n')
     return m_set
 
 
-def calc_cumulants_from_moments(moment_set):
+def calc_cumulants_from_moments(moment_set, int_option = False):
     '''
     Calculate cumulant-reconstructed images from moment-reconstructed images.
 
@@ -93,6 +100,9 @@ def calc_cumulants_from_moments(moment_set):
     moment_set: dict
         order number (int) -> image (ndarray)
         A dictionary of calcualted moment-reconstructed images.
+    int_option: bool
+        Whether to convert all float arrays to int64. This is helpful when
+        saving cumulant-reconstructions as tiff files.
 
     Returns
     -------
@@ -110,10 +120,16 @@ def calc_cumulants_from_moments(moment_set):
     k_set = {}
     highest_order = max(moment_set.keys())
     for order in range(1, highest_order + 1):
-        k_set[order] = np.int64(moment_set[order] - \
-            np.sum(np.array(
+    	if int_option == True:
+        	k_set[order] = np.int64(moment_set[order] - \
+            	np.sum(np.array(
                 [scipy.special.comb(order-1,i)*k_set[order-i]*moment_set[i]
                 for i in range(1,order)]),axis=0))
+        else:
+        	k_set[order] = moment_set[order] - \
+            	np.sum(np.array(
+                [scipy.special.comb(order-1,i)*k_set[order-i]*moment_set[i]
+                for i in range(1,order)]),axis=0)        	
     
     return k_set
 
