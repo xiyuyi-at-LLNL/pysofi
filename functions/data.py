@@ -48,7 +48,7 @@ class Data:
     Notes
     -----
     For SOFI processing, after loading the tiff video into the Data object, 
-    a pipeline of 1) fourier interpolatiton, 2) moments reconstrtuction or 
+    a pipeline of 1) fourier interpolation, 2) moments reconstrtuction or 
     cumulants reconstruction, 3) noise filtering 1, 4) shrinking kernel de-
     convolution, 5) noise filtering 2, and 6) ldrc. The processed video will
     be saved into a new tiff file with the colormap user selects.

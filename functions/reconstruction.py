@@ -72,22 +72,22 @@ def calc_moments(filepath, filename, highest_order,
     if highest_order > current_order:
         for order in range(current_order, highest_order):
         	print('Calculating the %s-order moment reconstruction...' % 
-        		   order_lst[order])
-            m_set[order+1] = np.zeros((xdim, ydim))
-            for frame_num in range(mvlength):
-                im = tiff.imread(filepath + '/' + filename, key=frame_num)
-                m_set[order+1] = m_set[order+1] + \
+        		order_lst[order])
+        	m_set[order+1] = np.zeros((xdim, ydim))
+        	for frame_num in range(mvlength):
+        		im = tiff.imread(filepath + '/' + filename, key=frame_num)
+        		m_set[order+1] = m_set[order+1] + \
                                  np.power(im - mean_im, order+1)
         		sys.stdout.write('\r')
-                sys.stdout.write("[{:{}}] {:.1f}%".format(
-                				 "="*int(30/(mvlength-1)*frame_num), 29, 
-                				 (100/(mvlength-1)*frame_num)))
-                sys.stdout.flush()
-            if int_option == True:
-            	m_set[order+1] = np.int64(m_set[order+1] / mvlength)
-            else:
-            	m_set[order+1] = m_set[order+1] / mvlength
-            print('\n')
+        		sys.stdout.write("[{:{}}] {:.1f}%".format(
+        			             "="*int(30/(mvlength-1)*frame_num), 29, 
+        			             (100/(mvlength-1)*frame_num)))
+        		sys.stdout.flush()
+        	if int_option == True:
+        		m_set[order+1] = np.int64(m_set[order+1] / mvlength)
+        	else:
+        		m_set[order+1] = m_set[order+1] / mvlength
+        	print('\n')
     return m_set
 
 
@@ -121,15 +121,13 @@ def calc_cumulants_from_moments(moment_set, int_option = False):
     highest_order = max(moment_set.keys())
     for order in range(1, highest_order + 1):
     	if int_option == True:
-        	k_set[order] = np.int64(moment_set[order] - \
-            	np.sum(np.array(
-                [scipy.special.comb(order-1,i)*k_set[order-i]*moment_set[i]
-                for i in range(1,order)]),axis=0))
-        else:
+        	k_set[order] = np.int64(moment_set[order] - 
+        		np.sum(np.array([scipy.special.comb(order-1,i)*k_set[order-i]
+        			*moment_set[i] for i in range(1,order)]),axis=0))
+    	else:
         	k_set[order] = moment_set[order] - \
-            	np.sum(np.array(
-                [scipy.special.comb(order-1,i)*k_set[order-i]*moment_set[i]
-                for i in range(1,order)]),axis=0)        	
+        	np.sum(np.array([scipy.special.comb(order-1,i)*k_set[order-i]
+        		*moment_set[i] for i in range(1,order)]),axis=0)        	
     
     return k_set
 
