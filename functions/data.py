@@ -265,7 +265,15 @@ class Data:
         return n_frames, xdim, ydim
 
     def add(self, **kwargs):
-        """Adds or updates elements (attributes and/or dict entries). """
+        '''Adds or updates elements (attributes and/or dict entries). '''
         for k, v in kwargs.items():
             setattr(self, k, v)
 
+    def get_frame(self, frame_num = 0):
+        '''Get one frame of the tiff video.'''
+        if frame_num >= self.n_frames:
+            raise Exception("'frame_num' exceeds the length of the video")
+        if frame_num < 0 or np.int(frame_num) != frame_num:
+            raise Exception("'frame_num' should be a non-negative integer")
+        frame_im = tiff.imread(self.filepath + '/' + self.filename, key=frame_num)
+        return frame_im
