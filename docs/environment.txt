@@ -1,13 +1,21 @@
+alabaster==0.7.12
+asteval==0.9.18
 attrs==19.3.0
+Babel==2.8.0
 backcall==0.2.0
 bleach==3.1.5
 bokeh @ file:///C:/ci/bokeh_1593178781838/work
 certifi==2020.6.20
+chardet==3.0.4
 colorama==0.4.3
 cycler==0.10.0
 decorator==4.4.2
 defusedxml==0.6.0
+docutils==0.16
 entrypoints==0.3
+future==0.18.2
+idna==2.10
+imagesize==1.2.0
 importlib-metadata @ file:///C:/ci/importlib-metadata_1593446511143/work
 ipykernel @ file:///C:/ci/ipykernel_1596190155316/work/dist/ipykernel-5.3.4-py3-none-any.whl
 ipython @ file:///C:/ci/ipython_1593447482397/work
@@ -18,6 +26,7 @@ jsonschema==3.2.0
 jupyter-client @ file:///tmp/build/80754af9/jupyter_client_1594826976318/work
 jupyter-core==4.6.3
 kiwisolver==1.2.0
+lmfit==1.0.1
 MarkupSafe==1.1.1
 matplotlib==3.3.0
 mistune==0.8.4
@@ -29,6 +38,7 @@ nbformat==5.0.7
 notebook==6.0.3
 numpy @ file:///C:/ci/numpy_and_numpy_base_1596215850360/work
 olefile==0.46
+opencv-python==4.4.0.40
 packaging==20.4
 pandocfilters==1.4.2
 parso==0.7.0
@@ -40,19 +50,31 @@ Pygments==2.6.1
 pyparsing==2.4.7
 pyrsistent==0.16.0
 python-dateutil==2.8.1
+pytz==2020.1
 pywin32==227
 pywinpty==0.5.7
 PyYAML==5.3.1
 pyzmq==19.0.1
+requests==2.24.0
 scipy @ file:///C:/ci/scipy_1592916963468/work
 Send2Trash==1.5.0
 six==1.15.0
+snowballstemmer==2.0.0
+Sphinx==3.1.2
+sphinxcontrib-applehelp==1.0.2
+sphinxcontrib-devhelp==1.0.2
+sphinxcontrib-htmlhelp==1.0.3
+sphinxcontrib-jsmath==1.0.1
+sphinxcontrib-qthelp==1.0.3
+sphinxcontrib-serializinghtml==1.1.4
 terminado==0.8.3
 testpath==0.4.4
 tifffile==2020.7.24
 tornado==6.0.4
 traitlets==4.3.3
 typing-extensions @ file:///tmp/build/80754af9/typing_extensions_1592847887441/work
+uncertainties==3.1.4
+urllib3==1.25.10
 wcwidth @ file:///tmp/build/80754af9/wcwidth_1593447189090/work
 webencodings==0.5.1
 wincertstore==0.2
