@@ -45,7 +45,7 @@ def average_image_with_finterp(filepath, filename, interp_num):
 	return finterp_mean_im[0]
 
 def calc_moment_im(filepath, filename, order, mvlength = 0,
-	               mean_im = None, int_option = False):
+	               mean_im = None):
     '''
     Get one moment-reconstructed image of a defined order for a video file.
 
@@ -61,10 +61,6 @@ def calc_moment_im(filepath, filename, order, mvlength = 0,
         The length of video for the reconstruction.
     mean_im: ndarray
         Average image of the tiff stack.
-    int_option: bool
-        Whether to convert all float arrays to int64. This is helpful when
-        saving moment-reconstructions as tiff files.
-
     Returns
     -------
     moment_im: ndarray
@@ -85,14 +81,11 @@ def calc_moment_im(filepath, filename, order, mvlength = 0,
         			     "="*int(30/(mvlength-1)*frame_num), 29, 
         			            (100/(mvlength-1)*frame_num)))
         sys.stdout.flush()
-    if int_option == True:
-        moment_im = np.int64(moment_im / mvlength)
-    else:
-        moment_im = moment_im / mvlength
+    moment_im = np.int64(moment_im / mvlength)
     return moment_im
 
 def moment_im_with_finterp(filepath, filename, order, interp_num, 
-	                       mvlength = 0, mean_im = None, int_option = False):
+	                       mvlength = 0, mean_im = None):
     '''
     Get one moment-reconstructed image of a defined order for a video file.
 
@@ -110,9 +103,6 @@ def moment_im_with_finterp(filepath, filename, order, interp_num,
         The length of video for the reconstruction.
     mean_im: ndarray
         Average image of the tiff stack.
-    int_option: bool
-        Whether to convert all float arrays to int64. This is helpful when
-        saving moment-reconstructions as tiff files.
 
     Returns
     -------
@@ -136,14 +126,11 @@ def moment_im_with_finterp(filepath, filename, order, interp_num,
         	             "="*int(30/(mvlength-1)*frame_num), 29, 
         	                    (100/(mvlength-1)*frame_num)))
         sys.stdout.flush()
-    if int_option == True:
-        moment_im = np.int64(moment_im / mvlength)
-    else:
-        moment_im = moment_im / mvlength
+    moment_im = np.int64(moment_im / mvlength)
     return moment_im
 
 def calc_moments(filepath, filename, highest_order, 
-				 m_set = {}, mean_im = None, int_option = False):
+				 m_set = {}, mean_im = None):
     '''
     Get all moment-reconstructed images to the user-defined highest order for
     a video file(tiff stack).
@@ -161,9 +148,6 @@ def calc_moments(filepath, filename, highest_order,
         A dictionary of previously calcualted moment-reconstructed images.
     mean_im: ndarray
         Average image of the tiff stack.
-    int_option: bool
-        Whether to convert all float arrays to int64. This is helpful when
-        saving moment-reconstructions as tiff files.
 
     Returns
     -------
@@ -204,15 +188,12 @@ def calc_moments(filepath, filename, highest_order,
         			             "="*int(30/(mvlength-1)*frame_num), 29, 
         			             (100/(mvlength-1)*frame_num)))
         		sys.stdout.flush()
-        	if int_option == True:
-        		m_set[order+1] = np.int64(m_set[order+1] / mvlength)
-        	else:
-        		m_set[order+1] = m_set[order+1] / mvlength
+        	m_set[order+1] = np.int64(m_set[order+1] / mvlength)
         	print('\n')
     return m_set
 
 
-def calc_cumulants_from_moments(moment_set, int_option = False):
+def calc_cumulants_from_moments(moment_set):
     '''
     Calculate cumulant-reconstructed images from moment-reconstructed images.
 
@@ -221,10 +202,6 @@ def calc_cumulants_from_moments(moment_set, int_option = False):
     moment_set: dict
         order number (int) -> image (ndarray)
         A dictionary of calcualted moment-reconstructed images.
-    int_option: bool
-        Whether to convert all float arrays to int64. This is helpful when
-        saving cumulant-reconstructions as tiff files.
-
     Returns
     -------
     k_set: dict

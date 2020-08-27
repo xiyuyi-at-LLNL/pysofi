@@ -97,7 +97,7 @@ class Data:
             return finterp_ave
 
     def moment_image(self, order = 6, mean_im = None, mvlength = 0,
-                     finterp = False, interp_num = 1, int_option = False):
+                     finterp = False, interp_num = 1):
         '''
         Calculate the moment-reconstructed image of a defined order. 
         Parameters
@@ -106,7 +106,13 @@ class Data:
             The order number of the moment-reconstructed image.
         mean_im: ndarray
             Average image of the tiff stack.
-
+        mvlength: int
+            Length of the video to calculate moments-reconstruction.
+        finterp: bool
+            Whether to first conduct Fourier interpolation then calculate
+            moments-reconstructions.
+        interp_num: int
+            The interpolation factor.
         Returns
         -------
         moment_im: ndarray
@@ -119,7 +125,7 @@ class Data:
             if mean_im is None and self.ave is not None:
                 mean_im = self.ave            
             moment_im = reconstruction.calc_moment_im(self.filepath, 
-                self.filename, order, mvlength, mean_im, int_option)
+                self.filename, order, mvlength, mean_im)
             self.morder_lst.append(order)
             self.moments_set[order] = moment_im
             return self.moments_set[order]
@@ -134,7 +140,7 @@ class Data:
             if mean_im is None and self.ave is not None:
                 mean_im = finterp.fourier_interp_array(self.ave, [interp_num])
             moment_im = reconstruction.moment_im_with_finterp(self.filepath, 
-            self.filename, order, interp_num, mvlength, mean_im, int_option)
+            self.filename, order, interp_num, mvlength, mean_im)
             self.morder_finterp_lst.append(order)
             self.moments_finterp_set[order] = moment_im
             self.finterp_factor = interp_num         

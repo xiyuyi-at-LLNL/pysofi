@@ -176,5 +176,11 @@ def save_avi(vid_array, cmap='pink', filename ='out.avi', display_contrast=1):
     out.release()
        
 
-
-    
+def enhance_contrast(im, cmap = 'pink', contrast_order = 1):
+    '''Enhance contrast of the input image.'''
+    im = ensure_positive(im)
+    color_img = ind2cmap(img, cmap)
+    color_img = color_img * 255 * display_contrast
+    color_img[color_img>255] = 255
+    color_img = np.uint8(color_img)
+    return color_img
