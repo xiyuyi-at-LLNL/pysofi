@@ -1,3 +1,4 @@
+from . import finterp as f
 import numpy as np
 import tifffile as tiff
 import scipy.special
@@ -21,6 +22,126 @@ def average_image(filepath, filename):
     
     return mean_im
 
+def average_image_with_finterp(filepath, filename, interp_num):
+	'''
+    Get the average image with fourier interpolation for a video file.
+    Parameters
+    ----------
+    filepath: str
+        Path to the tiff file.
+    filename: str
+        Name of the tiff file.
+	interp_num: int
+		Interpolation factor.
+
+    Returns
+    -------
+    mean_im: ndarray
+        The average image after fourier interpolation. Interpolated
+    images can be further used for SOFI processing.
+    '''
+	original_mean_im = average_image(filepath, filename)
+	finterp_mean_im= f.fourier_interp_array(original_mean_im, [interp_num])
+	return finterp_mean_im[0]
+
+def calc_moment_im(filepath, filename, order, mvlength = 0,
+	               mean_im = None, int_option = False):
+    '''
+    Get one moment-reconstructed image of a defined order for a video file.
+
+    Parameters
+    ----------
+    filepath: str
+        Path to the tiff file.
+    filename: str
+        Name of the tiff file.
+    order: int
+        The order number of moment-reconstructed image.
+    mvlength: int
+        The length of video for the reconstruction.
+    mean_im: ndarray
+        Average image of the tiff stack.
+    int_option: bool
+        Whether to convert all float arrays to int64. This is helpful when
+        saving moment-reconstructions as tiff files.
+
+    Returns
+    -------
+    moment_im: ndarray
+        The moments-reconstructed image.
+    '''
+    if mean_im is None:
+        mean_im = average_image(filepath, filename)
+    imstack = tiff.TiffFile(filepath + '/' + filename)
+    xdim, ydim = np.shape(imstack.pages[0])
+    if mvlength == 0:
+    	mvlength = len(imstack.pages)
+    moment_im = np.zeros((xdim, ydim))
+    for frame_num in range(mvlength):
+        im = tiff.imread(filepath + '/' + filename, key=frame_num)
+        moment_im = moment_im + (im - mean_im)**order
+        sys.stdout.write('\r')
+        sys.stdout.write("[{:{}}] {:.1f}%".format(
+        			     "="*int(30/(mvlength-1)*frame_num), 29, 
+        			            (100/(mvlength-1)*frame_num)))
+        sys.stdout.flush()
+    if int_option == True:
+        moment_im = np.int64(moment_im / mvlength)
+    else:
+        moment_im = moment_im / mvlength
+    return moment_im
+
+def moment_im_with_finterp(filepath, filename, order, interp_num, 
+	                       mvlength = 0, mean_im = None, int_option = False):
+    '''
+    Get one moment-reconstructed image of a defined order for a video file.
+
+    Parameters
+    ----------
+    filepath: str
+        Path to the tiff file.
+    filename: str
+        Name of the tiff file.
+    order: int
+        The order number of moment-reconstructed image.
+    interp_num: int
+        The interpolation factor.
+    mvlength: int
+        The length of video for the reconstruction.
+    mean_im: ndarray
+        Average image of the tiff stack.
+    int_option: bool
+        Whether to convert all float arrays to int64. This is helpful when
+        saving moment-reconstructions as tiff files.
+
+    Returns
+    -------
+    moment_im: ndarray
+        The moments-reconstructed image.
+    '''                                       
+    if mean_im is None:
+        mean_im = average_image_with_finterp(filepath, filename, interp_num)
+
+    imstack = tiff.TiffFile(filepath + '/' + filename)
+    xdim, ydim = np.shape(imstack.pages[0])
+    if mvlength == 0:
+        mvlength = len(imstack.pages)
+    moment_im = np.zeros(((xdim-1)*interp_num+1, (ydim-1)*interp_num+1))
+    for frame_num in range(mvlength):
+        im = tiff.imread(filepath + '/' + filename, key=frame_num)
+        interp_im = f.fourier_interp_array(im, [interp_num])[0]
+        moment_im = moment_im + (interp_im - mean_im)**order
+        sys.stdout.write('\r')
+        sys.stdout.write("[{:{}}] {:.1f}%".format(
+        	             "="*int(30/(mvlength-1)*frame_num), 29, 
+        	                    (100/(mvlength-1)*frame_num)))
+        sys.stdout.flush()
+    if int_option == True:
+        moment_im = np.int64(moment_im / mvlength)
+    else:
+        moment_im = moment_im / mvlength
+    return moment_im
+
 def calc_moments(filepath, filename, highest_order, 
 				 m_set = {}, mean_im = None, int_option = False):
     '''
@@ -31,7 +152,7 @@ def calc_moments(filepath, filename, highest_order,
     ----------
     filepath: str
         Path to the tiff file.
-    Filename: str
+    filename: str
         Name of the tiff file.
     highest_order: int
         The highest order number of moment-reconstructed images.
