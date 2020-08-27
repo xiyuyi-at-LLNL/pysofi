@@ -27,6 +27,13 @@ class Data:
     filepath: str
     ave: ndarray
         The average image of the image stack / tiff video.
+    finterp_factor: int
+        The interpolation factor for Fourier interpolation.
+    morder_lst:list
+        All orders of moments-reconstructions that have been calculated.
+    morder_finterp_lst: list
+        All orders of moments-reconstructions after Fourier interpolation
+        that have been calculated.
     moments_set: dict
         moment order (int) -> moment-reconstructed image (ndarray)
         A dictionary of orders and corrensponding reconstructions.
@@ -65,7 +72,11 @@ class Data:
         self.filename = filename
         self.filepath = filepath
         self.ave = None
+        self.finterp_factor = 1
+        self.morder_lst = []
+        self.morder_finterp_lst = []
         self.moments_set = {}
+        self.moments_finterp_set = {}
         self.cumulants_set = {}
         self.morder = 0
         self.corder = 0
@@ -75,8 +86,62 @@ class Data:
         '''Calculate average image of the tiff video.'''
         self.ave = reconstruction.average_image(self.filepath, self.filename)
         return self.ave
+
+    def average_image_with_finterp(self,interp_num):
+        if self.ave is not None:
+            finterp_ave = finterp.fourier_interp_array(self.ave, [interp_num])
+            return finterp_ave[0]
+        else:
+            finterp_ave = reconstruction.average_image_with_finterp(
+                                    self.filepath, self.filename, interp_num)
+            return finterp_ave
+
+    def moment_image(self, order = 6, mean_im = None, mvlength = 0,
+                     finterp = False, interp_num = 1, int_option = False):
+        '''
+        Calculate the moment-reconstructed image of a defined order. 
+        Parameters
+        ----------
+        order: int
+            The order number of the moment-reconstructed image.
+        mean_im: ndarray
+            Average image of the tiff stack.
+
+        Returns
+        -------
+        moment_im: ndarray
+            The calcualted moment-reconstructed image.
+        '''
+        if finterp == False:
+            if order in self.morder_lst:
+                print("this order of \
+                    moments-reconstruction has been calculated")
+            if mean_im is None and self.ave is not None:
+                mean_im = self.ave            
+            moment_im = reconstruction.calc_moment_im(self.filepath, 
+                self.filename, order, mvlength, mean_im, int_option)
+            self.morder_lst.append(order)
+            self.moments_set[order] = moment_im
+            return self.moments_set[order]
+        else:
+            if self.finterp_factor != 1 and interp_num != self.finterp_factor:
+                print('Moments-reconstruction with different interpolation \
+                       factor is calculated ...')
+            else:
+                if order in self.morder_finterp_lst:
+                    print("this order of \
+                                moments-reconstruction has been calculated")
+            if mean_im is None and self.ave is not None:
+                mean_im = finterp.fourier_interp_array(self.ave, [interp_num])
+            moment_im = reconstruction.moment_im_with_finterp(self.filepath, 
+            self.filename, order, interp_num, mvlength, mean_im, int_option)
+            self.morder_finterp_lst.append(order)
+            self.moments_finterp_set[order] = moment_im
+            self.finterp_factor = interp_num         
+            return self.moments_finterp_set[order]   
     
-    def moments_images(self, highest_order = 6, mean_im = None):
+    def calc_moments_set(self, highest_order = 4, mean_im = None,
+                       finterp = False, interp_num = 1):
         '''
         Calculate moment-reconstructed images to the highest order. 
         Parameters
@@ -92,14 +157,17 @@ class Data:
             order number (int) -> image (ndarray)
             A dictionary of calcualted moment-reconstructed images.
         '''
-        if mean_im is None and self.ave is not None:
-            mean_im = self.ave
-        self.moments_set = reconstruction.calc_moments(self.filepath, 
-            self.filename, highest_order, self.moments_set, mean_im)
-        self.morder = highest_order
-        return self.moments_set
+        if finterp == False:
+            if mean_im is None and self.ave is not None:
+                mean_im = self.ave
+            self.moments_set = reconstruction.calc_moments(self.filepath, 
+                self.filename, highest_order, self.moments_set, mean_im)
+            self.morder = highest_order
+            return self.moments_set
+        #else:
+
     
-    def cumulants_images(self, highest_order=6, m_set=None):
+    def cumulants_images(self, highest_order=4, m_set=None):
         '''
         Calculate cumulant-reconstructed images to the highest order. 
         Parameters
@@ -119,15 +187,15 @@ class Data:
         self.corder = highest_order
         if m_set is None:    # moments not provided
             if self.moments_set == {}:    # moments have not calculated
-                m_set = self.moments_images(highest_order)
+                m_set = self.calc_moments_set(highest_order)
             else:
                 if self.corder > self.morder:
-                    m_set = self.moments_images(highest_order)
+                    m_set = self.calc_moments_set(highest_order)
                 else:
                     m_set = self.moments_set
         else:
             if self.corder > self.morder:
-                m_set = self.moments_images(highest_order)
+                m_set = self.calc_moments_set(highest_order)
             else:
                 m_set = self.moments_set
             
@@ -163,9 +231,9 @@ class Data:
                 if self.morder >= order:
                     input_im = self.moments_set[order]
                 else:
-                    self.moments_images(order)[order]
+                    self.calc_moments_set(order)[order]
             else:
-                self.moments_images(order)[order]
+                self.calc_moments_set(order)[order]
                 
         if mask_im is None:
                 mask_im = self.average_image()                

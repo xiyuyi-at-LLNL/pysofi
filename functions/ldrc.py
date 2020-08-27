@@ -32,7 +32,7 @@ def ldrc(mask_im, input_im, order, window_size = [25, 25]):
     Notes
     -----
     High-order cumulants or moments reconstructions result-in images with a 
-    large dynamicrange of pixel intensities. This ldrc algorithm compresses 
+    large dynamic range of pixel intensities. This ldrc algorithm compresses 
     the dynamic range of these reconstructions with respect to a reference 
     image while retaining resolution enhancement.
     The compression is performed locally in a small window that is scanned 
@@ -89,8 +89,8 @@ def ldrc(mask_im, input_im, order, window_size = [25, 25]):
             seq_map[i:i+window_size[0], j:j+window_size[1]] + 1
         sys.stdout.write('\r')
         sys.stdout.write("[%-20s] %d%%" % 
-                                ('='*int(20*(i+1)/(xdim - window_size + 1)), 
-                                100*(i+1)/(xdim - window_size + 1)))
+                                ('='*int(20*(i+1)/(xdim - window_size[0] + 1)), 
+                                100*(i+1)/(xdim - window_size[0] + 1)))
         sys.stdout.flush()
     ldrc_im = ldrc_im / seq_map  
     return ldrc_im

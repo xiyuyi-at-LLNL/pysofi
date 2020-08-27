@@ -158,7 +158,8 @@ def fourier_interp_array(im, interp_num_lst):
     for interp_num in interp_num_lst:
         ifx, ify = ift_matrix2D(xrange, yrange, interp_num)
         interp_im = interpolate_image(im, fx, fy, ifx, ify, interp_num)       
-        interp_im_lst.append(np.int_(np.around(interp_im)))
+        # interp_im_lst.append(np.int_(np.around(interp_im)))
+        interp_im_lst.append(interp_im)
             
     return interp_im_lst
 
