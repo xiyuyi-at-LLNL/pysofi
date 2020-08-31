@@ -1,4 +1,5 @@
-__all__ = ["deconvsk", "fInterp", "ldrc", "masks", "reconstruction"]
+__all__ = ["deconvsk", "finterp", "ldrc", "masks", "reconstruction", "visualization"]
+
 
 # TODO: add citation information
 
