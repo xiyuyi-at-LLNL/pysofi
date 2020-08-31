@@ -4,7 +4,7 @@
 # (or bigger number) in command line.
 
 import numpy as np
-import cv2
+#import cv2
 from bokeh.resources import INLINE
 import bokeh.io
 bokeh.io.output_notebook(INLINE)
@@ -157,23 +157,23 @@ def save_png(im, cmap='pink', filename='out.png', display_contrast=1):
     color_img = np.uint8(color_img)
     plt.imsave(filename, color_img)
     
-def save_avi(vid_array, cmap='pink', filename ='out.avi', display_contrast=1):
-    '''
-    Save a image stack with a specific colormap. 
-    Please refer to the demo Jupyter Notebook for examples.
-    '''
-    frame, xdim, ydim = np.shape(vid_array)
-    out = cv2.VideoWriter(filename,cv2.VideoWriter_fourcc('M','J','P','G'), 
-                          frame, (xdim,ydim))
-    for i in range(frame):
-        img = ensure_positive(vid_array[i])
-        color_img = ind2cmap(img, cmap)
-        color_img = color_img * 255 * display_contrast
-        color_img[color_img>255] = 255
-        color_img = np.uint8(color_img)
-        out.write(color_img)
-    cv2.destroyAllWindows()
-    out.release()
+# def save_avi(vid_array, cmap='pink', filename ='out.avi', display_contrast=1):
+#     '''
+#     Save a image stack with a specific colormap.
+#     Please refer to the demo Jupyter Notebook for examples.
+#     '''
+#     frame, xdim, ydim = np.shape(vid_array)
+#     out = cv2.VideoWriter(filename,cv2.VideoWriter_fourcc('M','J','P','G'),
+#                           frame, (xdim,ydim))
+#     for i in range(frame):
+#         img = ensure_positive(vid_array[i])
+#         color_img = ind2cmap(img, cmap)
+#         color_img = color_img * 255 * display_contrast
+#         color_img[color_img>255] = 255
+#         color_img = np.uint8(color_img)
+#         out.write(color_img)
+#     cv2.destroyAllWindows()
+#     out.release()
        
 
 def enhance_contrast(im, cmap = 'pink', contrast_order = 1):
