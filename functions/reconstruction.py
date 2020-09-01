@@ -5,6 +5,7 @@ import scipy.special
 from time import sleep
 import sys
 
+
 def average_image(filepath, filename):
     '''
     Get the average image for a video file (tiff stack).
@@ -22,8 +23,9 @@ def average_image(filepath, filename):
     
     return mean_im
 
+
 def average_image_with_finterp(filepath, filename, interp_num):
-	'''
+    '''
     Get the average image with fourier interpolation for a video file.
     Parameters
     ----------
@@ -31,21 +33,25 @@ def average_image_with_finterp(filepath, filename, interp_num):
         Path to the tiff file.
     filename: str
         Name of the tiff file.
-	interp_num: int
-		Interpolation factor.
+    interp_num: int
+        Interpolation factor.
 
     Returns
     -------
     mean_im: ndarray
         The average image after fourier interpolation. Interpolated
     images can be further used for SOFI processing.
+    :param filepath:
+    :param filename:
+    :param interp_num:
     '''
-	original_mean_im = average_image(filepath, filename)
-	finterp_mean_im= f.fourier_interp_array(original_mean_im, [interp_num])
-	return finterp_mean_im[0]
+    original_mean_im = average_image(filepath, filename)
+    finterp_mean_im= f.fourier_interp_array(original_mean_im, [interp_num])
+    return finterp_mean_im[0]
+
 
 def calc_moment_im(filepath, filename, order, mvlength = 0,
-	               mean_im = None):
+                    mean_im = None):
     '''
     Get one moment-reconstructed image of a defined order for a video file.
 
@@ -71,21 +77,22 @@ def calc_moment_im(filepath, filename, order, mvlength = 0,
     imstack = tiff.TiffFile(filepath + '/' + filename)
     xdim, ydim = np.shape(imstack.pages[0])
     if mvlength == 0:
-    	mvlength = len(imstack.pages)
+        mvlength = len(imstack.pages)
     moment_im = np.zeros((xdim, ydim))
     for frame_num in range(mvlength):
         im = tiff.imread(filepath + '/' + filename, key=frame_num)
         moment_im = moment_im + (im - mean_im)**order
         sys.stdout.write('\r')
         sys.stdout.write("[{:{}}] {:.1f}%".format(
-        			     "="*int(30/(mvlength-1)*frame_num), 29, 
-        			            (100/(mvlength-1)*frame_num)))
+                        "="*int(30/(mvlength-1)*frame_num), 29,
+                        (100/(mvlength-1)*frame_num)))
         sys.stdout.flush()
     moment_im = np.int64(moment_im / mvlength)
     return moment_im
 
+
 def moment_im_with_finterp(filepath, filename, order, interp_num, 
-	                       mvlength = 0, mean_im = None):
+                            mvlength = 0, mean_im = None):
     '''
     Get one moment-reconstructed image of a defined order for a video file.
 
@@ -123,14 +130,15 @@ def moment_im_with_finterp(filepath, filename, order, interp_num,
         moment_im = moment_im + (interp_im - mean_im)**order
         sys.stdout.write('\r')
         sys.stdout.write("[{:{}}] {:.1f}%".format(
-        	             "="*int(30/(mvlength-1)*frame_num), 29, 
-        	                    (100/(mvlength-1)*frame_num)))
+                        "="*int(30/(mvlength-1)*frame_num), 29,
+                                (100/(mvlength-1)*frame_num)))
         sys.stdout.flush()
     moment_im = np.int64(moment_im / mvlength)
     return moment_im
 
+
 def calc_moments(filepath, filename, highest_order, 
-				 m_set = {}, mean_im = None):
+                m_set = {}, mean_im = None):
     '''
     Get all moment-reconstructed images to the user-defined highest order for
     a video file(tiff stack).
@@ -170,26 +178,26 @@ def calc_moments(filepath, filename, highest_order,
     imstack = tiff.TiffFile(filepath + '/' + filename)
     xdim, ydim = np.shape(imstack.pages[0])
     mvlength = len(imstack.pages)
-     # print out the progress
+    # print out the progress
     ordinal = lambda n: "%d%s" % (n,"tsnrhtdd"[(n//10%10!=1)*(n%10<4)*n%10::4])
     order_lst = [ordinal(n+1) for n in range(highest_order)]
 
     if highest_order > current_order:
         for order in range(current_order, highest_order):
-        	print('Calculating the %s-order moment reconstruction...' % 
-        		order_lst[order])
-        	m_set[order+1] = np.zeros((xdim, ydim))
-        	for frame_num in range(mvlength):
-        		im = tiff.imread(filepath + '/' + filename, key=frame_num)
-        		m_set[order+1] = m_set[order+1] + \
+            print('Calculating the %s-order moment reconstruction...' %
+                    order_lst[order])
+            m_set[order+1] = np.zeros((xdim, ydim))
+            for frame_num in range(mvlength):
+                im = tiff.imread(filepath + '/' + filename, key=frame_num)
+                m_set[order+1] = m_set[order+1] + \
                                  np.power(im - mean_im, order+1)
-        		sys.stdout.write('\r')
-        		sys.stdout.write("[{:{}}] {:.1f}%".format(
-        			             "="*int(30/(mvlength-1)*frame_num), 29, 
-        			             (100/(mvlength-1)*frame_num)))
-        		sys.stdout.flush()
-        	m_set[order+1] = np.int64(m_set[order+1] / mvlength)
-        	print('\n')
+                sys.stdout.write('\r')
+                sys.stdout.write("[{:{}}] {:.1f}%".format(
+                                "="*int(30/(mvlength-1)*frame_num), 29,
+                                (100/(mvlength-1)*frame_num)))
+                sys.stdout.flush()
+            m_set[order+1] = np.int64(m_set[order+1] / mvlength)
+            print('\n')
     return m_set
 
 
@@ -218,14 +226,14 @@ def calc_cumulants_from_moments(moment_set):
     k_set = {}
     highest_order = max(moment_set.keys())
     for order in range(1, highest_order + 1):
-    	if int_option == True:
-        	k_set[order] = np.int64(moment_set[order] - 
-        		np.sum(np.array([scipy.special.comb(order-1,i)*k_set[order-i]
-        			*moment_set[i] for i in range(1,order)]),axis=0))
-    	else:
-        	k_set[order] = moment_set[order] - \
-        	np.sum(np.array([scipy.special.comb(order-1,i)*k_set[order-i]
-        		*moment_set[i] for i in range(1,order)]),axis=0)        	
+        if int_option is True:
+            k_set[order] = np.int64(moment_set[order] -
+                np.sum(np.array([scipy.special.comb(order-1,i)*k_set[order-i]
+                    *moment_set[i] for i in range(1,order)]),axis=0))
+        else:
+            k_set[order] = moment_set[order] - \
+            np.sum(np.array([scipy.special.comb(order-1,i)*k_set[order-i]
+                *moment_set[i] for i in range(1,order)]),axis=0)
     
     return k_set
 

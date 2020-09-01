@@ -1,1 +1,7 @@
-
+/__pycache__
+/functions/__pycache__
+.idea
+/Notebooks/.ipynb_checkpoints
+/Notebooks/*.tif
+*.tif
+/Notebooks/*.tif
