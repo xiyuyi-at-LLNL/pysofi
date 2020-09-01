@@ -7,7 +7,7 @@ You can find a collection of examples under Notebooks folder presented in jupyte
 To create the virtual environment 'pysofi', type:
 
 
-pypris requires installation of [Anaconda](https://docs.anaconda.com/anaconda/install/).
+pysofi requires installation of [Anaconda](https://docs.anaconda.com/anaconda/install/).
 
 Before running pypris, create the environment by running the following code in Anaconda prompt or the mac terminal:
 
