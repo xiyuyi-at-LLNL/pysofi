@@ -4,16 +4,17 @@
 # (or bigger number) in command line.
 
 import numpy as np
-#import cv2
+import cv2
 from bokeh.resources import INLINE
 import bokeh.io
-bokeh.io.output_notebook(INLINE)
 from scipy.io import loadmat
 from matplotlib import colors
 from matplotlib import cm
 import matplotlib.pyplot as plt
 import tifffile as tiff
 from bokeh.plotting import figure, output_file, show, output_notebook
+bokeh.io.output_notebook(INLINE)
+
 
 def ensure_positive(data):
     """
@@ -22,6 +23,7 @@ def ensure_positive(data):
     data = data.copy()
     data[data <= 0] = np.finfo(float).eps
     return data
+
 
 def bokeh_visualization(image, palette = None, save_option = False, 
                         filename = 'Image', imshow_same = True):
@@ -84,6 +86,7 @@ def bokeh_visualization(image, palette = None, save_option = False,
         
     show(p, notebook_handle=True)
 
+
 def bokeh_visualization_rgba(image, save_option = False, 
                              filename = 'RGBAimage', imshow_same = True):
     '''
@@ -133,9 +136,10 @@ def bokeh_visualization_rgba(image, save_option = False,
         output_notebook()
     else:
         output_file(filename+".html", title=filename)
-        
+
     show(p, notebook_handle=True)
-    
+
+
 def ind2cmap(im, cmap = 'pink'):
     '''
     Convert a grayscale image array to a rgba color image((0,1) float).
@@ -144,6 +148,7 @@ def ind2cmap(im, cmap = 'pink'):
     im_cmap = cm.get_cmap(cmap) 
     color_im = im_cmap(norm_im)
     return color_im
+
 
 def save_png(im, cmap='pink', filename='out.png', display_contrast=1):
     '''
@@ -156,24 +161,25 @@ def save_png(im, cmap='pink', filename='out.png', display_contrast=1):
     color_img[color_img>255] = 255
     color_img = np.uint8(color_img)
     plt.imsave(filename, color_img)
-    
-# def save_avi(vid_array, cmap='pink', filename ='out.avi', display_contrast=1):
-#     '''
-#     Save a image stack with a specific colormap.
-#     Please refer to the demo Jupyter Notebook for examples.
-#     '''
-#     frame, xdim, ydim = np.shape(vid_array)
-#     out = cv2.VideoWriter(filename,cv2.VideoWriter_fourcc('M','J','P','G'),
-#                           frame, (xdim,ydim))
-#     for i in range(frame):
-#         img = ensure_positive(vid_array[i])
-#         color_img = ind2cmap(img, cmap)
-#         color_img = color_img * 255 * display_contrast
-#         color_img[color_img>255] = 255
-#         color_img = np.uint8(color_img)
-#         out.write(color_img)
-#     cv2.destroyAllWindows()
-#     out.release()
+
+
+def save_avi(vid_array, cmap='pink', filename ='out.avi', display_contrast=1):
+    '''
+    Save a image stack with a specific colormap.
+    Please refer to the demo Jupyter Notebook for examples.
+    '''
+    frame, xdim, ydim = np.shape(vid_array)
+    out = cv2.VideoWriter(filename,cv2.VideoWriter_fourcc('M','J','P','G'),
+                          frame, (xdim,ydim))
+    for i in range(frame):
+        img = ensure_positive(vid_array[i])
+        color_img = ind2cmap(img, cmap)
+        color_img = color_img * 255 * display_contrast
+        color_img[color_img>255] = 255
+        color_img = np.uint8(color_img)
+        out.write(color_img)
+    cv2.destroyAllWindows()
+    out.release()
        
 
 def enhance_contrast(im, cmap = 'pink', display_contrast = 1):
