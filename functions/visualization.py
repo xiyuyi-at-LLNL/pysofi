@@ -179,7 +179,7 @@ def save_png(im, cmap='pink', filename='out.png', display_contrast=1):
 def enhance_contrast(im, cmap = 'pink', display_contrast = 1):
     '''Enhance contrast of the input image.'''
     im = ensure_positive(im)
-    color_img = ind2cmap(img, cmap)
+    color_img = ind2cmap(im, cmap)
     color_img = color_img * 255 * display_contrast
     color_img[color_img>255] = 255
     color_img = np.uint8(color_img)
