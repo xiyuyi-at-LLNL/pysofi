@@ -137,8 +137,7 @@ def moment_im_with_finterp(filepath, filename, order, interp_num,
     return moment_im
 
 
-def calc_moments(filepath, filename, highest_order, 
-                m_set = {}, mean_im = None):
+def calc_moments(filepath, filename, highest_order, m_set={}, mean_im=None):
     '''
     Get all moment-reconstructed images to the user-defined highest order for
     a video file(tiff stack).
