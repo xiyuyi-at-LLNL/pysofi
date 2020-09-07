@@ -1,15 +1,14 @@
 from numpy.fft import (fftshift, ifftshift, fftn, ifftn, rfftn, irfftn)
 import numpy as np
-from time import sleep
 import sys
 
 
 def _prep_img_and_psf(image, psf):
-    '''
+    """
     From https://github.com/david-hoffman/pyDecon.
     Do basic data checking, convert data to float, normalize psf and make sure
     data are positive.
-    '''
+    """
     image = image.astype(np.float)
     psf = psf.astype(np.float)
     # need to make sure both image and PSF are totally positive.
@@ -19,37 +18,40 @@ def _prep_img_and_psf(image, psf):
     psf /= psf.sum()
     return image, psf
 
+
 def _ensure_positive(data):
-    '''
+    """
     From https://github.com/david-hoffman/pyDecon.
     Make sure data is positive and has no zeros for numerical stability.
-    '''
+    """
     data = data.copy()
     data[data <= 0] = np.finfo(data.dtype).eps
     return data
+
 
 def _zero2eps(data):
     """Make sure data is positive and has no zeros."""
     return np.fmax(data, np.finfo(data.dtype).eps)
 
+
 def zero_pad(image, shape, position='center'):
     """
-    From https://github.com/aboucaud/pypher/blob/master/pypher/pypher.py.
+    From https: // github.com/aboucaud/pypher/blob/master/pypher/pypher.py.
     Extends image to a certain size with zeros.
 
     Parameters
     ----------
-    image: real 2d ndarray
+    image : real 2d ndarray
         Input image.
-    shape: tuple of list (int)
+    shape : tuple of list(int)
         Desired output shape of the image.
     position : str, optional
         The position of the input image in the output one:
             * 'corner'
-                top-left corner (default)
+                top-left corner(default)
             * 'center'
                 centered
-    
+
     Returns
     -------
     padded_img: real ndarray
@@ -87,30 +89,30 @@ def zero_pad(image, shape, position='center'):
 
 def psf2otf(psf, shape):
     """
-    From https://github.com/aboucaud/pypher/blob/master/pypher/pypher.py.
+    From https: // github.com/aboucaud/pypher/blob/master/pypher/pypher.py.
     Convert point-spread function to optical transfer function.
-    Compute the Fast Fourier Transform (FFT) of the point-spread
-    function (PSF) array and creates the optical transfer function (OTF)
+    Compute the Fast Fourier Transform(FFT) of the point-spread
+    function(PSF) array and creates the optical transfer function(OTF)
     array that is not influenced by the PSF off-centering.
     By default, the OTF array is the same size as the PSF array.
     To ensure that the OTF is not altered due to PSF off-centering, PSF2OTF
-    post-pads the PSF array (down or to the right) with zeros to match
+    post-pads the PSF array(down or to the right) with zeros to match
     dimensions specified in OUTSIZE, then circularly shifts the values of
-    the PSF array up (or to the left) until the central pixel reaches (1,1)
+    the PSF array up ( or to the left) until the central pixel reaches (1, 1)
     position.
     Adapted from MATLAB psf2otf function.
 
     Parameters
     ----------
-    psf: ndarray
+    psf : ndarray
         PSF array.
-    shape: list (int)
+    shape : list(int)
         Output shape of the OTF array.
-    
+
     Returns
     -------
-    otf: ndarray
-        OTF array.    
+    otf : ndarray
+        OTF array.
     """
     if np.all(psf == 0):
         return np.zeros_like(psf)
@@ -136,91 +138,93 @@ def psf2otf(psf, shape):
 
     return otf
 
+
 def otf2psf(otf, shape):
-    '''
+    """
     Convert optical transfer function (OTF) to point-spread function (PSF).
-    Compute the Inverse Fast Fourier Transform (ifft) of the OTF array and 
+    Compute the Inverse Fast Fourier Transform (ifft) of the OTF array and
     creates the PSF array that is not influenced by the OTF off-centering.
     By default, the PSF array is the same size as the OTF array.
     Adapted from MATLAB otf2psf function.
 
     Parameters
     ----------
-    otf: ndarray
+    otf : ndarray
         OTF array.
-    shape: list (int)
+    shape : list (int)
         Output shape of the OTF array.
-    
+
     Returns
     -------
-    psf: ndarray
-        PSF array.   
-    '''
+    psf : ndarray
+        PSF array.
+    """
     if np.all(otf == 0):
         return np.zeros_like(otf)
 
     inshape = otf.shape
-    
+
     # Compute the PSF
     psf = np.fft.ifft2(otf)
-    
+
     # Estimate the rough number of operations involved in the FFT
     # and discard the PSF imaginary part if within roundoff error.
     n_ops = np.sum(otf.size * np.log2(otf.shape))
     psf = np.real_if_close(psf, tol=n_ops)
-    psf=np.real(psf)
-    
-    
+    psf = np.real(psf)
+
     # Circularly shift PSF so that the 'center' of the PSF is
     # [0,0] element of the array
     for axis, axis_size in enumerate(shape):
         psf = np.roll(psf, int(axis_size / 2), axis=axis)
-    
+
     # Crop output array
     psf = psf[0:shape[0], 0:shape[1]]
 
     return psf
 
-def corelucy(image, H):
-    '''
-    Make core for the LR estimation. Calculates f to produce the next 
-    iteration array that maximizes the likelihood that the entire suite 
-    satisfies the Poisson statistics. 
+
+def corelucy(image, h):
+    """
+    Make core for the LR estimation. Calculates f to produce the next
+    iteration array that maximizes the likelihood that the entire suite
+    satisfies the Poisson statistics.
     This is a simplified version of MATLAB corelucy function without
-    damping, weights and externally defined functions. 
+    damping, weights and externally defined functions.
 
     Parameters
     ----------
-    image: ndarray
+    image : ndarray
         Input image.
-    H: ndarray
-        Zero-padded OTF. H should have the same dimensions as image.
-    
+    h : ndarray
+        Zero-padded OTF. h should have the same dimensions as image.
+
     Returns
     -------
-    f: ndarray
+    f : ndarray
         LR extimation core.
-    
+
     References
     ----------
-    .. [1] Acceleration of iterative image restoration algorithms, by D.S.C. Biggs 
+    .. [1] Acceleration of iterative image restoration algorithms, by D.S.C. Biggs
     and M. Andrews, Applied Optics, Vol. 36, No. 8, 1997.
     .. [2] Deconvolutions of Hubble Space Telescope Images and Spectra,
-    R.J. Hanisch, R.L. White, and R.L. Gilliland. in "Deconvolution of Images 
+    R.J. Hanisch, R.L. White, and R.L. Gilliland. in "Deconvolution of Images
     and Spectra", Ed. P.A. Jansson, 2nd ed., Academic Press, CA, 1997.
-    '''
+    """
     u_t = image
-    reblur = np.real(ifftn(H * fftn(u_t, u_t.shape), u_t.shape))
+    reblur = np.real(ifftn(h * fftn(u_t, u_t.shape), u_t.shape))
     reblur = _ensure_positive(reblur)
     im_ratio = image / reblur
     f = fftn(im_ratio)
     return f
 
+
 def richardson_lucy(image, psf, iterations=10, **kwargs):
     """
-    Richardson-Lucy deconvolution. It deconvolves image using maximum   
-    likelihood algorithm, returning both deblurred image J and a restored   
-    point-spread function PSF. 
+    Richardson-Lucy deconvolution. It deconvolves image using maximum
+    likelihood algorithm, returning both deblurred image J and a restored
+    point-spread function PSF.
     This is a simplified version of MATLAB deconvblind function without
     damping, weights and externally defined functions.
 
@@ -229,49 +233,41 @@ def richardson_lucy(image, psf, iterations=10, **kwargs):
     image : ndarray
        Input degraded image.
     psf : ndarray
-       The point spread function. 
+       The point spread function.
     iterations : int
        Number of iterations.
 
     Returns
     -------
-    P: ndarray
+    P : ndarray
        Restored point-spread function PSF.
-    J: ndarray
+    J : ndarray
         Deblurred image.
-         
+
     Examples
     --------
-    TODO: need to translate from MATLAB.
-%      I = checkerboard(8);
-%      PSF = fspecial('gaussian',7,10);
-%      V = .0001;
-%      BlurredNoisy = imnoise(imfilter(I,PSF),'gaussian',0,V);
-%      WT = zeros(size(I));WT(5:end-4,5:end-4) = 1;
-%      INITPSF = ones(size(PSF));
-%      [J P] = deconvblind(BlurredNoisy,INITPSF,20,10*sqrt(V),WT);
-%      subplot(221);imshow(BlurredNoisy);
-%                     title('A = Blurred and Noisy');
-%      subplot(222);imshow(PSF,[]);
-%                     title('True PSF');
-%      subplot(223);imshow(J);
-%                     title('Deblurred Image');
-%      subplot(224);imshow(P,[]);
-%                     title('Recovered PSF');
+    >>> import numpy as np
+    >>> from scipy.ndimage.gaussian_filter
+    >>> image = np.zeros((8,8),dtype=int)
+    >>> image[1::2,::2] = 1
+    >>> image[::2,1::2] = 1
+    >>> psf = np.zeros((7, 7))
+    >>> psf[3, 3] = 1
+    >>> psf = gaussian_filter(psf, sigma=[7,7])
+    >>> new_psf, deconv_im = richardson_lucy(image, psf, 15)
 
     Notes
     -----
-    The quality of the deconvolution result is greatly dependent on the initial 
+    The quality of the deconvolution result is greatly dependent on the initial
     PSF size instead of the value. We recommend to calibrate PSF of the imaging
-    system and use that as the initial PSF guess. Otherwise, generating a PSF 
+    system and use that as the initial PSF guess. Otherwise, generating a PSF
     according to the magnification of the imaging system is an option.
-    
+
     References
     ----------
-    .. [1] http://en.wikipedia.org/wiki/Richardson%E2%80%93Lucy_deconvolution
+    .. [1] http: // en.wikipedia.org/wiki/Richardson % E2 % 80 % 93Lucy_deconvolution
     .. [2] Biggs, D. S. C.; Andrews, M. Acceleration of Iterative Image
     Restoration Algorithms. Applied Optics 1997, 36 (8), 1766.
-
     """    
     # 1. prepare parameters
     image, psf = _prep_img_and_psf(image, psf)
@@ -311,8 +307,9 @@ def richardson_lucy(image, psf, iterations=10, **kwargs):
     P, J = P[2], J[2]  # PSF and updated image
     return P, J  
 
+
 def deconvsk(est_psf, input_im, deconv_lambda, deconv_iter):
-    '''
+    """
     Perform serial Richardson-Lucy deconvolution with shrinking PSFs. 
     U = (U**(l/(l-1))) * (U**(l**2/(l-1))) * ... * (U**(l**n/(l-1))).
     The PSF of the imaging system U can be decomposed into a series a 
@@ -323,19 +320,19 @@ def deconvsk(est_psf, input_im, deconv_lambda, deconv_iter):
 
     Parameters
     ----------
-    est_psf: ndarray
+    est_psf : ndarray
         Estimated PSF.
-    input_im: ndarray
+    input_im : ndarray
         Input image that need deconvolution.
-    deconv_lambda: float
+    deconv_lambda : float
         Lambda for the exponent between. It is an empirical parameter
         within the range of (1,2).
-    deconv_iter: int
+    deconv_iter : int
         Number of iterations for each deconvolution.
 
     Returns
     -------
-    deconv_im: ndarray
+    deconv_im : ndarray
         Deconvoluted image.
 
     Notes
@@ -352,18 +349,17 @@ def deconvsk(est_psf, input_im, deconv_lambda, deconv_iter):
     "Moments reconstruction and local dynamic range compression of high order 
     superresolution optical fluctuation imaging," Biomed. Opt. Express 10, 
     2430-2445 (2019).
-    '''    
+    """
     xdim, ydim = np.shape(input_im)
     deconv_im = np.append(np.append(input_im, np.fliplr(input_im), axis=1), 
         np.append(np.flipud(input_im), np.rot90(input_im, 2), axis=1), axis=0)
-    # Perform mirror extension to the image in order to surpress ringing 
+    # Perform mirror extension to the image in order sto surpress ringing
     # artifacts associated with fourier transform due to truncation effect.
     psf0 = est_psf / np.max(est_psf)
     for iter_num in range(deconv_iter):
         alpha = deconv_lambda**(iter_num+1) / (deconv_lambda - 1)
         deconv_psf, deconv_im = richardson_lucy(deconv_im, psf0**alpha, 1)
         sys.stdout.write('\r')
-        sys.stdout.write('Calculating ')
         sys.stdout.write("[%-20s] %d%%" % ('='*iter_num, 
                          100/(deconv_iter-1)*iter_num))
         sys.stdout.flush()  
