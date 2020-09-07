@@ -1,6 +1,0 @@
-{
-    "python.pythonPath": "C:\\ProgramData\\Anaconda3\\envs\\sofi\\python.exe",
-    "python.linting.pylintEnabled": false,
-    "python.linting.pycodestyleEnabled": true,
-    "python.linting.enabled": true
-}
