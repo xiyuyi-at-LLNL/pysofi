@@ -32,3 +32,5 @@ methods providing summary information on the measurement:
 
 Analysis methods
 ----------------
+.. automodule:: functions.data
+    :members:

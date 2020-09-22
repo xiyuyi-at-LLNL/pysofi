@@ -1,0 +1,1187 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>functions package &#8212; pysofi 0.0.1 documentation</title>
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="functions" href="modules.html" />
+    <link rel="prev" title="LDRC functions" href="ldrc.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="modules.html" title="functions"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="ldrc.html" title="LDRC functions"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">pysofi 0.0.1 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">functions package</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="functions-package">
+<h1>functions package<a class="headerlink" href="#functions-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-functions.data">
+<span id="functions-data-module"></span><h2>functions.data module<a class="headerlink" href="#module-functions.data" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="functions.data.Data">
+<em class="property">class </em><code class="sig-prename descclassname">functions.data.</code><code class="sig-name descname">Data</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filepath</span></em>, <em class="sig-param"><span class="n">filename</span></em><span class="sig-paren">)</span><a class="headerlink" href="#functions.data.Data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Data object contains the information of a dataset (e.g. dimensions,
+frame numbers), and provides SOFI methods to perform analysis and
+visualization on the dataset (moments reconstruction, cumulants
+reconstruction, shrinking kernel deconvolution, etc…).</p>
+<p>When loading a tiff file, a Data() object is created and further
+SOFI analysis can be preformed. All the standard data-attributes
+are listed below. New data-attributes can be added or updated using
+‘.add()’ function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filapath</strong> (<em>str</em>) – Path to the tiff file.</p></li>
+<li><p><strong>filename</strong> (<em>str</em>) – Name of the tiff file.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt id="functions.data.Data.filename">
+<code class="sig-name descname">filename</code><a class="headerlink" href="#functions.data.Data.filename" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="functions.data.Data.filepath">
+<code class="sig-name descname">filepath</code><a class="headerlink" href="#functions.data.Data.filepath" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="functions.data.Data.ave">
+<code class="sig-name descname">ave</code><a class="headerlink" href="#functions.data.Data.ave" title="Permalink to this definition">¶</a></dt>
+<dd><p>The average image of the image stack / tiff video.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="functions.data.Data.finterp_factor">
+<code class="sig-name descname">finterp_factor</code><a class="headerlink" href="#functions.data.Data.finterp_factor" title="Permalink to this definition">¶</a></dt>
+<dd><p>The interpolation factor for Fourier interpolation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="functions.data.Data.morder_lst">
+<code class="sig-name descname">morder_lst</code><a class="headerlink" href="#functions.data.Data.morder_lst" title="Permalink to this definition">¶</a></dt>
+<dd><p>All orders of moments-reconstructions that have been calculated.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="functions.data.Data.morder_finterp_lst">
+<code class="sig-name descname">morder_finterp_lst</code><a class="headerlink" href="#functions.data.Data.morder_finterp_lst" title="Permalink to this definition">¶</a></dt>
+<dd><p>All orders of moments-reconstructions after Fourier interpolation
+that have been calculated.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="functions.data.Data.moments_set">
+<code class="sig-name descname">moments_set</code><a class="headerlink" href="#functions.data.Data.moments_set" title="Permalink to this definition">¶</a></dt>
+<dd><p>moment order (int) -&gt; moment-reconstructed image (ndarray)
+A dictionary of orders and corrensponding reconstructions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="functions.data.Data.cumulants_set">
+<code class="sig-name descname">cumulants_set</code><a class="headerlink" href="#functions.data.Data.cumulants_set" title="Permalink to this definition">¶</a></dt>
+<dd><p>cumulant order (int) -&gt; cumulant-reconstructed image (ndarray)
+A dictionary of orders and corrensponding reconstructions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="functions.data.Data.morder">
+<code class="sig-name descname">morder</code><a class="headerlink" href="#functions.data.Data.morder" title="Permalink to this definition">¶</a></dt>
+<dd><p>The highest order of moment reconstruction that has been calculated.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="functions.data.Data.corder">
+<code class="sig-name descname">corder</code><a class="headerlink" href="#functions.data.Data.corder" title="Permalink to this definition">¶</a></dt>
+<dd><p>The highest order of cumulant reconstruction that has been calculated.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="functions.data.Data.n_frames">
+<code class="sig-name descname">n_frames</code><a class="headerlink" href="#functions.data.Data.n_frames" title="Permalink to this definition">¶</a></dt>
+<dd><p>The number of frames of the image stack / tiff video.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="functions.data.Data.xdim">
+<code class="sig-name descname">xdim</code><a class="headerlink" href="#functions.data.Data.xdim" title="Permalink to this definition">¶</a></dt>
+<dd><p>The number of pixels in x dimension.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="functions.data.Data.ydim">
+<code class="sig-name descname">ydim</code><a class="headerlink" href="#functions.data.Data.ydim" title="Permalink to this definition">¶</a></dt>
+<dd><p>The number of pixels in y dimension.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Notes</p>
+<p>For SOFI processing, after loading the tiff video into the Data object,
+a pipeline of 1) fourier interpolation, 2) moments reconstrtuction or
+cumulants reconstruction, 3) noise filtering 1, 4) shrinking kernel de-
+convolution, 5) noise filtering 2, and 6) ldrc. The processed video will
+be saved into a new tiff file with the colormap user selects.</p>
+<p class="rubric">References</p>
+<dl class="footnote brackets">
+<dt class="label" id="id1"><span class="brackets">1</span></dt>
+<dd><p>Xiyu Yi, Sungho Son, Ryoko Ando, Atsushi Miyawaki, and Shimon Weiss,</p>
+</dd>
+</dl>
+<p>“Moments reconstruction and local dynamic range compression of high order
+superresolution optical fluctuation imaging,” Biomed. Opt. Express 10,
+2430-2445 (2019).</p>
+<dl class="py method">
+<dt id="functions.data.Data.add">
+<code class="sig-name descname">add</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#functions.data.Data.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add or update elements (attributes and/or dict entries).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="functions.data.Data.add_filtered">
+<code class="sig-name descname">add_filtered</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">image</span></em>, <em class="sig-param"><span class="n">filter_name</span><span class="o">=</span><span class="default_value">'noise filter'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#functions.data.Data.add_filtered" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add (noise) filtered image as an attribute of the object.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="functions.data.Data.average_image">
+<code class="sig-name descname">average_image</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#functions.data.Data.average_image" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate average image of the tiff video.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="functions.data.Data.average_image_with_finterp">
+<code class="sig-name descname">average_image_with_finterp</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">interp_num</span></em><span class="sig-paren">)</span><a class="headerlink" href="#functions.data.Data.average_image_with_finterp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="functions.data.Data.calc_moments_set">
+<code class="sig-name descname">calc_moments_set</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">highest_order</span><span class="o">=</span><span class="default_value">4</span></em>, <em class="sig-param"><span class="n">mean_im</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#functions.data.Data.calc_moments_set" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate moment-reconstructed images to the highest order.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>highest_order</strong> (<em>int</em>) – The highest order number of moment-reconstructed images.</p></li>
+<li><p><strong>mean_im</strong> (<em>ndarray</em>) – Average image of the tiff stack.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>moments_set</strong> – order number (int) -&gt; image (ndarray)
+A dictionary of calcualted moment-reconstructed images.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="functions.data.Data.cumulants_images">
+<code class="sig-name descname">cumulants_images</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">highest_order</span><span class="o">=</span><span class="default_value">4</span></em>, <em class="sig-param"><span class="n">m_set</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#functions.data.Data.cumulants_images" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate cumulant-reconstructed images to the highest order.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>highest_order</strong> (<em>int</em>) – The highest order number of cumulant-reconstructed images.</p></li>
+<li><p><strong>m_set</strong> (<em>dict</em>) – order number (int) -&gt; image (ndarray)
+A dictionary of calcualted moment-reconstructed images.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>cumulants</strong> – order number (int) -&gt; image (ndarray)
+A dictionary of calcualted cumulant-reconstructed images.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="functions.data.Data.deconvsk">
+<code class="sig-name descname">deconvsk</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">est_psf</span><span class="o">=</span><span class="default_value">array([[0.0, 0.0, 0.0, ..., 0.0, 0.0, 0.0], [0.0, 0.0, 0.0, ..., 0.0, 0.0, 0.0], [0.0, 0.0, 0.0, ..., 0.0, 0.0, 0.0], ..., [0.0, 0.0, 0.0, ..., 0.0, 0.0, 0.0], [0.0, 0.0, 0.0, ..., 0.0, 0.0, 0.0], [0.0, 0.0, 0.0, ..., 0.0, 0.0, 0.0]])</span></em>, <em class="sig-param"><span class="n">input_im</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">deconv_lambda</span><span class="o">=</span><span class="default_value">1.5</span></em>, <em class="sig-param"><span class="n">deconv_iter</span><span class="o">=</span><span class="default_value">20</span></em><span class="sig-paren">)</span><a class="headerlink" href="#functions.data.Data.deconvsk" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform serial Richardson-Lucy deconvolution with a series of PSFs
+on the input image. For details of shrinking kernel deconvolution,
+refer to deconvsk.py and [1].</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>est_psf</strong> (<em>ndarray</em>) – Estimated PSF.</p></li>
+<li><p><strong>input_im</strong> (<em>ndarray</em>) – Input image that need deconvolution.</p></li>
+<li><p><strong>deconv_lambda</strong> (<em>float</em>) – Lambda for the exponent between. It is an empirical parameter
+within the range of (1,2).</p></li>
+<li><p><strong>deconv_iter</strong> (<em>int</em>) – Number of iterations for each deconvolution.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>deconv</strong> – Deconvoluted image.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="functions.data.Data.finterp_image">
+<code class="sig-name descname">finterp_image</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">input_im</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">interp_num_lst</span><span class="o">=</span><span class="default_value">[2, 4]</span></em><span class="sig-paren">)</span><a class="headerlink" href="#functions.data.Data.finterp_image" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs fourier interpolation on an image array.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="functions.data.Data.finterp_tiffstack">
+<code class="sig-name descname">finterp_tiffstack</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">interp_num_lst</span><span class="o">=</span><span class="default_value">[2, 4]</span></em>, <em class="sig-param"><span class="n">mvlength</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">save_option</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">return_option</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#functions.data.Data.finterp_tiffstack" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs fourier interpolation on a tiff image (stack) with a list of
+interpolation factors (the number of pixels to be interpolated between
+two adjacent pixels).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>interp_num_lst</strong> (<em>list</em><em> (</em><em>int</em><em>)</em>) – A list of interpolation factors.</p></li>
+<li><p><strong>mvlength</strong> (<em>int</em>) – The frame number of the tiff file (1 for images).</p></li>
+<li><p><strong>save_option</strong> (<em>bool</em>) – Whether to save the interpolated images into tiff files (each
+interpolation factor seperately).</p></li>
+<li><p><strong>return_option</strong> (<em>bool</em>) – Whether to return the interpolated image series as 3d arrays.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>finterps</strong> – A list of interpolated image sereis corresponding to the interpolation
+factor list.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list (ndarray)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="functions.data.Data.get_dims">
+<code class="sig-name descname">get_dims</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#functions.data.Data.get_dims" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get dimensions and frame number of the tiff video.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="functions.data.Data.get_frame">
+<code class="sig-name descname">get_frame</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">frame_num</span><span class="o">=</span><span class="default_value">0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#functions.data.Data.get_frame" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get one frame of the tiff video.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>frame_num</strong> (<em>int</em>) – The frame number (e.g. 0 for the first frame).</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>frame_im</strong> – Frame array.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="functions.data.Data.ldrc">
+<code class="sig-name descname">ldrc</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">order</span><span class="o">=</span><span class="default_value">6</span></em>, <em class="sig-param"><span class="n">window_size</span><span class="o">=</span><span class="default_value">[25, 25]</span></em>, <em class="sig-param"><span class="n">mask_im</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">input_im</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#functions.data.Data.ldrc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compress the dynamic range of moments-/cumulants reconstruced image
+with ldrc method. For details of ldrc, refer to ldrc.py and [1].</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>order</strong> (<em>int</em>) – The order of the reconstructed image.</p></li>
+<li><p><strong>window_size</strong> (<em>[</em><em>int</em><em>, </em><em>int</em><em>]</em>) – The [x, y] dimension of the scanning window.</p></li>
+<li><p><strong>mask_im</strong> (<em>ndarray</em>) – A reference image.
+Usually a average/sum image or second-order SOFI image is used.</p></li>
+<li><p><strong>input_im</strong> (<em>ndarray</em>) – An input image, usually a high-order moment- or cumulant-
+reconstructed image.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>ldrc_image</strong> – The compressed image with the same dimensions of input_im.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="functions.data.Data.moment_image">
+<code class="sig-name descname">moment_image</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">order</span><span class="o">=</span><span class="default_value">6</span></em>, <em class="sig-param"><span class="n">mean_im</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">mvlength</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">finterp</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">interp_num</span><span class="o">=</span><span class="default_value">1</span></em><span class="sig-paren">)</span><a class="headerlink" href="#functions.data.Data.moment_image" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the moment-reconstructed image of a defined order.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>order</strong> (<em>int</em>) – The order number of the moment-reconstructed image.</p></li>
+<li><p><strong>mean_im</strong> (<em>ndarray</em>) – Average image of the tiff stack.</p></li>
+<li><p><strong>mvlength</strong> (<em>int</em>) – Length of the video to calculate moments-reconstruction.</p></li>
+<li><p><strong>finterp</strong> (<em>bool</em>) – Whether to first conduct Fourier interpolation then calculate
+moments-reconstructions.</p></li>
+<li><p><strong>interp_num</strong> (<em>int</em>) – The interpolation factor.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>moment_im</strong> – The calculated moment-reconstructed image.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-functions.deconvsk">
+<span id="functions-deconvsk-module"></span><h2>functions.deconvsk module<a class="headerlink" href="#module-functions.deconvsk" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="functions.deconvsk.corelucy">
+<code class="sig-prename descclassname">functions.deconvsk.</code><code class="sig-name descname">corelucy</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">image</span></em>, <em class="sig-param"><span class="n">h</span></em><span class="sig-paren">)</span><a class="headerlink" href="#functions.deconvsk.corelucy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make core for the LR estimation. Calculates f to produce the next
+iteration array that maximizes the likelihood that the entire suite
+satisfies the Poisson statistics.
+This is a simplified version of MATLAB corelucy function without
+damping, weights and externally defined functions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>image</strong> (<em>ndarray</em>) – Input image.</p></li>
+<li><p><strong>h</strong> (<em>ndarray</em>) – Zero-padded OTF. h should have the same dimensions as image.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>f</strong> – LR extimation core.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ndarray</p>
+</dd>
+</dl>
+<p class="rubric">References</p>
+<dl class="footnote brackets">
+<dt class="label" id="id2"><span class="brackets">1</span></dt>
+<dd><p>Acceleration of iterative image restoration algorithms, by D.S.C. Biggs</p>
+</dd>
+</dl>
+<p>and M. Andrews, Applied Optics, Vol. 36, No. 8, 1997.
+.. [2] Deconvolutions of Hubble Space Telescope Images and Spectra,
+R.J. Hanisch, R.L. White, and R.L. Gilliland. in “Deconvolution of Images
+and Spectra”, Ed. P.A. Jansson, 2nd ed., Academic Press, CA, 1997.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="functions.deconvsk.deconvsk">
+<code class="sig-prename descclassname">functions.deconvsk.</code><code class="sig-name descname">deconvsk</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">est_psf</span></em>, <em class="sig-param"><span class="n">input_im</span></em>, <em class="sig-param"><span class="n">deconv_lambda</span></em>, <em class="sig-param"><span class="n">deconv_iter</span></em><span class="sig-paren">)</span><a class="headerlink" href="#functions.deconvsk.deconvsk" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform serial Richardson-Lucy deconvolution with shrinking PSFs.
+U = (U**(l/(l-1))) * (U**(l**2/(l-1))) * … * (U**(l**n/(l-1))).
+The PSF of the imaging system U can be decomposed into a series a
+smaller (shrinking) PSF U**r where r &gt; 1, and the image can be
+deconvolved by these PSFs in sequence.
+In this way, the result is more similar to the input image, so each
+individual deconvolution step is a lighter deconcolution task.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>est_psf</strong> (<em>ndarray</em>) – Estimated PSF.</p></li>
+<li><p><strong>input_im</strong> (<em>ndarray</em>) – Input image that need deconvolution.</p></li>
+<li><p><strong>deconv_lambda</strong> (<em>float</em>) – Lambda for the exponent between. It is an empirical parameter
+within the range of (1,2).</p></li>
+<li><p><strong>deconv_iter</strong> (<em>int</em>) – Number of iterations for each deconvolution.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>deconv_im</strong> – Deconvoluted image.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>The quality of the deconvolution result is greatly dependent on the initial
+PSF size instead of the value. We recommend to calibrate PSF of the imaging
+system and use that as the initial PSF guess. Otherwise, generating a PSF
+according to the magnification of the imaging system is an option. For more
+details on the shrinking kernel deconvolution method, please refer to [1].</p>
+<p class="rubric">References</p>
+<dl class="footnote brackets">
+<dt class="label" id="id3"><span class="brackets">1</span></dt>
+<dd><p>Xiyu Yi, Sungho Son, Ryoko Ando, Atsushi Miyawaki, and Shimon Weiss,</p>
+</dd>
+</dl>
+<p>“Moments reconstruction and local dynamic range compression of high order
+superresolution optical fluctuation imaging,” Biomed. Opt. Express 10,
+2430-2445 (2019).</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="functions.deconvsk.otf2psf">
+<code class="sig-prename descclassname">functions.deconvsk.</code><code class="sig-name descname">otf2psf</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">otf</span></em>, <em class="sig-param"><span class="n">shape</span></em><span class="sig-paren">)</span><a class="headerlink" href="#functions.deconvsk.otf2psf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert optical transfer function (OTF) to point-spread function (PSF).
+Compute the Inverse Fast Fourier Transform (ifft) of the OTF array and
+creates the PSF array that is not influenced by the OTF off-centering.
+By default, the PSF array is the same size as the OTF array.
+Adapted from MATLAB otf2psf function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>otf</strong> (<em>ndarray</em>) – OTF array.</p></li>
+<li><p><strong>shape</strong> (<em>list</em><em> (</em><em>int</em><em>)</em>) – Output shape of the OTF array.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>psf</strong> – PSF array.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="functions.deconvsk.psf2otf">
+<code class="sig-prename descclassname">functions.deconvsk.</code><code class="sig-name descname">psf2otf</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">psf</span></em>, <em class="sig-param"><span class="n">shape</span></em><span class="sig-paren">)</span><a class="headerlink" href="#functions.deconvsk.psf2otf" title="Permalink to this definition">¶</a></dt>
+<dd><p>From https: // github.com/aboucaud/pypher/blob/master/pypher/pypher.py.
+Convert point-spread function to optical transfer function.
+Compute the Fast Fourier Transform(FFT) of the point-spread
+function(PSF) array and creates the optical transfer function(OTF)
+array that is not influenced by the PSF off-centering.
+By default, the OTF array is the same size as the PSF array.
+To ensure that the OTF is not altered due to PSF off-centering, PSF2OTF
+post-pads the PSF array(down or to the right) with zeros to match
+dimensions specified in OUTSIZE, then circularly shifts the values of
+the PSF array up ( or to the left) until the central pixel reaches (1, 1)
+position.
+Adapted from MATLAB psf2otf function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>psf</strong> (<em>ndarray</em>) – PSF array.</p></li>
+<li><p><strong>shape</strong> (<em>list</em><em>(</em><em>int</em><em>)</em>) – Output shape of the OTF array.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>otf</strong> – OTF array.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="functions.deconvsk.richardson_lucy">
+<code class="sig-prename descclassname">functions.deconvsk.</code><code class="sig-name descname">richardson_lucy</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">image</span></em>, <em class="sig-param"><span class="n">psf</span></em>, <em class="sig-param"><span class="n">iterations</span><span class="o">=</span><span class="default_value">10</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#functions.deconvsk.richardson_lucy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Richardson-Lucy deconvolution. It deconvolves image using maximum
+likelihood algorithm, returning both deblurred image J and a restored
+point-spread function PSF.
+This is a simplified version of MATLAB deconvblind function without
+damping, weights and externally defined functions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>image</strong> (<em>ndarray</em>) – Input degraded image.</p></li>
+<li><p><strong>psf</strong> (<em>ndarray</em>) – The point spread function.</p></li>
+<li><p><strong>iterations</strong> (<em>int</em>) – Number of iterations.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>P</strong> (<em>ndarray</em>) – Restored point-spread function PSF.</p></li>
+<li><p><strong>J</strong> (<em>ndarray</em>) – Deblurred image.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scipy.ndimage.gaussian_filter</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span><span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">image</span><span class="p">[</span><span class="mi">1</span><span class="p">::</span><span class="mi">2</span><span class="p">,::</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">image</span><span class="p">[::</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">::</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">psf</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">7</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">psf</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">psf</span> <span class="o">=</span> <span class="n">gaussian_filter</span><span class="p">(</span><span class="n">psf</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="p">[</span><span class="mi">7</span><span class="p">,</span><span class="mi">7</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">new_psf</span><span class="p">,</span> <span class="n">deconv_im</span> <span class="o">=</span> <span class="n">richardson_lucy</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">psf</span><span class="p">,</span> <span class="mi">15</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="rubric">Notes</p>
+<p>The quality of the deconvolution result is greatly dependent on the initial
+PSF size instead of the value. We recommend to calibrate PSF of the imaging
+system and use that as the initial PSF guess. Otherwise, generating a PSF
+according to the magnification of the imaging system is an option.</p>
+<p class="rubric">References</p>
+<dl class="footnote brackets">
+<dt class="label" id="id4"><span class="brackets">1</span></dt>
+<dd><p>http: // en.wikipedia.org/wiki/Richardson % E2 % 80 % 93Lucy_deconvolution</p>
+</dd>
+<dt class="label" id="id5"><span class="brackets">2</span></dt>
+<dd><p>Biggs, D. S. C.; Andrews, M. Acceleration of Iterative Image</p>
+</dd>
+</dl>
+<p>Restoration Algorithms. Applied Optics 1997, 36 (8), 1766.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="functions.deconvsk.zero_pad">
+<code class="sig-prename descclassname">functions.deconvsk.</code><code class="sig-name descname">zero_pad</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">image</span></em>, <em class="sig-param"><span class="n">shape</span></em>, <em class="sig-param"><span class="n">position</span><span class="o">=</span><span class="default_value">'center'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#functions.deconvsk.zero_pad" title="Permalink to this definition">¶</a></dt>
+<dd><p>From https: // github.com/aboucaud/pypher/blob/master/pypher/pypher.py.
+Extends image to a certain size with zeros.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>image</strong> (<em>real 2d ndarray</em>) – Input image.</p></li>
+<li><p><strong>shape</strong> (<em>tuple of list</em><em>(</em><em>int</em><em>)</em>) – Desired output shape of the image.</p></li>
+<li><p><strong>position</strong> (<em>str</em><em>, </em><em>optional</em>) – <dl class="simple">
+<dt>The position of the input image in the output one:</dt><dd><ul>
+<li><dl class="simple">
+<dt>’corner’</dt><dd><p>top-left corner(default)</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>’center’</dt><dd><p>centered</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>padded_img</strong> – The zero-padded image.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>real ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-functions.filtering">
+<span id="functions-filtering-module"></span><h2>functions.filtering module<a class="headerlink" href="#module-functions.filtering" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="functions.filtering.filter1d_same">
+<code class="sig-prename descclassname">functions.filtering.</code><code class="sig-name descname">filter1d_same</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">time_series</span></em>, <em class="sig-param"><span class="n">noise_filter</span></em><span class="sig-paren">)</span><a class="headerlink" href="#functions.filtering.filter1d_same" title="Permalink to this definition">¶</a></dt>
+<dd><p>Filter original time_series with noise_filter, and return the
+filtered_series with the same length as the original sereis.
+Compared to MATLAB results, when the length of the filter and
+frame number are both even, the filtered result would shift to
+left by one number. In other cases, results are the same.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="functions.filtering.noise_filter1d">
+<code class="sig-prename descclassname">functions.filtering.</code><code class="sig-name descname">noise_filter1d</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dset</span></em>, <em class="sig-param"><span class="n">im_set</span></em>, <em class="sig-param"><span class="n">noise_filter</span><span class="o">=</span><span class="default_value">array([7.43359842e-07, 7.99187146e-06, 6.69151205e-05, 0.000436341397, 0.00221592446, 0.00876415125, 0.0269954863, 0.0647588052, 0.120985376, 0.176032683, 0.199471163, 0.176032683, 0.120985376, 0.0647588052, 0.0269954863, 0.00876415125, 0.00221592446, 0.000436341397, 6.69151205e-05, 7.99187146e-06, 7.43359842e-07])</span></em>, <em class="sig-param"><span class="n">filtername</span><span class="o">=</span><span class="default_value">'noise filter after M6'</span></em>, <em class="sig-param"><span class="n">filenames</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">return_option</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#functions.filtering.noise_filter1d" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform noise filtering on a image stack along the time axis for each
+pixel independently.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dset</strong> (<em>dict</em>) – filename (str) -&gt; Data (object).
+A dictionary mapping tiff stack filenames to Data object.</p></li>
+<li><p><strong>im_set</strong> (<em>dict</em>) – filename (str) -&gt; pre-filtering image (ndarray).
+A dictionary mapping tiff filenames to images need to be filtered.</p></li>
+<li><p><strong>noise_filter</strong> (<em>ndarray</em>) – Noise filtering kernel, e.g. 1D-Gaussian.</p></li>
+<li><p><strong>filtername</strong> (<em>str</em>) – Name of the filter for Data.add_filtered.</p></li>
+<li><p><strong>filenames</strong> (<em>list</em><em> (</em><em>str</em><em>)</em>) – Sequence of filenames for the filtering.</p></li>
+<li><p><strong>return_option</strong> (<em>bool</em>) – Whether to return m_filtered.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>m_filtered</strong> – Filtered image stack.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-functions.finterp">
+<span id="functions-finterp-module"></span><h2>functions.finterp module<a class="headerlink" href="#module-functions.finterp" title="Permalink to this headline">¶</a></h2>
+<p>This module performs fourier interpolation on a single image
+or a image stack (tiff file). Interpolated image (stack) can be
+saved into a new tiff file or return as a numpy array.</p>
+<p>Fourier interpolation was implemented with transformation matrix
+operation, where the Fourier transformation matrix was constructed
+with the original matrix size without interpolation grids, and the
+inverse Fourier transformation matrix encodes the extra interpolation
+position coordinates.</p>
+<p>Adapted from <a class="reference external" href="https://github.com/xiyuyi/xy_fInterp_forTIFF">https://github.com/xiyuyi/xy_fInterp_forTIFF</a>.</p>
+<dl class="py function">
+<dt id="functions.finterp.fourier_interp_array">
+<code class="sig-prename descclassname">functions.finterp.</code><code class="sig-name descname">fourier_interp_array</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">im</span></em>, <em class="sig-param"><span class="n">interp_num_lst</span></em><span class="sig-paren">)</span><a class="headerlink" href="#functions.finterp.fourier_interp_array" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs fourier interpolation on an image array with a list of
+interpolation factors.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="functions.finterp.fourier_interp_tiff">
+<code class="sig-prename descclassname">functions.finterp.</code><code class="sig-name descname">fourier_interp_tiff</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filepath</span></em>, <em class="sig-param"><span class="n">filename</span></em>, <em class="sig-param"><span class="n">interp_num_lst</span></em>, <em class="sig-param"><span class="n">mvlength</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">save_option</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">return_option</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#functions.finterp.fourier_interp_tiff" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs fourier interpolation on a tiff image (stack) with a list of
+interpolation factors (the number of pixels to be interpolated between
+two adjacent pixels).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filepath</strong> (<em>str</em>) – The path to the tiff file.</p></li>
+<li><p><strong>filename</strong> (<em>str</em>) – The filename of the tiff file without ‘.tif’.</p></li>
+<li><p><strong>interp_num_lst</strong> (<em>list</em><em> (</em><em>int</em><em>)</em>) – A list of interpolation factors.</p></li>
+<li><p><strong>mvlength</strong> (<em>int</em>) – The frame number of the tiff file (1 for images).</p></li>
+<li><p><strong>save_option</strong> (<em>bool</em>) – Whether to save the interpolated images into tiff files (each
+interpolation factor seperately).</p></li>
+<li><p><strong>return_option</strong> (<em>bool</em>) – Whether to return the interpolated image series as 3d arrays.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>interp_imstack_lst</strong> – A list of interpolated image sereis corresponding to the interpolation
+factor list.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list (ndarray)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="functions.finterp.ft_matrix2d">
+<code class="sig-prename descclassname">functions.finterp.</code><code class="sig-name descname">ft_matrix2d</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">xrange</span></em>, <em class="sig-param"><span class="n">yrange</span></em><span class="sig-paren">)</span><a class="headerlink" href="#functions.finterp.ft_matrix2d" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate fourier transform matrix for x- and y-dimension.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="functions.finterp.ift_matrix2d">
+<code class="sig-prename descclassname">functions.finterp.</code><code class="sig-name descname">ift_matrix2d</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">xrange</span></em>, <em class="sig-param"><span class="n">yrange</span></em>, <em class="sig-param"><span class="n">interp_num</span></em><span class="sig-paren">)</span><a class="headerlink" href="#functions.finterp.ift_matrix2d" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate inverse fourier transform matrix without center shift for a
+given fold of interpolation for x- and y-dimension. Here we use 2 times
+the x-dimension of a frame image for xrange and 2 times of y for yrange.
+interp_num is the number of times the resolution enhanced. For instance,
+when interp_num = 2, the resolution is two times the original one.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="functions.finterp.interpolate_image">
+<code class="sig-prename descclassname">functions.finterp.</code><code class="sig-name descname">interpolate_image</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">im</span></em>, <em class="sig-param"><span class="n">fx</span></em>, <em class="sig-param"><span class="n">fy</span></em>, <em class="sig-param"><span class="n">ifx</span></em>, <em class="sig-param"><span class="n">ify</span></em>, <em class="sig-param"><span class="n">interp_num</span></em><span class="sig-paren">)</span><a class="headerlink" href="#functions.finterp.interpolate_image" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs fourier interpolation to increase the resolution of the image.
+The interpolated image can be further processed by SOFI for
+super-resolution imaging.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>im</strong> (<em>ndarray</em>) – Input image.</p></li>
+<li><p><strong>fx</strong> (<em>ndarray</em>) – Fourier transform matrix in x generated from ft_matrix2d function.</p></li>
+<li><p><strong>fy</strong> (<em>ndarray</em>) – Fourier transform matrix in y generated from ft_matrix2d function.</p></li>
+<li><p><strong>ifx</strong> (<em>ndarray</em>) – Inverse fourier transform matrix in x from ift_matrix2d function.</p></li>
+<li><p><strong>ify</strong> (<em>ndarray</em>) – Inverse fourier transform matrix in y from ift_matrix2d function.</p></li>
+<li><p><strong>interp_num</strong> (<em>int</em>) – The number of pixels to be interpolated between two adjacent pixels.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>interp_im</strong> – Interpolated image with new dimensions.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Please note here that interpolation doesn’ extend over the edgeo f the
+matrix, therefore the total number of pixels in the resulting matrix is
+not an integer fold of the original size of the matrix. For example, if
+the original matrix size of each frame is xdim and ydim for x and y
+dimensions respectively. After interpolation, the size of the resulting
+matrix will be ((xdim-1)*f + 1) for x dimension, and ((ydim-1)*f + 1)
+for y dimension.</p>
+<p class="rubric">Example</p>
+<p>import numpy as np
+import matplotlib.pyplot as plt
+xdim, ydim, sigma, mu = 10, 10, 0.5, 0
+x, y = np.meshgrid(np.linspace(-1, 1, xdim), np.linspace(-1, 1, xdim))
+im = np.exp(-((np.sqrt(x*x + y*y) - mu)**2 / (2*sigma**2)))
+xrange, yrange, interp_num = 2 * xdim, 2 * ydim, 3
+fx, fy = ft_matrix2d(xrange, yrange)
+ifx, ify = ift_matrix2d(xrange, yrange, interp_num)
+interp_im = interpolate_image(im, fx, fy, ifx, ify, interp_num)</p>
+<p>fig, axs = plt.subplots(1, 2, figsize=(10, 3))
+axs[0].set_title(‘Original image’)
+axs[0].imshow(im)
+axs[1].set_title(‘Interplated image’)
+axs[1].imshow(interp_im)</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-functions.ldrc">
+<span id="functions-ldrc-module"></span><h2>functions.ldrc module<a class="headerlink" href="#module-functions.ldrc" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="functions.ldrc.ldrc">
+<code class="sig-prename descclassname">functions.ldrc.</code><code class="sig-name descname">ldrc</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mask_im</span></em>, <em class="sig-param"><span class="n">input_im</span></em>, <em class="sig-param"><span class="n">order</span></em>, <em class="sig-param"><span class="n">window_size</span><span class="o">=</span><span class="default_value">[25, 25]</span></em><span class="sig-paren">)</span><a class="headerlink" href="#functions.ldrc.ldrc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Process the image array with “local dynamic range compression” (ldrc).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mask_im</strong> (<em>ndarray</em>) – A reference image.
+Usually a average/sum image or second-order SOFI image is used.</p></li>
+<li><p><strong>input_im</strong> (<em>ndarray</em>) – An input image, usually a high-order moment- or cumulant-
+reconstructed image.</p></li>
+<li><p><strong>order</strong> (<em>int</em>) – The order of the reconstructed image.</p></li>
+<li><p><strong>window_size</strong> (<em>[</em><em>int</em><em>, </em><em>int</em><em>]</em>) – The [x, y] dimension of the scanning window.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>ldrc_im</strong> – The compressed image with the same dimensions of input_im.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>High-order cumulants or moments reconstructions result-in images with a
+large dynamic range of pixel intensities. This ldrc algorithm compresses
+the dynamic range of these reconstructions with respect to a reference
+image while retaining resolution enhancement.
+The compression is performed locally in a small window that is scanned
+across the image. For details of the ldrc method, see [1].</p>
+<p class="rubric">References</p>
+<dl class="footnote brackets">
+<dt class="label" id="id6"><span class="brackets">1</span></dt>
+<dd><p>Xiyu Yi, Sungho Son, Ryoko Ando, Atsushi Miyawaki, and Shimon Weiss,</p>
+</dd>
+</dl>
+<p>“Moments reconstruction and local dynamic range compression of high order
+superresolution optical fluctuation imaging,” Biomed. Opt. Express 10,
+2430-2445 (2019).</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-functions.masks">
+<span id="functions-masks-module"></span><h2>functions.masks module<a class="headerlink" href="#module-functions.masks" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="functions.masks.gauss1d_mask">
+<code class="sig-prename descclassname">functions.masks.</code><code class="sig-name descname">gauss1d_mask</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">shape</span><span class="o">=</span><span class="default_value">1, 3</span></em>, <em class="sig-param"><span class="n">sigma</span><span class="o">=</span><span class="default_value">0.5</span></em><span class="sig-paren">)</span><a class="headerlink" href="#functions.masks.gauss1d_mask" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate a 1D gaussian mask.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="functions.masks.gauss2d_mask">
+<code class="sig-prename descclassname">functions.masks.</code><code class="sig-name descname">gauss2d_mask</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">shape</span><span class="o">=</span><span class="default_value">3, 3</span></em>, <em class="sig-param"><span class="n">sigma</span><span class="o">=</span><span class="default_value">0.5</span></em><span class="sig-paren">)</span><a class="headerlink" href="#functions.masks.gauss2d_mask" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate a 2D gaussian mask - should give the same result as MATLAB’s
+fspecial(‘gaussian’,[shape],[sigma]).</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-functions.reconstruction">
+<span id="functions-reconstruction-module"></span><h2>functions.reconstruction module<a class="headerlink" href="#module-functions.reconstruction" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="functions.reconstruction.average_image">
+<code class="sig-prename descclassname">functions.reconstruction.</code><code class="sig-name descname">average_image</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filepath</span></em>, <em class="sig-param"><span class="n">filename</span></em><span class="sig-paren">)</span><a class="headerlink" href="#functions.reconstruction.average_image" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the average image for a video file (tiff stack).</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="functions.reconstruction.average_image_with_finterp">
+<code class="sig-prename descclassname">functions.reconstruction.</code><code class="sig-name descname">average_image_with_finterp</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filepath</span></em>, <em class="sig-param"><span class="n">filename</span></em>, <em class="sig-param"><span class="n">interp_num</span></em><span class="sig-paren">)</span><a class="headerlink" href="#functions.reconstruction.average_image_with_finterp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the average image with fourier interpolation for a video file.
+:param filepath: Path to the tiff file.
+:type filepath: str
+:param filename: Name of the tiff file.
+:type filename: str
+:param interp_num: Interpolation factor.
+:type interp_num: int</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><ul class="simple">
+<li><p><strong>mean_im</strong> (<em>ndarray</em>) – The average image after fourier interpolation. Interpolated</p></li>
+<li><p><em>images can be further used for SOFI processing.</em></p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="functions.reconstruction.calc_cumulants_from_moments">
+<code class="sig-prename descclassname">functions.reconstruction.</code><code class="sig-name descname">calc_cumulants_from_moments</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">moment_set</span></em><span class="sig-paren">)</span><a class="headerlink" href="#functions.reconstruction.calc_cumulants_from_moments" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate cumulant-reconstructed images from moment-reconstructed images.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>moment_set</strong> (<em>dict</em>) – order number (int) -&gt; image (ndarray)
+A dictionary of calcualted moment-reconstructed images.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>k_set</strong> – order number (int) -&gt; image (ndarray)
+A dictionary of calcualted cumulant-reconstructed images.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="functions.reconstruction.calc_moment_im">
+<code class="sig-prename descclassname">functions.reconstruction.</code><code class="sig-name descname">calc_moment_im</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filepath</span></em>, <em class="sig-param"><span class="n">filename</span></em>, <em class="sig-param"><span class="n">order</span></em>, <em class="sig-param"><span class="n">mvlength</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">mean_im</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#functions.reconstruction.calc_moment_im" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get one moment-reconstructed image of a defined order for a video file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filepath</strong> (<em>str</em>) – Path to the tiff file.</p></li>
+<li><p><strong>filename</strong> (<em>str</em>) – Name of the tiff file.</p></li>
+<li><p><strong>order</strong> (<em>int</em>) – The order number of moment-reconstructed image.</p></li>
+<li><p><strong>mvlength</strong> (<em>int</em>) – The length of video for the reconstruction.</p></li>
+<li><p><strong>mean_im</strong> (<em>ndarray</em>) – Average image of the tiff stack.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>moment_im</strong> – The moments-reconstructed image.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="functions.reconstruction.calc_moments">
+<code class="sig-prename descclassname">functions.reconstruction.</code><code class="sig-name descname">calc_moments</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filepath</span></em>, <em class="sig-param"><span class="n">filename</span></em>, <em class="sig-param"><span class="n">highest_order</span></em>, <em class="sig-param"><span class="n">m_set</span><span class="o">=</span><span class="default_value">{}</span></em>, <em class="sig-param"><span class="n">mean_im</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#functions.reconstruction.calc_moments" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get all moment-reconstructed images to the user-defined highest order for
+a video file(tiff stack).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filepath</strong> (<em>str</em>) – Path to the tiff file.</p></li>
+<li><p><strong>filename</strong> (<em>str</em>) – Name of the tiff file.</p></li>
+<li><p><strong>highest_order</strong> (<em>int</em>) – The highest order number of moment-reconstructed images.</p></li>
+<li><p><strong>m_set</strong> (<em>dict</em>) – order number (int) -&gt; image (ndarray)
+A dictionary of previously calcualted moment-reconstructed images.</p></li>
+<li><p><strong>mean_im</strong> (<em>ndarray</em>) – Average image of the tiff stack.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>m_set</strong> – order number (int) -&gt; image (ndarray)
+A dictionary of calcualted moment-reconstructed images.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="functions.reconstruction.moment_im_with_finterp">
+<code class="sig-prename descclassname">functions.reconstruction.</code><code class="sig-name descname">moment_im_with_finterp</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filepath</span></em>, <em class="sig-param"><span class="n">filename</span></em>, <em class="sig-param"><span class="n">order</span></em>, <em class="sig-param"><span class="n">interp_num</span></em>, <em class="sig-param"><span class="n">mvlength</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">mean_im</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#functions.reconstruction.moment_im_with_finterp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get one moment-reconstructed image of a defined order for a video file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filepath</strong> (<em>str</em>) – Path to the tiff file.</p></li>
+<li><p><strong>filename</strong> (<em>str</em>) – Name of the tiff file.</p></li>
+<li><p><strong>order</strong> (<em>int</em>) – The order number of moment-reconstructed image.</p></li>
+<li><p><strong>interp_num</strong> (<em>int</em>) – The interpolation factor.</p></li>
+<li><p><strong>mvlength</strong> (<em>int</em>) – The length of video for the reconstruction.</p></li>
+<li><p><strong>mean_im</strong> (<em>ndarray</em>) – Average image of the tiff stack.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>moment_im</strong> – The moments-reconstructed image.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-functions.visualization">
+<span id="functions-visualization-module"></span><h2>functions.visualization module<a class="headerlink" href="#module-functions.visualization" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="functions.visualization.bokeh_visualization">
+<code class="sig-prename descclassname">functions.visualization.</code><code class="sig-name descname">bokeh_visualization</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">image</span></em>, <em class="sig-param"><span class="n">palette</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">save_option</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">filename</span><span class="o">=</span><span class="default_value">'Image'</span></em>, <em class="sig-param"><span class="n">imshow_same</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#functions.visualization.bokeh_visualization" title="Permalink to this definition">¶</a></dt>
+<dd><p>Show interactive grayscale image with Bokeh in Jupyter Notebook.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>image</strong> (<em>ndarray</em>) – The grayscale image array for visualization.</p></li>
+<li><p><strong>palette</strong> (<em>str</em>) – <p>Name of the Bokeh palettes.
+The default palette is ‘pink’ from matplotlib.
+For a complete palette list in bokeh documentation:</p>
+<blockquote>
+<div><p><a class="reference external" href="https://docs.bokeh.org/en/latest/docs/reference/palettes.html">https://docs.bokeh.org/en/latest/docs/reference/palettes.html</a></p>
+</div></blockquote>
+</p></li>
+<li><p><strong>save_option</strong> (<em>bool</em>) – Whether to save the Bokeh image as a .html file.</p></li>
+<li><p><strong>filename</strong> (<em>str</em>) – Name of the .html file.</p></li>
+<li><p><strong>imshow_same</strong> (<em>bool</em>) – Whether to reversse y-axis to show the same image as using matplotlib.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>For more information about interactive visualization library Bokeh:
+<a class="reference external" href="https://docs.bokeh.org/en/latest/index.html">https://docs.bokeh.org/en/latest/index.html</a>.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="functions.visualization.bokeh_visualization_mult">
+<code class="sig-prename descclassname">functions.visualization.</code><code class="sig-name descname">bokeh_visualization_mult</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">image_lst</span></em>, <em class="sig-param"><span class="n">title_lst</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">palette</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">save_option</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">filename</span><span class="o">=</span><span class="default_value">'Image'</span></em>, <em class="sig-param"><span class="n">imshow_same</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#functions.visualization.bokeh_visualization_mult" title="Permalink to this definition">¶</a></dt>
+<dd><p>Show interactive grayscale image with Bokeh in Jupyter Notebook.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>image_lst</strong> (<em>list</em><em>(</em><em>ndarray</em><em>)</em>) – A list of grayscale images array for visualization and comparison.</p></li>
+<li><p><strong>title_lst</strong> (<em>list of str</em>) – A list of titles for images plotted in Bokeh.</p></li>
+<li><p><strong>palette</strong> (<em>str</em>) – <p>Name of the Bokeh palettes.
+The default palette is ‘pink’ from matplotlib.
+For a complete palette list in bokeh documentation:</p>
+<blockquote>
+<div><p><a class="reference external" href="https://docs.bokeh.org/en/latest/docs/reference/palettes.html">https://docs.bokeh.org/en/latest/docs/reference/palettes.html</a></p>
+</div></blockquote>
+</p></li>
+<li><p><strong>save_option</strong> (<em>bool</em>) – Whether to save the Bokeh image as a .html file.</p></li>
+<li><p><strong>filename</strong> (<em>str</em>) – Name of the .html file.</p></li>
+<li><p><strong>imshow_same</strong> (<em>bool</em>) – Whether to reversse y-axis to show the same image as using matplotlib.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>For more information about interactive visualization library Bokeh:
+<a class="reference external" href="https://docs.bokeh.org/en/latest/index.html">https://docs.bokeh.org/en/latest/index.html</a>.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="functions.visualization.bokeh_visualization_rgba">
+<code class="sig-prename descclassname">functions.visualization.</code><code class="sig-name descname">bokeh_visualization_rgba</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">image</span></em>, <em class="sig-param"><span class="n">save_option</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">filename</span><span class="o">=</span><span class="default_value">'RGBAimage'</span></em>, <em class="sig-param"><span class="n">imshow_same</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#functions.visualization.bokeh_visualization_rgba" title="Permalink to this definition">¶</a></dt>
+<dd><p>Show interactive RGBA image with Bokeh in Jupyter Notebook.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>image</strong> (<em>ndarray</em>) – The RGBA image array for visualization.</p></li>
+<li><p><strong>save_option</strong> (<em>bool</em>) – Whether to save the Bokeh image as a .html file.</p></li>
+<li><p><strong>filename</strong> (<em>str</em>) – Name of the .html file.</p></li>
+<li><p><strong>imshow_same</strong> (<em>bool</em>) – Whether to reversse y-axis to show the same image as using matplotlib.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>For more information about interactive visualization library Bokeh:
+<a class="reference external" href="https://docs.bokeh.org/en/latest/index.html">https://docs.bokeh.org/en/latest/index.html</a>.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="functions.visualization.enhance_contrast">
+<code class="sig-prename descclassname">functions.visualization.</code><code class="sig-name descname">enhance_contrast</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">im</span></em>, <em class="sig-param"><span class="n">cmap</span><span class="o">=</span><span class="default_value">'pink'</span></em>, <em class="sig-param"><span class="n">display_contrast</span><span class="o">=</span><span class="default_value">1</span></em><span class="sig-paren">)</span><a class="headerlink" href="#functions.visualization.enhance_contrast" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enhance contrast of the input image.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="functions.visualization.ensure_positive">
+<code class="sig-prename descclassname">functions.visualization.</code><code class="sig-name descname">ensure_positive</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em><span class="sig-paren">)</span><a class="headerlink" href="#functions.visualization.ensure_positive" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make sure data is positive and has no zeros.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="functions.visualization.ind2cmap">
+<code class="sig-prename descclassname">functions.visualization.</code><code class="sig-name descname">ind2cmap</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">im</span></em>, <em class="sig-param"><span class="n">cmap</span><span class="o">=</span><span class="default_value">'pink'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#functions.visualization.ind2cmap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert a grayscale image array to a rgba color image((0,1) float).</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="functions.visualization.save_avi">
+<code class="sig-prename descclassname">functions.visualization.</code><code class="sig-name descname">save_avi</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">vid_array</span></em>, <em class="sig-param"><span class="n">cmap</span><span class="o">=</span><span class="default_value">'pink'</span></em>, <em class="sig-param"><span class="n">filename</span><span class="o">=</span><span class="default_value">'out.avi'</span></em>, <em class="sig-param"><span class="n">display_contrast</span><span class="o">=</span><span class="default_value">1</span></em><span class="sig-paren">)</span><a class="headerlink" href="#functions.visualization.save_avi" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save a image stack with a specific colormap.
+Please refer to the demo Jupyter Notebook for examples.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="functions.visualization.save_png">
+<code class="sig-prename descclassname">functions.visualization.</code><code class="sig-name descname">save_png</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">im</span></em>, <em class="sig-param"><span class="n">cmap</span><span class="o">=</span><span class="default_value">'pink'</span></em>, <em class="sig-param"><span class="n">filename</span><span class="o">=</span><span class="default_value">'out.png'</span></em>, <em class="sig-param"><span class="n">display_contrast</span><span class="o">=</span><span class="default_value">1</span></em><span class="sig-paren">)</span><a class="headerlink" href="#functions.visualization.save_png" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save a image with a specific colormap.
+Please refer to the demo Jupyter Notebook for examples.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-functions">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-functions" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="index.html">Table of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://nbviewer.jupyter.org/github/xiyuyi/pysofi/blob/master/Notebooks/PySOFI2.0_Demo.ipynb">Pysofi Tutorial</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/xiyuyi/pysofi/tree/master/Notebooks">Demos &amp; Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manual.html">Pysofi Reference Manual</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">functions package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-functions.data">functions.data module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-functions.deconvsk">functions.deconvsk module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-functions.filtering">functions.filtering module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-functions.finterp">functions.finterp module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-functions.ldrc">functions.ldrc module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-functions.masks">functions.masks module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-functions.reconstruction">functions.reconstruction module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-functions.visualization">functions.visualization module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-functions">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">functions</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">functions package</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="ldrc.html"
+                        title="previous chapter">LDRC functions</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="modules.html"
+                        title="next chapter">functions</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/functions.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="modules.html" title="functions"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="ldrc.html" title="LDRC functions"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">pysofi 0.0.1 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">functions package</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2020, Yuting Miao.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.1.2.
+    </div>
+  </body>
+</html>

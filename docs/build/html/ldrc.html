@@ -6,70 +6,111 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LDRC functions &#8212; pysofi 0.0.1 documentation</title>
-    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
     <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/language_data.js"></script>
+    
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="The “Data()” class" href="data_class.html" />
-   
-  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
-  
-  
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
-
+    <link rel="next" title="functions package" href="functions.html" />
+    <link rel="prev" title="The “Data()” class" href="data_class.html" /> 
   </head><body>
-  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="functions.html" title="functions package"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="data_class.html" title="The “Data()” class"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">pysofi 0.0.1 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="manual.html" accesskey="U">Pysofi Reference Manual</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">LDRC functions</a></li> 
+      </ul>
+    </div>  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          
-
           <div class="body" role="main">
             
   <div class="section" id="ldrc-functions">
-<h1><a class="toc-backref" href="#id1">LDRC functions</a><a class="headerlink" href="#ldrc-functions" title="Permalink to this headline">¶</a></h1>
+<h1><a class="toc-backref" href="#id2">LDRC functions</a><a class="headerlink" href="#ldrc-functions" title="Permalink to this headline">¶</a></h1>
 <div class="contents topic" id="contents">
 <p class="topic-title">Contents</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#ldrc-functions" id="id1">LDRC functions</a></p>
+<li><p><a class="reference internal" href="#ldrc-functions" id="id2">LDRC functions</a></p>
 <ul>
-<li><p><a class="reference internal" href="#list-of-loader-functions" id="id2">List of loader functions</a></p></li>
-<li><p><a class="reference internal" href="#load-data-manually" id="id3">Load data manually</a></p></li>
+<li><p><a class="reference internal" href="#module-functions.ldrc" id="id3">List of loader functions</a></p></li>
 </ul>
 </li>
 </ul>
 </div>
-<div class="section" id="list-of-loader-functions">
-<h2><a class="toc-backref" href="#id2">List of loader functions</a><a class="headerlink" href="#list-of-loader-functions" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="load-data-manually">
-<span id="manual-data-load"></span><h2><a class="toc-backref" href="#id3">Load data manually</a><a class="headerlink" href="#load-data-manually" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-functions.ldrc">
+<span id="list-of-loader-functions"></span><h2><a class="toc-backref" href="#id3">List of loader functions</a><a class="headerlink" href="#module-functions.ldrc" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="functions.ldrc.ldrc">
+<code class="sig-prename descclassname">functions.ldrc.</code><code class="sig-name descname">ldrc</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mask_im</span></em>, <em class="sig-param"><span class="n">input_im</span></em>, <em class="sig-param"><span class="n">order</span></em>, <em class="sig-param"><span class="n">window_size</span><span class="o">=</span><span class="default_value">[25, 25]</span></em><span class="sig-paren">)</span><a class="headerlink" href="#functions.ldrc.ldrc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Process the image array with “local dynamic range compression” (ldrc).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mask_im</strong> (<em>ndarray</em>) – A reference image.
+Usually a average/sum image or second-order SOFI image is used.</p></li>
+<li><p><strong>input_im</strong> (<em>ndarray</em>) – An input image, usually a high-order moment- or cumulant-
+reconstructed image.</p></li>
+<li><p><strong>order</strong> (<em>int</em>) – The order of the reconstructed image.</p></li>
+<li><p><strong>window_size</strong> (<em>[</em><em>int</em><em>, </em><em>int</em><em>]</em>) – The [x, y] dimension of the scanning window.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>ldrc_im</strong> – The compressed image with the same dimensions of input_im.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>High-order cumulants or moments reconstructions result-in images with a
+large dynamic range of pixel intensities. This ldrc algorithm compresses
+the dynamic range of these reconstructions with respect to a reference
+image while retaining resolution enhancement.
+The compression is performed locally in a small window that is scanned
+across the image. For details of the ldrc method, see [1].</p>
+<p class="rubric">References</p>
+<dl class="footnote brackets">
+<dt class="label" id="id1"><span class="brackets">1</span></dt>
+<dd><p>Xiyu Yi, Sungho Son, Ryoko Ando, Atsushi Miyawaki, and Shimon Weiss,</p>
+</dd>
+</dl>
+<p>“Moments reconstruction and local dynamic range compression of high order
+superresolution optical fluctuation imaging,” Biomed. Opt. Express 10,
+2430-2445 (2019).</p>
+</dd></dl>
+
 </div>
 </div>
 
 
+            <div class="clearer"></div>
           </div>
-          
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-<h1 class="logo"><a href="index.html">pysofi</a></h1>
-
-
-
-
-
-
-
-
-<h3>Navigation</h3>
+<h3><a href="index.html">Table of Contents</a></h3>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
@@ -80,18 +121,23 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">LDRC functions</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="functions.html">functions package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">functions</a></li>
 </ul>
 
-<div class="relations">
-<h3>Related Topics</h3>
-<ul>
-  <li><a href="index.html">Documentation overview</a><ul>
-  <li><a href="manual.html">Pysofi Reference Manual</a><ul>
-      <li>Previous: <a href="data_class.html" title="previous chapter">The “Data()” class</a></li>
-  </ul></li>
-  </ul></li>
-</ul>
-</div>
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="data_class.html"
+                        title="previous chapter">The “Data()” class</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="functions.html"
+                        title="next chapter">functions package</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/ldrc.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
 <div id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
@@ -102,32 +148,33 @@
     </div>
 </div>
 <script>$('#searchbox').show(0);</script>
-
-
-
-
-
-
-
-
         </div>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="footer">
-      &copy;2020, Yuting Miao.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.1.2</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
-      
-      |
-      <a href="_sources/ldrc.rst.txt"
-          rel="nofollow">Page source</a>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="functions.html" title="functions package"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="data_class.html" title="The “Data()” class"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">pysofi 0.0.1 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="manual.html" >Pysofi Reference Manual</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">LDRC functions</a></li> 
+      </ul>
     </div>
-
-    
-
-    
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2020, Yuting Miao.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.1.2.
+    </div>
   </body>
 </html>

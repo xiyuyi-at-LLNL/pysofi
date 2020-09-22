@@ -25,6 +25,8 @@ Documentation
    Pysofi Tutorial <https://nbviewer.jupyter.org/github/xiyuyi/pysofi/blob/master/Notebooks/PySOFI2.0_Demo.ipynb>
    Demos & Examples <https://github.com/xiyuyi/pysofi/tree/master/Notebooks>
    manual
+   functions
+   modules
 
 
 .. Indices and tables
