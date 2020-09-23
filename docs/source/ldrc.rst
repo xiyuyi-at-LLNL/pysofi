@@ -6,8 +6,12 @@ LDRC functions
 .. contents::
 
 
-List of loader functions
+Function(s)
 ------------------------
 
 .. automodule:: functions.ldrc
     :members:
+
+
+Examples
+----------
