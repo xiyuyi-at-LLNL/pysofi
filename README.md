@@ -20,3 +20,4 @@ Before running notebook files, set up the environment of Ipython kernel with the
 
 After starting jupyter notebook, switch kernel to current environment by clicking "Kernel -> Change kernel -> pysofi" from the jupyter notebook dropdown menu.
 
+The work performed by Xiyu Yi is supported under the auspices of the U.S. Department of Energy by Lawrence Livermore National Laboratory under Contract DE-AC52-07NA27344.   
