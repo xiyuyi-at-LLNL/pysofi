@@ -23,7 +23,7 @@ After starting jupyter notebook, switch kernel to current environment by clickin
 ### Documentation
 The documentation for this repository is currently under construction (under `./docs`) using Sphinx. We welcome community contribution to the documentation of the project! 
 
-### Get involved as a developers
+### Get involved as a developer
 TBD. Please send an email to Xiyu Yi (yi10@llnl.gov) for inquiries.
 
 ### Notice
