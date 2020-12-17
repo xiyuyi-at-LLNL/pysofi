@@ -4,6 +4,4 @@
 /Notebooks/.ipynb_checkpoints
 /Notebooks/*.tif
 /Notebooks/demo_pysofi.avi
-*.tif
-/Notebooks/*.tif
 /*/test.ipynb
