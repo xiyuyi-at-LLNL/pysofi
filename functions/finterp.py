@@ -221,7 +221,7 @@ def fourier_interp_tiff(filepath, filename, interp_num_lst, mvlength=None,
                 "="*int(30/mvlength*(frame+1)), 29, (100/mvlength*(frame+1))))
             sys.stdout.flush()
             if save_option is True:
-                tiff.imwrite(filename + '_InterpNum' + str(interp_num) +
+                tiff.imwrite(filepath + '/' + filename + '_InterpNum' + str(interp_num) +
                              '.tif', interp_im, dtype='int', append=True)
             if return_option is True:
                 interp_imstack.append(interp_im)
