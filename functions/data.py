@@ -38,14 +38,25 @@ class Data:
         that have been calculated.
     moments_set : dict
         moment order (int) -> moment-reconstructed image (ndarray)
-        A dictionary of orders and corrensponding reconstructions.
+        A dictionary of orders and corrensponding moment reconstructions.
+    moments_set_bc : dict
+        moment order (int) -> moment-reconstructed image (ndarray)
+        A dictionary of orders and corrensponding moment reconstructions 
+        with bleaching correction.
     cumulants_set : dict
         cumulant order (int) -> cumulant-reconstructed image (ndarray)
-        A dictionary of orders and corrensponding reconstructions.    
+        A dictionary of orders and corrensponding cumulant reconstructions.  
+    cumulants_set_bc : dict 
+        cumulant order (int) -> cumulant-reconstructed image (ndarray)
+        A dictionary of orders and corrensponding cumulant reconstructions 
+        with bleaching correction.   
     morder : int
         The highest order of moment reconstruction that has been calculated.
     corder : int
-        The highest order of cumulant reconstruction that has been calculated.    
+        The highest order of cumulant reconstruction that has been 
+        calculated.  
+    fbc : float
+        Bleaching correction factor.
     n_frames : int
         The number of frames of the image stack / tiff video.
     xdim : int
@@ -78,10 +89,13 @@ class Data:
         self.morder_lst = []
         self.morder_finterp_lst = []
         self.moments_set = {}
+        self.moments_set_bc = {}
         self.moments_finterp_set = {}
         self.cumulants_set = {}
+        self.cumulants_set_bc = {}
         self.morder = 0
         self.corder = 0
+        self.fbc = 1
         self.n_frames, self.xdim, self.ydim = self.get_dims()
 
     def average_image(self):
@@ -154,7 +168,9 @@ class Data:
             self.finterp_factor = interp_num
             return self.moments_finterp_set[order]
 
-    def calc_moments_set(self, highest_order=4, mean_im=None):
+    def calc_moments_set(self, highest_order=4, mean_im=None,
+                         bleach_correction=False,
+                         smooth_kernel=251, fbc=0.04):
         """
         Calculate moment-reconstructed images to the highest order.
 
@@ -164,25 +180,42 @@ class Data:
             The highest order number of moment-reconstructed images.
         mean_im : ndarray
             Average image of the tiff stack.
+        bleach_correction : bool
+            Whether to use bleaching correction.
+        smooth_kernel : int, optional
+            The size of the median filter window. Only used when bleach
+            correction is True.       
+        fbc : float, optional
+            The fraction of signal decrease within each block compared 
+            to the total signal decrease. Only used when bleach correction
+            is True.
 
         Returns
         -------
-        moments_set: dict
+        moments_set, moments_set_bc : dict
             order number (int) -> image (ndarray)
             A dictionary of calcualted moment-reconstructed images.
         """
+        if bleach_correction is False:
+            if mean_im is None and self.ave is not None:
+                mean_im = self.ave
+            self.moments_set = reconstruction.calc_moments(self.filepath,
+                                                           self.filename,
+                                                           highest_order,
+                                                           self.moments_set,
+                                                           mean_im)
+            self.morder = highest_order
+            return self.moments_set
+        else:
+            self.moments_set_bc = reconstruction.block_ave_moments(
+                self.filepath, self.filename,
+                highest_order, smooth_kernel, fbc)
+            self.fbc = fbc
+            return self.moments_set_bc
 
-        if mean_im is None and self.ave is not None:
-            mean_im = self.ave
-        self.moments_set = reconstruction.calc_moments(self.filepath,
-                                                       self.filename,
-                                                       highest_order,
-                                                       self.moments_set,
-                                                       mean_im)
-        self.morder = highest_order
-        return self.moments_set
-
-    def cumulants_images(self, highest_order=4, m_set=None):
+    def cumulants_images(self, highest_order=4, m_set=None,
+                         bleach_correction=False,
+                         smooth_kernel=251, fbc=0.04):
         """
         Calculate cumulant-reconstructed images to the highest order.
 
@@ -193,30 +226,46 @@ class Data:
         m_set : dict
             order number (int) -> image (ndarray)
             A dictionary of calcualted moment-reconstructed images.
+        bleach_correction : bool
+            Whether to use bleaching correction.
+        smooth_kernel : int, optional
+            The size of the median filter window. Only used when bleach
+            correction is True.       
+        fbc : float, optional
+            The fraction of signal decrease within each block compared 
+            to the total signal decrease. Only used when bleach correction
+            is True.
 
         Returns
         -------
-        cumulants : dict
+        cumulants_set, cumulants_set_bc : dict
             order number (int) -> image (ndarray)
             A dictionary of calcualted cumulant-reconstructed images.
         """
-        self.corder = highest_order
-        if m_set is None:    # moments not provided
-            if self.moments_set == {}:    # moments have not calculated
-                m_set = self.calc_moments_set(highest_order)
+        if bleach_correction is False:
+            self.corder = highest_order
+            if m_set is None:    # moments not provided
+                if self.moments_set == {}:    # moments have not calculated
+                    m_set = self.calc_moments_set(highest_order)
+                else:
+                    if self.corder > self.morder:
+                        m_set = self.calc_moments_set(highest_order)
+                    else:
+                        m_set = self.moments_set
             else:
                 if self.corder > self.morder:
                     m_set = self.calc_moments_set(highest_order)
                 else:
                     m_set = self.moments_set
-        else:
-            if self.corder > self.morder:
-                m_set = self.calc_moments_set(highest_order)
-            else:
-                m_set = self.moments_set
 
-        self.cumulants_set = reconstruction.calc_cumulants_from_moments(m_set)
-        return self.cumulants_set
+            self.cumulants_set = reconstruction.calc_cumulants_from_moments(
+                m_set)
+            return self.cumulants_set
+        else:
+            self.cumulants_set_bc = reconstruction.block_ave_cumulants(
+                self.filepath, self.filename,
+                highest_order, smooth_kernel, fbc)
+            return self.cumulants_set_bc
 
     def ldrc(self, order=6, window_size=[25, 25], mask_im=None, input_im=None):
         """
@@ -319,11 +368,11 @@ class Data:
         filename = self.filename[:-4]
         if return_option is False:
             f.fourier_interp_tiff(self.filepath, filename,
-                                        interp_num_lst, mvlength,
-                                        save_option, return_option)
+                                  interp_num_lst, mvlength,
+                                  save_option, return_option)
         else:
             self.finterps = f.fourier_interp_tiff(self.filepath,
-                                                        filename, interp_num_lst, mvlength, save_option, return_option)
+                                                  filename, interp_num_lst, mvlength, save_option, return_option)
             return self.finterps
 
     def finterp_image(self, input_im=None, interp_num_lst=[2, 4]):

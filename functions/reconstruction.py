@@ -1,24 +1,47 @@
 from . import finterp as f
+from . import filtering
 import numpy as np
 import tifffile as tiff
 import scipy.special
 import sys
+import collections
+from scipy import signal
 
 
-def average_image(filepath, filename):
+def average_image(filepath, filename, frames=[]):
     """
-    Get the average image for a video file (tiff stack).
+    Get the average image for a video file (tiff stack), either for the
+    whole video or for user defined frames. 
+
+    Parameters
+    ----------
+    filepath : str
+        Path to the tiff file.
+    filename : str
+        Name of the tiff file.
+    frames : list of int, optional
+        Start and end frame number if not the whole video is used.
+
+    Returns
+    -------
+    mean_im : ndarray
+        The average image.    
     """
     imstack = tiff.TiffFile(filepath + '/' + filename)
     xdim, ydim = np.shape(imstack.pages[0])
     mvlength = len(imstack.pages)
     mean_im = np.zeros((xdim, ydim))
 
-    for frame_num in range(mvlength):
-        im = tiff.imread(filepath + '/' + filename, key=frame_num)
-        mean_im = mean_im + im
-
-    mean_im = mean_im / mvlength
+    if frames:
+        for frame_num in range(frames[0], frames[1]):
+            im = tiff.imread(filepath + '/' + filename, key=frame_num)
+            mean_im = mean_im + im
+        mean_im = mean_im / (frames[1] - frames[0])
+    else:
+        for frame_num in range(mvlength):
+            im = tiff.imread(filepath + '/' + filename, key=frame_num)
+            mean_im = mean_im + im
+        mean_im = mean_im / mvlength
 
     return mean_im
 
@@ -26,6 +49,7 @@ def average_image(filepath, filename):
 def average_image_with_finterp(filepath, filename, interp_num):
     """
     Get the average image with fourier interpolation for a video file.
+
     Parameters
     ----------
     filepath : str
@@ -62,6 +86,7 @@ def calc_moment_im(filepath, filename, order, mvlength=0, mean_im=None):
         The length of video for the reconstruction.
     mean_im : ndarray
         Average image of the tiff stack.
+
     Returns
     -------
     moment_im : ndarray
@@ -202,6 +227,7 @@ def calc_cumulants_from_moments(moment_set):
     moment_set : dict
         order number (int) -> image (ndarray)
         A dictionary of calcualted moment-reconstructed images.
+
     Returns
     -------
     k_set : dict
@@ -219,3 +245,293 @@ def calc_cumulants_from_moments(moment_set):
                              moment_set[i] for i in range(1, order)]), axis=0)
 
     return k_set
+
+
+def calc_block_moments(filepath, filename, highest_order, frames=[]):
+    """
+    Get moment-reconstructed images for user-defined frames (block) of
+    a video file(tiff stack). 
+
+    Parameters
+    ----------
+    filepath : str
+        Path to the tiff file.
+    filename : str
+        Name of the tiff file.
+    highest_order : int
+        The highest order number of moment-reconstructed images.
+    frames : list of int
+        Start and end frame number.
+
+    Returns
+    -------
+    m_set : dict
+        order number (int) -> image (ndarray)
+        A dictionary of calcualted moment-reconstructed images.
+
+    Notes
+    -----
+    Similar to 'calc_moments'. Here we omit previously calculated m_set 
+    and mean_im as inputs since a block usually has much fewer number of
+    frames and takes shorter calculation time.
+    """
+    mean_im = average_image(filepath, filename, frames)
+    imstack = tiff.TiffFile(filepath + '/' + filename)
+    xdim, ydim = np.shape(imstack.pages[0])
+    block_length = frames[1]-frames[0]
+    m_set = {}
+
+    for order in range(highest_order):
+        m_set[order+1] = np.zeros((xdim, ydim))
+        for frame_num in range(frames[0], frames[1]):
+            im = tiff.imread(filepath + '/' + filename, key=frame_num)
+            m_set[order+1] = m_set[order+1] + \
+                np.power(im - mean_im, order+1)
+        m_set[order+1] = np.int64(m_set[order+1] / block_length)
+        sys.stdout.write('\r')
+        sys.stdout.write("[{:{}}] {:.1f}%".format(
+            "="*int(30/(highest_order-1)*order), 29,
+            (100/(highest_order-1)*order)))
+        sys.stdout.flush()
+    print('\n')
+    return m_set
+
+
+def calc_total_signal(filepath, filename):
+    """
+    Calculate the total signal intensity of each frame for the whole 
+    video (tiff stack).
+
+    Parameters
+    ----------
+    filepath : str
+        Path to the tiff file.
+    filename : str
+        Name of the tiff file.
+
+    Returns
+    -------
+    total_signal : 1darray
+        Signal intensity of each frame ordered by the frame number.
+    """
+    imstack = tiff.TiffFile(filepath + '/' + filename)
+    mvlength = len(imstack.pages)
+    total_signal = np.zeros(mvlength)
+
+    for frame_num in range(mvlength):
+        im = tiff.imread(filepath + '/' + filename, key=frame_num)
+        total_signal[frame_num] = sum(sum(im))
+    return total_signal
+
+
+def cut_frames(signal_level, fbc=0.04):
+    """
+    Find the list of frame number to cut the whole signal plot into seperate
+    blocks based on the change of total signal intensity. 
+
+    Parameters
+    ----------
+    signal_level : 1darray
+        Signal change over time (can be derived from 'calc_total_signal').
+    fbc : float
+        The fraction of signal decrease within each block compared to the
+        total signal decrease.
+
+    Returns
+    -------
+    bounds : list of int
+        Signal intensities on the boundary of each block.
+    frame_lst : list of int
+        Frame number where to cut the whole signal plot into blocks.
+
+    Notes
+    -----
+    The number of blocks is the inverse of the bleaching correction factor, 
+    fbc. For instance, if fbc=0.04, it means that in each block, the 
+    decrease in signal intensity is 4% if the total decrease, and the whole
+    plot / video is cut into 25 blocks. For some data, it is possible that 
+    the maximun signal intensity does not appear at the beginning of the 
+    signal plot. Here, we consider all frames before the maximum in the 
+    same block as the maximum frame / intensity since usually the number 
+    of frames is not too large. The user can add in extra blocks if the 
+    initial intensity is much smaller than the maximum.
+    """
+    max_intensity, min_intensity = np.max(signal_level), np.min(signal_level)
+    frame_num = np.argmax(signal_level)
+    total_diff = max_intensity - min_intensity
+    block_num = int(1/fbc)
+    frame_lst = []
+    # lower bound of intensity for each block
+    bounds = [int(max_intensity-total_diff*i*fbc)
+              for i in range(1, block_num+1)]
+    i = 0
+    while frame_num < len(signal_level) and i <= block_num:
+        if signal_level[frame_num] < bounds[i]:
+            frame_lst.append(frame_num)
+            frame_num += 1
+            i += 1
+        else:
+            frame_num += 1
+    frame_lst = [0] + frame_lst + [len(signal_level)]
+    bounds = [int(max_intensity)] + bounds
+    return bounds, frame_lst
+
+
+def moments_all_blocks(filepath, filename,
+                       highest_order, smooth_kernel=251, fbc=0.04):
+    """
+    Get moment-reconstructed images for seperate blocks with user-defined
+    noise filtering and bleaching correction factor (fbc).
+
+    Within each block, the amount of signal decrease is identical. This 
+    amount of signal decrease is characterized by the bleaching correction 
+    factor, fbc, which is the fractional signal decrease within each block
+    (as compared to the total signal decrease over the whole signal plot). 
+
+    Parameters
+    ----------
+    filepath : str
+        Path to the tiff file.
+    filename : str
+        Name of the tiff file.
+    highest_order : int
+        The highest order number of moment-reconstructed images.
+    smooth_kernel : int
+        The size of the median filter ('filtering.med_smooth') window.
+    fbc : float
+        The fraction of signal decrease within each block compared to the
+        total signal decrease.
+
+    Returns
+    -------
+    m_set_all_blocks : dict
+        block_number (int) -> {order number (int) -> image (ndarray)}
+        A dictionary of moment-reconstructed images of each block.
+
+    Notes
+    -----
+    Similar to 'calc_moments'. Here we omit previously calculated m_set 
+    and mean_im as inputs since a block usually has much fewer number of
+    frames and takes shorter calculation time.
+    """
+    all_signal = calc_total_signal(filepath, filename)
+    filtered_signal = filtering.med_smooth(all_signal, smooth_kernel)
+    _, cut_frame = cut_frames(filtered_signal, fbc)
+    block_num = int(1/fbc)
+    m_set_all_blocks = {}
+    for i in range(block_num):
+        print('Calculating moments of block %d...' % i)
+        m_set_all_blocks[i] = calc_block_moments(filepath,
+                                                 filename,
+                                                 highest_order,
+                                                 [cut_frame[i],
+                                                  cut_frame[i+1]])
+
+    return m_set_all_blocks
+
+
+def cumulants_all_blocks(m_set_all_blocks):
+    """
+    Calculate cumulant-reconstructed images from moment-reconstructed images
+    of each block. Similar to 'calc_cumulants_from_moments'.
+    """
+    if m_set_all_blocks == {}:
+        raise Exception("'moment_set' is empty.")
+
+    k_set_all_blocks = {i: calc_cumulants_from_moments(m_set_all_blocks[i])
+                        for i in m_set_all_blocks}
+    return k_set_all_blocks
+
+
+def block_ave_cumulants(filepath, filename,
+                        highest_order, smooth_kernel=251, fbc=0.04):
+    """
+    Get average cumulant-reconstructed images of all blocks determined by 
+    user-defined noise filtering and bleaching correction factor (fbc).
+
+    Within each block, the amount of signal decrease is identical. This 
+    amount of signal decrease is characterized by the bleaching correction 
+    factor, fbc, which is the fractional signal decrease within each block
+    (as compared to the total signal decrease over the whole signal plot). 
+
+    Parameters
+    ----------
+    filepath : str
+        Path to the tiff file.
+    filename : str
+        Name of the tiff file.
+    highest_order : int
+        The highest order number of moment-reconstructed images.
+    smooth_kernel : int
+        The size of the median filter ('filtering.med_smooth') window.
+    fbc : float
+        The fraction of signal decrease within each block compared to the
+        total signal decrease.
+
+    Returns
+    -------
+    ave_k_set : dict
+        order number (int) -> image (ndarray)
+        A dictionary of avereage cumulant-reconstructed images of all blocks.
+
+    Notes
+    -----
+    For more information on noise filtering and bleaching corrextion, please
+    see appendix 3 of [1].
+
+    References
+    ----------
+    .. [1] X. Yi, and S. Weiss. "Cusp-artifacts in high order superresolution 
+    optical fluctuation imaging." bioRxiv: 545574 (2019).
+    """
+    k_set_all_blocks = cumulants_all_blocks(
+        moments_all_blocks(filepath, filename,
+                           highest_order,
+                           smooth_kernel, fbc))
+    block_num = len(k_set_all_blocks)
+    k_set_lst = list(k_set_all_blocks.values())
+    counter = collections.Counter()
+    for d in k_set_lst:
+        counter.update(d)
+    ave_k_set = dict(counter)
+    ave_k_set = {i: ave_k_set[i]/block_num for i in ave_k_set}
+    return ave_k_set
+
+
+def block_ave_moments(filepath, filename,
+                      highest_order, smooth_kernel=251, fbc=0.04):
+    """
+    Get average moment-reconstructed images of all blocks determined by 
+    user-defined noise filtering and bleaching correction factor (fbc).
+    Similar to 'block_ave_cumulants'.
+
+    Parameters
+    ----------
+    filepath : str
+        Path to the tiff file.
+    filename : str
+        Name of the tiff file.
+    highest_order : int
+        The highest order number of moment-reconstructed images.
+    smooth_kernel : int
+        The size of the median filter ('filtering.med_smooth') window.
+    fbc : float
+        The fraction of signal decrease within each block compared to the
+        total signal decrease.
+
+    Returns
+    -------
+    ave_m_set : dict
+        order number (int) -> image (ndarray)
+        A dictionary of avereage moment-reconstructed images of all blocks.
+    """
+    m_set_all_blocks = moments_all_blocks(filepath, filename,
+                                          highest_order, smooth_kernel, fbc)
+    block_num = len(m_set_all_blocks)
+    m_set_lst = list(m_set_all_blocks.values())
+    counter = collections.Counter()
+    for d in m_set_lst:
+        counter.update(d)
+    ave_m_set = dict(counter)
+    ave_m_set = {i: ave_m_set[i]/block_num for i in ave_m_set}
+    return ave_m_set

@@ -1,6 +1,7 @@
 import numpy as np
 from . import masks
 import sys
+from scipy import signal
 
 
 def filter1d_same(time_series, noise_filter):
@@ -72,3 +73,15 @@ def noise_filter1d(dset, im_set, noise_filter=masks.gauss1d_mask((1, 21), 2),
 
     if return_option is True:
         return m_filtered
+
+
+def med_smooth(ori_signal, kernel_size=251):
+    """
+    Perform a one-dimensional median filter with 'reflect' padding.
+    For more information, please check scipy.signal.medfilt.
+    """
+    signal_pad = np.append(np.append(ori_signal[0:kernel_size][::-1],
+                                     ori_signal),
+                           ori_signal[-kernel_size:][::-1])
+    filtered_signal = signal.medfilt(signal_pad, kernel_size)
+    return filtered_signal[kernel_size:-kernel_size]
