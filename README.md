@@ -27,5 +27,5 @@ The documentation for this repository is currently under construction (under `./
 TBD. Please send an email to Xiyu Yi (yi10@llnl.gov) or Yuting Miao (ytmiao@ucla.edu) for inquiries.
 
 ### Notice
-The work performed by Xiyu Yi and Yuting Miao is supported under the auspices of the U.S. Department of Energy by Lawrence Livermore National Laboratory under Contract DE-AC52-07NA27344. Release number: LLNL-CODE-816626 Please refer to NOTICE.md file for details.
+The work performed by Xiyu Yi is supported under the auspices of the U.S. Department of Energy by Lawrence Livermore National Laboratory under Contract DE-AC52-07NA27344. Release number: LLNL-CODE-816626 Please refer to NOTICE.md file for details.
 
