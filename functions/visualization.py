@@ -239,7 +239,6 @@ def save_avi(vid_array, cmap='pink', filename='out.avi', display_contrast=1):
     cv2.destroyAllWindows()
 
 
-
 def enhance_contrast(im, cmap='pink', display_contrast=1):
     """Enhance contrast of the input image."""
     im = ensure_positive(im)
@@ -248,3 +247,31 @@ def enhance_contrast(im, cmap='pink', display_contrast=1):
     color_img[color_img > 255] = 255
     color_img = np.uint8(color_img)
     return color_img
+
+
+def add_transmap(im, trans_map, cmap='cool'):
+    """
+    Prepare the image for visualization by adding a transparency map.
+    It colorcodes 'im' with colormap 'cmap', and multiplied by the
+    transparancy map 'trans_map'. 
+    Parameters
+    ----------
+    im : 2darray
+        A gray-scale image encoding the parameters that need to be color-
+        coded.
+    trans_map : 2darray
+        A grey-scale mask encoding the intensity information.
+    cmap : str
+        A colormap provided by 'matplotlib' or defined by the user.
+
+    Returns
+    -------
+    im_color : 3darray
+        A RGBA image array for visualization.
+    """
+    im_color = ind2cmap(im, cmap)
+    trans_map = (trans_map - np.min(trans_map)) / \
+        (np.max(trans_map) - np.min(trans_map))
+    for i in range(3):
+        im_color[:,:,i] = im_color[:,:,i] * trans_map
+    return im_color

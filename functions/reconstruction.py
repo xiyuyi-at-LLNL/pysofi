@@ -1,11 +1,13 @@
 from . import finterp as f
 from . import filtering
+from . import moca
 import numpy as np
 import tifffile as tiff
 import scipy.special
 import sys
 import collections
 from scipy import signal
+import itertools
 
 
 def average_image(filepath, filename, frames=[]):
@@ -67,10 +69,11 @@ def average_image_with_finterp(filepath, filename, interp_num):
     """
     original_mean_im = average_image(filepath, filename)
     finterp_mean_im = f.fourier_interp_array(original_mean_im, [interp_num])
+
     return finterp_mean_im[0]
 
 
-def calc_moment_im(filepath, filename, order, mvlength=0, mean_im=None):
+def calc_moment_im(filepath, filename, order, frames=[], mean_im=None):
     """
     Get one moment-reconstructed image of a defined order for a video file.
 
@@ -82,8 +85,8 @@ def calc_moment_im(filepath, filename, order, mvlength=0, mean_im=None):
         Name of the tiff file.
     order : int
         The order number of moment-reconstructed image.
-    mvlength : int
-        The length of video for the reconstruction.
+    frames : list of int
+        The start and end frame number.
     mean_im : ndarray
         Average image of the tiff stack.
 
@@ -93,21 +96,32 @@ def calc_moment_im(filepath, filename, order, mvlength=0, mean_im=None):
         The moments-reconstructed image.
     """
     if mean_im is None:
-        mean_im = average_image(filepath, filename)
+        mean_im = average_image(filepath, filename, frames)
     imstack = tiff.TiffFile(filepath + '/' + filename)
     xdim, ydim = np.shape(imstack.pages[0])
-    if mvlength == 0:
-        mvlength = len(imstack.pages)
     moment_im = np.zeros((xdim, ydim))
-    for frame_num in range(mvlength):
-        im = tiff.imread(filepath + '/' + filename, key=frame_num)
-        moment_im = moment_im + (im - mean_im)**order
-        sys.stdout.write('\r')
-        sys.stdout.write("[{:{}}] {:.1f}%".format(
-            "="*int(30/(mvlength-1)*frame_num), 29,
-            (100/(mvlength-1)*frame_num)))
-        sys.stdout.flush()
-    moment_im = np.int64(moment_im / mvlength)
+    if frames:
+        for frame_num in range(frames[0], frames[1]):
+            im = tiff.imread(filepath + '/' + filename, key=frame_num)
+            moment_im = moment_im + (im - mean_im)**order
+            sys.stdout.write('\r')
+            sys.stdout.write("[{:{}}] {:.1f}%".format(
+                "="*int(30/(frames[1]-frames[0]-1)*frame_num), 29,
+                (100/(frames[1]-frames[0]-1)*frame_num)))
+            sys.stdout.flush()
+        moment_im = np.int64(moment_im / (frames[1] - frames[0]))
+    else:
+        mvlength = len(imstack.pages)
+        for frame_num in range(mvlength):
+            im = tiff.imread(filepath + '/' + filename, key=frame_num)
+            moment_im = moment_im + (im - mean_im)**order
+            sys.stdout.write('\r')
+            sys.stdout.write("[{:{}}] {:.1f}%".format(
+                "="*int(30/(mvlength-1)*frame_num), 29,
+                (100/(mvlength-1)*frame_num)))
+            sys.stdout.flush()
+        moment_im = np.int64(moment_im / mvlength)
+
     return moment_im
 
 
@@ -154,6 +168,7 @@ def moment_im_with_finterp(filepath, filename, order, interp_num,
             (100/(mvlength-1)*frame_num)))
         sys.stdout.flush()
     moment_im = np.int64(moment_im / mvlength)
+
     return moment_im
 
 
@@ -215,6 +230,7 @@ def calc_moments(filepath, filename, highest_order, m_set={}, mean_im=None):
                 sys.stdout.flush()
             m_set[order+1] = np.int64(m_set[order+1] / mvlength)
             print('\n')
+
     return m_set
 
 
@@ -294,6 +310,7 @@ def calc_block_moments(filepath, filename, highest_order, frames=[]):
             (100/(highest_order-1)*order)))
         sys.stdout.flush()
     print('\n')
+
     return m_set
 
 
@@ -321,6 +338,7 @@ def calc_total_signal(filepath, filename):
     for frame_num in range(mvlength):
         im = tiff.imread(filepath + '/' + filename, key=frame_num)
         total_signal[frame_num] = sum(sum(im))
+    
     return total_signal
 
 
@@ -374,6 +392,7 @@ def cut_frames(signal_level, fbc=0.04):
             frame_num += 1
     frame_lst = [0] + frame_lst + [len(signal_level)]
     bounds = [int(max_intensity)] + bounds
+
     return bounds, frame_lst
 
 
@@ -440,6 +459,7 @@ def cumulants_all_blocks(m_set_all_blocks):
 
     k_set_all_blocks = {i: calc_cumulants_from_moments(m_set_all_blocks[i])
                         for i in m_set_all_blocks}
+
     return k_set_all_blocks
 
 
@@ -495,6 +515,7 @@ def block_ave_cumulants(filepath, filename,
         counter.update(d)
     ave_k_set = dict(counter)
     ave_k_set = {i: ave_k_set[i]/block_num for i in ave_k_set}
+    
     return ave_k_set
 
 
@@ -534,4 +555,199 @@ def block_ave_moments(filepath, filename,
         counter.update(d)
     ave_m_set = dict(counter)
     ave_m_set = {i: ave_m_set[i]/block_num for i in ave_m_set}
+    
     return ave_m_set
+
+
+def calc_xc_im(filepath, filename, ri_range, frames=[]):
+    """
+    Get cross-cumulant image with different pixel combinations.
+
+    Parameters
+    ----------
+    filepath : str
+        Path to the tiff file.
+    filename : str
+        Name of the tiff file.
+    ri_range : int
+        Maximium distance (# pixels) between the original the selected pixel.
+    frames : list of int
+        The start and end frame number.
+
+    Returns
+    -------
+    xc : dict
+        pixel (tuple) -> image (ndarray)
+        A dictionary of reconstructed images with pixel index as keys.
+    """
+    series_length = ((2 * ri_range+1) ** 2 - 1) // 2
+    ri_series = [(i, j) for i in range(-ri_range, 0)
+                 for j in range(-ri_range, ri_range+1)] + \
+                     [(0, i) for i in range(-ri_range, 0)]
+    imstack = tiff.TiffFile(filepath + '/' + filename)
+    xdim, ydim = np.shape(imstack.pages[0])
+    im_mean = average_image(filepath, filename, frames)
+    imI, imJ = {}, {}
+    xc = {ri_series[i]: np.zeros((xdim-2*ri_range, ydim-2*ri_range))
+          for i in range(series_length)}
+    if frames:
+        mvlength = frames[1] - frames[0]
+        for frame_num in range(frames[0], frames[1]):
+            im = tiff.imread(filepath + '/' + filename, key=frame_num) - \
+                im_mean
+            for series, xc_im in xc.items():
+                imI[series] = im[ri_range+series[0]:xdim-ri_range+series[0],
+                                 ri_range+series[1]:ydim-ri_range+series[1]]
+                imJ[series] = im[ri_range-series[0]:xdim-ri_range-series[0],
+                                 ri_range-series[1]:ydim-ri_range-series[1]]
+                xc[series] = xc_im + np.multiply(imI[series], imJ[series])
+    else:
+        mvlength = len(imstack.pages)
+        for frame_num in range(mvlength):
+            im = tiff.imread(filepath + '/' + filename, key=frame_num) - \
+                im_mean
+            for series, xc_im in xc.items():
+                imI[series] = im[ri_range+series[0]:xdim-ri_range+series[0],
+                                 ri_range+series[1]:ydim-ri_range+series[1]]
+                imJ[series] = im[ri_range-series[0]:xdim-ri_range-series[0],
+                                 ri_range-series[1]:ydim-ri_range-series[1]]
+                xc[series] = xc_im + np.multiply(imI[series], imJ[series])
+    for series, xc_im in xc.items():
+        xc[series] = xc_im / mvlength
+
+    return xc
+
+
+def calc_moments_with_lag(filepath, filename, tauSeries, frames=[]):
+    """
+    Get moment-reconnstructed images with defined time lags.
+
+    Parameters
+    ----------
+    filepath : str
+        Path to the tiff file.
+    filename : str
+        Name of the tiff file.
+    tauSeries : list of int
+        A list of time lags for frames contribute to moment reconstruction.
+        The first element is recommended to be 0, and there should seven 
+        elements in the list. 
+    frames : list of int
+        The start and end frame number.
+
+    Returns
+    -------
+    m_set : dict
+        order (int) -> dict (partition (tuple) -> image (ndarray))
+        A nested dictionary of moment-reconstructions of all partitions.
+    """
+    if len(tauSeries) < 2:
+        raise Exception("The number of time lags should be more than one.")
+    if tauSeries[0] != 0:
+        raise Exception("The first time lag should be zero.")
+    max_order = len(tauSeries)
+    mean_im = average_image(filepath, filename, frames)
+    xdim, ydim = np.shape(mean_im)
+
+    # define frame range based on tauSeries
+    if frames:
+        start_frame, end_frame = frames[0], frames[1] - max(tauSeries)
+        mvlength = end_frame - start_frame
+    else:
+        imstack = tiff.TiffFile(filepath + '/' + filename)
+        mvlength = len(imstack.pages)
+        start_frame, end_frame = 0, mvlength - max(tauSeries)
+        mvlength = end_frame - start_frame
+
+    # calculate partitions and their combinations
+    seq = list(range(len(tauSeries)))
+    if max_order > 3:
+        partitions = {element_num: [subset 
+        for subset in itertools.combinations(seq, element_num)] 
+        for element_num in range(2, max_order-1)}
+
+    # set up dictionaries and initialize with zeros array
+    m_set = {order: {} for order in range(2, max_order+1)}
+    for order in range(2, max_order+1):
+        m_set[order][tuple(range(0, order))] = np.zeros((xdim, ydim))
+    if max_order > 3:
+        for order in range(2, max_order-1):
+            m_set[order] = {partitions[order][i]: np.zeros(
+                (xdim, ydim)) for i in range(len(partitions[order]))}
+
+    # calculate moments
+    for frame_num in range(start_frame, end_frame):
+        if max_order > 3:
+            # 1. partitions
+            for order in range(2, max_order-1):
+                for im_group in partitions[order]:
+                    imSeries = np.array([tiff.imread(
+                        filepath + '/' + filename, 
+                        key=frame_num+tauSeries[i])-mean_im 
+                        for i in im_group])
+                    m_set[order][im_group] = m_set[order][im_group] + \
+                        np.prod(imSeries, axis=0) / mvlength
+            # 2. the whole lag series
+            for order in range(max_order-1, max_order+1):
+                imSeries = np.array([tiff.imread(
+                    filepath + '/' + filename, key=frame_num+i)-mean_im 
+                    for i in tauSeries])
+                m_set[order][tuple(range(0, order))] = m_set[order][tuple(
+                    range(0, order))] + \
+                        np.prod(imSeries[:order], axis=0) / mvlength
+        else:
+            # only the whole lag series
+            imSeries = np.array([tiff.imread(
+                filepath + '/' + filename, key=frame_num+i)-mean_im 
+                for i in tauSeries])
+            for order in range(2, max_order+1):
+                m_set[order][tuple(range(0, order))] = m_set[order][tuple(
+                    range(0, order))] + \
+                        np.prod(imSeries[:order], axis=0) / mvlength
+
+    return m_set
+
+
+def calc_cumulants_from_moments_with_lag(m_set, tauSeries):
+    """
+    Calculate cumulant-reconstructed images from moment-reconstructed images
+    with time lags.
+
+    Parameters
+    ----------
+    m_set : dict
+        order (int) -> dict (partition (tuple) -> image (ndarray))
+        A nested dictionary of moment-reconstructions of all partitions that
+        calculated from 'calc_moments_with_lag'.
+    tauSeries : list of int
+        A list of time lags for frames contribute to moment reconstruction.
+        The first element is recommended to be 0, and there should be seven 
+        elements in the list. The values should be the same as the input for
+        'calc_moments_with_lag'.
+
+    Returns
+    -------
+    k_set : dict
+        order number (int) -> image (ndarray)
+        A dictionary of calcualted cumulant-reconstructed images with time 
+        lags.
+    """
+    k_set = {}
+    seq = list(range(len(tauSeries)))
+    max_order = len(tauSeries)
+    for order in range(2, max_order+1):
+        k_set[order] = m_set[order][tuple(range(0,order))]
+    if max_order > 3:
+        for order in range(4,max_order+1):
+            seq = list(range(order))
+            max_partition_num = max_order // 2
+            for partition_num in range(2, max_partition_num+1):
+                partition_comb = moca.sorted_k_partitions(seq, partition_num)
+                for part in partition_comb:
+                    k_set[order] = k_set[order] + \
+                        (-1)**(partition_num-1) * \
+                            np.math.factorial(partition_num-1) * \
+                                np.prod([m_set[len(i)][i] for i in part], 
+                                         axis=0)
+
+    return k_set
