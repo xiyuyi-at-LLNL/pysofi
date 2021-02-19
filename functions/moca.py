@@ -2,6 +2,7 @@ from . import reconstruction as rec
 from . import visualization as vis
 from . import masks
 import numpy as np
+import sys
 import tifffile as tiff
 import matplotlib.pyplot as plt
 from scipy import ndimage
@@ -115,11 +116,11 @@ def esti_rhoeps(xn_set, res=1000):
             inds = np.intersect1d(
                        np.intersect1d(
                            np.intersect1d(
-                               np.intersect1d(np.where(eps_set[3]>0), 
-                                              np.where(eps_set[4]>0)), 
-                           np.where(eps_set[5]>0)), 
-                       np.where(eps_set[6]>0)), 
-                   np.where(eps_set[7]>0))
+                               np.intersect1d(np.where(eps_set[3]>=0), 
+                                              np.where(eps_set[4]>=0)), 
+                           np.where(eps_set[5]>=0)), 
+                       np.where(eps_set[6]>=0)), 
+                   np.where(eps_set[7]>=0))
             if len(inds) > 0:
                 yset = np.array([eps_set[3], 
                                  abs(eps_set[4])**(1/2), 
@@ -134,6 +135,57 @@ def esti_rhoeps(xn_set, res=1000):
             else:
                 rho_map[i, j], rho_tru[i, j], eps_map[i, j] = 0, 0, 0
     return rho_map, rho_tru, eps_map
+
+
+def calc_block_moments(filepath, filename, highest_order, frames=[]):
+    """
+    Get moment-reconstructed images for user-defined frames (block) of
+    a video file(tiff stack). 
+
+    Parameters
+    ----------
+    filepath : str
+        Path to the tiff file.
+    filename : str
+        Name of the tiff file.
+    highest_order : int
+        The highest order number of moment-reconstructed images.
+    frames : list of int
+        Start and end frame number.
+
+    Returns
+    -------
+    m_set : dict
+        order number (int) -> image (ndarray)
+        A dictionary of calcualted moment-reconstructed images.
+
+    Notes
+    -----
+    Similar to 'calc_moments'. Here we omit previously calculated m_set 
+    and mean_im as inputs since a block usually has much fewer number of
+    frames and takes shorter calculation time.
+    """
+    mean_im = rec.average_image(filepath, filename, frames)
+    imstack = tiff.TiffFile(filepath + '/' + filename)
+    xdim, ydim = np.shape(imstack.pages[0])
+    block_length = frames[1]-frames[0]
+    m_set = {}
+
+    for order in range(highest_order):
+        m_set[order+1] = np.zeros((xdim, ydim))
+        for frame_num in range(frames[0], frames[1]):
+            im = tiff.imread(filepath + '/' + filename, key=frame_num)
+            m_set[order+1] = m_set[order+1] + \
+                np.power(im - mean_im, order+1)
+        m_set[order+1] = m_set[order+1] / block_length
+        sys.stdout.write('\r')
+        sys.stdout.write("[{:{}}] {:.1f}%".format(
+            "="*int(30/(highest_order-1)*order), 29,
+            (100/(highest_order-1)*order)))
+        sys.stdout.flush()
+    print('\n')
+
+    return m_set
 
 
 def moca(filename, filepath, tauSeries, frames=[], mask_dim=(301, 301), 
@@ -186,7 +238,7 @@ def moca(filename, filepath, tauSeries, frames=[], mask_dim=(301, 301),
 
     # 2. cumulants reconstruction
     if sum(tauSeries) == 0:
-        m_set = rec.calc_block_moments(
+        m_set = calc_block_moments(
             filepath, filename, order, frames)
         k_set = rec.calc_cumulants_from_moments(m_set)
     else:

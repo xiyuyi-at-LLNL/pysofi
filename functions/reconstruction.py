@@ -109,7 +109,7 @@ def calc_moment_im(filepath, filename, order, frames=[], mean_im=None):
                 "="*int(30/(frames[1]-frames[0]-1)*frame_num), 29,
                 (100/(frames[1]-frames[0]-1)*frame_num)))
             sys.stdout.flush()
-        moment_im = np.int64(moment_im / (frames[1] - frames[0]))
+        moment_im = moment_im / (frames[1] - frames[0])
     else:
         mvlength = len(imstack.pages)
         for frame_num in range(mvlength):
@@ -120,7 +120,7 @@ def calc_moment_im(filepath, filename, order, frames=[], mean_im=None):
                 "="*int(30/(mvlength-1)*frame_num), 29,
                 (100/(mvlength-1)*frame_num)))
             sys.stdout.flush()
-        moment_im = np.int64(moment_im / mvlength)
+        moment_im = moment_im / mvlength
 
     return moment_im
 
