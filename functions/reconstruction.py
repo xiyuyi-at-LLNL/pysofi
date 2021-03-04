@@ -106,8 +106,8 @@ def calc_moment_im(filepath, filename, order, frames=[], mean_im=None):
             moment_im = moment_im + (im - mean_im)**order
             sys.stdout.write('\r')
             sys.stdout.write("[{:{}}] {:.1f}%".format(
-                "="*int(30/(frames[1]-frames[0]-1)*frame_num), 29,
-                (100/(frames[1]-frames[0]-1)*frame_num)))
+                "="*int(30/(frames[1]-frames[0]-1)*(frame_num-frames[0])), 29,
+                (100/(frames[1]-frames[0]-1)*(frame_num-frames[0]))))
             sys.stdout.flush()
         moment_im = moment_im / (frames[1] - frames[0])
     else:
@@ -126,7 +126,7 @@ def calc_moment_im(filepath, filename, order, frames=[], mean_im=None):
 
 
 def moment_im_with_finterp(filepath, filename, order, interp_num,
-                           mvlength=0, mean_im=None):
+                           frames=[], mean_im=None):
     """
     Get one moment-reconstructed image of a defined order for a video file.
 
@@ -155,20 +155,30 @@ def moment_im_with_finterp(filepath, filename, order, interp_num,
 
     imstack = tiff.TiffFile(filepath + '/' + filename)
     xdim, ydim = np.shape(imstack.pages[0])
-    if mvlength == 0:
-        mvlength = len(imstack.pages)
     moment_im = np.zeros(((xdim-1)*interp_num+1, (ydim-1)*interp_num+1))
-    for frame_num in range(mvlength):
-        im = tiff.imread(filepath + '/' + filename, key=frame_num)
-        interp_im = f.fourier_interp_array(im, [interp_num])[0]
-        moment_im = moment_im + (interp_im - mean_im)**order
-        sys.stdout.write('\r')
-        sys.stdout.write("[{:{}}] {:.1f}%".format(
-            "="*int(30/(mvlength-1)*frame_num), 29,
-            (100/(mvlength-1)*frame_num)))
-        sys.stdout.flush()
-    moment_im = np.int64(moment_im / mvlength)
-
+    if frames:
+        for frame_num in range(frames[0], frames[1]):
+            im = tiff.imread(filepath + '/' + filename, key=frame_num)
+            interp_im = f.fourier_interp_array(im, [interp_num])[0]
+            moment_im = moment_im + (interp_im - mean_im)**order
+            sys.stdout.write('\r')
+            sys.stdout.write("[{:{}}] {:.1f}%".format(
+                "="*int(30/(frames[1]-frames[0]-1)*(frame_num-frames[0])), 29,
+                (100/(frames[1]-frames[0]-1)*(frame_num-frames[0]))))
+            sys.stdout.flush()
+        moment_im = np.int64(moment_im / (frames[1] - frames[0]))
+    else:
+    	mvlength = len(imstack.pages)
+    	for frame_num in range(mvlength):
+    		im = tiff.imread(filepath + '/' + filename, key=frame_num)
+    		interp_im = f.fourier_interp_array(im, [interp_num])[0]
+    		moment_im = moment_im + (interp_im - mean_im)**order
+    		sys.stdout.write('\r')
+    		sys.stdout.write("[{:{}}] {:.1f}%".format(
+    			"="*int(30/(mvlength-1)*frame_num), 29,
+    			(100/(mvlength-1)*frame_num)))
+    		sys.stdout.flush()
+    	moment_im = np.int64(moment_im / mvlength)
     return moment_im
 
 

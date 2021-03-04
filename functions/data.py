@@ -98,9 +98,9 @@ class Data:
         self.fbc = 1
         self.n_frames, self.xdim, self.ydim = self.get_dims()
 
-    def average_image(self):
+    def average_image(self, frames=[]):
         """Calculate average image of the tiff video."""
-        self.ave = reconstruction.average_image(self.filepath, self.filename)
+        self.ave = reconstruction.average_image(self.filepath, self.filename, frames)
         return self.ave
 
     def average_image_with_finterp(self, interp_num):
@@ -112,7 +112,7 @@ class Data:
                 self.filepath, self.filename, interp_num)
             return finterp_ave
 
-    def moment_image(self, order=6, mean_im=None, mvlength=0,
+    def moment_image(self, order=6, mean_im=None, mvlength=[],
                      finterp=False, interp_num=1):
         """
         Calculate the moment-reconstructed image of a defined order.
@@ -138,31 +138,27 @@ class Data:
         """
         if finterp is False:
             if order in self.morder_lst:
-                print("this order of \
-                    moments-reconstruction has been calculated")
-            if mean_im is None and self.ave is not None:
-                mean_im = self.ave
+                print("this order has been calculated")
+                print('\n')
             moment_im = reconstruction.calc_moment_im(self.filepath,
                                                       self.filename,
-                                                      order, mvlength,
-                                                      mean_im)
+                                                      order, mvlength)
             self.morder_lst.append(order)
             self.moments_set[order] = moment_im
             return self.moments_set[order]
         else:
             if self.finterp_factor != 1 and interp_num != self.finterp_factor:
-                print('Moments-reconstruction with different interpolation \
-                       factor is calculated ...')
+                print('Different interpolation factor calculating ...')
+                print('\n')
             else:
                 if order in self.morder_finterp_lst:
-                    print("this order of \
-                                moments-reconstruction has been calculated")
-            if mean_im is None and self.ave is not None:
-                mean_im = f.fourier_interp_array(self.ave, [interp_num])
+                    print("this order has been calculated")
+                    print('\n')
             moment_im = reconstruction.moment_im_with_finterp(self.filepath,
                                                               self.filename,
                                                               order, interp_num,
-                                                              mvlength, mean_im)
+                                                              mvlength)
+            #print(np.shape(moment_im))
             self.morder_finterp_lst.append(order)
             self.moments_finterp_set[order] = moment_im
             self.finterp_factor = interp_num
@@ -197,13 +193,9 @@ class Data:
             A dictionary of calcualted moment-reconstructed images.
         """
         if bleach_correction is False:
-            if mean_im is None and self.ave is not None:
-                mean_im = self.ave
             self.moments_set = reconstruction.calc_moments(self.filepath,
                                                            self.filename,
-                                                           highest_order,
-                                                           self.moments_set,
-                                                           mean_im)
+                                                           highest_order)
             self.morder = highest_order
             return self.moments_set
         else:
