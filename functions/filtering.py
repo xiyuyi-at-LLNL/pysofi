@@ -59,7 +59,7 @@ def noise_filter1d(dset, im_set, noise_filter=masks.gauss1d_mask((1, 21), 2),
     xdim, ydim = np.shape(im_set[filenames[0]])
     m_length = len(filenames)
     m_filtered = np.zeros((m_length, xdim, ydim))
-    print('Calculating ...')
+    print('Noise filtering ...')
     for i in range(xdim):
         for j in range(ydim):
             time_series = get_series(i, j)
