@@ -332,7 +332,7 @@ class Data:
                                         deconv_lambda, deconv_iter)
         return self.deconv
 
-    def finterp_tiffstack(self, interp_num_lst=[2, 4], mvlength=None,
+    def finterp_tiffstack(self, interp_num_lst=[2, 4], frames=[],
                           save_option=True, return_option=False):
         """
         Performs fourier interpolation on a tiff image (stack) with a list of 
@@ -343,8 +343,8 @@ class Data:
         ----------
         interp_num_lst : list (int)
             A list of interpolation factors.
-        mvlength : int
-            The frame number of the tiff file (1 for images).
+    frames : list of int
+        The start and end frame number.
         save_option : bool
             Whether to save the interpolated images into tiff files (each 
             interpolation factor seperately).
@@ -360,11 +360,11 @@ class Data:
         filename = self.filename[:-4]
         if return_option is False:
             f.fourier_interp_tiff(self.filepath, filename,
-                                  interp_num_lst, mvlength,
+                                  interp_num_lst, frames,
                                   save_option, return_option)
         else:
             self.finterps = f.fourier_interp_tiff(self.filepath,
-                                                  filename, interp_num_lst, mvlength, save_option, return_option)
+                                                  filename, interp_num_lst, frames, save_option, return_option)
             return self.finterps
 
     def finterp_image(self, input_im=None, interp_num_lst=[2, 4]):

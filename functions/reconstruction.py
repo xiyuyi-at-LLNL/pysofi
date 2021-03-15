@@ -106,8 +106,8 @@ def calc_moment_im(filepath, filename, order, frames=[], mean_im=None):
             moment_im = moment_im + (im - mean_im)**order
             sys.stdout.write('\r')
             sys.stdout.write("[{:{}}] {:.1f}%".format(
-                "="*int(30/(frames[1]-frames[0]-1)*(frame_num-frames[0])), 29,
-                (100/(frames[1]-frames[0]-1)*(frame_num-frames[0]))))
+                "="*int(30/(frames[1]-frames[0])*(frame_num-frames[0]+1)), 29,
+                (100/(frames[1]-frames[0])*(frame_num-frames[0]+1))))
             sys.stdout.flush()
         moment_im = moment_im / (frames[1] - frames[0])
     else:
@@ -117,8 +117,8 @@ def calc_moment_im(filepath, filename, order, frames=[], mean_im=None):
             moment_im = moment_im + (im - mean_im)**order
             sys.stdout.write('\r')
             sys.stdout.write("[{:{}}] {:.1f}%".format(
-                "="*int(30/(mvlength-1)*frame_num), 29,
-                (100/(mvlength-1)*frame_num)))
+                "="*int(30/mvlength*(frame_num+1)), 29,
+                (100/mvlength*(frame_num+1))))
             sys.stdout.flush()
         moment_im = moment_im / mvlength
 
@@ -163,8 +163,8 @@ def moment_im_with_finterp(filepath, filename, order, interp_num,
             moment_im = moment_im + (interp_im - mean_im)**order
             sys.stdout.write('\r')
             sys.stdout.write("[{:{}}] {:.1f}%".format(
-                "="*int(30/(frames[1]-frames[0]-1)*(frame_num-frames[0])), 29,
-                (100/(frames[1]-frames[0]-1)*(frame_num-frames[0]))))
+                "="*int(30/(frames[1]-frames[0])*(frame_num-frames[0]+1)), 29,
+                (100/(frames[1]-frames[0])*(frame_num-frames[0]+1))))
             sys.stdout.flush()
         moment_im = np.int64(moment_im / (frames[1] - frames[0]))
     else:
@@ -175,8 +175,8 @@ def moment_im_with_finterp(filepath, filename, order, interp_num,
     		moment_im = moment_im + (interp_im - mean_im)**order
     		sys.stdout.write('\r')
     		sys.stdout.write("[{:{}}] {:.1f}%".format(
-    			"="*int(30/(mvlength-1)*frame_num), 29,
-    			(100/(mvlength-1)*frame_num)))
+    			"="*int(30/mvlength*(frame_num+1)), 29,
+    			(100/mvlength*(frame_num+1))))
     		sys.stdout.flush()
     	moment_im = np.int64(moment_im / mvlength)
     return moment_im
@@ -235,8 +235,8 @@ def calc_moments(filepath, filename, highest_order, m_set={}, mean_im=None):
                     np.power(im - mean_im, order+1)
                 sys.stdout.write('\r')
                 sys.stdout.write("[{:{}}] {:.1f}%".format(
-                    "="*int(30/(mvlength-1)*frame_num), 29,
-                    (100/(mvlength-1)*frame_num)))
+                    "="*int(30/mvlength*(frame_num+1)), 29,
+                    (100/mvlength*(frame_num+1))))
                 sys.stdout.flush()
             m_set[order+1] = np.int64(m_set[order+1] / mvlength)
             print('\n')
