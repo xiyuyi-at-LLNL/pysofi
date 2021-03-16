@@ -167,6 +167,9 @@ def calc_block_moments(filepath, filename, highest_order, frames=[]):
     """
     mean_im = rec.average_image(filepath, filename, frames)
     imstack = tiff.TiffFile(filepath + '/' + filename)
+    if not frames:
+        mvlength = len(imstack.pages)
+        frames = [0, mvlength]
     xdim, ydim = np.shape(imstack.pages[0])
     block_length = frames[1]-frames[0]
     m_set = {}
