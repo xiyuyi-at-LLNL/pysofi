@@ -220,20 +220,24 @@ def save_png(im, cmap='pink', filename='out.png', display_contrast=1):
     plt.imsave(filename, color_img)
 
 
-def save_avi(vid_array, cmap='pink', filename='out.avi', display_contrast=1):
+def save_avi(vid_array, cmap='pink', filename='out.avi', display_contrast=1, os='macos'):
     """
-    Save a image stack with a specific colormap.
-    Please refer to the demo Jupyter Notebook for examples.
+    Save a image stack with a specific colormap. If the user is using windows,
+    please set os='windows'.
     """
     frame, xdim, ydim = np.shape(vid_array)
     out = cv2.VideoWriter(filename, cv2.VideoWriter_fourcc('M', 'J', 'P', 'G'),
-                          frame, (xdim, ydim))
+                          frame, (ydim, xdim))
+    #out = cv2.VideoWriter(filename, cv2.VideoWriter_fourcc(*'DIVX'),
+    #                      frame, (xdim, ydim))
     for i in range(frame):
         img = ensure_positive(vid_array[i])
         color_img = ind2cmap(img, cmap)
         color_img = color_img * 255 * display_contrast
         color_img[color_img > 255] = 255
         color_img = np.uint8(color_img)
+        if os == 'windows':
+            color_img = color_img[:,:,0:3]
         out.write(color_img)
     out.release()
     cv2.destroyAllWindows()
