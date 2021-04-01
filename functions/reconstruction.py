@@ -5,7 +5,9 @@ import numpy as np
 import tifffile as tiff
 import scipy.special
 import sys
+import os
 import collections
+import math
 from scipy import signal
 import itertools
 
@@ -31,19 +33,15 @@ def average_image(filepath, filename, frames=[]):
     """
     imstack = tiff.TiffFile(filepath + '/' + filename)
     xdim, ydim = np.shape(imstack.pages[0])
-    mvlength = len(imstack.pages)
     mean_im = np.zeros((xdim, ydim))
 
-    if frames:
-        for frame_num in range(frames[0], frames[1]):
-            im = tiff.imread(filepath + '/' + filename, key=frame_num)
-            mean_im = mean_im + im
-        mean_im = mean_im / (frames[1] - frames[0])
-    else:
-        for frame_num in range(mvlength):
-            im = tiff.imread(filepath + '/' + filename, key=frame_num)
-            mean_im = mean_im + im
-        mean_im = mean_im / mvlength
+    if not frames:
+        frames = [0, len(imstack.pages)]
+    for frame_num in range(frames[0], frames[1]):
+        im = tiff.imread(filepath + '/' + filename, key=frame_num)
+        mean_im = mean_im + im
+    mean_im = mean_im / (frames[1] - frames[0])
+    imstack.close()
 
     return mean_im
 
@@ -121,6 +119,7 @@ def calc_moment_im(filepath, filename, order, frames=[], mean_im=None):
                 (100/mvlength*(frame_num+1))))
             sys.stdout.flush()
         moment_im = moment_im / mvlength
+    imstack.close()
 
     return moment_im
 
@@ -179,10 +178,12 @@ def moment_im_with_finterp(filepath, filename, order, interp_num,
     			(100/mvlength*(frame_num+1))))
     		sys.stdout.flush()
     	moment_im = np.int64(moment_im / mvlength)
+    imstack.close()
     return moment_im
 
 
-def calc_moments(filepath, filename, highest_order, m_set={}, mean_im=None):
+def calc_moments(filepath, filename, highest_order, 
+                 frames=[], m_set={}, mean_im=None):
     """
     Get all moment-reconstructed images to the user-defined highest order for
     a video file(tiff stack).
@@ -195,6 +196,8 @@ def calc_moments(filepath, filename, highest_order, m_set={}, mean_im=None):
         Name of the tiff file.
     highest_order : int
         The highest order number of moment-reconstructed images.
+    frames : list of int
+        The start and end frame number.
     m_set : dict
         order number (int) -> image (ndarray)
         A dictionary of previously calcualted moment-reconstructed images.
@@ -211,15 +214,12 @@ def calc_moments(filepath, filename, highest_order, m_set={}, mean_im=None):
         current_order = max(m_set.keys())
     else:
         current_order = 0
-
     if mean_im is None:
-        mean_im = average_image(filepath, filename)
+        mean_im = average_image(filepath, filename, frames)
 
     imstack = tiff.TiffFile(filepath + '/' + filename)
     xdim, ydim = np.shape(imstack.pages[0])
-    mvlength = len(imstack.pages)
 
-    # print out the progress
     def ordinal(n): return "%d%s" % (
         n, "tsnrhtdd"[(n//10 % 10 != 1)*(n % 10 < 4)*n % 10::4])
     order_lst = [ordinal(n+1) for n in range(highest_order)]
@@ -229,18 +229,32 @@ def calc_moments(filepath, filename, highest_order, m_set={}, mean_im=None):
             print('Calculating the %s-order moment reconstruction...' %
                   order_lst[order])
             m_set[order+1] = np.zeros((xdim, ydim))
-            for frame_num in range(mvlength):
-                im = tiff.imread(filepath + '/' + filename, key=frame_num)
-                m_set[order+1] = m_set[order+1] + \
-                    np.power(im - mean_im, order+1)
-                sys.stdout.write('\r')
-                sys.stdout.write("[{:{}}] {:.1f}%".format(
-                    "="*int(30/mvlength*(frame_num+1)), 29,
-                    (100/mvlength*(frame_num+1))))
-                sys.stdout.flush()
-            m_set[order+1] = np.int64(m_set[order+1] / mvlength)
-            print('\n')
-
+            if frames:
+                for frame_num in range(frames[0], frames[1]):
+                    im = tiff.imread(filepath + '/' + filename, key=frame_num)
+                    m_set[order+1] = m_set[order+1] + \
+                        np.power(im - mean_im, order+1)
+                    sys.stdout.write('\r')
+                    sys.stdout.write("[{:{}}] {:.1f}%".format(
+                        "="*int(30/(frames[1]-frames[0])*(frame_num-frames[0]+1)), 
+                        29, (100/(frames[1]-frames[0])*(frame_num-frames[0]+1))))
+                    sys.stdout.flush()
+                m_set[order+1] = np.int64(m_set[order+1] / (frames[1] - frames[0]))
+                print('\n')
+            else:
+                mvlength = len(imstack.pages)
+                for frame_num in range(mvlength):
+                    im = tiff.imread(filepath + '/' + filename, key=frame_num)
+                    m_set[order+1] = m_set[order+1] + \
+                        np.power(im - mean_im, order+1)
+                    sys.stdout.write('\r')
+                    sys.stdout.write("[{:{}}] {:.1f}%".format(
+                        "="*int(30/mvlength*(frame_num+1)), 29,
+                        (100/mvlength*(frame_num+1))))
+                    sys.stdout.flush()    
+                m_set[order+1] = np.int64(m_set[order+1] / mvlength)
+                print('\n')
+    imstack.close()
     return m_set
 
 
@@ -320,7 +334,7 @@ def calc_block_moments(filepath, filename, highest_order, frames=[]):
             (100/(highest_order-1)*order)))
         sys.stdout.flush()
     print('\n')
-
+    imstack.close()
     return m_set
 
 
@@ -348,7 +362,7 @@ def calc_total_signal(filepath, filename):
     for frame_num in range(mvlength):
         im = tiff.imread(filepath + '/' + filename, key=frame_num)
         total_signal[frame_num] = sum(sum(im))
-    
+    imstack.close()    
     return total_signal
 
 
@@ -387,7 +401,7 @@ def cut_frames(signal_level, fbc=0.04):
     max_intensity, min_intensity = np.max(signal_level), np.min(signal_level)
     frame_num = np.argmax(signal_level)
     total_diff = max_intensity - min_intensity
-    block_num = int(1/fbc)
+    block_num = math.ceil(1/fbc)
     frame_lst = []
     # lower bound of intensity for each block
     bounds = [int(max_intensity-total_diff*i*fbc)
@@ -404,6 +418,77 @@ def cut_frames(signal_level, fbc=0.04):
     bounds = [int(max_intensity)] + bounds
 
     return bounds, frame_lst
+
+
+def min_image(filepath, filename, frames=[]):
+    """
+    Get the minimum image for a video file (tiff stack), either for the
+    whole video or for user defined frames. 
+
+    Parameters
+    ----------
+    filepath : str
+        Path to the tiff file.
+    filename : str
+        Name of the tiff file.
+    frames : list of int, optional
+        Start and end frame number if not the whole video is used.
+
+    Returns
+    -------
+    min_im : ndarray
+        The minimum image.    
+    """
+    imstack = tiff.TiffFile(filepath + '/' + filename)
+    xdim, ydim = np.shape(imstack.pages[0])
+    min_im = tiff.imread(filepath + '/' + filename, key=0)
+
+    if not frames:
+        frames = [0, len(imstack.pages)]
+    for frame_num in range(frames[0], frames[1]):
+        im = tiff.imread(filepath + '/' + filename, key=frame_num)
+        min_im = (min_im<=im) * min_im + (min_im > im) * im
+    imstack.close()
+    return min_im
+
+
+def correct_bleaching(filepath, filename, fbc=0.04, smooth_kernel=251,
+                      save_option=True, return_option=False):
+    sig_b = calc_total_signal(filepath, filename)
+    filtered_sig_b = filtering.med_smooth(sig_b, kernel_size=251)
+    bounds, frame_lst = cut_frames(filtered_sig_b, fbc=fbc)
+    block_num = math.ceil(1/fbc)
+
+    for i in range(block_num):
+        ave_im = average_image(filepath, filename, 
+                               frames=[frame_lst[i], frame_lst[i+1]])
+        for frame_num in range(frame_lst[i], frame_lst[i+1]):
+            im = tiff.imread(filepath + '/' + filename, key=frame_num)
+            norm_im = im - ave_im
+            norm_im = np.int_(np.around(norm_im))
+            tiff.imwrite(filepath+'/'+filename[:-4]+'_bc0.tif', 
+                         norm_im, dtype='int', append=True)   
+
+    filename = filename[:-4]+'_bc0.tif'
+    min_im = min_image(filepath, filename)
+    imstack = tiff.TiffFile(filepath + '/' + filename)
+    xdim, ydim = np.shape(imstack.pages[0])
+    mvlength = len(imstack.pages)
+    if return_option is True:
+        bc_im = np.zeros((mvlength, xdim, ydim))
+    imstack.close()
+    for i in range(mvlength):
+        im = tiff.imread(filepath + '/' + filename, key=i)
+        norm_im = im - min_im
+        norm_im = np.int_(np.around(norm_im))
+        if save_option is True:
+            tiff.imwrite(filepath+'/'+filename[:-8] + '_bc.tif', 
+                         norm_im, dtype='int', append=True) 
+        if return_option is True:
+            bc_im[i] = norm_im
+    os.remove(filepath + '/' + filename)
+    if return_option is True:
+        return bc_im
 
 
 def moments_all_blocks(filepath, filename,
@@ -446,7 +531,7 @@ def moments_all_blocks(filepath, filename,
     all_signal = calc_total_signal(filepath, filename)
     filtered_signal = filtering.med_smooth(all_signal, smooth_kernel)
     _, cut_frame = cut_frames(filtered_signal, fbc)
-    block_num = int(1/fbc)
+    block_num = math.ceil(1/fbc)
     m_set_all_blocks = {}
     for i in range(block_num):
         print('Calculating moments of block %d...' % i)

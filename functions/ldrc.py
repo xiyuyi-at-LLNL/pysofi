@@ -3,7 +3,7 @@ from scipy.interpolate import griddata
 import sys
 
 
-def ldrc(mask_im, input_im, order, window_size=[25, 25]):
+def ldrc(mask_im, input_im, order=1, window_size=[25, 25]):
     """
     Process the image array with "local dynamic range compression" (ldrc).
 
