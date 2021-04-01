@@ -454,6 +454,27 @@ def min_image(filepath, filename, frames=[]):
 
 def correct_bleaching(filepath, filename, fbc=0.04, smooth_kernel=251,
                       save_option=True, return_option=False):
+    """
+    Performs bleaching correction on a tiff image (stack).
+
+    Parameters
+    ----------
+    fbc : float
+        The fraction of signal decrease within each block compared 
+        to the total signal decrease. Only used when bleach correction
+        is True.
+    smooth_kernel : int
+        The size of the median filter window. 
+    save_option : bool
+        Whether to save the corrected images into tiff files.
+    return_option : bool
+        Whether to return the corrected image series as a 3d array.
+
+    Returns
+    -------
+    bc_im : ndarray
+        All bleaching-corrected imagee in a 3d array.
+    """
     sig_b = calc_total_signal(filepath, filename)
     filtered_sig_b = filtering.med_smooth(sig_b, kernel_size=251)
     bounds, frame_lst = cut_frames(filtered_sig_b, fbc=fbc)

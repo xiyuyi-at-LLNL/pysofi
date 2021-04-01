@@ -382,6 +382,43 @@ class PysofiData:
         self.finterp = f.fourier_interp_array(input_im, interp_num_lst)
         return self.finterp
 
+    def bleach_correct(self, fbc=0.04, smooth_kernel=251,
+                      save_option=True, return_option=False):
+        """
+        Performs bleaching correction on a tiff image (stack) with a 
+        bleaching correction factor.
+
+        Parameters
+        ----------
+        fbc : float
+            The fraction of signal decrease within each block compared 
+            to the total signal decrease. Only used when bleach correction
+            is True.
+        smooth_kernel : int
+            The size of the median filter window. 
+        save_option : bool
+            Whether to save the corrected images into tiff files.
+        return_option : bool
+            Whether to return the corrected image series as a 3d array.
+
+        Returns
+        -------
+        bc_im : ndarray
+            All bleaching-corrected imagee in a 3d array.
+        """
+        if save_option is True:
+            reconstrution.correct_bleaching(self.filepath, self.filename,
+                                            fbc, smooth_kernel,
+                                            save_option, return_option)
+        if return_option is True:
+            self.bc_ims = reconstrution.correct_bleaching(self.filepath, 
+                                                          self.filename,
+                                                          fbc, 
+                                                          smooth_kernel,
+                                                          save_option, 
+                                                          return_option)
+            return self.bc_ims
+            
     def add_filtered(self, image, filter_name='noise filter'):
         """Add (noise) filtered image as an attribute of the object."""
         self.filter_name = filter_name
