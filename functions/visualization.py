@@ -14,6 +14,8 @@ from matplotlib import cm
 import matplotlib.pyplot as plt
 import tifffile as tiff
 from bokeh.plotting import figure, output_file, show, output_notebook
+from bokeh.models import ColumnDataSource
+from  bokeh.models import PanTool,ResetTool,BoxZoomTool
 bokeh.io.output_notebook(INLINE)
 
 
@@ -26,19 +28,22 @@ def ensure_positive(data):
     return data
 
 
-def bokeh_visualization(image, palette=None, save_option=False,
-                        filename='Image', imshow_same=True):
+def bokeh_visualization_mult(image_lst, title_lst=None, palette=None,
+                             save_option=False, filename='Image',
+                             imshow_same=True):
     """
     Show interactive grayscale image with Bokeh in Jupyter Notebook.
 
     Parameters
     ----------
-    image : ndarray
-        The grayscale image array for visualization.
+    image_lst : list(ndarray)
+        A list of grayscale images array for visualization and comparison.
+    title_lst : list of str
+        A list of titles for images plotted in Bokeh.
     palette : str
-        Name of the Bokeh palettes. 
+        Name of the Bokeh palettes.
         The default palette is 'pink' from matplotlib.
-        For a complete palette list in bokeh documentation: 
+        For a complete palette list in bokeh documentation:
             https://docs.bokeh.org/en/latest/docs/reference/palettes.html
     save_option : bool
         Whether to save the Bokeh image as a .html file.
@@ -49,39 +54,70 @@ def bokeh_visualization(image, palette=None, save_option=False,
 
     Notes
     -----
-    For more information about interactive visualization library Bokeh: 
+    For more information about interactive visualization library Bokeh:
     https://docs.bokeh.org/en/latest/index.html.
     """
-    image = ensure_positive(image)
-    xdim, ydim = np.shape(image)
-    TOOLTIPS = [("x", "$x{int}"), ("y", "$y{int}"), ("value", "@image")]
-
     if palette is None:
         # import 'pink' colormap from matplotlib
         pink_cmap = cm.get_cmap('pink', 256)
         pink_cmap256 = pink_cmap(np.linspace(0, 1, 256))
         palette = tuple(colors.to_hex(i) for i in pink_cmap256)
+    TOOLTIPS = [("x", "$x{int}"), ("y", "$y{int}"), ("value", "@image")]
+    tools = [BoxZoomTool(), PanTool(), ResetTool()]
 
-    if imshow_same is True:
-        p = figure(x_range=(0, xdim), y_range=(ydim, 0), tooltips=TOOLTIPS)
-        flip_im = np.flipud(image)
-        p.image(image=[flip_im], x=0, y=ydim, dw=xdim, dh=ydim,
-                palette=palette, level="image")
-        p.xgrid.grid_line_color = None
-        p.ygrid.grid_line_color = None
-    else:
-        p = figure(x_range=(0, xdim), y_range=(0, ydim), tooltips=TOOLTIPS)
-        p.image(image=[image], x=0, y=0, dw=xdim, dh=ydim,
-                palette=palette, level="image")
-        p.xgrid.grid_line_color = None
-        p.ygrid.grid_line_color = None
+    all_im = []
+    if title_lst is None:
+        title_lst=np.arange(len(image_lst))
+    for i in range(len(image_lst)):
+    # for image, title in zip(image_lst, title_lst):
+        image, title = image_lst[i], title_lst[i]
+        image = ensure_positive(image)
+        xdim, ydim = np.shape(image)
+        if i == 0:
+            if imshow_same is True:
+                p1 = figure(x_range=(0, xdim), y_range=(ydim, 0), title=title,
+                            plot_width=500, plot_height=500, 
+                            tooltips=TOOLTIPS, tools=tools)
+                flip_im = np.flipud(image)
+                p1.image(image=[flip_im], x=0, y=ydim, dw=xdim, dh=ydim,
+                         palette=palette, level="image")
+                p1.xgrid.grid_line_color = None
+                p1.ygrid.grid_line_color = None
+            else:
+                p1 = figure(x_range=(0, xdim), y_range=(0, ydim), title=title,
+                            plot_width=500, plot_height=500, 
+                            tooltips=TOOLTIPS, tools=tools)
+                p1.image(image=[image], x=0, y=0, dw=xdim, dh=ydim,
+                         palette=palette, level="image")
+                p1.xgrid.grid_line_color = None
+                p1.ygrid.grid_line_color = None
+            all_im.append(p1)
+        else:
+            if imshow_same is True:
+                p = figure(x_range=p1.x_range, y_range=p1.y_range, title=title,
+                           plot_width=500, plot_height=500, 
+                           tooltips=TOOLTIPS, tools=tools)
+                flip_im = np.flipud(image)
+                p.image(image=[flip_im], x=0, y=ydim, dw=xdim, dh=ydim,
+                        palette=palette, level="image")
+                p.xgrid.grid_line_color = None
+                p.ygrid.grid_line_color = None
+            else:
+                p = figure(x_range=p1.x_range, y_range=p1.y_range, title=title,
+                           plot_width=500, plot_height=500, 
+                           tooltips=TOOLTIPS, tools=tools)
+                p.image(image=[image], x=0, y=0, dw=xdim, dh=ydim,
+                        palette=palette, level="image")
+                p.xgrid.grid_line_color = None
+                p.ygrid.grid_line_color = None
+            all_im.append(p)            
 
     if save_option is False:
         output_notebook()
     else:
-        output_file(filename+".html", title=filename)
+        output_file(filename + ".html", title=filename)
 
-    show(p, notebook_handle=True)
+    show(row(all_im), notebook_handle=True)
 
 
 def bokeh_visualization_rgba(image, save_option=False,
@@ -168,13 +204,16 @@ def bokeh_visualization_mult(image_lst, title_lst=None, palette=None,
         pink_cmap256 = pink_cmap(np.linspace(0, 1, 256))
         palette = tuple(colors.to_hex(i) for i in pink_cmap256)
     TOOLTIPS = [("x", "$x{int}"), ("y", "$y{int}"), ("value", "@image")]
+    tools = [BoxZoomTool(), PanTool(), ResetTool()]
+
     all_im = []
     for image, title in zip(image_lst, title_lst):
         image = ensure_positive(image)
         xdim, ydim = np.shape(image)
         if imshow_same is True:
             p = figure(x_range=(0, xdim), y_range=(ydim, 0), title=title,
-                       plot_width=500, plot_height=500, tooltips=TOOLTIPS)
+                       plot_width=500, plot_height=500, 
+                       tooltips=TOOLTIPS, tools=tools)
             flip_im = np.flipud(image)
             p.image(image=[flip_im], x=0, y=ydim, dw=xdim, dh=ydim,
                     palette=palette, level="image")
@@ -182,7 +221,8 @@ def bokeh_visualization_mult(image_lst, title_lst=None, palette=None,
             p.ygrid.grid_line_color = None
         else:
             p = figure(x_range=(0, xdim), y_range=(0, ydim), title=title,
-                       plot_width=500, plot_height=500, tooltips=TOOLTIPS)
+                       plot_width=500, plot_height=500, 
+                       tooltips=TOOLTIPS, tools=tools)
             p.image(image=[image], x=0, y=0, dw=xdim, dh=ydim,
                     palette=palette, level="image")
             p.xgrid.grid_line_color = None
