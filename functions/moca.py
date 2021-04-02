@@ -29,7 +29,7 @@ def fit_sigma(filepath, filename, frames=[]):
     imstack = tiff.TiffFile(filepath + '/' + filename)
     xdim, ydim = np.shape(imstack.pages[0])
     ac2_crop = ac2[ri_range:xdim-ri_range, ri_range:ydim-ri_range]
-    imstack.close()
+
     # fit xc2 / ac2
     xc2ac2_slope = []
     for i in range(series_length):
@@ -186,7 +186,6 @@ def calc_block_moments(filepath, filename, highest_order, frames=[]):
             "="*int(30/(highest_order-1)*order), 29,
             (100/(highest_order-1)*order)))
         sys.stdout.flush()
-    imstack.close()
     print('\n')
 
     return m_set
