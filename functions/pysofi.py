@@ -198,7 +198,8 @@ class PysofiData:
             self.moments_set = reconstruction.calc_moments(self.filepath,
                                                            self.filename,
                                                            highest_order,
-                                                           frames)
+                                                           frames,
+                                                           m_set={})
             self.morder = highest_order
             return self.moments_set
         else:
@@ -241,20 +242,7 @@ class PysofiData:
         """
         if bleach_correction is False:
             self.corder = highest_order
-            if m_set is None:    # moments not provided
-                if self.moments_set == {}:    # moments have not calculated
-                    m_set = self.calc_moments_set(highest_order, frames)
-                else:
-                    if self.corder > self.morder:
-                        m_set = self.calc_moments_set(highest_order, frames)
-                    else:
-                        m_set = self.moments_set
-            else:
-                if self.corder > self.morder:
-                    m_set = self.calc_moments_set(highest_order, frames)
-                else:
-                    m_set = self.moments_set
-
+            m_set = self.calc_moments_set(highest_order, frames)
             self.cumulants_set = reconstruction.calc_cumulants_from_moments(
                 m_set)
             return self.cumulants_set
