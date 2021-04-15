@@ -395,11 +395,11 @@ class PysofiData:
             All bleaching-corrected imagee in a 3d array.
         """
         if save_option is True:
-            reconstrution.correct_bleaching(self.filepath, self.filename,
+            reconstruction.correct_bleaching(self.filepath, self.filename,
                                             fbc, smooth_kernel,
                                             save_option, return_option)
         if return_option is True:
-            self.bc_ims = reconstrution.correct_bleaching(self.filepath, 
+            self.bc_ims = reconstruction.correct_bleaching(self.filepath, 
                                                           self.filename,
                                                           fbc, 
                                                           smooth_kernel,
