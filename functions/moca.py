@@ -39,7 +39,10 @@ def fit_sigma(filepath, filename, frames=[]):
         w[w == np.inf] = 0
         w[w == np.NINF] = 0
         p = np.polyfit(x, y, 1, w=w)
+        if p[0] < 0:
+            p[0] = np.finfo(float).eps
         xc2ac2_slope.append(p[0])
+    y = np.log(xc2ac2_slope)
     p1 = np.polyfit(xi2, np.log(xc2ac2_slope), 1)[0]
     sigFit = np.sqrt(-1/2/p1)
     return sigFit
