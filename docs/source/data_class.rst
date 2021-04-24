@@ -1,36 +1,27 @@
-.. currentmodule:: functions.data
+The "PysofiData()" class
+========================
 
-The "Data()" class
-==================
+The `PysofiData` class is the fundamental data container that carries the measurement 
+data and pysofi-related properties and behaviors. User-defined parameters and 
+intermediate results are bundled to the `PysofiData` object as attributes as well 
+as processing steps as methods. The full SOFI 2.0 analysis pipeline can be achieved 
+based on multiple PysofiData methods. Each processing step is connected to a separate 
+outside module supported by pysofi, and can be utilized not only by pysofi, but also 
+by other computational imaging developers for similar purposes.
 
-The :class:`Data` class is the main container for smFRET measurements.
-It contains timestamps, detectors and all the results of data processing
-such as background estimation, burst data, fitted FRET and so on.
+Attributes and Methods
+-----------------------
 
-It can be loaded xxx.
-
-.. contents::
-
-
-Summary information
--------------------
-List of :class:`Data` attributes and
-methods providing summary information on the measurement:
-
-.. class:: Data
-
-    .. autoattribute:: filename
-
-    .. autoattribute:: filepath
-
-    .. autoattribute:: ave
-
-    .. autoattribute:: finterp_factor
-
-    .. automethod:: average_image
+.. automodule:: functions.pysofi
+   :members:
+   :undoc-members:
+   :show-inheritance:
 
 
-Analysis methods
-----------------
-.. automodule:: functions.data
-    :members:
+Load Data
+---------
+The simulated or experimental measurements can be loaded into the `pysofi.PysofiData` object
+using:
+::
+
+    d = pysofi.PysofiData(filepath, filename)

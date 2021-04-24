@@ -11,7 +11,7 @@ class PysofiData:
     visualization on the dataset (moments reconstruction, cumulants 
     reconstruction, shrinking kernel deconvolution, etc...). 
 
-    When loading a tiff file, a Data() object is created and further 
+    When loading a tiff file, a PysofiData() object is created and further 
     SOFI analysis can be preformed. All the standard data-attributes 
     are listed below. New data-attributes can be added or updated using 
     '.add()' function.

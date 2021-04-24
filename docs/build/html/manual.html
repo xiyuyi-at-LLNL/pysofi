@@ -1,24 +1,24 @@
 
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pysofi Reference Manual &#8212; pysofi 0.0.1 documentation</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>pysofi Reference Manual &#8212; pysofi 0.0.1 documentation</title>
     <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/language_data.js"></script>
-    
+    <script type="text/javascript" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="author" title="About these documents" href="about.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="The “Data()” class" href="data_class.html" />
-    <link rel="prev" title="Installation" href="install.html" /> 
+    <link rel="next" title="The “PysofiData()” class" href="data_class.html" />
+    <link rel="prev" title="Demos" href="demos.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
@@ -30,13 +30,12 @@
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="data_class.html" title="The “Data()” class"
+          <a href="data_class.html" title="The “PysofiData()” class"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="install.html" title="Installation"
+          <a href="demos.html" title="Demos"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">pysofi 0.0.1 documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Pysofi Reference Manual</a></li> 
+        <li class="nav-item nav-item-0"><a href="index.html">pysofi 0.0.1 documentation</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -46,50 +45,129 @@
           <div class="body" role="main">
             
   <div class="section" id="pysofi-reference-manual">
-<h1>Pysofi Reference Manual<a class="headerlink" href="#pysofi-reference-manual" title="Permalink to this headline">¶</a></h1>
+<h1>pysofi Reference Manual<a class="headerlink" href="#pysofi-reference-manual" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>pysofi consists of 8 modules, each contains a group of functions relevant to
+the module, and a main data class(<cite>pysofiData</cite>, encapsulated in pysofi.py) that
+integrates the function steps from each module to perform SOFI analyses. Such
+design enables flexible composition of different SOFI analysis routines through
+the <cite>pysofiData</cite> class. Extensions of extra functionalities can be implemented
+as extra.py modules to the pysofi package, and integrated by implementing the
+relevant methods and attributes to the <cite>pysofiData</cite> class.</p>
+<p>In summary, pysofi contains various function modules relevant to SOFI analysis:
+* <a class="reference external" href="https://github.com/xiyuyi-at-LLNL/pysofi/blob/master/functions/reconstruction.py">reconstruction.py</a>
+provides capabilities for moments and SOFI cumulants calculations.
+The cumulant calculation is implemented using recursive relations and is capable of
+calculating cumulants up to arbitrary orders. It also provides functions for bleaching
+correctionof a .tiff movie necessary where bleaching of the signal level greatly
+influences the validity of SOFI cumulants.</p>
+<ul class="simple">
+<li><a class="reference external" href="https://github.com/xiyuyi-at-LLNL/pysofi/blob/master/functions/finterp.py">finterp.py</a></li>
+</ul>
+<p>provides Fourier interpolation on .tiff stacks for fSOFI processing.pysofi also contains
+the modules for SOFI 2.0 calculations listes below.</p>
+<ul class="simple">
+<li><a class="reference external" href="https://github.com/xiyuyi-at-LLNL/pysofi/blob/master/functions/filtering.py">filtering.py</a></li>
+</ul>
+<p>for pixel-wise noise filtering along the time axis.</p>
+<ul class="simple">
+<li><a class="reference external" href="https://github.com/xiyuyi-at-LLNL/pysofi/blob/master/functions/deconsk.py">deconvsk.py</a></li>
+</ul>
+<p>provides functions forshrinking kernel deconvolution (DeconvSK).</p>
+<ul class="simple">
+<li><a class="reference external" href="https://github.com/xiyuyi-at-LLNL/pysofi/blob/master/functions/ldrc.py">ldrc.py</a></li>
+</ul>
+<p>provides local dynamic range compression (ldrc) of images with large dynamic range of pixel values.</p>
+<ul class="simple">
+<li><a class="reference external" href="https://github.com/xiyuyi-at-LLNL/pysofi/blob/master/functions/visualization.py">visualization.py</a></li>
+</ul>
+<p>module is implemented for interactive visualization of the results using
+<a class="reference external" href="https://docs.bokeh.org/en/latest/index.html">Bokeh</a>.</p>
+<p>Detailed examples for each module will be discussed in our paper and on Github, each accompanied with a
+tutorial implemented in Jupyter notebook (see Demos)).</p>
+</div>
+<div class="section" id="modules">
+<h2>Modules<a class="headerlink" href="#modules" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="data_class.html">The “Data()” class</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="data_class.html#summary-information">Summary information</a></li>
-<li class="toctree-l2"><a class="reference internal" href="data_class.html#module-functions.data">Analysis methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_class.html">PysofiData class</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="data_class.html#module-functions.pysofi">Attributes and Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_class.html#load-data">Load Data</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="ldrc.html">LDRC functions</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="ldrc.html#module-functions.ldrc">List of loader functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="finterp.html">Fourier Interpolation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="finterp.html#module-functions.finterp">Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="finterp.html#examples">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reconstruction.html">Reconstructions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reconstruction.html#module-functions.reconstruction">Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reconstruction.html#examples">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="filter.html">Noise Filtration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="filter.html#module-functions.filtering">Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="filter.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="deconvsk.html">Shrinking Kernel Deconvolution</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="deconvsk.html#module-functions.deconvsk">Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deconvsk.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ldrc.html">LDRC Method</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ldrc.html#module-functions.ldrc">Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ldrc.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="moca.html">Multi-Order Cumulant Analysis (MOCA)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="moca.html#module-functions.moca">Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="moca.html#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="visualization.html">Result visualizations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="visualization.html#module-functions.visualization">Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="visualization.html#examples">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="masks.html">Filtering Masks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="masks.html#module-functions.masks">Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="masks.html#examples">Examples</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
+</div>
 
 
-            <div class="clearer"></div>
           </div>
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-<h3><a href="index.html">Table of Contents</a></h3>
+<h3><a href="index.html">Table Of Contents</a></h3>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://nbviewer.jupyter.org/github/xiyuyi/pysofi/blob/master/Notebooks/PySOFI2.0_Demo.ipynb">Pysofi Tutorial</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://github.com/xiyuyi/pysofi/tree/master/Notebooks">Demos &amp; Examples</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Pysofi Reference Manual</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="data_class.html">The “Data()” class</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ldrc.html">LDRC functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="start.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="demos.html">Demos</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://nbviewer.jupyter.org/github/xiyuyi-at-LLNL/pysofi/blob/master/Notebooks/PysofiExample_LiveCellActinFilaments.ipynb">SOFI 2.0 Tutorial</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Reference manual</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#modules">Modules</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="functions.html">functions package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="modules.html">functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="install.html"
-                        title="previous chapter">Installation</a></p>
+  <p class="topless"><a href="demos.html"
+                        title="previous chapter">Demos</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="data_class.html"
-                        title="next chapter">The “Data()” class</a></p>
+                        title="next chapter">The “PysofiData()” class</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -98,15 +176,17 @@
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
+  <h3>Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" />
       <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -121,18 +201,17 @@
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="data_class.html" title="The “Data()” class"
+          <a href="data_class.html" title="The “PysofiData()” class"
              >next</a> |</li>
         <li class="right" >
-          <a href="install.html" title="Installation"
+          <a href="demos.html" title="Demos"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">pysofi 0.0.1 documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Pysofi Reference Manual</a></li> 
+        <li class="nav-item nav-item-0"><a href="index.html">pysofi 0.0.1 documentation</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2020, Yuting Miao.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.1.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.4.
     </div>
   </body>
 </html>

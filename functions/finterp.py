@@ -112,21 +112,18 @@ def interpolate_image(im, fx, fy, ifx, ify, interp_num):
 
     Example
     -------
-    import numpy as np
-    import matplotlib.pyplot as plt
-    xdim, ydim, sigma, mu = 10, 10, 0.5, 0
-    x, y = np.meshgrid(np.linspace(-1, 1, xdim), np.linspace(-1, 1, xdim))
-    im = np.exp(-((np.sqrt(x*x + y*y) - mu)**2 / (2*sigma**2)))
-    xrange, yrange, interp_num = 2 * xdim, 2 * ydim, 3
-    fx, fy = ft_matrix2d(xrange, yrange)
-    ifx, ify = ift_matrix2d(xrange, yrange, interp_num)
-    interp_im = interpolate_image(im, fx, fy, ifx, ify, interp_num)
+    ::
 
-    fig, axs = plt.subplots(1, 2, figsize=(10, 3))
-    axs[0].set_title('Original image')
-    axs[0].imshow(im)
-    axs[1].set_title('Interplated image')
-    axs[1].imshow(interp_im)
+        import numpy as np
+        import matplotlib.pyplot as plt
+        xdim, ydim, sigma, mu = 10, 10, 0.5, 0
+        x, y = np.meshgrid(np.linspace(-1, 1, xdim), np.linspace(-1, 1, xdim))
+        im = np.exp(-((np.sqrt(x*x + y*y) - mu)**2 / (2*sigma**2)))
+        xrange, yrange, interp_num = 2 * xdim, 2 * ydim, 3
+        fx, fy = ft_matrix2d(xrange, yrange)
+        ifx, ify = ift_matrix2d(xrange, yrange, interp_num)
+        interp_im = interpolate_image(im, fx, fy, ifx, ify, interp_num)
+
     """
     xdim, ydim = np.shape(im)
 

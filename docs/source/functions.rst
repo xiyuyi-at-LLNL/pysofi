@@ -4,10 +4,10 @@ functions package
 Submodules
 ----------
 
-functions.data module
----------------------
+functions.pysofi module
+-----------------------
 
-.. automodule:: functions.data
+.. automodule:: functions.pysofi
    :members:
    :undoc-members:
    :show-inheritance:

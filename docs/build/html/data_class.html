@@ -1,24 +1,24 @@
 
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The “Data()” class &#8212; pysofi 0.0.1 documentation</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>The “PysofiData()” class &#8212; pysofi 0.0.1 documentation</title>
     <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/language_data.js"></script>
-    
+    <script type="text/javascript" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="author" title="About these documents" href="about.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="LDRC functions" href="ldrc.html" />
-    <link rel="prev" title="Pysofi Reference Manual" href="manual.html" /> 
+    <link rel="next" title="Fourier Interpolation Module" href="finterp.html" />
+    <link rel="prev" title="pysofi Reference Manual" href="manual.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
@@ -30,14 +30,13 @@
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="ldrc.html" title="LDRC functions"
+          <a href="finterp.html" title="Fourier Interpolation Module"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="manual.html" title="Pysofi Reference Manual"
+          <a href="manual.html" title="pysofi Reference Manual"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">pysofi 0.0.1 documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="manual.html" accesskey="U">Pysofi Reference Manual</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">The “Data()” class</a></li> 
+          <li class="nav-item nav-item-1"><a href="manual.html" accesskey="U">pysofi Reference Manual</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -46,202 +45,143 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="the-data-class">
-<h1><a class="toc-backref" href="#id3">The “Data()” class</a><a class="headerlink" href="#the-data-class" title="Permalink to this headline">¶</a></h1>
-<p>The <a class="reference internal" href="#id0" title="functions.data.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">Data</span></code></a> class is the main container for smFRET measurements.
-It contains timestamps, detectors and all the results of data processing
-such as background estimation, burst data, fitted FRET and so on.</p>
-<p>It can be loaded xxx.</p>
-<div class="contents topic" id="contents">
-<p class="topic-title">Contents</p>
-<ul class="simple">
-<li><p><a class="reference internal" href="#the-data-class" id="id3">The “Data()” class</a></p>
-<ul>
-<li><p><a class="reference internal" href="#summary-information" id="id4">Summary information</a></p></li>
-<li><p><a class="reference internal" href="#module-functions.data" id="id5">Analysis methods</a></p></li>
-</ul>
-</li>
-</ul>
-</div>
-<div class="section" id="summary-information">
-<h2><a class="toc-backref" href="#id4">Summary information</a><a class="headerlink" href="#summary-information" title="Permalink to this headline">¶</a></h2>
-<p>List of <a class="reference internal" href="#id0" title="functions.data.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">Data</span></code></a> attributes and
-methods providing summary information on the measurement:</p>
-<dl class="py class">
-<dt id="functions.data.Data">
-<em class="property">class </em><code class="sig-prename descclassname">functions.data.</code><code class="sig-name descname">Data</code><a class="headerlink" href="#functions.data.Data" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="py method">
-<dt id="functions.data.Data.average_image">
-<code class="sig-name descname">average_image</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#functions.data.Data.average_image" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calculate average image of the tiff video.</p>
-</dd></dl>
-
-</dd></dl>
-
-</div>
-<div class="section" id="module-functions.data">
-<span id="analysis-methods"></span><h2><a class="toc-backref" href="#id5">Analysis methods</a><a class="headerlink" href="#module-functions.data" title="Permalink to this headline">¶</a></h2>
-<dl class="py class">
-<dt id="id0">
-<em class="property">class </em><code class="sig-prename descclassname">functions.data.</code><code class="sig-name descname">Data</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filepath</span></em>, <em class="sig-param"><span class="n">filename</span></em><span class="sig-paren">)</span><a class="headerlink" href="#id0" title="Permalink to this definition">¶</a></dt>
-<dd><p>Data object contains the information of a dataset (e.g. dimensions,
+  <div class="section" id="the-pysofidata-class">
+<h1>The “PysofiData()” class<a class="headerlink" href="#the-pysofidata-class" title="Permalink to this headline">¶</a></h1>
+<p>The <cite>PysofiData</cite> class is the fundamental data container that carries the measurement
+data and pysofi-related properties and behaviors. User-defined parameters and
+intermediate results are bundled to the <cite>PysofiData</cite> object as attributes as well
+as processing steps as methods. The full SOFI 2.0 analysis pipeline can be achieved
+based on multiple PysofiData methods. Each processing step is connected to a separate
+outside module supported by pysofi, and can be utilized not only by pysofi, but also
+by other computational imaging developers for similar purposes.</p>
+<div class="section" id="module-functions.pysofi">
+<span id="attributes-and-methods"></span><h2>Attributes and Methods<a class="headerlink" href="#module-functions.pysofi" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="functions.pysofi.PysofiData">
+<em class="property">class </em><code class="descclassname">functions.pysofi.</code><code class="descname">PysofiData</code><span class="sig-paren">(</span><em>filepath</em>, <em>filename</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.pysofi.PysofiData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Data object contains the information of a dataset (e.g. dimensions,
 frame numbers), and provides SOFI methods to perform analysis and
 visualization on the dataset (moments reconstruction, cumulants
 reconstruction, shrinking kernel deconvolution, etc…).</p>
-<p>When loading a tiff file, a Data() object is created and further
+<p>When loading a tiff file, a PysofiData() object is created and further
 SOFI analysis can be preformed. All the standard data-attributes
 are listed below. New data-attributes can be added or updated using
 ‘.add()’ function.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>filapath</strong> (<em>str</em>) – Path to the tiff file.</p></li>
-<li><p><strong>filename</strong> (<em>str</em>) – Name of the tiff file.</p></li>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>filapath</strong> (<em>str</em>) – Path to the tiff file.</li>
+<li><strong>filename</strong> (<em>str</em>) – Name of the tiff file.</li>
 </ul>
-</dd>
-</dl>
-<dl class="py attribute">
-<dt id="functions.data.Data.filename">
-<code class="sig-name descname">filename</code><a class="headerlink" href="#functions.data.Data.filename" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>str</p>
-</dd>
-</dl>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="functions.pysofi.PysofiData.filename">
+<code class="descname">filename</code><a class="headerlink" href="#functions.pysofi.PysofiData.filename" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em></p>
 </dd></dl>
 
-<dl class="py attribute">
-<dt id="functions.data.Data.filepath">
-<code class="sig-name descname">filepath</code><a class="headerlink" href="#functions.data.Data.filepath" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>str</p>
-</dd>
-</dl>
+<dl class="attribute">
+<dt id="functions.pysofi.PysofiData.filepath">
+<code class="descname">filepath</code><a class="headerlink" href="#functions.pysofi.PysofiData.filepath" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em></p>
 </dd></dl>
 
-<dl class="py attribute">
-<dt id="functions.data.Data.ave">
-<code class="sig-name descname">ave</code><a class="headerlink" href="#functions.data.Data.ave" title="Permalink to this definition">¶</a></dt>
-<dd><p>The average image of the image stack / tiff video.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>ndarray</p>
-</dd>
-</dl>
+<dl class="attribute">
+<dt id="functions.pysofi.PysofiData.ave">
+<code class="descname">ave</code><a class="headerlink" href="#functions.pysofi.PysofiData.ave" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>ndarray</em> – The average image of the image stack / tiff video.</p>
 </dd></dl>
 
-<dl class="py attribute">
-<dt id="functions.data.Data.finterp_factor">
-<code class="sig-name descname">finterp_factor</code><a class="headerlink" href="#functions.data.Data.finterp_factor" title="Permalink to this definition">¶</a></dt>
-<dd><p>The interpolation factor for Fourier interpolation.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>int</p>
-</dd>
-</dl>
+<dl class="attribute">
+<dt id="functions.pysofi.PysofiData.finterp_factor">
+<code class="descname">finterp_factor</code><a class="headerlink" href="#functions.pysofi.PysofiData.finterp_factor" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>int</em> – The interpolation factor for Fourier interpolation.</p>
 </dd></dl>
 
-<dl class="py attribute">
-<dt id="functions.data.Data.morder_lst">
-<code class="sig-name descname">morder_lst</code><a class="headerlink" href="#functions.data.Data.morder_lst" title="Permalink to this definition">¶</a></dt>
-<dd><p>All orders of moments-reconstructions that have been calculated.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>list</p>
-</dd>
-</dl>
+<dl class="attribute">
+<dt id="functions.pysofi.PysofiData.morder_lst">
+<code class="descname">morder_lst</code><a class="headerlink" href="#functions.pysofi.PysofiData.morder_lst" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>list</em> – All orders of moments-reconstructions that have been calculated.</p>
 </dd></dl>
 
-<dl class="py attribute">
-<dt id="functions.data.Data.morder_finterp_lst">
-<code class="sig-name descname">morder_finterp_lst</code><a class="headerlink" href="#functions.data.Data.morder_finterp_lst" title="Permalink to this definition">¶</a></dt>
-<dd><p>All orders of moments-reconstructions after Fourier interpolation
+<dl class="attribute">
+<dt id="functions.pysofi.PysofiData.morder_finterp_lst">
+<code class="descname">morder_finterp_lst</code><a class="headerlink" href="#functions.pysofi.PysofiData.morder_finterp_lst" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>list</em> – All orders of moments-reconstructions after Fourier interpolation
 that have been calculated.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>list</p>
-</dd>
-</dl>
 </dd></dl>
 
-<dl class="py attribute">
-<dt id="functions.data.Data.moments_set">
-<code class="sig-name descname">moments_set</code><a class="headerlink" href="#functions.data.Data.moments_set" title="Permalink to this definition">¶</a></dt>
-<dd><p>moment order (int) -&gt; moment-reconstructed image (ndarray)
-A dictionary of orders and corrensponding reconstructions.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>dict</p>
-</dd>
-</dl>
+<dl class="attribute">
+<dt id="functions.pysofi.PysofiData.moments_set">
+<code class="descname">moments_set</code><a class="headerlink" href="#functions.pysofi.PysofiData.moments_set" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>dict</em> – moment order (int) -&gt; moment-reconstructed image (ndarray)
+A dictionary of orders and corrensponding moment reconstructions.</p>
 </dd></dl>
 
-<dl class="py attribute">
-<dt id="functions.data.Data.cumulants_set">
-<code class="sig-name descname">cumulants_set</code><a class="headerlink" href="#functions.data.Data.cumulants_set" title="Permalink to this definition">¶</a></dt>
-<dd><p>cumulant order (int) -&gt; cumulant-reconstructed image (ndarray)
-A dictionary of orders and corrensponding reconstructions.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>dict</p>
-</dd>
-</dl>
+<dl class="attribute">
+<dt id="functions.pysofi.PysofiData.moments_set_bc">
+<code class="descname">moments_set_bc</code><a class="headerlink" href="#functions.pysofi.PysofiData.moments_set_bc" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>dict</em> – moment order (int) -&gt; moment-reconstructed image (ndarray)
+A dictionary of orders and corrensponding moment reconstructions
+with bleaching correction.</p>
 </dd></dl>
 
-<dl class="py attribute">
-<dt id="functions.data.Data.morder">
-<code class="sig-name descname">morder</code><a class="headerlink" href="#functions.data.Data.morder" title="Permalink to this definition">¶</a></dt>
-<dd><p>The highest order of moment reconstruction that has been calculated.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>int</p>
-</dd>
-</dl>
+<dl class="attribute">
+<dt id="functions.pysofi.PysofiData.cumulants_set">
+<code class="descname">cumulants_set</code><a class="headerlink" href="#functions.pysofi.PysofiData.cumulants_set" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>dict</em> – cumulant order (int) -&gt; cumulant-reconstructed image (ndarray)
+A dictionary of orders and corrensponding cumulant reconstructions.</p>
 </dd></dl>
 
-<dl class="py attribute">
-<dt id="functions.data.Data.corder">
-<code class="sig-name descname">corder</code><a class="headerlink" href="#functions.data.Data.corder" title="Permalink to this definition">¶</a></dt>
-<dd><p>The highest order of cumulant reconstruction that has been calculated.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>int</p>
-</dd>
-</dl>
+<dl class="attribute">
+<dt id="functions.pysofi.PysofiData.cumulants_set_bc">
+<code class="descname">cumulants_set_bc</code><a class="headerlink" href="#functions.pysofi.PysofiData.cumulants_set_bc" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>dict</em> – cumulant order (int) -&gt; cumulant-reconstructed image (ndarray)
+A dictionary of orders and corrensponding cumulant reconstructions
+with bleaching correction.</p>
 </dd></dl>
 
-<dl class="py attribute">
-<dt id="functions.data.Data.n_frames">
-<code class="sig-name descname">n_frames</code><a class="headerlink" href="#functions.data.Data.n_frames" title="Permalink to this definition">¶</a></dt>
-<dd><p>The number of frames of the image stack / tiff video.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>int</p>
-</dd>
-</dl>
+<dl class="attribute">
+<dt id="functions.pysofi.PysofiData.morder">
+<code class="descname">morder</code><a class="headerlink" href="#functions.pysofi.PysofiData.morder" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>int</em> – The highest order of moment reconstruction that has been calculated.</p>
 </dd></dl>
 
-<dl class="py attribute">
-<dt id="functions.data.Data.xdim">
-<code class="sig-name descname">xdim</code><a class="headerlink" href="#functions.data.Data.xdim" title="Permalink to this definition">¶</a></dt>
-<dd><p>The number of pixels in x dimension.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>int</p>
-</dd>
-</dl>
+<dl class="attribute">
+<dt id="functions.pysofi.PysofiData.corder">
+<code class="descname">corder</code><a class="headerlink" href="#functions.pysofi.PysofiData.corder" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>int</em> – The highest order of cumulant reconstruction that has been
+calculated.</p>
 </dd></dl>
 
-<dl class="py attribute">
-<dt id="functions.data.Data.ydim">
-<code class="sig-name descname">ydim</code><a class="headerlink" href="#functions.data.Data.ydim" title="Permalink to this definition">¶</a></dt>
-<dd><p>The number of pixels in y dimension.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Type</dt>
-<dd class="field-odd"><p>int</p>
-</dd>
-</dl>
+<dl class="attribute">
+<dt id="functions.pysofi.PysofiData.fbc">
+<code class="descname">fbc</code><a class="headerlink" href="#functions.pysofi.PysofiData.fbc" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>float</em> – Bleaching correction factor.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="functions.pysofi.PysofiData.n_frames">
+<code class="descname">n_frames</code><a class="headerlink" href="#functions.pysofi.PysofiData.n_frames" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>int</em> – The number of frames of the image stack / tiff video.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="functions.pysofi.PysofiData.xdim">
+<code class="descname">xdim</code><a class="headerlink" href="#functions.pysofi.PysofiData.xdim" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>int</em> – The number of pixels in x dimension.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="functions.pysofi.PysofiData.ydim">
+<code class="descname">ydim</code><a class="headerlink" href="#functions.pysofi.PysofiData.ydim" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>int</em> – The number of pixels in y dimension.</p>
 </dd></dl>
 
 <p class="rubric">Notes</p>
@@ -251,237 +191,320 @@ cumulants reconstruction, 3) noise filtering 1, 4) shrinking kernel de-
 convolution, 5) noise filtering 2, and 6) ldrc. The processed video will
 be saved into a new tiff file with the colormap user selects.</p>
 <p class="rubric">References</p>
-<dl class="footnote brackets">
-<dt class="label" id="id1"><span class="brackets">1</span></dt>
-<dd><p>Xiyu Yi, Sungho Son, Ryoko Ando, Atsushi Miyawaki, and Shimon Weiss,</p>
-</dd>
-</dl>
+<table class="docutils footnote" frame="void" id="id1" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[1]</td><td>Xiyu Yi, Sungho Son, Ryoko Ando, Atsushi Miyawaki, and Shimon Weiss,</td></tr>
+</tbody>
+</table>
 <p>“Moments reconstruction and local dynamic range compression of high order
 superresolution optical fluctuation imaging,” Biomed. Opt. Express 10,
 2430-2445 (2019).</p>
-<dl class="py method">
-<dt id="functions.data.Data.add">
-<code class="sig-name descname">add</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#functions.data.Data.add" title="Permalink to this definition">¶</a></dt>
+<dl class="method">
+<dt id="functions.pysofi.PysofiData.add">
+<code class="descname">add</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.pysofi.PysofiData.add" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add or update elements (attributes and/or dict entries).</p>
 </dd></dl>
 
-<dl class="py method">
-<dt id="functions.data.Data.add_filtered">
-<code class="sig-name descname">add_filtered</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">image</span></em>, <em class="sig-param"><span class="n">filter_name</span><span class="o">=</span><span class="default_value">'noise filter'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#functions.data.Data.add_filtered" title="Permalink to this definition">¶</a></dt>
+<dl class="method">
+<dt id="functions.pysofi.PysofiData.add_filtered">
+<code class="descname">add_filtered</code><span class="sig-paren">(</span><em>image</em>, <em>filter_name='noise filter'</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.pysofi.PysofiData.add_filtered" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add (noise) filtered image as an attribute of the object.</p>
 </dd></dl>
 
-<dl class="py method">
-<dt id="id2">
-<code class="sig-name descname">average_image</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id2" title="Permalink to this definition">¶</a></dt>
+<dl class="method">
+<dt id="functions.pysofi.PysofiData.average_image">
+<code class="descname">average_image</code><span class="sig-paren">(</span><em>frames=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.pysofi.PysofiData.average_image" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate average image of the tiff video.</p>
 </dd></dl>
 
-<dl class="py method">
-<dt id="functions.data.Data.calc_moments_set">
-<code class="sig-name descname">calc_moments_set</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">highest_order</span><span class="o">=</span><span class="default_value">4</span></em>, <em class="sig-param"><span class="n">mean_im</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#functions.data.Data.calc_moments_set" title="Permalink to this definition">¶</a></dt>
+<dl class="method">
+<dt id="functions.pysofi.PysofiData.average_image_with_finterp">
+<code class="descname">average_image_with_finterp</code><span class="sig-paren">(</span><em>interp_num</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.pysofi.PysofiData.average_image_with_finterp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="functions.pysofi.PysofiData.bleach_correct">
+<code class="descname">bleach_correct</code><span class="sig-paren">(</span><em>fbc=0.04</em>, <em>smooth_kernel=251</em>, <em>save_option=True</em>, <em>return_option=False</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.pysofi.PysofiData.bleach_correct" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs bleaching correction on a tiff image (stack) with a
+bleaching correction factor.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>fbc</strong> (<em>float</em>) – The fraction of signal decrease within each block compared
+to the total signal decrease. Only used when bleach correction
+is True.</li>
+<li><strong>smooth_kernel</strong> (<em>int</em>) – The size of the median filter window.</li>
+<li><strong>save_option</strong> (<em>bool</em>) – Whether to save the corrected images into tiff files.</li>
+<li><strong>return_option</strong> (<em>bool</em>) – Whether to return the corrected image series as a 3d array.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>bc_im</strong> – All bleaching-corrected imagee in a 3d array.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">ndarray</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="functions.pysofi.PysofiData.calc_moments_set">
+<code class="descname">calc_moments_set</code><span class="sig-paren">(</span><em>highest_order=4</em>, <em>frames=[]</em>, <em>mean_im=None</em>, <em>bleach_correction=False</em>, <em>smooth_kernel=251</em>, <em>fbc=0.04</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.pysofi.PysofiData.calc_moments_set" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate moment-reconstructed images to the highest order.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>highest_order</strong> (<em>int</em>) – The highest order number of moment-reconstructed images.</p></li>
-<li><p><strong>mean_im</strong> (<em>ndarray</em>) – Average image of the tiff stack.</p></li>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>highest_order</strong> (<em>int</em>) – The highest order number of moment-reconstructed images.</li>
+<li><strong>frames</strong> (<em>list of int</em>) – The start and end frame number.</li>
+<li><strong>mean_im</strong> (<em>ndarray</em>) – Average image of the tiff stack.</li>
+<li><strong>bleach_correction</strong> (<em>bool</em>) – Whether to use bleaching correction.</li>
+<li><strong>smooth_kernel</strong> (<em>int</em><em>, </em><em>optional</em>) – The size of the median filter window. Only used when bleach
+correction is True.</li>
+<li><strong>fbc</strong> (<em>float</em><em>, </em><em>optional</em>) – The fraction of signal decrease within each block compared
+to the total signal decrease. Only used when bleach correction
+is True.</li>
 </ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>moments_set</strong> – order number (int) -&gt; image (ndarray)
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>moments_set, moments_set_bc</strong> – order number (int) -&gt; image (ndarray)
 A dictionary of calcualted moment-reconstructed images.</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>dict</p>
-</dd>
-</dl>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dict</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
-<dl class="py method">
-<dt id="functions.data.Data.cumulants_images">
-<code class="sig-name descname">cumulants_images</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">highest_order</span><span class="o">=</span><span class="default_value">4</span></em>, <em class="sig-param"><span class="n">m_set</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#functions.data.Data.cumulants_images" title="Permalink to this definition">¶</a></dt>
+<dl class="method">
+<dt id="functions.pysofi.PysofiData.cumulants_images">
+<code class="descname">cumulants_images</code><span class="sig-paren">(</span><em>highest_order=4</em>, <em>frames=[]</em>, <em>m_set=None</em>, <em>bleach_correction=False</em>, <em>smooth_kernel=251</em>, <em>fbc=0.04</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.pysofi.PysofiData.cumulants_images" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate cumulant-reconstructed images to the highest order.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>highest_order</strong> (<em>int</em>) – The highest order number of cumulant-reconstructed images.</p></li>
-<li><p><strong>m_set</strong> (<em>dict</em>) – order number (int) -&gt; image (ndarray)
-A dictionary of calcualted moment-reconstructed images.</p></li>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>highest_order</strong> (<em>int</em>) – The highest order number of cumulant-reconstructed images.</li>
+<li><strong>frames</strong> (<em>list of int</em>) – The start and end frame number.</li>
+<li><strong>m_set</strong> (<em>dict</em>) – order number (int) -&gt; image (ndarray)
+A dictionary of calcualted moment-reconstructed images.</li>
+<li><strong>bleach_correction</strong> (<em>bool</em>) – Whether to use bleaching correction.</li>
+<li><strong>smooth_kernel</strong> (<em>int</em><em>, </em><em>optional</em>) – The size of the median filter window. Only used when bleach
+correction is True.</li>
+<li><strong>fbc</strong> (<em>float</em><em>, </em><em>optional</em>) – The fraction of signal decrease within each block compared
+to the total signal decrease. Only used when bleach correction
+is True.</li>
 </ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>cumulants</strong> – order number (int) -&gt; image (ndarray)
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>cumulants_set, cumulants_set_bc</strong> – order number (int) -&gt; image (ndarray)
 A dictionary of calcualted cumulant-reconstructed images.</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>dict</p>
-</dd>
-</dl>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dict</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
-<dl class="py method">
-<dt id="functions.data.Data.deconvsk">
-<code class="sig-name descname">deconvsk</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">est_psf</span><span class="o">=</span><span class="default_value">array([[0.0, 0.0, 0.0, ..., 0.0, 0.0, 0.0], [0.0, 0.0, 0.0, ..., 0.0, 0.0, 0.0], [0.0, 0.0, 0.0, ..., 0.0, 0.0, 0.0], ..., [0.0, 0.0, 0.0, ..., 0.0, 0.0, 0.0], [0.0, 0.0, 0.0, ..., 0.0, 0.0, 0.0], [0.0, 0.0, 0.0, ..., 0.0, 0.0, 0.0]])</span></em>, <em class="sig-param"><span class="n">input_im</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">deconv_lambda</span><span class="o">=</span><span class="default_value">1.5</span></em>, <em class="sig-param"><span class="n">deconv_iter</span><span class="o">=</span><span class="default_value">20</span></em><span class="sig-paren">)</span><a class="headerlink" href="#functions.data.Data.deconvsk" title="Permalink to this definition">¶</a></dt>
+<dl class="method">
+<dt id="functions.pysofi.PysofiData.deconvsk">
+<code class="descname">deconvsk</code><span class="sig-paren">(</span><em>est_psf=array([[0., 0., 0., ..., 0., 0., 0.],        [0., 0., 0., ..., 0., 0., 0.],        [0., 0., 0., ..., 0., 0., 0.],        ...,        [0., 0., 0., ..., 0., 0., 0.],        [0., 0., 0., ..., 0., 0., 0.],        [0., 0., 0., ..., 0., 0., 0.]]), input_im=None, deconv_lambda=1.5, deconv_iter=20</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.pysofi.PysofiData.deconvsk" title="Permalink to this definition">¶</a></dt>
 <dd><p>Perform serial Richardson-Lucy deconvolution with a series of PSFs
 on the input image. For details of shrinking kernel deconvolution,
 refer to deconvsk.py and [1].</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>est_psf</strong> (<em>ndarray</em>) – Estimated PSF.</p></li>
-<li><p><strong>input_im</strong> (<em>ndarray</em>) – Input image that need deconvolution.</p></li>
-<li><p><strong>deconv_lambda</strong> (<em>float</em>) – Lambda for the exponent between. It is an empirical parameter
-within the range of (1,2).</p></li>
-<li><p><strong>deconv_iter</strong> (<em>int</em>) – Number of iterations for each deconvolution.</p></li>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>est_psf</strong> (<em>ndarray</em>) – Estimated PSF.</li>
+<li><strong>input_im</strong> (<em>ndarray</em>) – Input image that need deconvolution.</li>
+<li><strong>deconv_lambda</strong> (<em>float</em>) – Lambda for the exponent between. It is an empirical parameter
+within the range of (1,2).</li>
+<li><strong>deconv_iter</strong> (<em>int</em>) – Number of iterations for each deconvolution.</li>
 </ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>deconv</strong> – Deconvoluted image.</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>ndarray</p>
-</dd>
-</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>deconv</strong> – Deconvoluted image.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">ndarray</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
-<dl class="py method">
-<dt id="functions.data.Data.finterp_image">
-<code class="sig-name descname">finterp_image</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">input_im</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">interp_num_lst</span><span class="o">=</span><span class="default_value">[2, 4]</span></em><span class="sig-paren">)</span><a class="headerlink" href="#functions.data.Data.finterp_image" title="Permalink to this definition">¶</a></dt>
+<dl class="method">
+<dt id="functions.pysofi.PysofiData.finterp_image">
+<code class="descname">finterp_image</code><span class="sig-paren">(</span><em>input_im=None, interp_num_lst=[2, 4]</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.pysofi.PysofiData.finterp_image" title="Permalink to this definition">¶</a></dt>
 <dd><p>Performs fourier interpolation on an image array.</p>
 </dd></dl>
 
-<dl class="py method">
-<dt id="functions.data.Data.finterp_tiffstack">
-<code class="sig-name descname">finterp_tiffstack</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">interp_num_lst</span><span class="o">=</span><span class="default_value">[2, 4]</span></em>, <em class="sig-param"><span class="n">mvlength</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">save_option</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">return_option</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#functions.data.Data.finterp_tiffstack" title="Permalink to this definition">¶</a></dt>
+<dl class="method">
+<dt id="functions.pysofi.PysofiData.finterp_tiffstack">
+<code class="descname">finterp_tiffstack</code><span class="sig-paren">(</span><em>interp_num_lst=[2, 4], frames=[], save_option=True, return_option=False</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.pysofi.PysofiData.finterp_tiffstack" title="Permalink to this definition">¶</a></dt>
 <dd><p>Performs fourier interpolation on a tiff image (stack) with a list of
 interpolation factors (the number of pixels to be interpolated between
 two adjacent pixels).</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>interp_num_lst</strong> (<em>list</em><em> (</em><em>int</em><em>)</em>) – A list of interpolation factors.</p></li>
-<li><p><strong>mvlength</strong> (<em>int</em>) – The frame number of the tiff file (1 for images).</p></li>
-<li><p><strong>save_option</strong> (<em>bool</em>) – Whether to save the interpolated images into tiff files (each
-interpolation factor seperately).</p></li>
-<li><p><strong>return_option</strong> (<em>bool</em>) – Whether to return the interpolated image series as 3d arrays.</p></li>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>interp_num_lst</strong> (<em>list</em><em> (</em><em>int</em><em>)</em>) – A list of interpolation factors.</li>
+<li><strong>frames</strong> (<em>list of int</em>) – The start and end frame number.</li>
+<li><strong>save_option</strong> (<em>bool</em>) – Whether to save the interpolated images into tiff files (each
+interpolation factor seperately).</li>
+<li><strong>return_option</strong> (<em>bool</em>) – Whether to return the interpolated image series as 3d arrays.</li>
 </ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>finterps</strong> – A list of interpolated image sereis corresponding to the interpolation
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>finterps</strong> – A list of interpolated image sereis corresponding to the interpolation
 factor list.</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>list (ndarray)</p>
-</dd>
-</dl>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list (ndarray)</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
-<dl class="py method">
-<dt id="functions.data.Data.get_dims">
-<code class="sig-name descname">get_dims</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#functions.data.Data.get_dims" title="Permalink to this definition">¶</a></dt>
+<dl class="method">
+<dt id="functions.pysofi.PysofiData.get_dims">
+<code class="descname">get_dims</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#functions.pysofi.PysofiData.get_dims" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get dimensions and frame number of the tiff video.</p>
 </dd></dl>
 
-<dl class="py method">
-<dt id="functions.data.Data.get_frame">
-<code class="sig-name descname">get_frame</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">frame_num</span><span class="o">=</span><span class="default_value">0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#functions.data.Data.get_frame" title="Permalink to this definition">¶</a></dt>
+<dl class="method">
+<dt id="functions.pysofi.PysofiData.get_frame">
+<code class="descname">get_frame</code><span class="sig-paren">(</span><em>frame_num=0</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.pysofi.PysofiData.get_frame" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get one frame of the tiff video.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>frame_num</strong> (<em>int</em>) – The frame number (e.g. 0 for the first frame).</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>frame_im</strong> – Frame array.</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>ndarray</p>
-</dd>
-</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>frame_num</strong> (<em>int</em>) – The frame number (e.g. 0 for the first frame).</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>frame_im</strong> – Frame array.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">ndarray</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
-<dl class="py method">
-<dt id="functions.data.Data.ldrc">
-<code class="sig-name descname">ldrc</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">order</span><span class="o">=</span><span class="default_value">6</span></em>, <em class="sig-param"><span class="n">window_size</span><span class="o">=</span><span class="default_value">[25, 25]</span></em>, <em class="sig-param"><span class="n">mask_im</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">input_im</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#functions.data.Data.ldrc" title="Permalink to this definition">¶</a></dt>
+<dl class="method">
+<dt id="functions.pysofi.PysofiData.ldrc">
+<code class="descname">ldrc</code><span class="sig-paren">(</span><em>order=6, window_size=[25, 25], mask_im=None, input_im=None</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.pysofi.PysofiData.ldrc" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compress the dynamic range of moments-/cumulants reconstruced image
 with ldrc method. For details of ldrc, refer to ldrc.py and [1].</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>order</strong> (<em>int</em>) – The order of the reconstructed image.</p></li>
-<li><p><strong>window_size</strong> (<em>[</em><em>int</em><em>, </em><em>int</em><em>]</em>) – The [x, y] dimension of the scanning window.</p></li>
-<li><p><strong>mask_im</strong> (<em>ndarray</em>) – A reference image.
-Usually a average/sum image or second-order SOFI image is used.</p></li>
-<li><p><strong>input_im</strong> (<em>ndarray</em>) – An input image, usually a high-order moment- or cumulant-
-reconstructed image.</p></li>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>order</strong> (<em>int</em>) – The order of the reconstructed image.</li>
+<li><strong>window_size</strong> (<em>[</em><em>int</em><em>, </em><em>int</em><em>]</em>) – The [x, y] dimension of the scanning window.</li>
+<li><strong>mask_im</strong> (<em>ndarray</em>) – A reference image.
+Usually a average/sum image or second-order SOFI image is used.</li>
+<li><strong>input_im</strong> (<em>ndarray</em>) – An input image, usually a high-order moment- or cumulant-
+reconstructed image.</li>
 </ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>ldrc_image</strong> – The compressed image with the same dimensions of input_im.</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>ndarray</p>
-</dd>
-</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>ldrc_image</strong> – The compressed image with the same dimensions of input_im.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">ndarray</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
-<dl class="py method">
-<dt id="functions.data.Data.moment_image">
-<code class="sig-name descname">moment_image</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">order</span><span class="o">=</span><span class="default_value">6</span></em>, <em class="sig-param"><span class="n">mean_im</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">mvlength</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">finterp</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">interp_num</span><span class="o">=</span><span class="default_value">1</span></em><span class="sig-paren">)</span><a class="headerlink" href="#functions.data.Data.moment_image" title="Permalink to this definition">¶</a></dt>
+<dl class="method">
+<dt id="functions.pysofi.PysofiData.moment_image">
+<code class="descname">moment_image</code><span class="sig-paren">(</span><em>order=6</em>, <em>mean_im=None</em>, <em>mvlength=[]</em>, <em>finterp=False</em>, <em>interp_num=1</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.pysofi.PysofiData.moment_image" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate the moment-reconstructed image of a defined order.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>order</strong> (<em>int</em>) – The order number of the moment-reconstructed image.</p></li>
-<li><p><strong>mean_im</strong> (<em>ndarray</em>) – Average image of the tiff stack.</p></li>
-<li><p><strong>mvlength</strong> (<em>int</em>) – Length of the video to calculate moments-reconstruction.</p></li>
-<li><p><strong>finterp</strong> (<em>bool</em>) – Whether to first conduct Fourier interpolation then calculate
-moments-reconstructions.</p></li>
-<li><p><strong>interp_num</strong> (<em>int</em>) – The interpolation factor.</p></li>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>order</strong> (<em>int</em>) – The order number of the moment-reconstructed image.</li>
+<li><strong>mean_im</strong> (<em>ndarray</em>) – Average image of the tiff stack.</li>
+<li><strong>mvlength</strong> (<em>int</em>) – Length of the video to calculate moments-reconstruction.</li>
+<li><strong>finterp</strong> (<em>bool</em>) – Whether to first conduct Fourier interpolation then calculate
+moments-reconstructions.</li>
+<li><strong>interp_num</strong> (<em>int</em>) – The interpolation factor.</li>
 </ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>moment_im</strong> – The calculated moment-reconstructed image.</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>ndarray</p>
-</dd>
-</dl>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>moment_im</strong> – The calculated moment-reconstructed image.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">ndarray</p>
+</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </dd></dl>
 
 </div>
+<div class="section" id="load-data">
+<h2>Load Data<a class="headerlink" href="#load-data" title="Permalink to this headline">¶</a></h2>
+<p>The simulated or experimental measurements can be loaded into the <cite>pysofi.PysofiData</cite> object
+using:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="n">pysofi</span><span class="o">.</span><span class="n">PysofiData</span><span class="p">(</span><span class="n">filepath</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
 </div>
 
 
-            <div class="clearer"></div>
           </div>
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-<h3><a href="index.html">Table of Contents</a></h3>
+<h3><a href="index.html">Table Of Contents</a></h3>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://nbviewer.jupyter.org/github/xiyuyi/pysofi/blob/master/Notebooks/PySOFI2.0_Demo.ipynb">Pysofi Tutorial</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://github.com/xiyuyi/pysofi/tree/master/Notebooks">Demos &amp; Examples</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="manual.html">Pysofi Reference Manual</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">The “Data()” class</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ldrc.html">LDRC functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="start.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="demos.html">Demos</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://nbviewer.jupyter.org/github/xiyuyi-at-LLNL/pysofi/blob/master/Notebooks/PysofiExample_LiveCellActinFilaments.ipynb">SOFI 2.0 Tutorial</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="manual.html">Reference manual</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="manual.html#introduction">Introduction</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="manual.html#modules">Modules</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="functions.html">functions package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="modules.html">functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
 </ul>
 
   <h4>Previous topic</h4>
   <p class="topless"><a href="manual.html"
-                        title="previous chapter">Pysofi Reference Manual</a></p>
+                        title="previous chapter">pysofi Reference Manual</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="ldrc.html"
-                        title="next chapter">LDRC functions</a></p>
+  <p class="topless"><a href="finterp.html"
+                        title="next chapter">Fourier Interpolation Module</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -490,15 +513,17 @@ moments-reconstructions.</p></li>
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
+  <h3>Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" />
       <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -513,19 +538,18 @@ moments-reconstructions.</p></li>
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
         <li class="right" >
-          <a href="ldrc.html" title="LDRC functions"
+          <a href="finterp.html" title="Fourier Interpolation Module"
              >next</a> |</li>
         <li class="right" >
-          <a href="manual.html" title="Pysofi Reference Manual"
+          <a href="manual.html" title="pysofi Reference Manual"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">pysofi 0.0.1 documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="manual.html" >Pysofi Reference Manual</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">The “Data()” class</a></li> 
+          <li class="nav-item nav-item-1"><a href="manual.html" >pysofi Reference Manual</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2020, Yuting Miao.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.1.2.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.4.
     </div>
   </body>
 </html>
