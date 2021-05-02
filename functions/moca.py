@@ -3,7 +3,7 @@ from . import visualization as vis
 from . import masks
 import numpy as np
 import sys
-import tifffile as tiff
+#import tifffile as tiff
 import matplotlib.pyplot as plt
 from scipy import ndimage
 

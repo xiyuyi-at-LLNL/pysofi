@@ -23,7 +23,7 @@ Documentation
    intro
    start
    demos
-   SOFI 2.0 Tutorial <https://nbviewer.jupyter.org/github/xiyuyi-at-LLNL/pysofi/blob/master/Notebooks/PysofiExample_LiveCellActinFilaments.ipynb>
+   SOFI 2.0 Tutorial <https://nbviewer.jupyter.org/github/xiyuyi-at-LLNL/pysofi/blob/master/Notebooks/E13_pysofiExample_LiveCellActinFilaments.ipynb>
    Reference manual <manual>
    about
    license

@@ -40,6 +40,6 @@ List of Jupyter Notebooks
 
 * `E10 - Result Visualization <https://nbviewer.jupyter.org/github/xiyuyi-at-LLNL/pysofi/blob/master/Notebooks/E10_ResultVisualization.ipynb>`__
 
-* `Cusp-Artifacts Demo 1 - 3 Emitter <https://nbviewer.jupyter.org/github/xiyuyi-at-LLNL/pysofi/blob/master/Notebooks/CuspArtifactsDemo1_3Emitters.ipynb>`__
+* `E11 - Cusp-Artifacts Demo 1 - 3 Emitter <https://nbviewer.jupyter.org/github/xiyuyi-at-LLNL/pysofi/blob/master/Notebooks/E11_CuspArtifactsDemo1_3Emitters.ipynb>`__
 
-* `Cusp-Artifacts Demo 2 - Slow Varying Rho <https://nbviewer.jupyter.org/github/xiyuyi-at-LLNL/pysofi/blob/master/Notebooks/CuspArtifactsDemo2_SlowVaryingRho.ipynb>`__
+* `E12 - Cusp-Artifacts Demo 2 - Slow Varying Rho <https://nbviewer.jupyter.org/github/xiyuyi-at-LLNL/pysofi/blob/master/Notebooks/E12_CuspArtifactsDemo2_SlowVaryingRho.ipynb>`__
