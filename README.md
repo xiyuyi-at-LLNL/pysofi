@@ -30,4 +30,4 @@ TBD. Please send an email to Xiyu Yi (yi10@llnl.gov) or Yuting Miao (ytmiao@ucla
 The work performed by Xiyu Yi is supported under the auspices of the U.S. Department of Energy by Lawrence Livermore National Laboratory under Contract DE-AC52-07NA27344. Release number: LLNL-CODE-816626 Please refer to NOTICE.md file for details. The work performed by Yuting Miao is supported by UCLA.
 
 ### documentation
-[doc](https://xiyuyi-at-llnl.github.io/pysofi/docs/build/html/index.html).
+[doc](https://xiyuyi-at-llnl.github.io/pysofi/build/html/index.html).
