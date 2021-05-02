@@ -3,7 +3,7 @@ Introduction
 
 SOFI
 -----
-**TODO: Xiyu**
+**TODO**
 
 SOFI 2.0
 ---------
