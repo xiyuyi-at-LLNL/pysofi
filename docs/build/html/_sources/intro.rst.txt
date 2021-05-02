@@ -2,9 +2,9 @@ Introduction
 =============
 
 SOFI
-----
+-----
 **TODO: Xiyu**
 
-SOFI2.0
--------
+SOFI 2.0
+---------
 **TODO: Xiyu**

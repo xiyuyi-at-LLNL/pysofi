@@ -29,7 +29,7 @@ def fit_sigma(filepath, filename, frames=[]):
     imstack = tiff.TiffFile(filepath + '/' + filename)
     xdim, ydim = np.shape(imstack.pages[0])
     ac2_crop = ac2[ri_range:xdim-ri_range, ri_range:ydim-ri_range]
-
+    imstack.close()
     # fit xc2 / ac2
     xc2ac2_slope = []
     for i in range(series_length):
@@ -39,7 +39,10 @@ def fit_sigma(filepath, filename, frames=[]):
         w[w == np.inf] = 0
         w[w == np.NINF] = 0
         p = np.polyfit(x, y, 1, w=w)
+        if p[0] < 0:
+            p[0] = np.finfo(float).eps
         xc2ac2_slope.append(p[0])
+    y = np.log(xc2ac2_slope)
     p1 = np.polyfit(xi2, np.log(xc2ac2_slope), 1)[0]
     sigFit = np.sqrt(-1/2/p1)
     return sigFit
@@ -167,6 +170,9 @@ def calc_block_moments(filepath, filename, highest_order, frames=[]):
     """
     mean_im = rec.average_image(filepath, filename, frames)
     imstack = tiff.TiffFile(filepath + '/' + filename)
+    if not frames:
+        mvlength = len(imstack.pages)
+        frames = [0, mvlength]
     xdim, ydim = np.shape(imstack.pages[0])
     block_length = frames[1]-frames[0]
     m_set = {}
@@ -183,6 +189,7 @@ def calc_block_moments(filepath, filename, highest_order, frames=[]):
             "="*int(30/(highest_order-1)*order), 29,
             (100/(highest_order-1)*order)))
         sys.stdout.flush()
+    imstack.close()
     print('\n')
 
     return m_set

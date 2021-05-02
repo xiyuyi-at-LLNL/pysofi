@@ -1,0 +1,172 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Getting Started &#8212; pysofi 0.0.1 documentation</title>
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Demos" href="demos.html" />
+    <link rel="prev" title="Introduction" href="intro.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="demos.html" title="Demos"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="intro.html" title="Introduction"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">pysofi 0.0.1 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="getting-started">
+<h1>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
+<p>pysofi can be installed as a standard python package either via <cite>conda</cite>
+or <cite>pip</cite> (later). pysofi runs on OS X, Windows and Linux.</p>
+<div class="section" id="installation">
+<span id="package-install"></span><h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<p>pysofi requires installation of <a class="reference external" href="https://docs.anaconda.com/anaconda/install/">Anaconda</a>.</p>
+<p>The latest version of pysofi can cloned or downloaded from
+<a class="reference external" href="https://github.com/xiyuyi-at-LLNL/pysofi">https://github.com/xiyuyi-at-LLNL/pysofi</a>.</p>
+<p>Before running pysofi, create the environment by running the following code
+in Anaconda prompt or the mac terminal:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">env</span> <span class="n">create</span> <span class="o">-</span><span class="n">f</span> <span class="n">pysofi</span><span class="o">.</span><span class="n">yml</span>
+</pre></div>
+</div>
+<p>Then activate the environment with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">activate</span> <span class="n">pysofi</span>
+</pre></div>
+</div>
+<p>Before running notebook files, set up the environment of Ipython kernel with
+the following code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ipython</span> <span class="n">kernel</span> <span class="n">install</span> <span class="o">--</span><span class="n">user</span> <span class="o">--</span><span class="n">name</span><span class="o">=</span><span class="n">pysofi</span>
+</pre></div>
+</div>
+<p>After starting jupyter notebook, switch kernel to current environment by clicking
+“Kernel -&gt; Change kernel -&gt; pysofi” from the jupyter notebook dropdown menu.</p>
+</div>
+<div class="section" id="pysofi-overview">
+<span id="id1"></span><h2>pysofi Overview<a class="headerlink" href="#pysofi-overview" title="Permalink to this headline">¶</a></h2>
+<p>pysofi implements three primary collection of SOFI analysis routines, including the shared process
+that enables the traditional SOFI analysis, the SOFI 2.0 analysis routines and a a separate SOFI
+relevant routine named Multi Order Cumulant Analysis (MOCA) to demonstrate the modular extension
+of pysofi for additional analysis method.</p>
+<p>Specifically, one can load input data (.tiff format) or partially processed data (such as .tiff
+movie with bleaching correction and/or .with Fourier interpolation) into the <cite>pysofiData</cite> class,
+and perform bleaching correction, Fourier interpolation, moments calculations and cumulant
+calculations in various sequences.</p>
+<p>For SOFI 2.0 routine, one can continue from the previous processing
+step where moments are obtained or directly loaded from pre-computed results, and perform follow
+up analysis of the first noise filtering, deconvolution, the second noise filtering followed with
+a final local dynamic range compression processing to obtain the SOFI 2.0 results.</p>
+<p>Likewise, the MOCA module can continue from cumulantcalculations or direclty load pre-computed
+cumulants, and perform the processing step to produce spatial brigthness distribution and
+blinking statistics distribution. Detailed implementation examples of the analysis routines will
+be discussed in the paper in accompany with tutorials implemented Jupyter notebooks (see demos).</p>
+</div>
+<div class="section" id="sample-data">
+<h2>Sample Data<a class="headerlink" href="#sample-data" title="Permalink to this headline">¶</a></h2>
+<p>All simulated and experimental data are shared on figshare: <a class="reference external" href="https://figshare.com/s/47d97a2df930380c96bb">https://figshare.com/s/47d97a2df930380c96bb</a></p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h3><a href="index.html">Table Of Contents</a></h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pysofi-overview">pysofi Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sample-data">Sample Data</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="demos.html">Demos</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://nbviewer.jupyter.org/github/xiyuyi-at-LLNL/pysofi/blob/master/Notebooks/PysofiExample_LiveCellActinFilaments.ipynb">SOFI 2.0 Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manual.html">Reference manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="intro.html"
+                        title="previous chapter">Introduction</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="demos.html"
+                        title="next chapter">Demos</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/start.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="demos.html" title="Demos"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="intro.html" title="Introduction"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">pysofi 0.0.1 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2020, Yuting Miao.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.4.
+    </div>
+  </body>
+</html>

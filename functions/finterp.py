@@ -112,21 +112,18 @@ def interpolate_image(im, fx, fy, ifx, ify, interp_num):
 
     Example
     -------
-    import numpy as np
-    import matplotlib.pyplot as plt
-    xdim, ydim, sigma, mu = 10, 10, 0.5, 0
-    x, y = np.meshgrid(np.linspace(-1, 1, xdim), np.linspace(-1, 1, xdim))
-    im = np.exp(-((np.sqrt(x*x + y*y) - mu)**2 / (2*sigma**2)))
-    xrange, yrange, interp_num = 2 * xdim, 2 * ydim, 3
-    fx, fy = ft_matrix2d(xrange, yrange)
-    ifx, ify = ift_matrix2d(xrange, yrange, interp_num)
-    interp_im = interpolate_image(im, fx, fy, ifx, ify, interp_num)
+    ::
 
-    fig, axs = plt.subplots(1, 2, figsize=(10, 3))
-    axs[0].set_title('Original image')
-    axs[0].imshow(im)
-    axs[1].set_title('Interplated image')
-    axs[1].imshow(interp_im)
+        import numpy as np
+        import matplotlib.pyplot as plt
+        xdim, ydim, sigma, mu = 10, 10, 0.5, 0
+        x, y = np.meshgrid(np.linspace(-1, 1, xdim), np.linspace(-1, 1, xdim))
+        im = np.exp(-((np.sqrt(x*x + y*y) - mu)**2 / (2*sigma**2)))
+        xrange, yrange, interp_num = 2 * xdim, 2 * ydim, 3
+        fx, fy = ft_matrix2d(xrange, yrange)
+        ifx, ify = ift_matrix2d(xrange, yrange, interp_num)
+        interp_im = interpolate_image(im, fx, fy, ifx, ify, interp_num)
+
     """
     xdim, ydim = np.shape(im)
 
@@ -169,7 +166,7 @@ def fourier_interp_array(im, interp_num_lst):
     return interp_im_lst
 
 
-def fourier_interp_tiff(filepath, filename, interp_num_lst, mvlength=None,
+def fourier_interp_tiff(filepath, filename, interp_num_lst, frames=[],
                         save_option=True, return_option=False):
     """
     Performs fourier interpolation on a tiff image (stack) with a list of 
@@ -184,8 +181,8 @@ def fourier_interp_tiff(filepath, filename, interp_num_lst, mvlength=None,
         The filename of the tiff file without '.tif'.
     interp_num_lst : list (int)
         A list of interpolation factors.
-    mvlength : int
-        The frame number of the tiff file (1 for images).
+    frames : list of int
+        The start and end frame number.
     save_option : bool
         Whether to save the interpolated images into tiff files (each 
         interpolation factor seperately).
@@ -205,29 +202,53 @@ def fourier_interp_tiff(filepath, filename, interp_num_lst, mvlength=None,
     interp_imstack_lst = []
     
     # if user did not select the video length, process on the whole video
-    if mvlength is None:
-        mvlength = len(imstack.pages)
-        
-    for interp_num in interp_num_lst:
-        ifx, ify = ift_matrix2d(xrange, yrange, interp_num)
-        interp_imstack = []
-        print('Calculating interpolation factor = %d...' % interp_num)
-        for frame in range(mvlength):
-            im = tiff.imread(filepath + '/' + filename + '.tif', key=frame)
-            interp_im = interpolate_image(im, fx, fy, ifx, ify, interp_num)
-            interp_im = np.int_(np.around(interp_im))
-            sys.stdout.write('\r')
-            sys.stdout.write("[{:{}}] {:.1f}%".format(
-                "="*int(30/mvlength*(frame+1)), 29, (100/mvlength*(frame+1))))
-            sys.stdout.flush()
-            if save_option is True:
-                tiff.imwrite(filepath + '/' + filename + '_InterpNum' + str(interp_num) +
-                             '.tif', interp_im, dtype='int', append=True)
-            if return_option is True:
-                interp_imstack.append(interp_im)
+    if frames:   
+        for interp_num in interp_num_lst:
+            ifx, ify = ift_matrix2d(xrange, yrange, interp_num)
+            interp_imstack = []
+            print('Calculating interpolation factor = %d...' % interp_num)
+            for frame_num in range(frames[0], frames[1]):
+                im = tiff.imread(filepath + '/' + filename + '.tif', key=frame_num)
+                interp_im = interpolate_image(im, fx, fy, ifx, ify, interp_num)
+                interp_im = np.int_(np.around(interp_im))
+                sys.stdout.write('\r')
+                sys.stdout.write("[{:{}}] {:.1f}%".format(
+                    "="*int(30/(frames[1]-frames[0])*(frame_num-frames[0]+1)), 29,
+                    (100/(frames[1]-frames[0])*(frame_num-frames[0]+1))))
+                sys.stdout.flush()
+                if save_option is True:
+                    tiff.imwrite(filepath + '/' + filename + '_InterpNum' + str(interp_num) +
+                                 '.tif', interp_im, dtype='int', append=True)
+                if return_option is True:
+                    interp_imstack.append(interp_im)
                 
-        if return_option is True:
-            interp_imstack_lst.append(interp_imstack) 
-        print('\n')
+            if return_option is True:
+                interp_imstack_lst.append(interp_imstack) 
+            print('\n')
+    else:
+        mvlength = len(imstack.pages)
+        for interp_num in interp_num_lst:
+            ifx, ify = ift_matrix2d(xrange, yrange, interp_num)
+            interp_imstack = []
+            print('Calculating interpolation factor = %d...' % interp_num)
+            for frame_num in range(mvlength):
+                im = tiff.imread(filepath + '/' + filename + '.tif', key=frame_num)
+                interp_im = interpolate_image(im, fx, fy, ifx, ify, interp_num)
+                interp_im = np.int_(np.around(interp_im))
+                sys.stdout.write('\r')
+                sys.stdout.write("[{:{}}] {:.1f}%".format(
+                    "="*int(30/mvlength*(frame_num+1)), 29,
+                    (100/mvlength*(frame_num+1))))
+                sys.stdout.flush()
+                if save_option is True:
+                    tiff.imwrite(filepath + '/' + filename + '_InterpNum' + str(interp_num) +
+                                 '.tif', interp_im, dtype='int', append=True)
+                if return_option is True:
+                    interp_imstack.append(interp_im)
+                
+            if return_option is True:
+                interp_imstack_lst.append(interp_imstack) 
+            print('\n')        
+     
     if return_option is True:
         return interp_imstack_lst

@@ -22,7 +22,7 @@ def filter1d_same(time_series, noise_filter):
     return filtered_series
 
 
-def noise_filter1d(dset, im_set, noise_filter=masks.gauss1d_mask((1, 21), 2),
+def noise_filter1d(dset, im_set, noise_filter=[],
                    filtername='noise filter after M6',
                    filenames=None, return_option=False):
     """
@@ -53,6 +53,9 @@ def noise_filter1d(dset, im_set, noise_filter=masks.gauss1d_mask((1, 21), 2),
     """
     if filenames is None:
         filenames = [*im_set]
+    
+    if not noise_filter:
+        noise_filter=masks.gauss1d_mask((1, 21), 2)
 
     def get_series(i, j): return [im_set[filename][i, j]
                                   for filename in filenames]
