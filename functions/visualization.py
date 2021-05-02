@@ -4,7 +4,7 @@
 # (or bigger number) in command line.
 
 import numpy as np
-import cv2
+#import cv2
 from bokeh.resources import INLINE
 from bokeh.layouts import row
 import bokeh.io
@@ -12,7 +12,7 @@ from scipy.io import loadmat
 from matplotlib import colors
 from matplotlib import cm
 import matplotlib.pyplot as plt
-import tifffile as tiff
+#import tifffile as tiff
 from bokeh.plotting import figure, output_file, show, output_notebook
 from bokeh.models import ColumnDataSource
 from  bokeh.models import PanTool,ResetTool,BoxZoomTool
