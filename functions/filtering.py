@@ -54,7 +54,7 @@ def noise_filter1d(dset, im_set, noise_filter=[],
     if filenames is None:
         filenames = [*im_set]
     
-    if not noise_filter:
+    if len(noise_filter) == 0:
         noise_filter=masks.gauss1d_mask((1, 21), 2)
 
     def get_series(i, j): return [im_set[filename][i, j]
