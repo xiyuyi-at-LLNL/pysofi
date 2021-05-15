@@ -79,7 +79,7 @@ def bokeh_visualization(image, palette=None, save_option=False,
         output_file(filename+".html", title=filename)
 
     show(p, notebook_handle=True)
-    
+
 
 def bokeh_visualization_rgba(image, save_option=False,
                              filename='RGBAimage', imshow_same=True):
@@ -135,7 +135,6 @@ def bokeh_visualization_mult(image_lst, title_lst=None, palette=None,
                              imshow_same=True):
     """
     Show interactive grayscale image with Bokeh in Jupyter Notebook.
-
     Parameters
     ----------
     image_lst : list(ndarray)
@@ -149,11 +148,7 @@ def bokeh_visualization_mult(image_lst, title_lst=None, palette=None,
             https://docs.bokeh.org/en/latest/docs/reference/palettes.html
     save_option : bool
         Whether to save the Bokeh image as a .html file.
-    filename : str
-        Name of the .html file.
-    imshow_same : bool
-        Whether to reversse y-axis to show the same image as using matplotlib.
-
+    @@ -49,39 +54,70 @@ def bokeh_visualization(image, palette=None, save_option=False,
     Notes
     -----
     For more information about interactive visualization library Bokeh:
@@ -168,27 +163,51 @@ def bokeh_visualization_mult(image_lst, title_lst=None, palette=None,
     tools = [BoxZoomTool(), PanTool(), ResetTool()]
 
     all_im = []
-    for image, title in zip(image_lst, title_lst):
+    if title_lst is None:
+        title_lst=np.arange(len(image_lst))
+    for i in range(len(image_lst)):
+    # for image, title in zip(image_lst, title_lst):
+        image, title = image_lst[i], title_lst[i]
         image = ensure_positive(image)
         xdim, ydim = np.shape(image)
-        if imshow_same is True:
-            p = figure(x_range=(0, xdim), y_range=(ydim, 0), title=title,
-                       plot_width=500, plot_height=500, 
-                       tooltips=TOOLTIPS, tools=tools)
-            flip_im = np.flipud(image)
-            p.image(image=[flip_im], x=0, y=ydim, dw=xdim, dh=ydim,
-                    palette=palette, level="image")
-            p.xgrid.grid_line_color = None
-            p.ygrid.grid_line_color = None
+        if i == 0:
+            if imshow_same is True:
+                p1 = figure(x_range=(0, xdim), y_range=(ydim, 0), title=title,
+                            plot_width=500, plot_height=500, 
+                            tooltips=TOOLTIPS, tools=tools)
+                flip_im = np.flipud(image)
+                p1.image(image=[flip_im], x=0, y=ydim, dw=xdim, dh=ydim,
+                         palette=palette, level="image")
+                p1.xgrid.grid_line_color = None
+                p1.ygrid.grid_line_color = None
+            else:
+                p1 = figure(x_range=(0, xdim), y_range=(0, ydim), title=title,
+                            plot_width=500, plot_height=500, 
+                            tooltips=TOOLTIPS, tools=tools)
+                p1.image(image=[image], x=0, y=0, dw=xdim, dh=ydim,
+                         palette=palette, level="image")
+                p1.xgrid.grid_line_color = None
+                p1.ygrid.grid_line_color = None
+            all_im.append(p1)
         else:
-            p = figure(x_range=(0, xdim), y_range=(0, ydim), title=title,
-                       plot_width=500, plot_height=500, 
-                       tooltips=TOOLTIPS, tools=tools)
-            p.image(image=[image], x=0, y=0, dw=xdim, dh=ydim,
-                    palette=palette, level="image")
-            p.xgrid.grid_line_color = None
-            p.ygrid.grid_line_color = None
-        all_im.append(p)
+            if imshow_same is True:
+                p = figure(x_range=p1.x_range, y_range=p1.y_range, title=title,
+                           plot_width=500, plot_height=500, 
+                           tooltips=TOOLTIPS, tools=tools)
+                flip_im = np.flipud(image)
+                p.image(image=[flip_im], x=0, y=ydim, dw=xdim, dh=ydim,
+                        palette=palette, level="image")
+                p.xgrid.grid_line_color = None
+                p.ygrid.grid_line_color = None
+            else:
+                p = figure(x_range=p1.x_range, y_range=p1.y_range, title=title,
+                           plot_width=500, plot_height=500, 
+                           tooltips=TOOLTIPS, tools=tools)
+                p.image(image=[image], x=0, y=0, dw=xdim, dh=ydim,
+                        palette=palette, level="image")
+                p.xgrid.grid_line_color = None
+                p.ygrid.grid_line_color = None
+            all_im.append(p)            
 
     if save_option is False:
         output_notebook()
