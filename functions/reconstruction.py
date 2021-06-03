@@ -2,7 +2,7 @@ from . import finterp as f
 from . import filtering
 from . import moca
 import numpy as np
-#import tifffile as tiff
+import tifffile as tiff
 import scipy.special
 import sys
 import os

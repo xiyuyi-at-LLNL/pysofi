@@ -13,7 +13,7 @@ Adapted from https://github.com/xiyuyi/xy_fInterp_forTIFF.
 """
 
 import numpy as np
-#import tifffile as tiff
+import tifffile as tiff
 import sys
 
 

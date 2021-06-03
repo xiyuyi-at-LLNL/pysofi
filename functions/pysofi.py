@@ -1,6 +1,6 @@
 from . import (deconvsk, ldrc, masks, reconstruction)
 from . import finterp as f
-#import tifffile as tiff
+import tifffile as tiff
 import numpy as np
 
 
