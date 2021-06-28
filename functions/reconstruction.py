@@ -98,6 +98,8 @@ def calc_moment_im(filepath, filename, order, frames=[], mean_im=None):
     imstack = tiff.TiffFile(filepath + '/' + filename)
     xdim, ydim = np.shape(imstack.pages[0])
     moment_im = np.zeros((xdim, ydim))
+    print('Calculating the %s-order moment ...' %
+          order)
     if frames:
         for frame_num in range(frames[0], frames[1]):
             im = tiff.imread(filepath + '/' + filename, key=frame_num)
@@ -120,7 +122,7 @@ def calc_moment_im(filepath, filename, order, frames=[], mean_im=None):
             sys.stdout.flush()
         moment_im = moment_im / mvlength
     imstack.close()
-
+    print('\n')
     return moment_im
 
 
@@ -167,23 +169,23 @@ def moment_im_with_finterp(filepath, filename, order, interp_num,
             sys.stdout.flush()
         moment_im = np.int64(moment_im / (frames[1] - frames[0]))
     else:
-    	mvlength = len(imstack.pages)
-    	for frame_num in range(mvlength):
-    		im = tiff.imread(filepath + '/' + filename, key=frame_num)
-    		interp_im = f.fourier_interp_array(im, [interp_num])[0]
-    		moment_im = moment_im + (interp_im - mean_im)**order
-    		sys.stdout.write('\r')
-    		sys.stdout.write("[{:{}}] {:.1f}%".format(
-    			"="*int(30/mvlength*(frame_num+1)), 29,
-    			(100/mvlength*(frame_num+1))))
-    		sys.stdout.flush()
-    	moment_im = np.int64(moment_im / mvlength)
+        mvlength = len(imstack.pages)
+        for frame_num in range(mvlength):
+            im = tiff.imread(filepath + '/' + filename, key=frame_num)
+            interp_im = f.fourier_interp_array(im, [interp_num])[0]
+            moment_im = moment_im + (interp_im - mean_im)**order
+            sys.stdout.write('\r')
+            sys.stdout.write("[{:{}}] {:.1f}%".format(
+                "="*int(30/mvlength*(frame_num+1)), 29,
+                (100/mvlength*(frame_num+1))))
+            sys.stdout.flush()
+        moment_im = np.int64(moment_im / mvlength)
     imstack.close()
     return moment_im
 
 
-def calc_moments(filepath, filename, highest_order, 
-                 frames=[], m_set={}, mean_im=None):
+def calc_moments(filepath, filename, highest_order,
+                 frames=None, m_set=None, mean_im=None):
     """
     Get all moment-reconstructed images to the user-defined highest order for
     a video file(tiff stack).
@@ -210,14 +212,23 @@ def calc_moments(filepath, filename, highest_order,
         order number (int) -> image (ndarray)
         A dictionary of calcualted moment-reconstructed images.
     """
+    if m_set is None:
+        m_set = {}
+    if frames is None:
+        frames = []
     if m_set:
         current_order = max(m_set.keys())
     else:
         current_order = 0
+
+    # calculate average image (mean)
     if mean_im is None:
         mean_im = average_image(filepath, filename, frames)
 
+    # load in the full image stack
     imstack = tiff.TiffFile(filepath + '/' + filename)
+
+    # get the dimension of each frame
     xdim, ydim = np.shape(imstack.pages[0])
 
     def ordinal(n): return "%d%s" % (
@@ -226,10 +237,10 @@ def calc_moments(filepath, filename, highest_order,
 
     if highest_order > current_order:
         for order in range(current_order, highest_order):
-            print('Calculating the %s-order moment reconstruction...' %
+            print('Calculating the %s-order moment...' %
                   order_lst[order])
             m_set[order+1] = np.zeros((xdim, ydim))
-            if frames:
+            if frames:  # if the start and end frame number is specified.
                 for frame_num in range(frames[0], frames[1]):
                     im = tiff.imread(filepath + '/' + filename, key=frame_num)
                     m_set[order+1] = m_set[order+1] + \
@@ -239,7 +250,7 @@ def calc_moments(filepath, filename, highest_order,
                         "="*int(30/(frames[1]-frames[0])*(frame_num-frames[0]+1)), 
                         29, (100/(frames[1]-frames[0])*(frame_num-frames[0]+1))))
                     sys.stdout.flush()
-                m_set[order+1] = np.int64(m_set[order+1] / (frames[1] - frames[0]))
+                m_set[order+1] = np.int64(m_set[order+1] / (frames[1] - frames[0]))  # dvide by the total number of frames
                 print('\n')
             else:
                 mvlength = len(imstack.pages)
@@ -260,13 +271,13 @@ def calc_moments(filepath, filename, highest_order,
 
 def calc_cumulants_from_moments(moment_set):
     """
-    Calculate cumulant-reconstructed images from moment-reconstructed images.
+    Calculate cumulant images from moment images using the recursive relation.
 
     Parameters
     ----------
     moment_set : dict
         order number (int) -> image (ndarray)
-        A dictionary of calcualted moment-reconstructed images.
+        A dictionary of calcualted moment- images.
 
     Returns
     -------
