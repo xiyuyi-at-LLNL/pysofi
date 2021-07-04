@@ -5,3 +5,4 @@
 /Notebooks/*.tif
 /Notebooks/demo_pysofi.avi
 /*/test.ipynb
+.DS_Store
