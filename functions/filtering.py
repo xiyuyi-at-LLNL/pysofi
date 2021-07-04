@@ -24,7 +24,7 @@ def filter1d_same(time_series, noise_filter):
 
 def noise_filter1d(dset, im_set, noise_filter=[],
                    filtername='noise filter after M6',
-                   filenames=None, return_option=False):
+                   filenames=None, return_option=False, return_type='dict'):
     """
     Perform noise filtering on a image stack along the time axis for each 
     pixel independently.
@@ -44,12 +44,17 @@ def noise_filter1d(dset, im_set, noise_filter=[],
     filenames : list (str)
         Sequence of filenames for the filtering.
     return_option : bool
-        Whether to return m_filtered.
+        Whether to return the results after noise filtering or not.
+    return_type : str
+        Choose the format of the returned value. Can use either 'ndarray' or 'dict'
 
     Returns
     -------
     m_filtered : ndarray
-        Filtered image stack.
+        Filtered image stack in the format of a numpy.ndarray.
+    m_filtered : dict
+        Filtered image stack in the format of a dictionary.
+
     """
     if filenames is None:
         filenames = [*im_set]
@@ -74,9 +79,15 @@ def noise_filter1d(dset, im_set, noise_filter=[],
     for k in range(m_length):
         dset[filenames[k]].add_filtered(m_filtered[k], filtername)
 
-    if return_option is True:
-        return m_filtered
+    m_filtered_set = {}
+    for k in np.arange(len([*im_set])):
+        m_filtered_set[[*im_set][k]] = m_filtered[k, :, :]
 
+    if return_option is True:
+        if return_type is 'ndarray':
+            return m_filtered
+        if return_type is 'dict':
+            return m_filtered_set
 
 def med_smooth(ori_signal, kernel_size=251):
     """
