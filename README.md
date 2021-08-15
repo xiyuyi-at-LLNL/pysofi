@@ -31,3 +31,6 @@ The work performed by Xiyu Yi is supported under the auspices of the U.S. Depart
 
 ### Oneline documentation
 [online documentation](https://xiyuyi-at-llnl.github.io/pysofi/build/html/index.html).
+
+### extra demo datasetes on figshare
+https://figshare.com/s/47d97a2df930380c96bb
