@@ -192,7 +192,7 @@ def fourier_interp_tiff(filepath, filename, interp_num_lst, frames=[],
     Returns
     -------
     interp_imstack_lst : list (ndarray)
-        A list of interpolated image sereis corresponding to the interpolation 
+        A list of interpolated image series corresponding to the interpolation
         factor list.
     """
     imstack = tiff.TiffFile(filepath + '/' + filename + '.tif')
