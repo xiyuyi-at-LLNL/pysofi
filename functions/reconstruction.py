@@ -486,29 +486,41 @@ def correct_bleaching(filepath, filename, fbc=0.04, smooth_kernel=251,
     bc_im : ndarray
         All bleaching-corrected imagee in a 3d array.
     """
+    # calculate total signal per frame as a function of time
     sig_b = calc_total_signal(filepath, filename)
+    # filter the total signal to get a smoother bleaching profile
     filtered_sig_b = filtering.med_smooth(sig_b, kernel_size=251)
+    # calculate the block boundary frame indexes based on the bleaching correction factor fbc
     bounds, frame_lst = cut_frames(filtered_sig_b, fbc=fbc)
+    # obtain the total number of blocks.
     block_num = math.ceil(1/fbc)
 
+    # loop over all the blocks
     for i in range(block_num):
+        # calculate the average image for each block
         ave_im = average_image(filepath, filename, 
                                frames=[frame_lst[i], frame_lst[i+1]])
+        # loop over every image within the block
         for frame_num in range(frame_lst[i], frame_lst[i+1]):
-            im = tiff.imread(filepath + '/' + filename, key=frame_num)
-            norm_im = im - ave_im
-            norm_im = np.int_(np.around(norm_im))
+            im = tiff.imread(filepath + '/' + filename, key=frame_num)  # read out the image
+            norm_im = im - ave_im   # subtract the average from the image
+            norm_im = np.int_(np.around(norm_im))  #  covnert to integer
             tiff.imwrite(filepath+'/'+filename[:-4]+'_bc0.tif', 
-                         norm_im, dtype='int', append=True)   
+                         norm_im, dtype='int', append=True)   # write out a temporariy tiff stack.
+            # note that there can be negative values in the image because this is after mean-subtraction
 
+    # store the filename of this temporary tiff stack.
     filename = filename[:-4]+'_bc0.tif'
+    # obtain the minimum value across the entire temporary tiff stack (which will be a negative number)
     min_im = min_image(filepath, filename)
+    # prepare return value variable
     imstack = tiff.TiffFile(filepath + '/' + filename)
     xdim, ydim = np.shape(imstack.pages[0])
     mvlength = len(imstack.pages)
     if return_option is True:
         bc_im = np.zeros((mvlength, xdim, ydim))
     imstack.close()
+    # now need to shift the image pixel values up to set the minimum value to be zero in the following for-loop
     for i in range(mvlength):
         im = tiff.imread(filepath + '/' + filename, key=i)
         norm_im = im - min_im
@@ -518,6 +530,7 @@ def correct_bleaching(filepath, filename, fbc=0.04, smooth_kernel=251,
                          norm_im, dtype='int', append=True) 
         if return_option is True:
             bc_im[i] = norm_im
+    # delete the temperary tiff.
     os.remove(filepath + '/' + filename)
     if return_option is True:
         return bc_im

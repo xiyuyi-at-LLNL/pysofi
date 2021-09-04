@@ -110,15 +110,25 @@ def bokeh_visualization_rgba(image, save_option=False,
     xdim, ydim, ch = np.shape(image)
     TOOLTIPS = [("x", "$x{int}"), ("y", "$y{int}"), ("value", "@image")]
 
+    # make an image_for_rgba that can be used to display the input matrix 'image' using bokeh image_rgba
+    image_for_rgba = np.uint32(np.ones(image[:, :, 0].shape))
+    view = image_for_rgba.view(dtype=np.uint8).reshape((image.shape[0], image.shape[1], 4))
+    for i in range(image.shape[0]):
+        for j in range(image.shape[1]):
+            view[i, j, 0] = image[i, j, 0]
+            view[i, j, 1] = image[i, j, 1]
+            view[i, j, 2] = image[i, j, 2]
+            view[i, j, 3] = image[i, j, 3]
+
     if imshow_same is True:
         p = figure(x_range=(0, xdim), y_range=(ydim, 0), tooltips=TOOLTIPS)
-        flip_im = np.flipud(image)
+        flip_im = np.flipud(image_for_rgba)
         p.image_rgba(image=[flip_im], x=0, y=ydim, dw=xdim, dh=ydim)
         p.xgrid.grid_line_color = None
         p.ygrid.grid_line_color = None
     else:
         p = figure(x_range=(0, xdim), y_range=(0, ydim), tooltips=TOOLTIPS)
-        p.image_rgba(image=[image], x=0, y=0, dw=xdim, dh=ydim)
+        p.image_rgba(image=[image_for_rgba], x=0, y=0, dw=xdim, dh=ydim)
         p.xgrid.grid_line_color = None
         p.ygrid.grid_line_color = None
 
