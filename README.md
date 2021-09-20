@@ -1,5 +1,5 @@
 # PySOFI
-PySOFI is a python package for SOFI analysis.
+PySOFI is a Python package for SOFI analysis.
 
 You can find a collection of examples under Notebooks folder presented in jupyter notebooks.
 
