@@ -24,7 +24,7 @@ After starting jupyter notebook, switch kernel to current environment by clickin
 The documentation for this repository is currently under construction (under `./docs`) using Sphinx. We welcome community contribution to the documentation of the project! 
 
 ### Get involved as a developer
-Please refer to our [documentation page about contributing to pysofi](https://xiyuyi-at-llnl.github.io/pysofi/build/html/about.html#contributing) for details.
+Please refer to our [documentation page about contributing to PySOFI](https://xiyuyi-at-llnl.github.io/pysofi/build/html/about.html#contributing) for details.
 If you have further inquiries, please email Xiyu Yi (yi10@llnl.gov) or Yuting Miao (ytmiao@ucla.edu).
 
 ### Notice
