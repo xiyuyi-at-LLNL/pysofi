@@ -6,7 +6,7 @@ You can find a collection of examples under Notebooks folder presented in jupyte
 ### Configuration
 PySOFI requires installation of [Anaconda](https://docs.anaconda.com/anaconda/install/).
 
-Before running Pysofi, create the environment by running the following code in Anaconda prompt or the mac terminal:
+Before running PySOFI, create the environment by running the following code in Anaconda prompt or the mac terminal:
 
 `conda env create -f pysofi.yml`
 
