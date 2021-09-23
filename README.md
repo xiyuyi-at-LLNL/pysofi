@@ -21,7 +21,7 @@ Before running notebook files, set up the environment of Ipython kernel with the
 After starting jupyter notebook, switch kernel to current environment by clicking "Kernel -> Change kernel -> pysofi" from the jupyter notebook dropdown menu.
 
 ### Documentation
-The documentation for this repository is currently under construction (under `./docs`) using Sphinx. We welcome community contribution to the documentation of the project! 
+The documentation for this repository is currently under construction (under `./docs`) using Sphinx. We welcome community contribution to the project! 
 
 ### Get involved as a developer
 Please refer to our [documentation page about contributing to PySOFI](https://xiyuyi-at-llnl.github.io/pysofi/build/html/about.html#contributing) for details.
