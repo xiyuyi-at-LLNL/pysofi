@@ -1,19 +1,19 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
     <title>Reconstruction Options &#8212; pysofi 0.0.1 documentation</title>
     <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script type="text/javascript" src="_static/documentation_options.js"></script>
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    
     <link rel="author" title="About these documents" href="about.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -56,161 +56,139 @@ defind blocks, with or without Fourier interpolation or bleaching correction.</p
 <span id="functions"></span><h2>Functions<a class="headerlink" href="#module-functions.reconstruction" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="functions.reconstruction.average_image">
-<code class="descclassname">functions.reconstruction.</code><code class="descname">average_image</code><span class="sig-paren">(</span><em>filepath</em>, <em>filename</em>, <em>frames=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.reconstruction.average_image" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">functions.reconstruction.</code><code class="sig-name descname">average_image</code><span class="sig-paren">(</span><em class="sig-param">filepath</em>, <em class="sig-param">filename</em>, <em class="sig-param">frames=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.reconstruction.average_image" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the average image for a video file (tiff stack), either for the
 whole video or for user defined frames.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>filepath</strong> (<em>str</em>) – Path to the tiff file.</li>
-<li><strong>filename</strong> (<em>str</em>) – Name of the tiff file.</li>
-<li><strong>frames</strong> (<em>list of int</em><em>, </em><em>optional</em>) – Start and end frame number if not the whole video is used.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filepath</strong> (<em>str</em>) – Path to the tiff file.</p></li>
+<li><p><strong>filename</strong> (<em>str</em>) – Name of the tiff file.</p></li>
+<li><p><strong>frames</strong> (<em>list of int</em><em>, </em><em>optional</em>) – Start and end frame number if not the whole video is used.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>mean_im</strong> – The average image.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">ndarray</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>mean_im</strong> – The average image.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ndarray</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="functions.reconstruction.average_image_with_finterp">
-<code class="descclassname">functions.reconstruction.</code><code class="descname">average_image_with_finterp</code><span class="sig-paren">(</span><em>filepath</em>, <em>filename</em>, <em>interp_num</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.reconstruction.average_image_with_finterp" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">functions.reconstruction.</code><code class="sig-name descname">average_image_with_finterp</code><span class="sig-paren">(</span><em class="sig-param">filepath</em>, <em class="sig-param">filename</em>, <em class="sig-param">interp_num</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.reconstruction.average_image_with_finterp" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the average image with fourier interpolation for a video file.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>filepath</strong> (<em>str</em>) – Path to the tiff file.</li>
-<li><strong>filename</strong> (<em>str</em>) – Name of the tiff file.</li>
-<li><strong>interp_num</strong> (<em>int</em>) – Interpolation factor.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filepath</strong> (<em>str</em>) – Path to the tiff file.</p></li>
+<li><p><strong>filename</strong> (<em>str</em>) – Name of the tiff file.</p></li>
+<li><p><strong>interp_num</strong> (<em>int</em>) – Interpolation factor.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><ul class="simple">
-<li><strong>mean_im</strong> (<em>ndarray</em>) – The average image after fourier interpolation. Interpolated</li>
-<li><em>images can be further used for SOFI processing.</em></li>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>mean_im</strong> (<em>ndarray</em>) – The average image after fourier interpolation. Interpolated</p></li>
+<li><p><em>images can be further used for SOFI processing.</em></p></li>
 </ul>
 </p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="functions.reconstruction.block_ave_cumulants">
-<code class="descclassname">functions.reconstruction.</code><code class="descname">block_ave_cumulants</code><span class="sig-paren">(</span><em>filepath</em>, <em>filename</em>, <em>highest_order</em>, <em>smooth_kernel=251</em>, <em>fbc=0.04</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.reconstruction.block_ave_cumulants" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">functions.reconstruction.</code><code class="sig-name descname">block_ave_cumulants</code><span class="sig-paren">(</span><em class="sig-param">filepath</em>, <em class="sig-param">filename</em>, <em class="sig-param">highest_order</em>, <em class="sig-param">smooth_kernel=251</em>, <em class="sig-param">fbc=0.04</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.reconstruction.block_ave_cumulants" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get average cumulant-reconstructed images of all blocks determined by
 user-defined noise filtering and bleaching correction factor (fbc).</p>
 <p>Within each block, the amount of signal decrease is identical. This
 amount of signal decrease is characterized by the bleaching correction
 factor, fbc, which is the fractional signal decrease within each block
 (as compared to the total signal decrease over the whole signal plot).</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>filepath</strong> (<em>str</em>) – Path to the tiff file.</li>
-<li><strong>filename</strong> (<em>str</em>) – Name of the tiff file.</li>
-<li><strong>highest_order</strong> (<em>int</em>) – The highest order number of moment-reconstructed images.</li>
-<li><strong>smooth_kernel</strong> (<em>int</em>) – The size of the median filter (‘filtering.med_smooth’) window.</li>
-<li><strong>fbc</strong> (<em>float</em>) – The fraction of signal decrease within each block compared to the
-total signal decrease.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filepath</strong> (<em>str</em>) – Path to the tiff file.</p></li>
+<li><p><strong>filename</strong> (<em>str</em>) – Name of the tiff file.</p></li>
+<li><p><strong>highest_order</strong> (<em>int</em>) – The highest order number of moment-reconstructed images.</p></li>
+<li><p><strong>smooth_kernel</strong> (<em>int</em>) – The size of the median filter (‘filtering.med_smooth’) window.</p></li>
+<li><p><strong>fbc</strong> (<em>float</em>) – The fraction of signal decrease within each block compared to the
+total signal decrease.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>ave_k_set</strong> – order number (int) -&gt; image (ndarray)
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>ave_k_set</strong> – order number (int) -&gt; image (ndarray)
 A dictionary of avereage cumulant-reconstructed images of all blocks.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dict</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
 <p class="rubric">Notes</p>
 <p>For more information on noise filtering and bleaching corrextion, please
 see appendix 3 of [1].</p>
 <p class="rubric">References</p>
-<table class="docutils footnote" frame="void" id="id1" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[1]</td><td><ol class="first last upperalpha simple" start="24">
-<li>Yi, and S. Weiss. “Cusp-artifacts in high order superresolution</li>
+<dl class="footnote brackets">
+<dt class="label" id="id1"><span class="brackets">1</span></dt>
+<dd><ol class="upperalpha simple" start="24">
+<li><p>Yi, and S. Weiss. “Cusp-artifacts in high order superresolution</p></li>
 </ol>
-</td></tr>
-</tbody>
-</table>
+</dd>
+</dl>
 <p>optical fluctuation imaging.” bioRxiv: 545574 (2019).</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="functions.reconstruction.block_ave_moments">
-<code class="descclassname">functions.reconstruction.</code><code class="descname">block_ave_moments</code><span class="sig-paren">(</span><em>filepath</em>, <em>filename</em>, <em>highest_order</em>, <em>smooth_kernel=251</em>, <em>fbc=0.04</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.reconstruction.block_ave_moments" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">functions.reconstruction.</code><code class="sig-name descname">block_ave_moments</code><span class="sig-paren">(</span><em class="sig-param">filepath</em>, <em class="sig-param">filename</em>, <em class="sig-param">highest_order</em>, <em class="sig-param">smooth_kernel=251</em>, <em class="sig-param">fbc=0.04</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.reconstruction.block_ave_moments" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get average moment-reconstructed images of all blocks determined by
 user-defined noise filtering and bleaching correction factor (fbc).
 Similar to ‘block_ave_cumulants’.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>filepath</strong> (<em>str</em>) – Path to the tiff file.</li>
-<li><strong>filename</strong> (<em>str</em>) – Name of the tiff file.</li>
-<li><strong>highest_order</strong> (<em>int</em>) – The highest order number of moment-reconstructed images.</li>
-<li><strong>smooth_kernel</strong> (<em>int</em>) – The size of the median filter (‘filtering.med_smooth’) window.</li>
-<li><strong>fbc</strong> (<em>float</em>) – The fraction of signal decrease within each block compared to the
-total signal decrease.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filepath</strong> (<em>str</em>) – Path to the tiff file.</p></li>
+<li><p><strong>filename</strong> (<em>str</em>) – Name of the tiff file.</p></li>
+<li><p><strong>highest_order</strong> (<em>int</em>) – The highest order number of moment-reconstructed images.</p></li>
+<li><p><strong>smooth_kernel</strong> (<em>int</em>) – The size of the median filter (‘filtering.med_smooth’) window.</p></li>
+<li><p><strong>fbc</strong> (<em>float</em>) – The fraction of signal decrease within each block compared to the
+total signal decrease.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>ave_m_set</strong> – order number (int) -&gt; image (ndarray)
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>ave_m_set</strong> – order number (int) -&gt; image (ndarray)
 A dictionary of avereage moment-reconstructed images of all blocks.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dict</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="functions.reconstruction.calc_block_moments">
-<code class="descclassname">functions.reconstruction.</code><code class="descname">calc_block_moments</code><span class="sig-paren">(</span><em>filepath</em>, <em>filename</em>, <em>highest_order</em>, <em>frames=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.reconstruction.calc_block_moments" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">functions.reconstruction.</code><code class="sig-name descname">calc_block_moments</code><span class="sig-paren">(</span><em class="sig-param">filepath</em>, <em class="sig-param">filename</em>, <em class="sig-param">highest_order</em>, <em class="sig-param">frames=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.reconstruction.calc_block_moments" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get moment-reconstructed images for user-defined frames (block) of
 a video file(tiff stack).</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>filepath</strong> (<em>str</em>) – Path to the tiff file.</li>
-<li><strong>filename</strong> (<em>str</em>) – Name of the tiff file.</li>
-<li><strong>highest_order</strong> (<em>int</em>) – The highest order number of moment-reconstructed images.</li>
-<li><strong>frames</strong> (<em>list of int</em>) – Start and end frame number.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filepath</strong> (<em>str</em>) – Path to the tiff file.</p></li>
+<li><p><strong>filename</strong> (<em>str</em>) – Name of the tiff file.</p></li>
+<li><p><strong>highest_order</strong> (<em>int</em>) – The highest order number of moment-reconstructed images.</p></li>
+<li><p><strong>frames</strong> (<em>list of int</em>) – Start and end frame number.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>m_set</strong> – order number (int) -&gt; image (ndarray)
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>m_set</strong> – order number (int) -&gt; image (ndarray)
 A dictionary of calcualted moment-reconstructed images.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dict</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
 <p class="rubric">Notes</p>
 <p>Similar to ‘calc_moments’. Here we omit previously calculated m_set
 and mean_im as inputs since a block usually has much fewer number of
@@ -219,255 +197,222 @@ frames and takes shorter calculation time.</p>
 
 <dl class="function">
 <dt id="functions.reconstruction.calc_cumulants_from_moments">
-<code class="descclassname">functions.reconstruction.</code><code class="descname">calc_cumulants_from_moments</code><span class="sig-paren">(</span><em>moment_set</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.reconstruction.calc_cumulants_from_moments" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calculate cumulant-reconstructed images from moment-reconstructed images.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>moment_set</strong> (<em>dict</em>) – order number (int) -&gt; image (ndarray)
-A dictionary of calcualted moment-reconstructed images.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><strong>k_set</strong> – order number (int) -&gt; image (ndarray)
-A dictionary of calcualted cumulant-reconstructed images.</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
-</tr>
-</tbody>
-</table>
+<code class="sig-prename descclassname">functions.reconstruction.</code><code class="sig-name descname">calc_cumulants_from_moments</code><span class="sig-paren">(</span><em class="sig-param">moment_set</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.reconstruction.calc_cumulants_from_moments" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate cumulant images from moment images using the recursive relation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>moment_set</strong> (<em>dict</em>) – order number (int) -&gt; image (ndarray)
+A dictionary of calcualted moment- images.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>k_set</strong> – order number (int) -&gt; image (ndarray)
+A dictionary of calcualted cumulant-reconstructed images.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="functions.reconstruction.calc_cumulants_from_moments_with_lag">
-<code class="descclassname">functions.reconstruction.</code><code class="descname">calc_cumulants_from_moments_with_lag</code><span class="sig-paren">(</span><em>m_set</em>, <em>tauSeries</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.reconstruction.calc_cumulants_from_moments_with_lag" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">functions.reconstruction.</code><code class="sig-name descname">calc_cumulants_from_moments_with_lag</code><span class="sig-paren">(</span><em class="sig-param">m_set</em>, <em class="sig-param">tauSeries</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.reconstruction.calc_cumulants_from_moments_with_lag" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate cumulant-reconstructed images from moment-reconstructed images
 with time lags.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>m_set</strong> (<em>dict</em>) – order (int) -&gt; dict (partition (tuple) -&gt; image (ndarray))
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>m_set</strong> (<em>dict</em>) – order (int) -&gt; dict (partition (tuple) -&gt; image (ndarray))
 A nested dictionary of moment-reconstructions of all partitions that
-calculated from ‘calc_moments_with_lag’.</li>
-<li><strong>tauSeries</strong> (<em>list of int</em>) – A list of time lags for frames contribute to moment reconstruction.
+calculated from ‘calc_moments_with_lag’.</p></li>
+<li><p><strong>tauSeries</strong> (<em>list of int</em>) – A list of time lags for frames contribute to moment reconstruction.
 The first element is recommended to be 0, and there should be seven
 elements in the list. The values should be the same as the input for
-‘calc_moments_with_lag’.</li>
+‘calc_moments_with_lag’.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>k_set</strong> – order number (int) -&gt; image (ndarray)
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>k_set</strong> – order number (int) -&gt; image (ndarray)
 A dictionary of calcualted cumulant-reconstructed images with time
 lags.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dict</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="functions.reconstruction.calc_moment_im">
-<code class="descclassname">functions.reconstruction.</code><code class="descname">calc_moment_im</code><span class="sig-paren">(</span><em>filepath</em>, <em>filename</em>, <em>order</em>, <em>frames=[]</em>, <em>mean_im=None</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.reconstruction.calc_moment_im" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">functions.reconstruction.</code><code class="sig-name descname">calc_moment_im</code><span class="sig-paren">(</span><em class="sig-param">filepath</em>, <em class="sig-param">filename</em>, <em class="sig-param">order</em>, <em class="sig-param">frames=[]</em>, <em class="sig-param">mean_im=None</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.reconstruction.calc_moment_im" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get one moment-reconstructed image of a defined order for a video file.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>filepath</strong> (<em>str</em>) – Path to the tiff file.</li>
-<li><strong>filename</strong> (<em>str</em>) – Name of the tiff file.</li>
-<li><strong>order</strong> (<em>int</em>) – The order number of moment-reconstructed image.</li>
-<li><strong>frames</strong> (<em>list of int</em>) – The start and end frame number.</li>
-<li><strong>mean_im</strong> (<em>ndarray</em>) – Average image of the tiff stack.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filepath</strong> (<em>str</em>) – Path to the tiff file.</p></li>
+<li><p><strong>filename</strong> (<em>str</em>) – Name of the tiff file.</p></li>
+<li><p><strong>order</strong> (<em>int</em>) – The order number of moment-reconstructed image.</p></li>
+<li><p><strong>frames</strong> (<em>list of int</em>) – The start and end frame number.</p></li>
+<li><p><strong>mean_im</strong> (<em>ndarray</em>) – Average image of the tiff stack.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>moment_im</strong> – The moments-reconstructed image.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">ndarray</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>moment_im</strong> – The moments-reconstructed image.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ndarray</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="functions.reconstruction.calc_moments">
-<code class="descclassname">functions.reconstruction.</code><code class="descname">calc_moments</code><span class="sig-paren">(</span><em>filepath</em>, <em>filename</em>, <em>highest_order</em>, <em>frames=[]</em>, <em>m_set={}</em>, <em>mean_im=None</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.reconstruction.calc_moments" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">functions.reconstruction.</code><code class="sig-name descname">calc_moments</code><span class="sig-paren">(</span><em class="sig-param">filepath</em>, <em class="sig-param">filename</em>, <em class="sig-param">highest_order</em>, <em class="sig-param">frames=None</em>, <em class="sig-param">m_set=None</em>, <em class="sig-param">mean_im=None</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.reconstruction.calc_moments" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get all moment-reconstructed images to the user-defined highest order for
 a video file(tiff stack).</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>filepath</strong> (<em>str</em>) – Path to the tiff file.</li>
-<li><strong>filename</strong> (<em>str</em>) – Name of the tiff file.</li>
-<li><strong>highest_order</strong> (<em>int</em>) – The highest order number of moment-reconstructed images.</li>
-<li><strong>frames</strong> (<em>list of int</em>) – The start and end frame number.</li>
-<li><strong>m_set</strong> (<em>dict</em>) – order number (int) -&gt; image (ndarray)
-A dictionary of previously calcualted moment-reconstructed images.</li>
-<li><strong>mean_im</strong> (<em>ndarray</em>) – Average image of the tiff stack.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filepath</strong> (<em>str</em>) – Path to the tiff file.</p></li>
+<li><p><strong>filename</strong> (<em>str</em>) – Name of the tiff file.</p></li>
+<li><p><strong>highest_order</strong> (<em>int</em>) – The highest order number of moment-reconstructed images.</p></li>
+<li><p><strong>frames</strong> (<em>list of int</em>) – The start and end frame number.</p></li>
+<li><p><strong>m_set</strong> (<em>dict</em>) – order number (int) -&gt; image (ndarray)
+A dictionary of previously calcualted moment-reconstructed images.</p></li>
+<li><p><strong>mean_im</strong> (<em>ndarray</em>) – Average image of the tiff stack.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>m_set</strong> – order number (int) -&gt; image (ndarray)
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>m_set</strong> – order number (int) -&gt; image (ndarray)
 A dictionary of calcualted moment-reconstructed images.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dict</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="functions.reconstruction.calc_moments_with_lag">
-<code class="descclassname">functions.reconstruction.</code><code class="descname">calc_moments_with_lag</code><span class="sig-paren">(</span><em>filepath</em>, <em>filename</em>, <em>tauSeries</em>, <em>frames=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.reconstruction.calc_moments_with_lag" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">functions.reconstruction.</code><code class="sig-name descname">calc_moments_with_lag</code><span class="sig-paren">(</span><em class="sig-param">filepath</em>, <em class="sig-param">filename</em>, <em class="sig-param">tauSeries</em>, <em class="sig-param">frames=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.reconstruction.calc_moments_with_lag" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get moment-reconnstructed images with defined time lags.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>filepath</strong> (<em>str</em>) – Path to the tiff file.</li>
-<li><strong>filename</strong> (<em>str</em>) – Name of the tiff file.</li>
-<li><strong>tauSeries</strong> (<em>list of int</em>) – A list of time lags for frames contribute to moment reconstruction.
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filepath</strong> (<em>str</em>) – Path to the tiff file.</p></li>
+<li><p><strong>filename</strong> (<em>str</em>) – Name of the tiff file.</p></li>
+<li><p><strong>tauSeries</strong> (<em>list of int</em>) – A list of time lags for frames contribute to moment reconstruction.
 The first element is recommended to be 0, and there should seven
-elements in the list.</li>
-<li><strong>frames</strong> (<em>list of int</em>) – The start and end frame number.</li>
+elements in the list.</p></li>
+<li><p><strong>frames</strong> (<em>list of int</em>) – The start and end frame number.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>m_set</strong> – order (int) -&gt; dict (partition (tuple) -&gt; image (ndarray))
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>m_set</strong> – order (int) -&gt; dict (partition (tuple) -&gt; image (ndarray))
 A nested dictionary of moment-reconstructions of all partitions.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dict</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="functions.reconstruction.calc_total_signal">
-<code class="descclassname">functions.reconstruction.</code><code class="descname">calc_total_signal</code><span class="sig-paren">(</span><em>filepath</em>, <em>filename</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.reconstruction.calc_total_signal" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">functions.reconstruction.</code><code class="sig-name descname">calc_total_signal</code><span class="sig-paren">(</span><em class="sig-param">filepath</em>, <em class="sig-param">filename</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.reconstruction.calc_total_signal" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate the total signal intensity of each frame for the whole
 video (tiff stack).</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>filepath</strong> (<em>str</em>) – Path to the tiff file.</li>
-<li><strong>filename</strong> (<em>str</em>) – Name of the tiff file.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filepath</strong> (<em>str</em>) – Path to the tiff file.</p></li>
+<li><p><strong>filename</strong> (<em>str</em>) – Name of the tiff file.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>total_signal</strong> – Signal intensity of each frame ordered by the frame number.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">1darray</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>total_signal</strong> – Signal intensity of each frame ordered by the frame number.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>1darray</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="functions.reconstruction.calc_xc_im">
-<code class="descclassname">functions.reconstruction.</code><code class="descname">calc_xc_im</code><span class="sig-paren">(</span><em>filepath</em>, <em>filename</em>, <em>ri_range</em>, <em>frames=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.reconstruction.calc_xc_im" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">functions.reconstruction.</code><code class="sig-name descname">calc_xc_im</code><span class="sig-paren">(</span><em class="sig-param">filepath</em>, <em class="sig-param">filename</em>, <em class="sig-param">ri_range</em>, <em class="sig-param">frames=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.reconstruction.calc_xc_im" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get cross-cumulant image with different pixel combinations.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>filepath</strong> (<em>str</em>) – Path to the tiff file.</li>
-<li><strong>filename</strong> (<em>str</em>) – Name of the tiff file.</li>
-<li><strong>ri_range</strong> (<em>int</em>) – Maximium distance (# pixels) between the original the selected pixel.</li>
-<li><strong>frames</strong> (<em>list of int</em>) – The start and end frame number.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filepath</strong> (<em>str</em>) – Path to the tiff file.</p></li>
+<li><p><strong>filename</strong> (<em>str</em>) – Name of the tiff file.</p></li>
+<li><p><strong>ri_range</strong> (<em>int</em>) – Maximium distance (# pixels) between the original the selected pixel.</p></li>
+<li><p><strong>frames</strong> (<em>list of int</em>) – The start and end frame number.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>xc</strong> – pixel (tuple) -&gt; image (ndarray)
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>xc</strong> – pixel (tuple) -&gt; image (ndarray)
 A dictionary of reconstructed images with pixel index as keys.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dict</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="functions.reconstruction.correct_bleaching">
-<code class="descclassname">functions.reconstruction.</code><code class="descname">correct_bleaching</code><span class="sig-paren">(</span><em>filepath</em>, <em>filename</em>, <em>fbc=0.04</em>, <em>smooth_kernel=251</em>, <em>save_option=True</em>, <em>return_option=False</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.reconstruction.correct_bleaching" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">functions.reconstruction.</code><code class="sig-name descname">correct_bleaching</code><span class="sig-paren">(</span><em class="sig-param">filepath</em>, <em class="sig-param">filename</em>, <em class="sig-param">fbc=0.04</em>, <em class="sig-param">smooth_kernel=251</em>, <em class="sig-param">save_option=True</em>, <em class="sig-param">return_option=False</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.reconstruction.correct_bleaching" title="Permalink to this definition">¶</a></dt>
 <dd><p>Performs bleaching correction on a tiff image (stack).</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>fbc</strong> (<em>float</em>) – The fraction of signal decrease within each block compared
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fbc</strong> (<em>float</em>) – The fraction of signal decrease within each block compared
 to the total signal decrease. Only used when bleach correction
-is True.</li>
-<li><strong>smooth_kernel</strong> (<em>int</em>) – The size of the median filter window.</li>
-<li><strong>save_option</strong> (<em>bool</em>) – Whether to save the corrected images into tiff files.</li>
-<li><strong>return_option</strong> (<em>bool</em>) – Whether to return the corrected image series as a 3d array.</li>
+is True.</p></li>
+<li><p><strong>smooth_kernel</strong> (<em>int</em>) – The size of the median filter window.</p></li>
+<li><p><strong>save_option</strong> (<em>bool</em>) – Whether to save the corrected images into tiff files.</p></li>
+<li><p><strong>return_option</strong> (<em>bool</em>) – Whether to return the corrected image series as a 3d array.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>bc_im</strong> – All bleaching-corrected imagee in a 3d array.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">ndarray</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>bc_im</strong> – All bleaching-corrected imagee in a 3d array.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ndarray</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="functions.reconstruction.cumulants_all_blocks">
-<code class="descclassname">functions.reconstruction.</code><code class="descname">cumulants_all_blocks</code><span class="sig-paren">(</span><em>m_set_all_blocks</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.reconstruction.cumulants_all_blocks" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">functions.reconstruction.</code><code class="sig-name descname">cumulants_all_blocks</code><span class="sig-paren">(</span><em class="sig-param">m_set_all_blocks</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.reconstruction.cumulants_all_blocks" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate cumulant-reconstructed images from moment-reconstructed images
 of each block. Similar to ‘calc_cumulants_from_moments’.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="functions.reconstruction.cut_frames">
-<code class="descclassname">functions.reconstruction.</code><code class="descname">cut_frames</code><span class="sig-paren">(</span><em>signal_level</em>, <em>fbc=0.04</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.reconstruction.cut_frames" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">functions.reconstruction.</code><code class="sig-name descname">cut_frames</code><span class="sig-paren">(</span><em class="sig-param">signal_level</em>, <em class="sig-param">fbc=0.04</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.reconstruction.cut_frames" title="Permalink to this definition">¶</a></dt>
 <dd><p>Find the list of frame number to cut the whole signal plot into seperate
 blocks based on the change of total signal intensity.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>signal_level</strong> (<em>1darray</em>) – Signal change over time (can be derived from ‘calc_total_signal’).</li>
-<li><strong>fbc</strong> (<em>float</em>) – The fraction of signal decrease within each block compared to the
-total signal decrease.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>signal_level</strong> (<em>1darray</em>) – Signal change over time (can be derived from ‘calc_total_signal’).</p></li>
+<li><p><strong>fbc</strong> (<em>float</em>) – The fraction of signal decrease within each block compared to the
+total signal decrease.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><ul class="simple">
-<li><strong>bounds</strong> (<em>list of int</em>) – Signal intensities on the boundary of each block.</li>
-<li><strong>frame_lst</strong> (<em>list of int</em>) – Frame number where to cut the whole signal plot into blocks.</li>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>bounds</strong> (<em>list of int</em>) – Signal intensities on the boundary of each block.</p></li>
+<li><p><strong>frame_lst</strong> (<em>list of int</em>) – Frame number where to cut the whole signal plot into blocks.</p></li>
 </ul>
 </p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 <p class="rubric">Notes</p>
 <p>The number of blocks is the inverse of the bleaching correction factor,
 fbc. For instance, if fbc=0.04, it means that in each block, the
@@ -482,94 +427,89 @@ initial intensity is much smaller than the maximum.</p>
 
 <dl class="function">
 <dt id="functions.reconstruction.min_image">
-<code class="descclassname">functions.reconstruction.</code><code class="descname">min_image</code><span class="sig-paren">(</span><em>filepath</em>, <em>filename</em>, <em>frames=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.reconstruction.min_image" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">functions.reconstruction.</code><code class="sig-name descname">min_image</code><span class="sig-paren">(</span><em class="sig-param">filepath</em>, <em class="sig-param">filename</em>, <em class="sig-param">frames=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.reconstruction.min_image" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the minimum image for a video file (tiff stack), either for the
 whole video or for user defined frames.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>filepath</strong> (<em>str</em>) – Path to the tiff file.</li>
-<li><strong>filename</strong> (<em>str</em>) – Name of the tiff file.</li>
-<li><strong>frames</strong> (<em>list of int</em><em>, </em><em>optional</em>) – Start and end frame number if not the whole video is used.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filepath</strong> (<em>str</em>) – Path to the tiff file.</p></li>
+<li><p><strong>filename</strong> (<em>str</em>) – Name of the tiff file.</p></li>
+<li><p><strong>frames</strong> (<em>list of int</em><em>, </em><em>optional</em>) – Start and end frame number if not the whole video is used.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>min_im</strong> – The minimum image.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">ndarray</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>min_im</strong> – The minimum image.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ndarray</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="functions.reconstruction.moment_im_with_finterp">
-<code class="descclassname">functions.reconstruction.</code><code class="descname">moment_im_with_finterp</code><span class="sig-paren">(</span><em>filepath</em>, <em>filename</em>, <em>order</em>, <em>interp_num</em>, <em>frames=[]</em>, <em>mean_im=None</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.reconstruction.moment_im_with_finterp" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">functions.reconstruction.</code><code class="sig-name descname">moment_im_with_finterp</code><span class="sig-paren">(</span><em class="sig-param">filepath</em>, <em class="sig-param">filename</em>, <em class="sig-param">order</em>, <em class="sig-param">interp_num</em>, <em class="sig-param">frames=[]</em>, <em class="sig-param">mean_im=None</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.reconstruction.moment_im_with_finterp" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get one moment-reconstructed image of a defined order for a video file.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>filepath</strong> (<em>str</em>) – Path to the tiff file.</li>
-<li><strong>filename</strong> (<em>str</em>) – Name of the tiff file.</li>
-<li><strong>order</strong> (<em>int</em>) – The order number of moment-reconstructed image.</li>
-<li><strong>interp_num</strong> (<em>int</em>) – The interpolation factor.</li>
-<li><strong>mvlength</strong> (<em>int</em>) – The length of video for the reconstruction.</li>
-<li><strong>mean_im</strong> (<em>ndarray</em>) – Average image of the tiff stack.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filepath</strong> (<em>str</em>) – Path to the tiff file.</p></li>
+<li><p><strong>filename</strong> (<em>str</em>) – Name of the tiff file.</p></li>
+<li><p><strong>order</strong> (<em>int</em>) – The order number of moment-reconstructed image.</p></li>
+<li><p><strong>interp_num</strong> (<em>int</em>) – The interpolation factor.</p></li>
+<li><p><strong>mvlength</strong> (<em>int</em>) – The length of video for the reconstruction.</p></li>
+<li><p><strong>mean_im</strong> (<em>ndarray</em>) – Average image of the tiff stack.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>moment_im</strong> – The moments-reconstructed image.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">ndarray</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>moment_im</strong> – The moments-reconstructed image.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ndarray</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="functions.reconstruction.moments_all_blocks">
-<code class="descclassname">functions.reconstruction.</code><code class="descname">moments_all_blocks</code><span class="sig-paren">(</span><em>filepath</em>, <em>filename</em>, <em>highest_order</em>, <em>smooth_kernel=251</em>, <em>fbc=0.04</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.reconstruction.moments_all_blocks" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">functions.reconstruction.</code><code class="sig-name descname">moments_all_blocks</code><span class="sig-paren">(</span><em class="sig-param">filepath</em>, <em class="sig-param">filename</em>, <em class="sig-param">highest_order</em>, <em class="sig-param">smooth_kernel=251</em>, <em class="sig-param">fbc=0.04</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.reconstruction.moments_all_blocks" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get moment-reconstructed images for seperate blocks with user-defined
 noise filtering and bleaching correction factor (fbc).</p>
 <p>Within each block, the amount of signal decrease is identical. This
 amount of signal decrease is characterized by the bleaching correction
 factor, fbc, which is the fractional signal decrease within each block
 (as compared to the total signal decrease over the whole signal plot).</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>filepath</strong> (<em>str</em>) – Path to the tiff file.</li>
-<li><strong>filename</strong> (<em>str</em>) – Name of the tiff file.</li>
-<li><strong>highest_order</strong> (<em>int</em>) – The highest order number of moment-reconstructed images.</li>
-<li><strong>smooth_kernel</strong> (<em>int</em>) – The size of the median filter (‘filtering.med_smooth’) window.</li>
-<li><strong>fbc</strong> (<em>float</em>) – The fraction of signal decrease within each block compared to the
-total signal decrease.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filepath</strong> (<em>str</em>) – Path to the tiff file.</p></li>
+<li><p><strong>filename</strong> (<em>str</em>) – Name of the tiff file.</p></li>
+<li><p><strong>highest_order</strong> (<em>int</em>) – The highest order number of moment-reconstructed images.</p></li>
+<li><p><strong>smooth_kernel</strong> (<em>int</em>) – The size of the median filter (‘filtering.med_smooth’) window.</p></li>
+<li><p><strong>fbc</strong> (<em>float</em>) – The fraction of signal decrease within each block compared to the
+total signal decrease.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>m_set_all_blocks</strong> – block_number (int) -&gt; {order number (int) -&gt; image (ndarray)}
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>m_set_all_blocks</strong> – block_number (int) -&gt; {order number (int) -&gt; image (ndarray)}
 A dictionary of moment-reconstructed images of each block.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dict</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
 <p class="rubric">Notes</p>
 <p>Similar to ‘calc_moments’. Here we omit previously calculated m_set
 and mean_im as inputs since a block usually has much fewer number of
 frames and takes shorter calculation time.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="functions.reconstruction.sorted_k_partitions">
+<code class="sig-prename descclassname">functions.reconstruction.</code><code class="sig-name descname">sorted_k_partitions</code><span class="sig-paren">(</span><em class="sig-param">seq</em>, <em class="sig-param">k</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.reconstruction.sorted_k_partitions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a list of all unique k-partitions of <cite>seq</cite>.
+Each partition is a list of parts, and each part is a tuple.</p>
 </dd></dl>
 
 </div>
@@ -604,12 +544,11 @@ signal decrease is 4% of the total signal decrease:</p>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-<h3><a href="index.html">Table Of Contents</a></h3>
+<h3><a href="index.html">Table of Contents</a></h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="start.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="demos.html">Demos</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://nbviewer.jupyter.org/github/xiyuyi-at-LLNL/pysofi/blob/master/Notebooks/E13_PysofiExample_LiveCellActinFilaments.ipynb">SOFI 2.0 Tutorial</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://nbviewer.jupyter.org/github/xiyuyi-at-LLNL/pysofi/blob/master/Notebooks/E13_pysofiExample_LiveCellActinFilaments.ipynb">SOFI 2.0 Tutorial</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="manual.html">Reference manual</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="manual.html#introduction">Introduction</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="manual.html#modules">Modules</a></li>
@@ -633,13 +572,11 @@ signal decrease is 4% of the total signal decrease:</p>
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
@@ -669,7 +606,7 @@ signal decrease is 4% of the total signal decrease:</p>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2020, Yuting Miao.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.4.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.3.1.
     </div>
   </body>
 </html>

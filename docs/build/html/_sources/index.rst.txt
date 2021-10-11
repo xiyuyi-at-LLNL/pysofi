@@ -20,7 +20,6 @@ Documentation
 .. toctree::
    :maxdepth: 2
 
-   intro
    start
    demos
    SOFI 2.0 Tutorial <https://nbviewer.jupyter.org/github/xiyuyi-at-LLNL/pysofi/blob/master/Notebooks/E13_pysofiExample_LiveCellActinFilaments.ipynb>
