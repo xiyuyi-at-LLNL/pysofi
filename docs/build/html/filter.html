@@ -1,19 +1,19 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
     <title>Noise Filtration &#8212; pysofi 0.0.1 documentation</title>
     <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script type="text/javascript" src="_static/documentation_options.js"></script>
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    
     <link rel="author" title="About these documents" href="about.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -57,7 +57,7 @@ reconstructed images are saved in separate object, and can be put together for t
 <span id="functions"></span><h2>Functions<a class="headerlink" href="#module-functions.filtering" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="functions.filtering.filter1d_same">
-<code class="descclassname">functions.filtering.</code><code class="descname">filter1d_same</code><span class="sig-paren">(</span><em>time_series</em>, <em>noise_filter</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.filtering.filter1d_same" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">functions.filtering.</code><code class="sig-name descname">filter1d_same</code><span class="sig-paren">(</span><em class="sig-param">time_series</em>, <em class="sig-param">noise_filter</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.filtering.filter1d_same" title="Permalink to this definition">¶</a></dt>
 <dd><p>Filter original time_series with noise_filter, and return the
 filtered_series with the same length as the original sereis.
 Compared to MATLAB results, when the length of the filter and
@@ -67,40 +67,38 @@ left by one number. In other cases, results are the same.</p>
 
 <dl class="function">
 <dt id="functions.filtering.med_smooth">
-<code class="descclassname">functions.filtering.</code><code class="descname">med_smooth</code><span class="sig-paren">(</span><em>ori_signal</em>, <em>kernel_size=251</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.filtering.med_smooth" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">functions.filtering.</code><code class="sig-name descname">med_smooth</code><span class="sig-paren">(</span><em class="sig-param">ori_signal</em>, <em class="sig-param">kernel_size=251</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.filtering.med_smooth" title="Permalink to this definition">¶</a></dt>
 <dd><p>Perform a one-dimensional median filter with ‘reflect’ padding.
 For more information, please check scipy.signal.medfilt.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="functions.filtering.noise_filter1d">
-<code class="descclassname">functions.filtering.</code><code class="descname">noise_filter1d</code><span class="sig-paren">(</span><em>dset</em>, <em>im_set</em>, <em>noise_filter=[]</em>, <em>filtername='noise filter after M6'</em>, <em>filenames=None</em>, <em>return_option=False</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.filtering.noise_filter1d" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">functions.filtering.</code><code class="sig-name descname">noise_filter1d</code><span class="sig-paren">(</span><em class="sig-param">dset</em>, <em class="sig-param">im_set</em>, <em class="sig-param">noise_filter=[]</em>, <em class="sig-param">filtername='noise filter after M6'</em>, <em class="sig-param">filenames=None</em>, <em class="sig-param">return_option=False</em>, <em class="sig-param">return_type='dict'</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.filtering.noise_filter1d" title="Permalink to this definition">¶</a></dt>
 <dd><p>Perform noise filtering on a image stack along the time axis for each
 pixel independently.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>dset</strong> (<em>dict</em>) – filename (str) -&gt; Data (object).
-A dictionary mapping tiff stack filenames to Data object.</li>
-<li><strong>im_set</strong> (<em>dict</em>) – filename (str) -&gt; pre-filtering image (ndarray).
-A dictionary mapping tiff filenames to images need to be filtered.</li>
-<li><strong>noise_filter</strong> (<em>ndarray</em>) – Noise filtering kernel, e.g. 1D-Gaussian.</li>
-<li><strong>filtername</strong> (<em>str</em>) – Name of the filter for Data.add_filtered.</li>
-<li><strong>filenames</strong> (<em>list</em><em> (</em><em>str</em><em>)</em>) – Sequence of filenames for the filtering.</li>
-<li><strong>return_option</strong> (<em>bool</em>) – Whether to return m_filtered.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dset</strong> (<em>dict</em>) – filename (str) -&gt; Data (object).
+A dictionary mapping tiff stack filenames to Data object.</p></li>
+<li><p><strong>im_set</strong> (<em>dict</em>) – filename (str) -&gt; pre-filtering image (ndarray).
+A dictionary mapping tiff filenames to images need to be filtered.</p></li>
+<li><p><strong>noise_filter</strong> (<em>ndarray</em>) – Noise filtering kernel, e.g. 1D-Gaussian.</p></li>
+<li><p><strong>filtername</strong> (<em>str</em>) – Name of the filter for Data.add_filtered.</p></li>
+<li><p><strong>filenames</strong> (<em>list</em><em> (</em><em>str</em><em>)</em>) – Sequence of filenames for the filtering.</p></li>
+<li><p><strong>return_option</strong> (<em>bool</em>) – Whether to return the results after noise filtering or not.</p></li>
+<li><p><strong>return_type</strong> (<em>str</em>) – Choose the format of the returned value. Can use either ‘ndarray’ or ‘dict’</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>m_filtered</strong> – Filtered image stack.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">ndarray</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>m_filtered</strong> (<em>ndarray</em>) – Filtered image stack in the format of a numpy.ndarray.</p></li>
+<li><p><strong>m_filtered</strong> (<em>dict</em>) – Filtered image stack in the format of a dictionary.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
 </dd></dl>
 
 </div>
@@ -121,12 +119,11 @@ with an array of images in sequence that needs to be filtered (m_set):</p>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-<h3><a href="index.html">Table Of Contents</a></h3>
+<h3><a href="index.html">Table of Contents</a></h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="start.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="demos.html">Demos</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://nbviewer.jupyter.org/github/xiyuyi-at-LLNL/pysofi/blob/master/Notebooks/PysofiExample_LiveCellActinFilaments.ipynb">SOFI 2.0 Tutorial</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://nbviewer.jupyter.org/github/xiyuyi-at-LLNL/pysofi/blob/master/Notebooks/E13_pysofiExample_LiveCellActinFilaments.ipynb">SOFI 2.0 Tutorial</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="manual.html">Reference manual</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="manual.html#introduction">Introduction</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="manual.html#modules">Modules</a></li>
@@ -150,13 +147,11 @@ with an array of images in sequence that needs to be filtered (m_set):</p>
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
@@ -186,7 +181,7 @@ with an array of images in sequence that needs to be filtered (m_set):</p>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2020, Yuting Miao.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.4.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.3.1.
     </div>
   </body>
 </html>

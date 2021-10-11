@@ -1,19 +1,19 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
     <title>pysofi Reference Manual &#8212; pysofi 0.0.1 documentation</title>
     <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script type="text/javascript" src="_static/documentation_options.js"></script>
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    
     <link rel="author" title="About these documents" href="about.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -63,24 +63,24 @@ calculating cumulants up to arbitrary orders. It also provides functions for ble
 correctionof a .tiff movie necessary where bleaching of the signal level greatly
 influences the validity of SOFI cumulants.</p>
 <ul class="simple">
-<li><a class="reference external" href="https://github.com/xiyuyi-at-LLNL/pysofi/blob/master/functions/finterp.py">finterp.py</a></li>
+<li><p><a class="reference external" href="https://github.com/xiyuyi-at-LLNL/pysofi/blob/master/functions/finterp.py">finterp.py</a></p></li>
 </ul>
 <p>provides Fourier interpolation on .tiff stacks for fSOFI processing.pysofi also contains
 the modules for SOFI 2.0 calculations listes below.</p>
 <ul class="simple">
-<li><a class="reference external" href="https://github.com/xiyuyi-at-LLNL/pysofi/blob/master/functions/filtering.py">filtering.py</a></li>
+<li><p><a class="reference external" href="https://github.com/xiyuyi-at-LLNL/pysofi/blob/master/functions/filtering.py">filtering.py</a></p></li>
 </ul>
 <p>for pixel-wise noise filtering along the time axis.</p>
 <ul class="simple">
-<li><a class="reference external" href="https://github.com/xiyuyi-at-LLNL/pysofi/blob/master/functions/deconsk.py">deconvsk.py</a></li>
+<li><p><a class="reference external" href="https://github.com/xiyuyi-at-LLNL/pysofi/blob/master/functions/deconsk.py">deconvsk.py</a></p></li>
 </ul>
 <p>provides functions forshrinking kernel deconvolution (DeconvSK).</p>
 <ul class="simple">
-<li><a class="reference external" href="https://github.com/xiyuyi-at-LLNL/pysofi/blob/master/functions/ldrc.py">ldrc.py</a></li>
+<li><p><a class="reference external" href="https://github.com/xiyuyi-at-LLNL/pysofi/blob/master/functions/ldrc.py">ldrc.py</a></p></li>
 </ul>
 <p>provides local dynamic range compression (ldrc) of images with large dynamic range of pixel values.</p>
 <ul class="simple">
-<li><a class="reference external" href="https://github.com/xiyuyi-at-LLNL/pysofi/blob/master/functions/visualization.py">visualization.py</a></li>
+<li><p><a class="reference external" href="https://github.com/xiyuyi-at-LLNL/pysofi/blob/master/functions/visualization.py">visualization.py</a></p></li>
 </ul>
 <p>module is implemented for interactive visualization of the results using
 <a class="reference external" href="https://docs.bokeh.org/en/latest/index.html">Bokeh</a>.</p>
@@ -122,12 +122,12 @@ tutorial implemented in Jupyter notebook (see Demos)).</p>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="moca.html">Multi-Order Cumulant Analysis (MOCA)</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="moca.html#module-functions.moca">Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="moca.html#functions">Functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="moca.html#example">Example</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="visualization.html">Result visualizations</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="visualization.html#module-functions.visualization">Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="visualization.html#functions">Functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="visualization.html#examples">Examples</a></li>
 </ul>
 </li>
@@ -147,12 +147,11 @@ tutorial implemented in Jupyter notebook (see Demos)).</p>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-<h3><a href="index.html">Table Of Contents</a></h3>
+<h3><a href="index.html">Table of Contents</a></h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="start.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="demos.html">Demos</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://nbviewer.jupyter.org/github/xiyuyi-at-LLNL/pysofi/blob/master/Notebooks/E13_PysofiExample_LiveCellActinFilaments.ipynb">SOFI 2.0 Tutorial</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://nbviewer.jupyter.org/github/xiyuyi-at-LLNL/pysofi/blob/master/Notebooks/E13_pysofiExample_LiveCellActinFilaments.ipynb">SOFI 2.0 Tutorial</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Reference manual</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#modules">Modules</a></li>
@@ -176,13 +175,11 @@ tutorial implemented in Jupyter notebook (see Demos)).</p>
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
@@ -211,7 +208,7 @@ tutorial implemented in Jupyter notebook (see Demos)).</p>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2020, Yuting Miao.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.4.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.3.1.
     </div>
   </body>
 </html>

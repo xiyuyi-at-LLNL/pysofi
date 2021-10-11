@@ -1,19 +1,19 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
     <title>Fourier Interpolation Module &#8212; pysofi 0.0.1 documentation</title>
     <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script type="text/javascript" src="_static/documentation_options.js"></script>
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    
     <link rel="author" title="About these documents" href="about.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -60,52 +60,48 @@ position coordinates.</p>
 <p>Adapted from <a class="reference external" href="https://github.com/xiyuyi/xy_fInterp_forTIFF">https://github.com/xiyuyi/xy_fInterp_forTIFF</a>.</p>
 <dl class="function">
 <dt id="functions.finterp.fourier_interp_array">
-<code class="descclassname">functions.finterp.</code><code class="descname">fourier_interp_array</code><span class="sig-paren">(</span><em>im</em>, <em>interp_num_lst</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.finterp.fourier_interp_array" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">functions.finterp.</code><code class="sig-name descname">fourier_interp_array</code><span class="sig-paren">(</span><em class="sig-param">im</em>, <em class="sig-param">interp_num_lst</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.finterp.fourier_interp_array" title="Permalink to this definition">¶</a></dt>
 <dd><p>Performs fourier interpolation on an image array with a list of
 interpolation factors.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="functions.finterp.fourier_interp_tiff">
-<code class="descclassname">functions.finterp.</code><code class="descname">fourier_interp_tiff</code><span class="sig-paren">(</span><em>filepath</em>, <em>filename</em>, <em>interp_num_lst</em>, <em>frames=[]</em>, <em>save_option=True</em>, <em>return_option=False</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.finterp.fourier_interp_tiff" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">functions.finterp.</code><code class="sig-name descname">fourier_interp_tiff</code><span class="sig-paren">(</span><em class="sig-param">filepath</em>, <em class="sig-param">filename</em>, <em class="sig-param">interp_num_lst</em>, <em class="sig-param">frames=[]</em>, <em class="sig-param">save_option=True</em>, <em class="sig-param">return_option=False</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.finterp.fourier_interp_tiff" title="Permalink to this definition">¶</a></dt>
 <dd><p>Performs fourier interpolation on a tiff image (stack) with a list of
 interpolation factors (the number of pixels to be interpolated between
 two adjacent pixels).</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>filepath</strong> (<em>str</em>) – The path to the tiff file.</li>
-<li><strong>filename</strong> (<em>str</em>) – The filename of the tiff file without ‘.tif’.</li>
-<li><strong>interp_num_lst</strong> (<em>list</em><em> (</em><em>int</em><em>)</em>) – A list of interpolation factors.</li>
-<li><strong>frames</strong> (<em>list of int</em>) – The start and end frame number.</li>
-<li><strong>save_option</strong> (<em>bool</em>) – Whether to save the interpolated images into tiff files (each
-interpolation factor seperately).</li>
-<li><strong>return_option</strong> (<em>bool</em>) – Whether to return the interpolated image series as 3d arrays.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filepath</strong> (<em>str</em>) – The path to the tiff file.</p></li>
+<li><p><strong>filename</strong> (<em>str</em>) – The filename of the tiff file without ‘.tif’.</p></li>
+<li><p><strong>interp_num_lst</strong> (<em>list</em><em> (</em><em>int</em><em>)</em>) – A list of interpolation factors.</p></li>
+<li><p><strong>frames</strong> (<em>list of int</em>) – The start and end frame number.</p></li>
+<li><p><strong>save_option</strong> (<em>bool</em>) – Whether to save the interpolated images into tiff files (each
+interpolation factor seperately).</p></li>
+<li><p><strong>return_option</strong> (<em>bool</em>) – Whether to return the interpolated image series as 3d arrays.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>interp_imstack_lst</strong> – A list of interpolated image sereis corresponding to the interpolation
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>interp_imstack_lst</strong> – A list of interpolated image series corresponding to the interpolation
 factor list.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list (ndarray)</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list (ndarray)</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="functions.finterp.ft_matrix2d">
-<code class="descclassname">functions.finterp.</code><code class="descname">ft_matrix2d</code><span class="sig-paren">(</span><em>xrange</em>, <em>yrange</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.finterp.ft_matrix2d" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">functions.finterp.</code><code class="sig-name descname">ft_matrix2d</code><span class="sig-paren">(</span><em class="sig-param">xrange</em>, <em class="sig-param">yrange</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.finterp.ft_matrix2d" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate fourier transform matrix for x- and y-dimension.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="functions.finterp.ift_matrix2d">
-<code class="descclassname">functions.finterp.</code><code class="descname">ift_matrix2d</code><span class="sig-paren">(</span><em>xrange</em>, <em>yrange</em>, <em>interp_num</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.finterp.ift_matrix2d" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">functions.finterp.</code><code class="sig-name descname">ift_matrix2d</code><span class="sig-paren">(</span><em class="sig-param">xrange</em>, <em class="sig-param">yrange</em>, <em class="sig-param">interp_num</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.finterp.ift_matrix2d" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate inverse fourier transform matrix without center shift for a
 given fold of interpolation for x- and y-dimension. Here we use 2 times
 the x-dimension of a frame image for xrange and 2 times of y for yrange.
@@ -115,32 +111,28 @@ when interp_num = 2, the resolution is two times the original one.</p>
 
 <dl class="function">
 <dt id="functions.finterp.interpolate_image">
-<code class="descclassname">functions.finterp.</code><code class="descname">interpolate_image</code><span class="sig-paren">(</span><em>im</em>, <em>fx</em>, <em>fy</em>, <em>ifx</em>, <em>ify</em>, <em>interp_num</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.finterp.interpolate_image" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">functions.finterp.</code><code class="sig-name descname">interpolate_image</code><span class="sig-paren">(</span><em class="sig-param">im</em>, <em class="sig-param">fx</em>, <em class="sig-param">fy</em>, <em class="sig-param">ifx</em>, <em class="sig-param">ify</em>, <em class="sig-param">interp_num</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.finterp.interpolate_image" title="Permalink to this definition">¶</a></dt>
 <dd><p>Performs fourier interpolation to increase the resolution of the image.
 The interpolated image can be further processed by SOFI for
 super-resolution imaging.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>im</strong> (<em>ndarray</em>) – Input image.</li>
-<li><strong>fx</strong> (<em>ndarray</em>) – Fourier transform matrix in x generated from ft_matrix2d function.</li>
-<li><strong>fy</strong> (<em>ndarray</em>) – Fourier transform matrix in y generated from ft_matrix2d function.</li>
-<li><strong>ifx</strong> (<em>ndarray</em>) – Inverse fourier transform matrix in x from ift_matrix2d function.</li>
-<li><strong>ify</strong> (<em>ndarray</em>) – Inverse fourier transform matrix in y from ift_matrix2d function.</li>
-<li><strong>interp_num</strong> (<em>int</em>) – The number of pixels to be interpolated between two adjacent pixels.</li>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>im</strong> (<em>ndarray</em>) – Input image.</p></li>
+<li><p><strong>fx</strong> (<em>ndarray</em>) – Fourier transform matrix in x generated from ft_matrix2d function.</p></li>
+<li><p><strong>fy</strong> (<em>ndarray</em>) – Fourier transform matrix in y generated from ft_matrix2d function.</p></li>
+<li><p><strong>ifx</strong> (<em>ndarray</em>) – Inverse fourier transform matrix in x from ift_matrix2d function.</p></li>
+<li><p><strong>ify</strong> (<em>ndarray</em>) – Inverse fourier transform matrix in y from ift_matrix2d function.</p></li>
+<li><p><strong>interp_num</strong> (<em>int</em>) – The number of pixels to be interpolated between two adjacent pixels.</p></li>
 </ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>interp_im</strong> – Interpolated image with new dimensions.</p>
-</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">ndarray</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>interp_im</strong> – Interpolated image with new dimensions.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ndarray</p>
+</dd>
+</dl>
 <p class="rubric">Notes</p>
 <p>Please note here that interpolation doesn’ extend over the edgeo f the
 matrix, therefore the total number of pixels in the resulting matrix is
@@ -185,12 +177,11 @@ and save the interpolated images in a new tiff video.</p>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-<h3><a href="index.html">Table Of Contents</a></h3>
+<h3><a href="index.html">Table of Contents</a></h3>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="start.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="demos.html">Demos</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://nbviewer.jupyter.org/github/xiyuyi-at-LLNL/pysofi/blob/master/Notebooks/E13_PysofiExample_LiveCellActinFilaments.ipynb">SOFI 2.0 Tutorial</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://nbviewer.jupyter.org/github/xiyuyi-at-LLNL/pysofi/blob/master/Notebooks/E13_pysofiExample_LiveCellActinFilaments.ipynb">SOFI 2.0 Tutorial</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="manual.html">Reference manual</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="manual.html#introduction">Introduction</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="manual.html#modules">Modules</a></li>
@@ -214,13 +205,11 @@ and save the interpolated images in a new tiff video.</p>
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
@@ -250,7 +239,7 @@ and save the interpolated images in a new tiff video.</p>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2020, Yuting Miao.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.4.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.3.1.
     </div>
   </body>
 </html>
