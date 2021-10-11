@@ -4,7 +4,7 @@ About
 About Us
 --------
 
-pysofi development is guided by the following team:
+PySOFI development is guided by the following team:
 
 .. raw:: html
 
@@ -42,7 +42,7 @@ pysofi development is guided by the following team:
 
 Current Version
 ----------------
-pysofi current version: 0.1
+PySOFI current version: 0.1
 
 Release date: Apr 23, 2021
 
@@ -53,14 +53,14 @@ Citing
 
 Contributing
 ------------
-`pysofi` is an open source project. We welcome contributions via pull requests 
+`PySOFI` is an open source project. We welcome contributions via pull requests
 on Github as well as questions, feature requests, or bug reports via issues. 
 Please also refer to our `code of conduct <https://github.com/xiyuyi-at-LLNL/pysofi/master/CODE_OF_CONDUCT.md>`__.
 
 If you are a developer, create a branch, include your changes and create a pull 
 request to merge your branch to the master branch. If you are not a developer of 
 the project, first create a fork of the repository. This will create your copy of 
-the `pysofi` repository and ensure you can push your changes up to GitHub through 
+the `PySOFI` repository and ensure you can push your changes up to GitHub through
 pull requests.
 
 * Create your branches off the `repo:main` branch.
