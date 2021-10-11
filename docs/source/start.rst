@@ -4,8 +4,8 @@ Getting Started
 .. finish after construct pypi
 .. https://epidemicsonnetworks.readthedocs.io/en/latest/GettingStarted.html#installation
 
-pysofi can be installed as a standard python package either via `conda`
-or `pip` (later). pysofi runs on OS X, Windows and Linux.
+PySOFI can be used as a standard python package. We are currently working on a `pip` release.
+PySOFI is tested on OS X, Windows and Linux.
 
 .. For updates on the latest FRETBursts version please refer to the
 .. :doc:`Release Notes (What's new?) <releasenotes>`.
@@ -14,12 +14,12 @@ or `pip` (later). pysofi runs on OS X, Windows and Linux.
 
 Installation
 -------------
-pysofi requires installation of `Anaconda <https://docs.anaconda.com/anaconda/install/>`__.
+PySOFI requires installation of `Anaconda <https://docs.anaconda.com/anaconda/install/>`__.
 
-The latest version of pysofi can cloned or downloaded from 
+The latest version of PySOFI can cloned or downloaded from
 https://github.com/xiyuyi-at-LLNL/pysofi.
 
-Before running pysofi, create the environment by running the following code 
+Before running PySOFI, create the environment by running the following code
 in Anaconda prompt or the mac terminal:
 
 ::
@@ -44,12 +44,12 @@ After starting jupyter notebook, switch kernel to current environment by clickin
 
 .. _pysofi_overview:
 
-pysofi Overview
+PySOFI Overview
 ----------------
-pysofi implements three primary collection of SOFI analysis routines, including the shared process 
+PySOFI implements three primary collection of SOFI analysis routines, including the shared process
 that enables the traditional SOFI analysis, the SOFI 2.0 analysis routines and a a separate SOFI 
 relevant routine named Multi Order Cumulant Analysis (MOCA) to demonstrate the modular extension 
-of pysofi for additional analysis method.
+of PySOFI for additional analysis method.
 
 Specifically, one can load input data (.tiff format) or partially processed data (such as .tiff 
 movie with bleaching correction and/or .with Fourier interpolation) into the `pysofiData` class, 

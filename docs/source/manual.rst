@@ -3,15 +3,15 @@ pysofi Reference Manual
 
 Introduction
 ------------
-pysofi consists of 8 modules, each contains a group of functions relevant to 
+PySOFI consists of 8 modules, each contains a group of functions relevant to
 the module, and a main data class(`pysofiData`, encapsulated in pysofi.py) that 
 integrates the function steps from each module to perform SOFI analyses. Such 
 design enables flexible composition of different SOFI analysis routines through 
 the `pysofiData` class. Extensions of extra functionalities can be implemented 
-as extra.py modules to the pysofi package, and integrated by implementing the 
+as extra.py modules to the PySOFI package, and integrated by implementing the
 relevant methods and attributes to the `pysofiData` class. 
 
-In summary, pysofi contains various function modules relevant to SOFI analysis:
+In summary, PySOFI contains various function modules relevant to SOFI analysis:
 * `reconstruction.py <https://github.com/xiyuyi-at-LLNL/pysofi/blob/master/functions/reconstruction.py>`__
 provides capabilities for moments and SOFI cumulants calculations. 
 The cumulant calculation is implemented using recursive relations and is capable of 

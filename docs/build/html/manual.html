@@ -48,14 +48,14 @@
 <h1>pysofi Reference Manual<a class="headerlink" href="#pysofi-reference-manual" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
-<p>pysofi consists of 8 modules, each contains a group of functions relevant to
+<p>PySOFI consists of 8 modules, each contains a group of functions relevant to
 the module, and a main data class(<cite>pysofiData</cite>, encapsulated in pysofi.py) that
 integrates the function steps from each module to perform SOFI analyses. Such
 design enables flexible composition of different SOFI analysis routines through
 the <cite>pysofiData</cite> class. Extensions of extra functionalities can be implemented
-as extra.py modules to the pysofi package, and integrated by implementing the
+as extra.py modules to the PySOFI package, and integrated by implementing the
 relevant methods and attributes to the <cite>pysofiData</cite> class.</p>
-<p>In summary, pysofi contains various function modules relevant to SOFI analysis:
+<p>In summary, PySOFI contains various function modules relevant to SOFI analysis:
 * <a class="reference external" href="https://github.com/xiyuyi-at-LLNL/pysofi/blob/master/functions/reconstruction.py">reconstruction.py</a>
 provides capabilities for moments and SOFI cumulants calculations.
 The cumulant calculation is implemented using recursive relations and is capable of
@@ -92,17 +92,17 @@ tutorial implemented in Jupyter notebook (see Demos)).</p>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="data_class.html">PysofiData class</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="data_class.html#module-functions.pysofi">Attributes and Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_class.html#attributes-and-methods">Attributes and Methods</a></li>
 <li class="toctree-l2"><a class="reference internal" href="data_class.html#load-data">Load Data</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="finterp.html">Fourier Interpolation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="finterp.html#module-functions.finterp">Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="finterp.html#functions">Functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="finterp.html#examples">Examples</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="reconstruction.html">Reconstructions</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="reconstruction.html#module-functions.reconstruction">Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reconstruction.html#functions">Functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reconstruction.html#examples">Examples</a></li>
 </ul>
 </li>
