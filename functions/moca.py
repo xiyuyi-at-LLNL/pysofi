@@ -3,7 +3,10 @@ from . import visualization as vis
 from . import masks
 import numpy as np
 import sys
-import tifffile as tiff
+from . import switches as s
+if s.SPHINX_SWITCH is False:
+    import tifffile as tiff
+
 import matplotlib.pyplot as plt
 from scipy import ndimage
 
@@ -55,37 +58,37 @@ def ensure_positive(data):
     return data
 
 
-def sorted_k_partitions(seq, k):
-    """
-    Returns a list of all unique k-partitions of `seq`.
-    Each partition is a list of parts, and each part is a tuple.
-    """
-    n = len(seq)
-    groups = []  
-
-    def generate_partitions(i):
-        if i >= n:
-            yield list(map(tuple, groups))
-        else:
-            if n - i > k - len(groups):
-                for group in groups:
-                    group.append(seq[i])
-                    yield from generate_partitions(i + 1)
-                    group.pop()
-            if len(groups) < k:
-                groups.append([seq[i]])
-                yield from generate_partitions(i + 1)
-                groups.pop()
-    result = generate_partitions(0)
-
-    # Sort the parts in each partition in shortlex order
-    result = [sorted(ps, key = lambda p: (len(p), p)) for ps in result]
-    # Sort partitions by the length of each part, then lexicographically.
-    result = sorted(result, key = lambda ps: (*map(len, ps), ps))
-    # delete partitions with only 1 element
-    result = [p for p in result if len(p[0])>1]
-
-    return result
+# def sorted_k_partitions(seq, k):
+#     """
+#     Returns a list of all unique k-partitions of `seq`.
+#     Each partition is a list of parts, and each part is a tuple.
+#     """
+#     n = len(seq)
+#     groups = []
+#
+#     def generate_partitions(i):
+#         if i >= n:
+#             yield list(map(tuple, groups))
+#         else:
+#             if n - i > k - len(groups):
+#                 for group in groups:
+#                     group.append(seq[i])
+#                     yield from generate_partitions(i + 1)
+#                     group.pop()
+#             if len(groups) < k:
+#                 groups.append([seq[i]])
+#                 yield from generate_partitions(i + 1)
+#                 groups.pop()
+#     result = generate_partitions(0)
+#
+#     # Sort the parts in each partition in shortlex order
+#     result = [sorted(ps, key = lambda p: (len(p), p)) for ps in result]
+#     # Sort partitions by the length of each part, then lexicographically.
+#     result = sorted(result, key = lambda ps: (*map(len, ps), ps))
+#     # delete partitions with only 1 element
+#     result = [p for p in result if len(p[0])>1]
+#
+#     return result
     
     
 def esti_rhoeps(xn_set, res=1000):
@@ -140,59 +143,59 @@ def esti_rhoeps(xn_set, res=1000):
     return rho_map, rho_tru, eps_map
 
 
-def calc_block_moments(filepath, filename, highest_order, frames=[]):
-    """
-    Get moment-reconstructed images for user-defined frames (block) of
-    a video file(tiff stack). 
-
-    Parameters
-    ----------
-    filepath : str
-        Path to the tiff file.
-    filename : str
-        Name of the tiff file.
-    highest_order : int
-        The highest order number of moment-reconstructed images.
-    frames : list of int
-        Start and end frame number.
-
-    Returns
-    -------
-    m_set : dict
-        order number (int) -> image (ndarray)
-        A dictionary of calcualted moment-reconstructed images.
-
-    Notes
-    -----
-    Similar to 'calc_moments'. Here we omit previously calculated m_set 
-    and mean_im as inputs since a block usually has much fewer number of
-    frames and takes shorter calculation time.
-    """
-    mean_im = rec.average_image(filepath, filename, frames)
-    imstack = tiff.TiffFile(filepath + '/' + filename)
-    if not frames:
-        mvlength = len(imstack.pages)
-        frames = [0, mvlength]
-    xdim, ydim = np.shape(imstack.pages[0])
-    block_length = frames[1]-frames[0]
-    m_set = {}
-
-    for order in range(highest_order):
-        m_set[order+1] = np.zeros((xdim, ydim))
-        for frame_num in range(frames[0], frames[1]):
-            im = tiff.imread(filepath + '/' + filename, key=frame_num)
-            m_set[order+1] = m_set[order+1] + \
-                np.power(im - mean_im, order+1)
-        m_set[order+1] = m_set[order+1] / block_length
-        sys.stdout.write('\r')
-        sys.stdout.write("[{:{}}] {:.1f}%".format(
-            "="*int(30/(highest_order-1)*order), 29,
-            (100/(highest_order-1)*order)))
-        sys.stdout.flush()
-    imstack.close()
-    print('\n')
-
-    return m_set
+# def calc_block_moments(filepath, filename, highest_order, frames=[]):
+#     """
+#     Get moment-reconstructed images for user-defined frames (block) of
+#     a video file(tiff stack).
+#
+#     Parameters
+#     ----------
+#     filepath : str
+#         Path to the tiff file.
+#     filename : str
+#         Name of the tiff file.
+#     highest_order : int
+#         The highest order number of moment-reconstructed images.
+#     frames : list of int
+#         Start and end frame number.
+#
+#     Returns
+#     -------
+#     m_set : dict
+#         order number (int) -> image (ndarray)
+#         A dictionary of calcualted moment-reconstructed images.
+#
+#     Notes
+#     -----
+#     Similar to 'calc_moments'. Here we omit previously calculated m_set
+#     and mean_im as inputs since a block usually has much fewer number of
+#     frames and takes shorter calculation time.
+#     """
+#     mean_im = rec.average_image(filepath, filename, frames)
+#     imstack = tiff.TiffFile(filepath + '/' + filename)
+#     if not frames:
+#         mvlength = len(imstack.pages)
+#         frames = [0, mvlength]
+#     xdim, ydim = np.shape(imstack.pages[0])
+#     block_length = frames[1]-frames[0]
+#     m_set = {}
+#
+#     for order in range(highest_order):
+#         m_set[order+1] = np.zeros((xdim, ydim))
+#         for frame_num in range(frames[0], frames[1]):
+#             im = tiff.imread(filepath + '/' + filename, key=frame_num)
+#             m_set[order+1] = m_set[order+1] + \
+#                 np.power(im - mean_im, order+1)
+#         m_set[order+1] = m_set[order+1] / block_length
+#         sys.stdout.write('\r')
+#         sys.stdout.write("[{:{}}] {:.1f}%".format(
+#             "="*int(30/(highest_order-1)*order), 29,
+#             (100/(highest_order-1)*order)))
+#         sys.stdout.flush()
+#     imstack.close()
+#     print('\n')
+#
+#     return m_set
 
 
 def moca(filename, filepath, tauSeries, frames=[], mask_dim=(301, 301), 
@@ -245,7 +248,7 @@ def moca(filename, filepath, tauSeries, frames=[], mask_dim=(301, 301),
 
     # 2. cumulants reconstruction
     if sum(tauSeries) == 0:
-        m_set = calc_block_moments(
+        m_set = rec.calc_block_moments(
             filepath, filename, order, frames)
         k_set = rec.calc_cumulants_from_moments(m_set)
     else:

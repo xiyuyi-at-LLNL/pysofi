@@ -13,7 +13,10 @@ Adapted from https://github.com/xiyuyi/xy_fInterp_forTIFF.
 """
 
 import numpy as np
-import tifffile as tiff
+from . import switches as s
+if s.SPHINX_SWITCH is False:
+    import tifffile as tiff
+
 import sys
 
 

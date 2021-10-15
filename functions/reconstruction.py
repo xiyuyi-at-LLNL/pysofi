@@ -1,8 +1,10 @@
 from . import finterp as f
 from . import filtering
-from . import moca
 import numpy as np
-import tifffile as tiff
+from . import switches as s
+if s.SPHINX_SWITCH is False:
+    import tifffile as tiff
+
 import scipy.special
 import sys
 import os
@@ -11,6 +13,37 @@ import math
 from scipy import signal
 import itertools
 
+def sorted_k_partitions(seq, k):
+    """
+    Returns a list of all unique k-partitions of `seq`.
+    Each partition is a list of parts, and each part is a tuple.
+    """
+    n = len(seq)
+    groups = []  
+
+    def generate_partitions(i):
+        if i >= n:
+            yield list(map(tuple, groups))
+        else:
+            if n - i > k - len(groups):
+                for group in groups:
+                    group.append(seq[i])
+                    yield from generate_partitions(i + 1)
+                    group.pop()
+            if len(groups) < k:
+                groups.append([seq[i]])
+                yield from generate_partitions(i + 1)
+                groups.pop()
+    result = generate_partitions(0)
+
+    # Sort the parts in each partition in shortlex order
+    result = [sorted(ps, key = lambda p: (len(p), p)) for ps in result]
+    # Sort partitions by the length of each part, then lexicographically.
+    result = sorted(result, key = lambda ps: (*map(len, ps), ps))
+    # delete partitions with only 1 element
+    result = [p for p in result if len(p[0])>1]
+
+    return result
 
 def average_image(filepath, filename, frames=[]):
     """
@@ -328,6 +361,9 @@ def calc_block_moments(filepath, filename, highest_order, frames=[]):
     """
     mean_im = average_image(filepath, filename, frames)
     imstack = tiff.TiffFile(filepath + '/' + filename)
+    if not frames:
+        mvlength = len(imstack.pages)
+        frames = [0, mvlength]
     xdim, ydim = np.shape(imstack.pages[0])
     block_length = frames[1]-frames[0]
     m_set = {}
@@ -338,14 +374,14 @@ def calc_block_moments(filepath, filename, highest_order, frames=[]):
             im = tiff.imread(filepath + '/' + filename, key=frame_num)
             m_set[order+1] = m_set[order+1] + \
                 np.power(im - mean_im, order+1)
-        m_set[order+1] = np.int64(m_set[order+1] / block_length)
+        m_set[order+1] = m_set[order+1] / block_length
         sys.stdout.write('\r')
         sys.stdout.write("[{:{}}] {:.1f}%".format(
             "="*int(30/(highest_order-1)*order), 29,
             (100/(highest_order-1)*order)))
         sys.stdout.flush()
-    print('\n')
     imstack.close()
+    print('\n')
     return m_set
 
 
@@ -882,7 +918,7 @@ def calc_cumulants_from_moments_with_lag(m_set, tauSeries):
             seq = list(range(order))
             max_partition_num = max_order // 2
             for partition_num in range(2, max_partition_num+1):
-                partition_comb = moca.sorted_k_partitions(seq, partition_num)
+                partition_comb = sorted_k_partitions(seq, partition_num)
                 for part in partition_comb:
                     k_set[order] = k_set[order] + \
                         (-1)**(partition_num-1) * \
