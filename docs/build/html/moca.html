@@ -36,7 +36,7 @@
           <a href="ldrc.html" title="Local Dynamic Range Compression (LDRC) Method"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">pysofi 0.0.1 documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="manual.html" accesskey="U">pysofi Reference Manual</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="manual.html" accesskey="U">PySOFI Reference Manual</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -53,8 +53,69 @@ of the emitters.</p>
 multi-order SOFI cumulants and photophysical parameters of emitters (blinking on-time ratio
 and on-time brightness), and locally search for the mostlikely spatial distribution of these
 parameters. For more detailed information on MOCA theory, please refer to the paper.</p>
-<div class="section" id="functions">
-<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-functions.moca">
+<span id="functions"></span><h2>Functions<a class="headerlink" href="#module-functions.moca" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="functions.moca.ensure_positive">
+<code class="sig-prename descclassname">functions.moca.</code><code class="sig-name descname">ensure_positive</code><span class="sig-paren">(</span><em class="sig-param">data</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.moca.ensure_positive" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make sure data is positive and has no zeros.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="functions.moca.esti_rhoeps">
+<code class="sig-prename descclassname">functions.moca.</code><code class="sig-name descname">esti_rhoeps</code><span class="sig-paren">(</span><em class="sig-param">xn_set</em>, <em class="sig-param">res=1000</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.moca.esti_rhoeps" title="Permalink to this definition">¶</a></dt>
+<dd><p>Estimate on-time-ratio (rho_map) and brightness (eps_map) with X3 - X7
+(xn_set) by fitting and finding the minimun values difference for 5
+functions with user defined precision (res). Xn can be directly computed
+from fluorescence signal and cross-correlation of fluorescence signal
+from different pixels.
+Xn = ACn * U**(2n/(n-2)) / AC2, where n is the order and U is the PSF.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="functions.moca.fit_sigma">
+<code class="sig-prename descclassname">functions.moca.</code><code class="sig-name descname">fit_sigma</code><span class="sig-paren">(</span><em class="sig-param">filepath</em>, <em class="sig-param">filename</em>, <em class="sig-param">frames=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.moca.fit_sigma" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use the second-order auto- and cross-cumulants to determine
+the sigma of the gaussian psf by fitting SOFI-XC2 / SOFI-AC2 =
+exp(-(r1-r2)**2/(4*sigma**2)).</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="functions.moca.moca">
+<code class="sig-prename descclassname">functions.moca.</code><code class="sig-name descname">moca</code><span class="sig-paren">(</span><em class="sig-param">filename</em>, <em class="sig-param">filepath</em>, <em class="sig-param">tauSeries</em>, <em class="sig-param">frames=[]</em>, <em class="sig-param">mask_dim=(301</em>, <em class="sig-param">301)</em>, <em class="sig-param">res=1000</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.moca.moca" title="Permalink to this definition">¶</a></dt>
+<dd><p>Conduct multi-order cumulant analysis (MOCA) to extract the photo-
+physical information (on-time-ratio rho and brightness eps) of emitters
+at high labeling density.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filepath</strong> (<em>str</em>) – Path to the tiff file.</p></li>
+<li><p><strong>filename</strong> (<em>str</em>) – Name of the tiff file.</p></li>
+<li><p><strong>tauSeries</strong> (<em>list of int</em>) – A list of time lags for frames contribute to moment reconstruction.
+The first element is recommended to be 0, and there should be seven
+elements in the list. This time lag is used for moments and cumulants
+calculations.</p></li>
+<li><p><strong>frames</strong> (<em>list of int</em>) – The start and end frame number.</p></li>
+<li><p><strong>mask_dim</strong> (<em>tuple</em><em> (</em><em>int</em><em>, </em><em>int</em><em>)</em>) – Initial guess for the PSF size.</p></li>
+<li><p><strong>res</strong> (<em>int</em>) – Resolution / precision for the fitting step ‘esti_rhoeps’ to get rho
+and eps for each pixel.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>k_set</strong> (<em>dict</em>) – order number (int) -&gt; image (ndarray)
+A dictionary of calcualted cumulant-reconstructed images with time
+lags.</p></li>
+<li><p><strong>rho_map</strong> (<em>2darray</em>) – Fitted on-time-ratio (rho) for each pixel. It has the same dimension
+(x,y) as the original input video.</p></li>
+<li><p><strong>eps_map</strong> (<em>2darray</em>) – Fitted brightness (eps) for each pixel. It has the same dimension
+(x,y) as the original input video.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
 </div>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
@@ -133,7 +194,7 @@ parameters. For more detailed information on MOCA theory, please refer to the pa
           <a href="ldrc.html" title="Local Dynamic Range Compression (LDRC) Method"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">pysofi 0.0.1 documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="manual.html" >pysofi Reference Manual</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="manual.html" >PySOFI Reference Manual</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">

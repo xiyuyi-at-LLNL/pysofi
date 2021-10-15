@@ -1,4 +1,4 @@
-pysofi Reference Manual
+PySOFI Reference Manual
 =======================
 
 Introduction
