@@ -73,6 +73,9 @@ def average_image(filepath, filename, frames=[]):
     for frame_num in range(frames[0], frames[1]):
         im = tiff.imread(filepath + '/' + filename, key=frame_num)
         mean_im = mean_im + im
+        sys.stdout.write('\r')
+        sys.stdout.write("frame "+str(frame_num)+'/'+str(frames[1]))
+        sys.stdout.flush()
     mean_im = mean_im / (frames[1] - frames[0])
     imstack.close()
 

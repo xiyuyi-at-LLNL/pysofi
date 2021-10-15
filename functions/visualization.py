@@ -23,7 +23,7 @@ from bokeh.plotting import figure, output_file, show, output_notebook
 from bokeh.models import ColumnDataSource
 from  bokeh.models import PanTool,ResetTool,BoxZoomTool
 bokeh.io.output_notebook(INLINE)
-
+import copy
 
 def ensure_positive(data):
     """
