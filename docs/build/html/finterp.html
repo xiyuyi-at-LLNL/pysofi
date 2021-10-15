@@ -36,7 +36,7 @@
           <a href="data_class.html" title="The “PysofiData()” class"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">pysofi 0.0.1 documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="manual.html" accesskey="U">pysofi Reference Manual</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="manual.html" accesskey="U">PySOFI Reference Manual</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -47,8 +47,114 @@
             
   <div class="section" id="fourier-interpolation-module">
 <h1>Fourier Interpolation Module<a class="headerlink" href="#fourier-interpolation-module" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="functions">
-<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-functions.finterp">
+<span id="functions"></span><h2>Functions<a class="headerlink" href="#module-functions.finterp" title="Permalink to this headline">¶</a></h2>
+<p>This module performs fourier interpolation on a single image
+or a image stack (tiff file). Interpolated image (stack) can be
+saved into a new tiff file or return as a numpy array.</p>
+<p>Fourier interpolation was implemented with transformation matrix
+operation, where the Fourier transformation matrix was constructed
+with the original matrix size without interpolation grids, and the
+inverse Fourier transformation matrix encodes the extra interpolation
+position coordinates.</p>
+<p>Adapted from <a class="reference external" href="https://github.com/xiyuyi/xy_fInterp_forTIFF">https://github.com/xiyuyi/xy_fInterp_forTIFF</a>.</p>
+<dl class="function">
+<dt id="functions.finterp.fourier_interp_array">
+<code class="sig-prename descclassname">functions.finterp.</code><code class="sig-name descname">fourier_interp_array</code><span class="sig-paren">(</span><em class="sig-param">im</em>, <em class="sig-param">interp_num_lst</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.finterp.fourier_interp_array" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs fourier interpolation on an image array with a list of
+interpolation factors.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="functions.finterp.fourier_interp_tiff">
+<code class="sig-prename descclassname">functions.finterp.</code><code class="sig-name descname">fourier_interp_tiff</code><span class="sig-paren">(</span><em class="sig-param">filepath</em>, <em class="sig-param">filename</em>, <em class="sig-param">interp_num_lst</em>, <em class="sig-param">frames=[]</em>, <em class="sig-param">save_option=True</em>, <em class="sig-param">return_option=False</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.finterp.fourier_interp_tiff" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs fourier interpolation on a tiff image (stack) with a list of
+interpolation factors (the number of pixels to be interpolated between
+two adjacent pixels).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filepath</strong> (<em>str</em>) – The path to the tiff file.</p></li>
+<li><p><strong>filename</strong> (<em>str</em>) – The filename of the tiff file without ‘.tif’.</p></li>
+<li><p><strong>interp_num_lst</strong> (<em>list</em><em> (</em><em>int</em><em>)</em>) – A list of interpolation factors.</p></li>
+<li><p><strong>frames</strong> (<em>list of int</em>) – The start and end frame number.</p></li>
+<li><p><strong>save_option</strong> (<em>bool</em>) – Whether to save the interpolated images into tiff files (each
+interpolation factor seperately).</p></li>
+<li><p><strong>return_option</strong> (<em>bool</em>) – Whether to return the interpolated image series as 3d arrays.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>interp_imstack_lst</strong> – A list of interpolated image series corresponding to the interpolation
+factor list.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list (ndarray)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="functions.finterp.ft_matrix2d">
+<code class="sig-prename descclassname">functions.finterp.</code><code class="sig-name descname">ft_matrix2d</code><span class="sig-paren">(</span><em class="sig-param">xrange</em>, <em class="sig-param">yrange</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.finterp.ft_matrix2d" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate fourier transform matrix for x- and y-dimension.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="functions.finterp.ift_matrix2d">
+<code class="sig-prename descclassname">functions.finterp.</code><code class="sig-name descname">ift_matrix2d</code><span class="sig-paren">(</span><em class="sig-param">xrange</em>, <em class="sig-param">yrange</em>, <em class="sig-param">interp_num</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.finterp.ift_matrix2d" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate inverse fourier transform matrix without center shift for a
+given fold of interpolation for x- and y-dimension. Here we use 2 times
+the x-dimension of a frame image for xrange and 2 times of y for yrange.
+interp_num is the number of times the resolution enhanced. For instance,
+when interp_num = 2, the resolution is two times the original one.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="functions.finterp.interpolate_image">
+<code class="sig-prename descclassname">functions.finterp.</code><code class="sig-name descname">interpolate_image</code><span class="sig-paren">(</span><em class="sig-param">im</em>, <em class="sig-param">fx</em>, <em class="sig-param">fy</em>, <em class="sig-param">ifx</em>, <em class="sig-param">ify</em>, <em class="sig-param">interp_num</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.finterp.interpolate_image" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs fourier interpolation to increase the resolution of the image.
+The interpolated image can be further processed by SOFI for
+super-resolution imaging.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>im</strong> (<em>ndarray</em>) – Input image.</p></li>
+<li><p><strong>fx</strong> (<em>ndarray</em>) – Fourier transform matrix in x generated from ft_matrix2d function.</p></li>
+<li><p><strong>fy</strong> (<em>ndarray</em>) – Fourier transform matrix in y generated from ft_matrix2d function.</p></li>
+<li><p><strong>ifx</strong> (<em>ndarray</em>) – Inverse fourier transform matrix in x from ift_matrix2d function.</p></li>
+<li><p><strong>ify</strong> (<em>ndarray</em>) – Inverse fourier transform matrix in y from ift_matrix2d function.</p></li>
+<li><p><strong>interp_num</strong> (<em>int</em>) – The number of pixels to be interpolated between two adjacent pixels.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>interp_im</strong> – Interpolated image with new dimensions.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Please note here that interpolation doesn’ extend over the edgeo f the
+matrix, therefore the total number of pixels in the resulting matrix is
+not an integer fold of the original size of the matrix. For example, if
+the original matrix size of each frame is xdim and ydim for x and y
+dimensions respectively. After interpolation, the size of the resulting
+matrix will be ((xdim-1)*f + 1) for x dimension, and ((ydim-1)*f + 1)
+for y dimension.</p>
+<p class="rubric">Example</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">xdim</span><span class="p">,</span> <span class="n">ydim</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">mu</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">xdim</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">xdim</span><span class="p">))</span>
+<span class="n">im</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="o">*</span><span class="n">y</span><span class="p">)</span> <span class="o">-</span> <span class="n">mu</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">)))</span>
+<span class="n">xrange</span><span class="p">,</span> <span class="n">yrange</span><span class="p">,</span> <span class="n">interp_num</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">xdim</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">ydim</span><span class="p">,</span> <span class="mi">3</span>
+<span class="n">fx</span><span class="p">,</span> <span class="n">fy</span> <span class="o">=</span> <span class="n">ft_matrix2d</span><span class="p">(</span><span class="n">xrange</span><span class="p">,</span> <span class="n">yrange</span><span class="p">)</span>
+<span class="n">ifx</span><span class="p">,</span> <span class="n">ify</span> <span class="o">=</span> <span class="n">ift_matrix2d</span><span class="p">(</span><span class="n">xrange</span><span class="p">,</span> <span class="n">yrange</span><span class="p">,</span> <span class="n">interp_num</span><span class="p">)</span>
+<span class="n">interp_im</span> <span class="o">=</span> <span class="n">interpolate_image</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">fx</span><span class="p">,</span> <span class="n">fy</span><span class="p">,</span> <span class="n">ifx</span><span class="p">,</span> <span class="n">ify</span><span class="p">,</span> <span class="n">interp_num</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
 </div>
 <div class="section" id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
@@ -128,7 +234,7 @@ and save the interpolated images in a new tiff video.</p>
           <a href="data_class.html" title="The “PysofiData()” class"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">pysofi 0.0.1 documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="manual.html" >pysofi Reference Manual</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="manual.html" >PySOFI Reference Manual</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">

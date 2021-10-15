@@ -4,7 +4,10 @@
 # (or bigger number) in command line.
 
 import numpy as np
-import cv2
+from . import switches as s
+if s.SPHINX_SWITCH is False:
+    import cv2
+
 from bokeh.resources import INLINE
 from bokeh.layouts import row
 import bokeh.io
@@ -12,12 +15,15 @@ from scipy.io import loadmat
 from matplotlib import colors
 from matplotlib import cm
 import matplotlib.pyplot as plt
-import tifffile as tiff
+from . import switches as s
+if s.SPHINX_SWITCH is False:
+    import tifffile as tiff
+
 from bokeh.plotting import figure, output_file, show, output_notebook
 from bokeh.models import ColumnDataSource
 from  bokeh.models import PanTool,ResetTool,BoxZoomTool
 bokeh.io.output_notebook(INLINE)
-
+import copy
 
 def ensure_positive(data):
     """
@@ -82,7 +88,7 @@ def bokeh_visualization(image, palette=None, save_option=False,
 
 
 def bokeh_visualization_rgba(image, save_option=False,
-                             filename='RGBAimage', imshow_same=True):
+                             filename='RGBAimage', imshow_same=True, saturation_factor=1):
     """
     Show interactive RGBA image with Bokeh in Jupyter Notebook.
 
@@ -102,10 +108,10 @@ def bokeh_visualization_rgba(image, save_option=False,
     For more information about interactive visualization library Bokeh: 
     https://docs.bokeh.org/en/latest/index.html.
     """
-    image = ensure_positive(image)
-    image[image > 255] = 255
-    assert (np.sum(image != np.uint8(image)) == 0), \
-        "Converting image dtype to uint8"
+    image = ensure_positive(image)*saturation_factor
+    image[np.where(image>255)] = 255
+    # assert (np.sum(image != np.uint8(image)) == 0), \
+    #     "Converting image dtype to uint8"
     image = np.uint8(image)
     xdim, ydim, ch = np.shape(image)
     TOOLTIPS = [("x", "$x{int}"), ("y", "$y{int}"), ("value", "@image")]

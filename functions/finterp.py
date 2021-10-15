@@ -13,7 +13,10 @@ Adapted from https://github.com/xiyuyi/xy_fInterp_forTIFF.
 """
 
 import numpy as np
-import tifffile as tiff
+from . import switches as s
+if s.SPHINX_SWITCH is False:
+    import tifffile as tiff
+
 import sys
 
 
@@ -208,9 +211,21 @@ def fourier_interp_tiff(filepath, filename, interp_num_lst, frames=[],
             interp_imstack = []
             print('Calculating interpolation factor = %d...' % interp_num)
             for frame_num in range(frames[0], frames[1]):
+                # read a frame from the original tiff file
                 im = tiff.imread(filepath + '/' + filename + '.tif', key=frame_num)
+                # find the minimum and maximum values of this image
+                immax = np.max(im.ravel())
+                immin = np.min(im.ravel())
+                # perform interpolation
                 interp_im = interpolate_image(im, fx, fy, ifx, ify, interp_num)
-                interp_im = np.int_(np.around(interp_im))
+                # ensure the interpolated image have the identical dynamic range of the original image
+                interp_immax=np.max(interp_im.ravel())
+                interp_immin=np.min(interp_im.ravel())
+                interp_im = (interp_im-interp_immin)/(interp_immax-interp_immin)
+                interp_im = interp_im*(immax-immin)+immin
+
+#                interp_im = np.int_(np.around(interp_im))
+                interp_im = np.uint16(np.around(interp_im))
                 sys.stdout.write('\r')
                 sys.stdout.write("[{:{}}] {:.1f}%".format(
                     "="*int(30/(frames[1]-frames[0])*(frame_num-frames[0]+1)), 29,
@@ -218,7 +233,7 @@ def fourier_interp_tiff(filepath, filename, interp_num_lst, frames=[],
                 sys.stdout.flush()
                 if save_option is True:
                     tiff.imwrite(filepath + '/' + filename + '_InterpNum' + str(interp_num) +
-                                 '.tif', interp_im, dtype='int', append=True)
+                                 '.tif', interp_im, dtype='uint16', append=True)
                 if return_option is True:
                     interp_imstack.append(interp_im)
                 
@@ -232,9 +247,21 @@ def fourier_interp_tiff(filepath, filename, interp_num_lst, frames=[],
             interp_imstack = []
             print('Calculating interpolation factor = %d...' % interp_num)
             for frame_num in range(mvlength):
+                # read a frame from the original tiff file
                 im = tiff.imread(filepath + '/' + filename + '.tif', key=frame_num)
+                # find the minimum and maximum values of this image
+                immax = np.max(im.ravel())
+                immin = np.min(im.ravel())
+                # perform interpolation
                 interp_im = interpolate_image(im, fx, fy, ifx, ify, interp_num)
-                interp_im = np.int_(np.around(interp_im))
+                # ensure the interpolated image have the identical dynamic range of the original image
+                interp_immax=np.max(interp_im.ravel())
+                interp_immin=np.min(interp_im.ravel())
+                interp_im = (interp_im-interp_immin)/(interp_immax-interp_immin)
+                interp_im = interp_im*(immax-immin)+immin
+
+                #                interp_im = np.int_(np.around(interp_im))
+                interp_im = np.uint16(np.around(interp_im))
                 sys.stdout.write('\r')
                 sys.stdout.write("[{:{}}] {:.1f}%".format(
                     "="*int(30/mvlength*(frame_num+1)), 29,
@@ -242,7 +269,7 @@ def fourier_interp_tiff(filepath, filename, interp_num_lst, frames=[],
                 sys.stdout.flush()
                 if save_option is True:
                     tiff.imwrite(filepath + '/' + filename + '_InterpNum' + str(interp_num) +
-                                 '.tif', interp_im, dtype='int', append=True)
+                                 '.tif', interp_im, dtype='uint16', append=True)
                 if return_option is True:
                     interp_imstack.append(interp_im)
                 

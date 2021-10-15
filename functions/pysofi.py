@@ -1,6 +1,9 @@
 from . import (deconvsk, ldrc, masks, reconstruction)
 from . import finterp as f
-import tifffile as tiff
+from . import switches as s
+if s.SPHINX_SWITCH is False:
+    import tifffile as tiff
+
 import numpy as np
 
 

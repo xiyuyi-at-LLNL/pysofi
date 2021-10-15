@@ -36,7 +36,7 @@
           <a href="moca.html" title="Multi-Order Cumulant Analysis (MOCA)"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">pysofi 0.0.1 documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="manual.html" accesskey="U">pysofi Reference Manual</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="manual.html" accesskey="U">PySOFI Reference Manual</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -50,8 +50,147 @@
 <p>This module provides multiple options to visualize result images. For instance, the
 image can be demonstrated interactively with Bokeh, with adjusted contrast to better
 visualize detailed features, and with a transparency map.</p>
-<div class="section" id="functions">
-<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-functions.visualization">
+<span id="functions"></span><h2>Functions<a class="headerlink" href="#module-functions.visualization" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="functions.visualization.add_transmap">
+<code class="sig-prename descclassname">functions.visualization.</code><code class="sig-name descname">add_transmap</code><span class="sig-paren">(</span><em class="sig-param">im</em>, <em class="sig-param">trans_map</em>, <em class="sig-param">cmap='cool'</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.visualization.add_transmap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prepare the image for visualization by adding a transparency map.
+It colorcodes ‘im’ with colormap ‘cmap’, and multiplied by the
+transparancy map ‘trans_map’.
+:param im: A gray-scale image encoding the parameters that need to be color-</p>
+<blockquote>
+<div><p>coded.</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>trans_map</strong> (<em>2darray</em>) – A grey-scale mask encoding the intensity information.</p></li>
+<li><p><strong>cmap</strong> (<em>str</em>) – A colormap provided by ‘matplotlib’ or defined by the user.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>im_color</strong> – A RGBA image array for visualization.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>3darray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="functions.visualization.bokeh_visualization">
+<code class="sig-prename descclassname">functions.visualization.</code><code class="sig-name descname">bokeh_visualization</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">palette=None</em>, <em class="sig-param">save_option=False</em>, <em class="sig-param">filename='Image'</em>, <em class="sig-param">imshow_same=True</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.visualization.bokeh_visualization" title="Permalink to this definition">¶</a></dt>
+<dd><p>Show interactive grayscale image with Bokeh in Jupyter Notebook.
+:param image: The grayscale image array for visualization.
+:type image: ndarray
+:param palette: Name of the Bokeh palettes.</p>
+<blockquote>
+<div><p>The default palette is ‘pink’ from matplotlib.
+For a complete palette list in bokeh documentation:</p>
+<blockquote>
+<div><p><a class="reference external" href="https://docs.bokeh.org/en/latest/docs/reference/palettes.html">https://docs.bokeh.org/en/latest/docs/reference/palettes.html</a></p>
+</div></blockquote>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>save_option</strong> (<em>bool</em>) – Whether to save the Bokeh image as a .html file.</p></li>
+<li><p><strong>-49</strong><strong>,</strong><strong>39 +54</strong><strong>,</strong><strong>70 &#64;&#64; def bokeh_visualization</strong><strong>(</strong><strong>image</strong><strong>, </strong><strong>palette=None</strong><strong>, </strong><strong>save_option=False</strong><strong>,</strong> (<em>&#64;&#64;</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>For more information about interactive visualization library Bokeh:
+<a class="reference external" href="https://docs.bokeh.org/en/latest/index.html">https://docs.bokeh.org/en/latest/index.html</a>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="functions.visualization.bokeh_visualization_mult">
+<code class="sig-prename descclassname">functions.visualization.</code><code class="sig-name descname">bokeh_visualization_mult</code><span class="sig-paren">(</span><em class="sig-param">image_lst</em>, <em class="sig-param">title_lst=None</em>, <em class="sig-param">palette=None</em>, <em class="sig-param">save_option=False</em>, <em class="sig-param">filename='Image'</em>, <em class="sig-param">imshow_same=True</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.visualization.bokeh_visualization_mult" title="Permalink to this definition">¶</a></dt>
+<dd><p>Show interactive grayscale image with Bokeh in Jupyter Notebook.
+:param image_lst: A list of grayscale images array for visualization and comparison.
+:type image_lst: list(ndarray)
+:param title_lst: A list of titles for images plotted in Bokeh.
+:type title_lst: list of str
+:param palette: Name of the Bokeh palettes.</p>
+<blockquote>
+<div><p>The default palette is ‘pink’ from matplotlib.
+For a complete palette list in bokeh documentation:</p>
+<blockquote>
+<div><p><a class="reference external" href="https://docs.bokeh.org/en/latest/docs/reference/palettes.html">https://docs.bokeh.org/en/latest/docs/reference/palettes.html</a></p>
+</div></blockquote>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>save_option</strong> (<em>bool</em>) – Whether to save the Bokeh image as a .html file.</p></li>
+<li><p><strong>-49</strong><strong>,</strong><strong>39 +54</strong><strong>,</strong><strong>70 &#64;&#64; def bokeh_visualization</strong><strong>(</strong><strong>image</strong><strong>, </strong><strong>palette=None</strong><strong>, </strong><strong>save_option=False</strong><strong>,</strong> (<em>&#64;&#64;</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>For more information about interactive visualization library Bokeh:
+<a class="reference external" href="https://docs.bokeh.org/en/latest/index.html">https://docs.bokeh.org/en/latest/index.html</a>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="functions.visualization.bokeh_visualization_rgba">
+<code class="sig-prename descclassname">functions.visualization.</code><code class="sig-name descname">bokeh_visualization_rgba</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">save_option=False</em>, <em class="sig-param">filename='RGBAimage'</em>, <em class="sig-param">imshow_same=True</em>, <em class="sig-param">saturation_factor=1</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.visualization.bokeh_visualization_rgba" title="Permalink to this definition">¶</a></dt>
+<dd><p>Show interactive RGBA image with Bokeh in Jupyter Notebook.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>image</strong> (<em>ndarray</em>) – The RGBA image array for visualization.</p></li>
+<li><p><strong>save_option</strong> (<em>bool</em>) – Whether to save the Bokeh image as a .html file.</p></li>
+<li><p><strong>filename</strong> (<em>str</em>) – Name of the .html file.</p></li>
+<li><p><strong>imshow_same</strong> (<em>bool</em>) – Whether to reversse y-axis to show the same image as using matplotlib.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>For more information about interactive visualization library Bokeh:
+<a class="reference external" href="https://docs.bokeh.org/en/latest/index.html">https://docs.bokeh.org/en/latest/index.html</a>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="functions.visualization.enhance_contrast">
+<code class="sig-prename descclassname">functions.visualization.</code><code class="sig-name descname">enhance_contrast</code><span class="sig-paren">(</span><em class="sig-param">im</em>, <em class="sig-param">cmap='pink'</em>, <em class="sig-param">display_contrast=1</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.visualization.enhance_contrast" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enhance contrast of the input image.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="functions.visualization.ensure_positive">
+<code class="sig-prename descclassname">functions.visualization.</code><code class="sig-name descname">ensure_positive</code><span class="sig-paren">(</span><em class="sig-param">data</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.visualization.ensure_positive" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make sure data is positive and has no zeros.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="functions.visualization.ind2cmap">
+<code class="sig-prename descclassname">functions.visualization.</code><code class="sig-name descname">ind2cmap</code><span class="sig-paren">(</span><em class="sig-param">im</em>, <em class="sig-param">cmap='pink'</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.visualization.ind2cmap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert a grayscale image array to a rgba color image((0,1) float).</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="functions.visualization.save_avi">
+<code class="sig-prename descclassname">functions.visualization.</code><code class="sig-name descname">save_avi</code><span class="sig-paren">(</span><em class="sig-param">vid_array</em>, <em class="sig-param">cmap='pink'</em>, <em class="sig-param">filename='out.avi'</em>, <em class="sig-param">display_contrast=1</em>, <em class="sig-param">os='macos'</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.visualization.save_avi" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save a image stack with a specific colormap. If the user is using windows,
+please set os=’windows’.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="functions.visualization.save_png">
+<code class="sig-prename descclassname">functions.visualization.</code><code class="sig-name descname">save_png</code><span class="sig-paren">(</span><em class="sig-param">im</em>, <em class="sig-param">cmap='pink'</em>, <em class="sig-param">filename='out.png'</em>, <em class="sig-param">display_contrast=1</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.visualization.save_png" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save a image with a specific colormap.
+Please refer to the demo Jupyter Notebook for examples.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="functions.visualization.set_range">
+<code class="sig-prename descclassname">functions.visualization.</code><code class="sig-name descname">set_range</code><span class="sig-paren">(</span><em class="sig-param">im, range_set=[0, 1]</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.visualization.set_range" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set display range of the input image to a given value range (norm_range).</p>
+</dd></dl>
+
 </div>
 <div class="section" id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
@@ -142,7 +281,7 @@ visualize detailed features, and with a transparency map.</p>
           <a href="moca.html" title="Multi-Order Cumulant Analysis (MOCA)"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">pysofi 0.0.1 documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="manual.html" >pysofi Reference Manual</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="manual.html" >PySOFI Reference Manual</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
