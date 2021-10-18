@@ -22,7 +22,7 @@ Documentation
 
    start
    demos
-   SOFI 2.0 Tutorial <https://github.com/xiyuyi-at-LLNL/pysofi/blob/master/Notebooks/notebooks_html/E11_pysofiExample_LiveCellActinFilaments.html>
+   SOFI 2.0 Tutorial <https://github.com/xiyuyi-at-LLNL/pysofi/blob/master/Notebooks/E11_pysofiExample_LiveCellActinFilaments.ipynb>
    Reference manual <manual>
    about
    license
