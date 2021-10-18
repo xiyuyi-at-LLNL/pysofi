@@ -34,12 +34,14 @@ List of Jupyter Notebooks
 
 * `E7 - MOCA <https://nbviewer.jupyter.org/github/xiyuyi-at-LLNL/pysofi/blob/master/Notebooks/E7_MOCA.ipynb>`__
 
-* `E8 - Reconstruction Convergence: Sample Analysis <https://nbviewer.jupyter.org/github/xiyuyi-at-LLNL/pysofi/blob/master/Notebooks/E8_ReconstructionConvergence_SampleAnalysis.ipynb>`__
+* `E8 - Result Visualization <https://github.com/xiyuyi-at-LLNL/pysofi/blob/master/Notebooks/notebooks_html/E8_ResultVisualization.html>`__
 
-* `E9 - Reconstruction Convergence <https://nbviewer.jupyter.org/github/xiyuyi-at-LLNL/pysofi/blob/master/Notebooks/E9_ReconstructionConvergence.ipynb>`__
+* `E9 - Reconstruction Convergence <https://github.com/xiyuyi-at-LLNL/pysofi/blob/master/Notebooks/notebooks_html/E9_ReconstructionConvergence.html>`__
 
-* `E10 - Result Visualization <https://nbviewer.jupyter.org/github/xiyuyi-at-LLNL/pysofi/blob/master/Notebooks/E10_ResultVisualization.ipynb>`__
+* `E10 - Reconstruction Convergence: Sample Analysis <https://github.com/xiyuyi-at-LLNL/pysofi/blob/master/Notebooks/notebooks_html/E10_ReconstructionConvergence_SampleAnalysis.html>`__
 
-* `E11 - Cusp-Artifacts Demo 1 - 3 Emitter <https://nbviewer.jupyter.org/github/xiyuyi-at-LLNL/pysofi/blob/master/Notebooks/E11_CuspArtifactsDemo1_3Emitters.ipynb>`__
+* `E11 - PySOFI Example, Live Cell with Actin Filaments <https://github.com/xiyuyi-at-LLNL/pysofi/blob/master/Notebooks/notebooks_html/E11_pysofiExample_LiveCellActinFilaments.html>`__
 
-* `E12 - Cusp-Artifacts Demo 2 - Slow Varying Rho <https://nbviewer.jupyter.org/github/xiyuyi-at-LLNL/pysofi/blob/master/Notebooks/E12_CuspArtifactsDemo2_SlowVaryingRho.ipynb>`__
+* `E12 - Cusp-Artifacts Demo 1 - 3 emitters <https://github.com/xiyuyi-at-LLNL/pysofi/blob/master/Notebooks/notebooks_html/E12_CuspArtifactsDemo1_3Emitters.html>`__
+
+* `E13 - Cusp-Artifacts Demo 2 - Slow Varying Rho <https://github.com/xiyuyi-at-LLNL/pysofi/blob/master/Notebooks/notebooks_html/E13_CuspArtifactsDemo2_SlowVaryingRho.html>`__
