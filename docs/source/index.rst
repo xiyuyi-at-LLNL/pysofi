@@ -8,7 +8,7 @@ PySOFI - SOFI 2.0 Analysis in Python
 
 **PySOFI** is an open-source python pacakge for the super-solution image processing method `SOFI <https://en.wikipedia.org/wiki/Super-resolution_optical_fluctuation_imaging>`__. PySOFI supports tiff files with image stacks. Data can be acquired from cameras like EMCCD or sCMOS, or `simulations <https://github.com/xiyuyi/RealisticSimulator_3D>`__.
 
-We provide well-tested implementaions of `SOFI2.0 <https://github.com/xiyuyi/SOFI2.0>`__ on live-cell imaging data in Jupyter notebook, as well as demos and examples on each step of the processing.
+We provide tested implementaions of `SOFI2.0 <https://github.com/xiyuyi/SOFI2.0>`__ on live-cell imaging data in Jupyter notebook, as well as demos and examples on each step of the processing.
 
 - Development: https://github.com/xiyuyi-at-LLNL/pysofi
 - Documentation: 
@@ -22,7 +22,7 @@ Documentation
 
    start
    demos
-   SOFI 2.0 Tutorial <https://nbviewer.jupyter.org/github/xiyuyi-at-LLNL/pysofi/blob/master/Notebooks/E13_pysofiExample_LiveCellActinFilaments.ipynb>
+   SOFI 2.0 Tutorial <https://github.com/xiyuyi-at-LLNL/pysofi/blob/master/Notebooks/notebooks_html/E11_pysofiExample_LiveCellActinFilaments.html>
    Reference manual <manual>
    about
    license
