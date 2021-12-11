@@ -22,7 +22,7 @@ After starting jupyter notebook, switch kernel to current environment by clickin
 
 The notebooks offers 2 options to either import the package from source code, or from pip install. The examples are indicated in the notebook files. If you would like to use the package directly from source, please download this repository, and configure the path as shown in the notebooks.
 
-if you would like to avoid interfacing with the source code, the users can also install this package using hte following command from the terminal:
+if you would like to avoid interfacing with the source code, you can also install this package using hte following command from the terminal:
 
 `pip install pysofi`
 
