@@ -9,3 +9,4 @@
 .pypirc
 /docs/.DS_Store
 /docs/build/.DS_Store
+/pysofi/__pycache__
