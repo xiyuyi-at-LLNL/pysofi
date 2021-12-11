@@ -36,7 +36,7 @@
           <a href="reconstruction.html" title="Reconstruction Options"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">pysofi 0.0.1 documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="manual.html" accesskey="U">pysofi Reference Manual</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="manual.html" accesskey="U">PySOFI Reference Manual</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -53,11 +53,11 @@ into multiple blocks with fewer frames. In each block, the decrease in fluoresce
 is small enough so that users canomit the effect of photobleaching. Each block can be
 considered as an individual <cite>PysofiData</cite> object. After the reconstruction step, all
 reconstructed images are saved in separate object, and can be put together for the filtration.</p>
-<div class="section" id="module-functions.filtering">
-<span id="functions"></span><h2>Functions<a class="headerlink" href="#module-functions.filtering" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-pysofi.filtering">
+<span id="functions"></span><h2>functions<a class="headerlink" href="#module-pysofi.filtering" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
-<dt id="functions.filtering.filter1d_same">
-<code class="sig-prename descclassname">functions.filtering.</code><code class="sig-name descname">filter1d_same</code><span class="sig-paren">(</span><em class="sig-param">time_series</em>, <em class="sig-param">noise_filter</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.filtering.filter1d_same" title="Permalink to this definition">¶</a></dt>
+<dt id="pysofi.filtering.filter1d_same">
+<code class="sig-prename descclassname">pysofi.filtering.</code><code class="sig-name descname">filter1d_same</code><span class="sig-paren">(</span><em class="sig-param">time_series</em>, <em class="sig-param">noise_filter</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.filtering.filter1d_same" title="Permalink to this definition">¶</a></dt>
 <dd><p>Filter original time_series with noise_filter, and return the
 filtered_series with the same length as the original sereis.
 Compared to MATLAB results, when the length of the filter and
@@ -66,15 +66,15 @@ left by one number. In other cases, results are the same.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="functions.filtering.med_smooth">
-<code class="sig-prename descclassname">functions.filtering.</code><code class="sig-name descname">med_smooth</code><span class="sig-paren">(</span><em class="sig-param">ori_signal</em>, <em class="sig-param">kernel_size=251</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.filtering.med_smooth" title="Permalink to this definition">¶</a></dt>
+<dt id="pysofi.filtering.med_smooth">
+<code class="sig-prename descclassname">pysofi.filtering.</code><code class="sig-name descname">med_smooth</code><span class="sig-paren">(</span><em class="sig-param">ori_signal</em>, <em class="sig-param">kernel_size=251</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.filtering.med_smooth" title="Permalink to this definition">¶</a></dt>
 <dd><p>Perform a one-dimensional median filter with ‘reflect’ padding.
 For more information, please check scipy.signal.medfilt.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="functions.filtering.noise_filter1d">
-<code class="sig-prename descclassname">functions.filtering.</code><code class="sig-name descname">noise_filter1d</code><span class="sig-paren">(</span><em class="sig-param">dset</em>, <em class="sig-param">im_set</em>, <em class="sig-param">noise_filter=[]</em>, <em class="sig-param">filtername='noise filter after M6'</em>, <em class="sig-param">filenames=None</em>, <em class="sig-param">return_option=False</em>, <em class="sig-param">return_type='dict'</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.filtering.noise_filter1d" title="Permalink to this definition">¶</a></dt>
+<dt id="pysofi.filtering.noise_filter1d">
+<code class="sig-prename descclassname">pysofi.filtering.</code><code class="sig-name descname">noise_filter1d</code><span class="sig-paren">(</span><em class="sig-param">dset</em>, <em class="sig-param">im_set</em>, <em class="sig-param">noise_filter=[]</em>, <em class="sig-param">filtername='noise filter after M6'</em>, <em class="sig-param">filenames=None</em>, <em class="sig-param">return_option=False</em>, <em class="sig-param">return_type='dict'</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.filtering.noise_filter1d" title="Permalink to this definition">¶</a></dt>
 <dd><p>Perform noise filtering on a image stack along the time axis for each
 pixel independently.</p>
 <dl class="field-list simple">
@@ -123,7 +123,6 @@ with an array of images in sequence that needs to be filtered (m_set):</p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="start.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="demos.html">Demos</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://nbviewer.jupyter.org/github/xiyuyi-at-LLNL/pysofi/blob/master/Notebooks/E13_pysofiExample_LiveCellActinFilaments.ipynb">SOFI 2.0 Tutorial</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="manual.html">Reference manual</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="manual.html#introduction">Introduction</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="manual.html#modules">Modules</a></li>
@@ -176,7 +175,7 @@ with an array of images in sequence that needs to be filtered (m_set):</p>
           <a href="reconstruction.html" title="Reconstruction Options"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">pysofi 0.0.1 documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="manual.html" >pysofi Reference Manual</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="manual.html" >PySOFI Reference Manual</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">

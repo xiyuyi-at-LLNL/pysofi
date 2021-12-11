@@ -10,7 +10,7 @@ defind blocks, with or without Fourier interpolation or bleaching correction.
 
 Functions
 ---------
-.. automodule:: functions.reconstruction
+.. automodule:: pysofi.reconstruction
    :members:
    :undoc-members:
    :show-inheritance:

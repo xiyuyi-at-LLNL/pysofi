@@ -3,7 +3,7 @@ Fourier Interpolation Module
 
 Functions
 ---------
-.. automodule:: functions.finterp
+.. automodule:: pysofi.finterp
    :members:
    :undoc-members:
    :show-inheritance:

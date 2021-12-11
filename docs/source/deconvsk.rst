@@ -12,9 +12,9 @@ with a series of different 2D Gaussian kernels (shrinking kernels) is applied on
 frame of the noise filtered moment-reconstructions. This method is called the shrinking 
 kernel deconvolution (deconvSK).
 
-Functions
+functions
 ---------
-.. automodule:: functions.deconvsk
+.. automodule:: pysofi.deconvsk
    :members:
    :undoc-members:
    :show-inheritance:

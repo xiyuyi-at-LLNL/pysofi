@@ -50,11 +50,11 @@
 <p>This module provides multiple options to visualize result images. For instance, the
 image can be demonstrated interactively with Bokeh, with adjusted contrast to better
 visualize detailed features, and with a transparency map.</p>
-<div class="section" id="module-functions.visualization">
-<span id="functions"></span><h2>Functions<a class="headerlink" href="#module-functions.visualization" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-pysofi.visualization">
+<span id="functions"></span><h2>Functions<a class="headerlink" href="#module-pysofi.visualization" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
-<dt id="functions.visualization.add_transmap">
-<code class="sig-prename descclassname">functions.visualization.</code><code class="sig-name descname">add_transmap</code><span class="sig-paren">(</span><em class="sig-param">im</em>, <em class="sig-param">trans_map</em>, <em class="sig-param">cmap='cool'</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.visualization.add_transmap" title="Permalink to this definition">¶</a></dt>
+<dt id="pysofi.visualization.add_transmap">
+<code class="sig-prename descclassname">pysofi.visualization.</code><code class="sig-name descname">add_transmap</code><span class="sig-paren">(</span><em class="sig-param">im</em>, <em class="sig-param">trans_map</em>, <em class="sig-param">cmap='cool'</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.visualization.add_transmap" title="Permalink to this definition">¶</a></dt>
 <dd><p>Prepare the image for visualization by adding a transparency map.
 It colorcodes ‘im’ with colormap ‘cmap’, and multiplied by the
 transparancy map ‘trans_map’.
@@ -79,8 +79,8 @@ transparancy map ‘trans_map’.
 </dd></dl>
 
 <dl class="function">
-<dt id="functions.visualization.bokeh_visualization">
-<code class="sig-prename descclassname">functions.visualization.</code><code class="sig-name descname">bokeh_visualization</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">palette=None</em>, <em class="sig-param">save_option=False</em>, <em class="sig-param">filename='Image'</em>, <em class="sig-param">imshow_same=True</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.visualization.bokeh_visualization" title="Permalink to this definition">¶</a></dt>
+<dt id="pysofi.visualization.bokeh_visualization">
+<code class="sig-prename descclassname">pysofi.visualization.</code><code class="sig-name descname">bokeh_visualization</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">palette=None</em>, <em class="sig-param">save_option=False</em>, <em class="sig-param">filename='Image'</em>, <em class="sig-param">imshow_same=True</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.visualization.bokeh_visualization" title="Permalink to this definition">¶</a></dt>
 <dd><p>Show interactive grayscale image with Bokeh in Jupyter Notebook.
 :param image: The grayscale image array for visualization.
 :type image: ndarray
@@ -106,8 +106,8 @@ For a complete palette list in bokeh documentation:</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="functions.visualization.bokeh_visualization_mult">
-<code class="sig-prename descclassname">functions.visualization.</code><code class="sig-name descname">bokeh_visualization_mult</code><span class="sig-paren">(</span><em class="sig-param">image_lst</em>, <em class="sig-param">title_lst=None</em>, <em class="sig-param">palette=None</em>, <em class="sig-param">save_option=False</em>, <em class="sig-param">filename='Image'</em>, <em class="sig-param">imshow_same=True</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.visualization.bokeh_visualization_mult" title="Permalink to this definition">¶</a></dt>
+<dt id="pysofi.visualization.bokeh_visualization_mult">
+<code class="sig-prename descclassname">pysofi.visualization.</code><code class="sig-name descname">bokeh_visualization_mult</code><span class="sig-paren">(</span><em class="sig-param">image_lst</em>, <em class="sig-param">title_lst=None</em>, <em class="sig-param">palette=None</em>, <em class="sig-param">save_option=False</em>, <em class="sig-param">filename='Image'</em>, <em class="sig-param">imshow_same=True</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.visualization.bokeh_visualization_mult" title="Permalink to this definition">¶</a></dt>
 <dd><p>Show interactive grayscale image with Bokeh in Jupyter Notebook.
 :param image_lst: A list of grayscale images array for visualization and comparison.
 :type image_lst: list(ndarray)
@@ -135,8 +135,8 @@ For a complete palette list in bokeh documentation:</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="functions.visualization.bokeh_visualization_rgba">
-<code class="sig-prename descclassname">functions.visualization.</code><code class="sig-name descname">bokeh_visualization_rgba</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">save_option=False</em>, <em class="sig-param">filename='RGBAimage'</em>, <em class="sig-param">imshow_same=True</em>, <em class="sig-param">saturation_factor=1</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.visualization.bokeh_visualization_rgba" title="Permalink to this definition">¶</a></dt>
+<dt id="pysofi.visualization.bokeh_visualization_rgba">
+<code class="sig-prename descclassname">pysofi.visualization.</code><code class="sig-name descname">bokeh_visualization_rgba</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">save_option=False</em>, <em class="sig-param">filename='RGBAimage'</em>, <em class="sig-param">imshow_same=True</em>, <em class="sig-param">saturation_factor=1</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.visualization.bokeh_visualization_rgba" title="Permalink to this definition">¶</a></dt>
 <dd><p>Show interactive RGBA image with Bokeh in Jupyter Notebook.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -154,40 +154,40 @@ For a complete palette list in bokeh documentation:</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="functions.visualization.enhance_contrast">
-<code class="sig-prename descclassname">functions.visualization.</code><code class="sig-name descname">enhance_contrast</code><span class="sig-paren">(</span><em class="sig-param">im</em>, <em class="sig-param">cmap='pink'</em>, <em class="sig-param">display_contrast=1</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.visualization.enhance_contrast" title="Permalink to this definition">¶</a></dt>
+<dt id="pysofi.visualization.enhance_contrast">
+<code class="sig-prename descclassname">pysofi.visualization.</code><code class="sig-name descname">enhance_contrast</code><span class="sig-paren">(</span><em class="sig-param">im</em>, <em class="sig-param">cmap='pink'</em>, <em class="sig-param">display_contrast=1</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.visualization.enhance_contrast" title="Permalink to this definition">¶</a></dt>
 <dd><p>Enhance contrast of the input image.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="functions.visualization.ensure_positive">
-<code class="sig-prename descclassname">functions.visualization.</code><code class="sig-name descname">ensure_positive</code><span class="sig-paren">(</span><em class="sig-param">data</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.visualization.ensure_positive" title="Permalink to this definition">¶</a></dt>
+<dt id="pysofi.visualization.ensure_positive">
+<code class="sig-prename descclassname">pysofi.visualization.</code><code class="sig-name descname">ensure_positive</code><span class="sig-paren">(</span><em class="sig-param">data</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.visualization.ensure_positive" title="Permalink to this definition">¶</a></dt>
 <dd><p>Make sure data is positive and has no zeros.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="functions.visualization.ind2cmap">
-<code class="sig-prename descclassname">functions.visualization.</code><code class="sig-name descname">ind2cmap</code><span class="sig-paren">(</span><em class="sig-param">im</em>, <em class="sig-param">cmap='pink'</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.visualization.ind2cmap" title="Permalink to this definition">¶</a></dt>
+<dt id="pysofi.visualization.ind2cmap">
+<code class="sig-prename descclassname">pysofi.visualization.</code><code class="sig-name descname">ind2cmap</code><span class="sig-paren">(</span><em class="sig-param">im</em>, <em class="sig-param">cmap='pink'</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.visualization.ind2cmap" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convert a grayscale image array to a rgba color image((0,1) float).</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="functions.visualization.save_avi">
-<code class="sig-prename descclassname">functions.visualization.</code><code class="sig-name descname">save_avi</code><span class="sig-paren">(</span><em class="sig-param">vid_array</em>, <em class="sig-param">cmap='pink'</em>, <em class="sig-param">filename='out.avi'</em>, <em class="sig-param">display_contrast=1</em>, <em class="sig-param">os='macos'</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.visualization.save_avi" title="Permalink to this definition">¶</a></dt>
+<dt id="pysofi.visualization.save_avi">
+<code class="sig-prename descclassname">pysofi.visualization.</code><code class="sig-name descname">save_avi</code><span class="sig-paren">(</span><em class="sig-param">vid_array</em>, <em class="sig-param">cmap='pink'</em>, <em class="sig-param">filename='out.avi'</em>, <em class="sig-param">display_contrast=1</em>, <em class="sig-param">os='macos'</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.visualization.save_avi" title="Permalink to this definition">¶</a></dt>
 <dd><p>Save a image stack with a specific colormap. If the user is using windows,
 please set os=’windows’.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="functions.visualization.save_png">
-<code class="sig-prename descclassname">functions.visualization.</code><code class="sig-name descname">save_png</code><span class="sig-paren">(</span><em class="sig-param">im</em>, <em class="sig-param">cmap='pink'</em>, <em class="sig-param">filename='out.png'</em>, <em class="sig-param">display_contrast=1</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.visualization.save_png" title="Permalink to this definition">¶</a></dt>
+<dt id="pysofi.visualization.save_png">
+<code class="sig-prename descclassname">pysofi.visualization.</code><code class="sig-name descname">save_png</code><span class="sig-paren">(</span><em class="sig-param">im</em>, <em class="sig-param">cmap='pink'</em>, <em class="sig-param">filename='out.png'</em>, <em class="sig-param">display_contrast=1</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.visualization.save_png" title="Permalink to this definition">¶</a></dt>
 <dd><p>Save a image with a specific colormap.
 Please refer to the demo Jupyter Notebook for examples.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="functions.visualization.set_range">
-<code class="sig-prename descclassname">functions.visualization.</code><code class="sig-name descname">set_range</code><span class="sig-paren">(</span><em class="sig-param">im, range_set=[0, 1]</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.visualization.set_range" title="Permalink to this definition">¶</a></dt>
+<dt id="pysofi.visualization.set_range">
+<code class="sig-prename descclassname">pysofi.visualization.</code><code class="sig-name descname">set_range</code><span class="sig-paren">(</span><em class="sig-param">im, range_set=[0, 1]</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.visualization.set_range" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set display range of the input image to a given value range (norm_range).</p>
 </dd></dl>
 
@@ -228,7 +228,6 @@ Please refer to the demo Jupyter Notebook for examples.</p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="start.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="demos.html">Demos</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://github.com/xiyuyi-at-LLNL/pysofi/blob/master/Notebooks/notebooks_html/E11_pysofiExample_LiveCellActinFilaments.html.ipynb">SOFI 2.0 Tutorial</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="manual.html">Reference manual</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="manual.html#introduction">Introduction</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="manual.html#modules">Modules</a></li>

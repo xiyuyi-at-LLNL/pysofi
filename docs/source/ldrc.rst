@@ -13,7 +13,7 @@ are linearly rescaled so that they have the same dynamic range as the reference 
 
 Functions
 ---------
-.. automodule:: functions.ldrc
+.. automodule:: pysofi.ldrc
     :members:
 
 
