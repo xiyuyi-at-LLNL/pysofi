@@ -20,6 +20,12 @@ Before running notebook files, set up the environment of Ipython kernel with the
 
 After starting jupyter notebook, switch kernel to current environment by clicking "Kernel -> Change kernel -> pysofi" from the jupyter notebook dropdown menu.
 
+The notebooks offers 2 options to either import the package from source code, or from pip install. The examples are indicated in the notebook files. If you would like to use the package directly from source, please download this repository, and configure the path as shown in the notebooks.
+
+if you would like to avoid interfacing with the source code, the users can also install this package using hte following command from the terminal:
+
+`pip install pysofi`
+
 ### Documentation
 The documentation for this repository is currently under construction (under `./docs`) using Sphinx, which is also simultaneously being updated on the [online documentation](https://xiyuyi-at-llnl.github.io/pysofi/build/html/index.html) page. We welcome community contribution to the project! 
 
