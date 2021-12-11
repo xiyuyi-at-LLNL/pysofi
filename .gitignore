@@ -8,9 +8,6 @@
 .DS_Store
 .pypirc
 /docs/.DS_Store
-<<<<<<< HEAD
 /docs/build/.DS_Store
-/pysofi/__pycache__
-=======
-/docs/build/.DS_Store
->>>>>>> 1e49430efdbf252a7620adfbd78e375d2861b02f
+**/__pycache__/*
+/pysofi/pysofi/__pycache__
