@@ -36,7 +36,7 @@
           <a href="filter.html" title="Noise Filtration"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">pysofi 0.0.1 documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="manual.html" accesskey="U">pysofi Reference Manual</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="manual.html" accesskey="U">PySOFI Reference Manual</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -55,11 +55,11 @@ determined using deconvolution. In SOFI 2.0, a consecutive Richard-Lucy deconvol
 with a series of different 2D Gaussian kernels (shrinking kernels) is applied on each
 frame of the noise filtered moment-reconstructions. This method is called the shrinking
 kernel deconvolution (deconvSK).</p>
-<div class="section" id="module-functions.deconvsk">
-<span id="functions"></span><h2>Functions<a class="headerlink" href="#module-functions.deconvsk" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-pysofi.deconvsk">
+<span id="functions"></span><h2>functions<a class="headerlink" href="#module-pysofi.deconvsk" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
-<dt id="functions.deconvsk.corelucy">
-<code class="sig-prename descclassname">functions.deconvsk.</code><code class="sig-name descname">corelucy</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">h</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.deconvsk.corelucy" title="Permalink to this definition">¶</a></dt>
+<dt id="pysofi.deconvsk.corelucy">
+<code class="sig-prename descclassname">pysofi.deconvsk.</code><code class="sig-name descname">corelucy</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">h</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.deconvsk.corelucy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Make core for the LR estimation. Calculates f to produce the next
 iteration array that maximizes the likelihood that the entire suite
 satisfies the Poisson statistics.
@@ -92,8 +92,8 @@ and Spectra”, Ed. P.A. Jansson, 2nd ed., Academic Press, CA, 1997.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="functions.deconvsk.deconvsk">
-<code class="sig-prename descclassname">functions.deconvsk.</code><code class="sig-name descname">deconvsk</code><span class="sig-paren">(</span><em class="sig-param">est_psf</em>, <em class="sig-param">input_im</em>, <em class="sig-param">deconv_lambda</em>, <em class="sig-param">deconv_iter</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.deconvsk.deconvsk" title="Permalink to this definition">¶</a></dt>
+<dt id="pysofi.deconvsk.deconvsk">
+<code class="sig-prename descclassname">pysofi.deconvsk.</code><code class="sig-name descname">deconvsk</code><span class="sig-paren">(</span><em class="sig-param">est_psf</em>, <em class="sig-param">input_im</em>, <em class="sig-param">deconv_lambda</em>, <em class="sig-param">deconv_iter</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.deconvsk.deconvsk" title="Permalink to this definition">¶</a></dt>
 <dd><p>Perform serial Richardson-Lucy deconvolution with shrinking PSFs.
 U = (U**(l/(l-1))) * (U**(l**2/(l-1))) * … * (U**(l**n/(l-1))).
 The PSF of the imaging system U can be decomposed into a series a
@@ -136,8 +136,8 @@ superresolution optical fluctuation imaging,” Biomed. Opt. Express 10,
 </dd></dl>
 
 <dl class="function">
-<dt id="functions.deconvsk.otf2psf">
-<code class="sig-prename descclassname">functions.deconvsk.</code><code class="sig-name descname">otf2psf</code><span class="sig-paren">(</span><em class="sig-param">otf</em>, <em class="sig-param">shape</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.deconvsk.otf2psf" title="Permalink to this definition">¶</a></dt>
+<dt id="pysofi.deconvsk.otf2psf">
+<code class="sig-prename descclassname">pysofi.deconvsk.</code><code class="sig-name descname">otf2psf</code><span class="sig-paren">(</span><em class="sig-param">otf</em>, <em class="sig-param">shape</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.deconvsk.otf2psf" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convert optical transfer function (OTF) to point-spread function (PSF).
 Compute the Inverse Fast Fourier Transform (ifft) of the OTF array and
 creates the PSF array that is not influenced by the OTF off-centering.
@@ -160,8 +160,8 @@ Adapted from MATLAB otf2psf function.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="functions.deconvsk.psf2otf">
-<code class="sig-prename descclassname">functions.deconvsk.</code><code class="sig-name descname">psf2otf</code><span class="sig-paren">(</span><em class="sig-param">psf</em>, <em class="sig-param">shape</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.deconvsk.psf2otf" title="Permalink to this definition">¶</a></dt>
+<dt id="pysofi.deconvsk.psf2otf">
+<code class="sig-prename descclassname">pysofi.deconvsk.</code><code class="sig-name descname">psf2otf</code><span class="sig-paren">(</span><em class="sig-param">psf</em>, <em class="sig-param">shape</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.deconvsk.psf2otf" title="Permalink to this definition">¶</a></dt>
 <dd><p>From https: // github.com/aboucaud/pypher/blob/master/pypher/pypher.py.
 Convert point-spread function to optical transfer function.
 Compute the Fast Fourier Transform(FFT) of the point-spread
@@ -191,8 +191,8 @@ Adapted from MATLAB psf2otf function.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="functions.deconvsk.richardson_lucy">
-<code class="sig-prename descclassname">functions.deconvsk.</code><code class="sig-name descname">richardson_lucy</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">psf</em>, <em class="sig-param">iterations=10</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.deconvsk.richardson_lucy" title="Permalink to this definition">¶</a></dt>
+<dt id="pysofi.deconvsk.richardson_lucy">
+<code class="sig-prename descclassname">pysofi.deconvsk.</code><code class="sig-name descname">richardson_lucy</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">psf</em>, <em class="sig-param">iterations=10</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.deconvsk.richardson_lucy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Richardson-Lucy deconvolution. It deconvolves image using maximum
 likelihood algorithm, returning both deblurred image J and a restored
 point-spread function PSF.
@@ -244,8 +244,8 @@ according to the magnification of the imaging system is an option.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="functions.deconvsk.zero_pad">
-<code class="sig-prename descclassname">functions.deconvsk.</code><code class="sig-name descname">zero_pad</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">shape</em>, <em class="sig-param">position='center'</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.deconvsk.zero_pad" title="Permalink to this definition">¶</a></dt>
+<dt id="pysofi.deconvsk.zero_pad">
+<code class="sig-prename descclassname">pysofi.deconvsk.</code><code class="sig-name descname">zero_pad</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">shape</em>, <em class="sig-param">position='center'</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.deconvsk.zero_pad" title="Permalink to this definition">¶</a></dt>
 <dd><p>From https: // github.com/aboucaud/pypher/blob/master/pypher/pypher.py.
 Extends image to a certain size with zeros.</p>
 <dl class="field-list simple">
@@ -303,7 +303,6 @@ deconvSK iteratively on the average image 20 times:</p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="start.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="demos.html">Demos</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://nbviewer.jupyter.org/github/xiyuyi-at-LLNL/pysofi/blob/master/Notebooks/E13_pysofiExample_LiveCellActinFilaments.ipynb">SOFI 2.0 Tutorial</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="manual.html">Reference manual</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="manual.html#introduction">Introduction</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="manual.html#modules">Modules</a></li>
@@ -356,7 +355,7 @@ deconvSK iteratively on the average image 20 times:</p>
           <a href="filter.html" title="Noise Filtration"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">pysofi 0.0.1 documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="manual.html" >pysofi Reference Manual</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="manual.html" >PySOFI Reference Manual</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">

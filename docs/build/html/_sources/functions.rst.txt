@@ -1,69 +1,69 @@
-functions package
+pysofi package
 =================
 
 Submodules
 ----------
 
-functions.pysofi module
+pysofi.pysofi module
 -----------------------
 
-.. automodule:: functions.pysofi
+.. automodule:: pysofi.pysofi
    :members:
    :undoc-members:
    :show-inheritance:
 
-functions.deconvsk module
+pysofi.deconvsk module
 -------------------------
 
-.. automodule:: functions.deconvsk
+.. automodule:: pysofi.deconvsk
    :members:
    :undoc-members:
    :show-inheritance:
 
-functions.filtering module
+pysofi.filtering module
 --------------------------
 
-.. automodule:: functions.filtering
+.. automodule:: pysofi.filtering
    :members:
    :undoc-members:
    :show-inheritance:
 
-functions.finterp module
+pysofi.finterp module
 ------------------------
 
-.. automodule:: functions.finterp
+.. automodule:: pysofi.finterp
    :members:
    :undoc-members:
    :show-inheritance:
 
-functions.ldrc module
+pysofi.ldrc module
 ---------------------
 
-.. automodule:: functions.ldrc
+.. automodule:: pysofi.ldrc
    :members:
    :undoc-members:
    :show-inheritance:
 
-functions.masks module
+pysofi.masks module
 ----------------------
 
-.. automodule:: functions.masks
+.. automodule:: pysofi.masks
    :members:
    :undoc-members:
    :show-inheritance:
 
-functions.reconstruction module
+pysofi.reconstruction module
 -------------------------------
 
-.. automodule:: functions.reconstruction
+.. automodule:: pysofi.reconstruction
    :members:
    :undoc-members:
    :show-inheritance:
 
-functions.visualization module
+pysofi.visualization module
 ------------------------------
 
-.. automodule:: functions.visualization
+.. automodule:: pysofi.visualization
    :members:
    :undoc-members:
    :show-inheritance:
@@ -72,7 +72,7 @@ functions.visualization module
 Module contents
 ---------------
 
-.. automodule:: functions
+.. automodule:: pysofi
    :members:
    :undoc-members:
    :show-inheritance:

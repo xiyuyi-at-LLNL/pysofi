@@ -7,7 +7,7 @@ visualize detailed features, and with a transparency map.
 
 Functions
 ---------
-.. automodule:: functions.visualization
+.. automodule:: pysofi.visualization
    :members:
    :undoc-members:
    :show-inheritance:

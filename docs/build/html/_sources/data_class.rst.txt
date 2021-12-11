@@ -12,7 +12,7 @@ by other computational imaging developers for similar purposes.
 Attributes and Methods
 -----------------------
 
-.. automodule:: functions.pysofi
+.. automodule:: pysofi.pysofi
    :members:
    :undoc-members:
    :show-inheritance:

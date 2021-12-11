@@ -52,11 +52,11 @@ calculate the average image, calculate one moment-reconstructed image of a defin
 calculate all moment-reconstructed or cumulant reconstructed images to the user-defined
 highest order, calculate average moment or cumulant reconstructions over multiple user-
 defind blocks, with or without Fourier interpolation or bleaching correction.</p>
-<div class="section" id="module-functions.reconstruction">
-<span id="functions"></span><h2>Functions<a class="headerlink" href="#module-functions.reconstruction" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-pysofi.reconstruction">
+<span id="functions"></span><h2>Functions<a class="headerlink" href="#module-pysofi.reconstruction" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
-<dt id="functions.reconstruction.average_image">
-<code class="sig-prename descclassname">functions.reconstruction.</code><code class="sig-name descname">average_image</code><span class="sig-paren">(</span><em class="sig-param">filepath</em>, <em class="sig-param">filename</em>, <em class="sig-param">frames=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.reconstruction.average_image" title="Permalink to this definition">¶</a></dt>
+<dt id="pysofi.reconstruction.average_image">
+<code class="sig-prename descclassname">pysofi.reconstruction.</code><code class="sig-name descname">average_image</code><span class="sig-paren">(</span><em class="sig-param">filepath</em>, <em class="sig-param">filename</em>, <em class="sig-param">frames=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.reconstruction.average_image" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the average image for a video file (tiff stack), either for the
 whole video or for user defined frames.</p>
 <dl class="field-list simple">
@@ -77,8 +77,8 @@ whole video or for user defined frames.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="functions.reconstruction.average_image_with_finterp">
-<code class="sig-prename descclassname">functions.reconstruction.</code><code class="sig-name descname">average_image_with_finterp</code><span class="sig-paren">(</span><em class="sig-param">filepath</em>, <em class="sig-param">filename</em>, <em class="sig-param">interp_num</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.reconstruction.average_image_with_finterp" title="Permalink to this definition">¶</a></dt>
+<dt id="pysofi.reconstruction.average_image_with_finterp">
+<code class="sig-prename descclassname">pysofi.reconstruction.</code><code class="sig-name descname">average_image_with_finterp</code><span class="sig-paren">(</span><em class="sig-param">filepath</em>, <em class="sig-param">filename</em>, <em class="sig-param">interp_num</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.reconstruction.average_image_with_finterp" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the average image with fourier interpolation for a video file.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -99,8 +99,8 @@ whole video or for user defined frames.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="functions.reconstruction.block_ave_cumulants">
-<code class="sig-prename descclassname">functions.reconstruction.</code><code class="sig-name descname">block_ave_cumulants</code><span class="sig-paren">(</span><em class="sig-param">filepath</em>, <em class="sig-param">filename</em>, <em class="sig-param">highest_order</em>, <em class="sig-param">smooth_kernel=251</em>, <em class="sig-param">fbc=0.04</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.reconstruction.block_ave_cumulants" title="Permalink to this definition">¶</a></dt>
+<dt id="pysofi.reconstruction.block_ave_cumulants">
+<code class="sig-prename descclassname">pysofi.reconstruction.</code><code class="sig-name descname">block_ave_cumulants</code><span class="sig-paren">(</span><em class="sig-param">filepath</em>, <em class="sig-param">filename</em>, <em class="sig-param">highest_order</em>, <em class="sig-param">smooth_kernel=251</em>, <em class="sig-param">fbc=0.04</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.reconstruction.block_ave_cumulants" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get average cumulant-reconstructed images of all blocks determined by
 user-defined noise filtering and bleaching correction factor (fbc).</p>
 <p>Within each block, the amount of signal decrease is identical. This
@@ -141,8 +141,8 @@ see appendix 3 of [1].</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="functions.reconstruction.block_ave_moments">
-<code class="sig-prename descclassname">functions.reconstruction.</code><code class="sig-name descname">block_ave_moments</code><span class="sig-paren">(</span><em class="sig-param">filepath</em>, <em class="sig-param">filename</em>, <em class="sig-param">highest_order</em>, <em class="sig-param">smooth_kernel=251</em>, <em class="sig-param">fbc=0.04</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.reconstruction.block_ave_moments" title="Permalink to this definition">¶</a></dt>
+<dt id="pysofi.reconstruction.block_ave_moments">
+<code class="sig-prename descclassname">pysofi.reconstruction.</code><code class="sig-name descname">block_ave_moments</code><span class="sig-paren">(</span><em class="sig-param">filepath</em>, <em class="sig-param">filename</em>, <em class="sig-param">highest_order</em>, <em class="sig-param">smooth_kernel=251</em>, <em class="sig-param">fbc=0.04</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.reconstruction.block_ave_moments" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get average moment-reconstructed images of all blocks determined by
 user-defined noise filtering and bleaching correction factor (fbc).
 Similar to ‘block_ave_cumulants’.</p>
@@ -168,8 +168,8 @@ A dictionary of avereage moment-reconstructed images of all blocks.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="functions.reconstruction.calc_block_moments">
-<code class="sig-prename descclassname">functions.reconstruction.</code><code class="sig-name descname">calc_block_moments</code><span class="sig-paren">(</span><em class="sig-param">filepath</em>, <em class="sig-param">filename</em>, <em class="sig-param">highest_order</em>, <em class="sig-param">frames=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.reconstruction.calc_block_moments" title="Permalink to this definition">¶</a></dt>
+<dt id="pysofi.reconstruction.calc_block_moments">
+<code class="sig-prename descclassname">pysofi.reconstruction.</code><code class="sig-name descname">calc_block_moments</code><span class="sig-paren">(</span><em class="sig-param">filepath</em>, <em class="sig-param">filename</em>, <em class="sig-param">highest_order</em>, <em class="sig-param">frames=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.reconstruction.calc_block_moments" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get moment-reconstructed images for user-defined frames (block) of
 a video file(tiff stack).</p>
 <dl class="field-list simple">
@@ -196,8 +196,8 @@ frames and takes shorter calculation time.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="functions.reconstruction.calc_cumulants_from_moments">
-<code class="sig-prename descclassname">functions.reconstruction.</code><code class="sig-name descname">calc_cumulants_from_moments</code><span class="sig-paren">(</span><em class="sig-param">moment_set</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.reconstruction.calc_cumulants_from_moments" title="Permalink to this definition">¶</a></dt>
+<dt id="pysofi.reconstruction.calc_cumulants_from_moments">
+<code class="sig-prename descclassname">pysofi.reconstruction.</code><code class="sig-name descname">calc_cumulants_from_moments</code><span class="sig-paren">(</span><em class="sig-param">moment_set</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.reconstruction.calc_cumulants_from_moments" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate cumulant images from moment images using the recursive relation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -215,8 +215,8 @@ A dictionary of calcualted cumulant-reconstructed images.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="functions.reconstruction.calc_cumulants_from_moments_with_lag">
-<code class="sig-prename descclassname">functions.reconstruction.</code><code class="sig-name descname">calc_cumulants_from_moments_with_lag</code><span class="sig-paren">(</span><em class="sig-param">m_set</em>, <em class="sig-param">tauSeries</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.reconstruction.calc_cumulants_from_moments_with_lag" title="Permalink to this definition">¶</a></dt>
+<dt id="pysofi.reconstruction.calc_cumulants_from_moments_with_lag">
+<code class="sig-prename descclassname">pysofi.reconstruction.</code><code class="sig-name descname">calc_cumulants_from_moments_with_lag</code><span class="sig-paren">(</span><em class="sig-param">m_set</em>, <em class="sig-param">tauSeries</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.reconstruction.calc_cumulants_from_moments_with_lag" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate cumulant-reconstructed images from moment-reconstructed images
 with time lags.</p>
 <dl class="field-list simple">
@@ -243,8 +243,8 @@ lags.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="functions.reconstruction.calc_moment_im">
-<code class="sig-prename descclassname">functions.reconstruction.</code><code class="sig-name descname">calc_moment_im</code><span class="sig-paren">(</span><em class="sig-param">filepath</em>, <em class="sig-param">filename</em>, <em class="sig-param">order</em>, <em class="sig-param">frames=[]</em>, <em class="sig-param">mean_im=None</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.reconstruction.calc_moment_im" title="Permalink to this definition">¶</a></dt>
+<dt id="pysofi.reconstruction.calc_moment_im">
+<code class="sig-prename descclassname">pysofi.reconstruction.</code><code class="sig-name descname">calc_moment_im</code><span class="sig-paren">(</span><em class="sig-param">filepath</em>, <em class="sig-param">filename</em>, <em class="sig-param">order</em>, <em class="sig-param">frames=[]</em>, <em class="sig-param">mean_im=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.reconstruction.calc_moment_im" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get one moment-reconstructed image of a defined order for a video file.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -266,8 +266,8 @@ lags.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="functions.reconstruction.calc_moments">
-<code class="sig-prename descclassname">functions.reconstruction.</code><code class="sig-name descname">calc_moments</code><span class="sig-paren">(</span><em class="sig-param">filepath</em>, <em class="sig-param">filename</em>, <em class="sig-param">highest_order</em>, <em class="sig-param">frames=None</em>, <em class="sig-param">m_set=None</em>, <em class="sig-param">mean_im=None</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.reconstruction.calc_moments" title="Permalink to this definition">¶</a></dt>
+<dt id="pysofi.reconstruction.calc_moments">
+<code class="sig-prename descclassname">pysofi.reconstruction.</code><code class="sig-name descname">calc_moments</code><span class="sig-paren">(</span><em class="sig-param">filepath</em>, <em class="sig-param">filename</em>, <em class="sig-param">highest_order</em>, <em class="sig-param">frames=None</em>, <em class="sig-param">m_set=None</em>, <em class="sig-param">mean_im=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.reconstruction.calc_moments" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get all moment-reconstructed images to the user-defined highest order for
 a video file(tiff stack).</p>
 <dl class="field-list simple">
@@ -293,8 +293,8 @@ A dictionary of calcualted moment-reconstructed images.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="functions.reconstruction.calc_moments_with_lag">
-<code class="sig-prename descclassname">functions.reconstruction.</code><code class="sig-name descname">calc_moments_with_lag</code><span class="sig-paren">(</span><em class="sig-param">filepath</em>, <em class="sig-param">filename</em>, <em class="sig-param">tauSeries</em>, <em class="sig-param">frames=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.reconstruction.calc_moments_with_lag" title="Permalink to this definition">¶</a></dt>
+<dt id="pysofi.reconstruction.calc_moments_with_lag">
+<code class="sig-prename descclassname">pysofi.reconstruction.</code><code class="sig-name descname">calc_moments_with_lag</code><span class="sig-paren">(</span><em class="sig-param">filepath</em>, <em class="sig-param">filename</em>, <em class="sig-param">tauSeries</em>, <em class="sig-param">frames=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.reconstruction.calc_moments_with_lag" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get moment-reconnstructed images with defined time lags.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -318,8 +318,8 @@ A nested dictionary of moment-reconstructions of all partitions.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="functions.reconstruction.calc_total_signal">
-<code class="sig-prename descclassname">functions.reconstruction.</code><code class="sig-name descname">calc_total_signal</code><span class="sig-paren">(</span><em class="sig-param">filepath</em>, <em class="sig-param">filename</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.reconstruction.calc_total_signal" title="Permalink to this definition">¶</a></dt>
+<dt id="pysofi.reconstruction.calc_total_signal">
+<code class="sig-prename descclassname">pysofi.reconstruction.</code><code class="sig-name descname">calc_total_signal</code><span class="sig-paren">(</span><em class="sig-param">filepath</em>, <em class="sig-param">filename</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.reconstruction.calc_total_signal" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate the total signal intensity of each frame for the whole
 video (tiff stack).</p>
 <dl class="field-list simple">
@@ -339,8 +339,8 @@ video (tiff stack).</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="functions.reconstruction.calc_xc_im">
-<code class="sig-prename descclassname">functions.reconstruction.</code><code class="sig-name descname">calc_xc_im</code><span class="sig-paren">(</span><em class="sig-param">filepath</em>, <em class="sig-param">filename</em>, <em class="sig-param">ri_range</em>, <em class="sig-param">frames=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.reconstruction.calc_xc_im" title="Permalink to this definition">¶</a></dt>
+<dt id="pysofi.reconstruction.calc_xc_im">
+<code class="sig-prename descclassname">pysofi.reconstruction.</code><code class="sig-name descname">calc_xc_im</code><span class="sig-paren">(</span><em class="sig-param">filepath</em>, <em class="sig-param">filename</em>, <em class="sig-param">ri_range</em>, <em class="sig-param">frames=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.reconstruction.calc_xc_im" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get cross-cumulant image with different pixel combinations.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -362,8 +362,8 @@ A dictionary of reconstructed images with pixel index as keys.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="functions.reconstruction.correct_bleaching">
-<code class="sig-prename descclassname">functions.reconstruction.</code><code class="sig-name descname">correct_bleaching</code><span class="sig-paren">(</span><em class="sig-param">filepath</em>, <em class="sig-param">filename</em>, <em class="sig-param">fbc=0.04</em>, <em class="sig-param">smooth_kernel=251</em>, <em class="sig-param">save_option=True</em>, <em class="sig-param">return_option=False</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.reconstruction.correct_bleaching" title="Permalink to this definition">¶</a></dt>
+<dt id="pysofi.reconstruction.correct_bleaching">
+<code class="sig-prename descclassname">pysofi.reconstruction.</code><code class="sig-name descname">correct_bleaching</code><span class="sig-paren">(</span><em class="sig-param">filepath</em>, <em class="sig-param">filename</em>, <em class="sig-param">fbc=0.04</em>, <em class="sig-param">smooth_kernel=251</em>, <em class="sig-param">save_option=True</em>, <em class="sig-param">return_option=False</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.reconstruction.correct_bleaching" title="Permalink to this definition">¶</a></dt>
 <dd><p>Performs bleaching correction on a tiff image (stack).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -386,15 +386,15 @@ is True.</p></li>
 </dd></dl>
 
 <dl class="function">
-<dt id="functions.reconstruction.cumulants_all_blocks">
-<code class="sig-prename descclassname">functions.reconstruction.</code><code class="sig-name descname">cumulants_all_blocks</code><span class="sig-paren">(</span><em class="sig-param">m_set_all_blocks</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.reconstruction.cumulants_all_blocks" title="Permalink to this definition">¶</a></dt>
+<dt id="pysofi.reconstruction.cumulants_all_blocks">
+<code class="sig-prename descclassname">pysofi.reconstruction.</code><code class="sig-name descname">cumulants_all_blocks</code><span class="sig-paren">(</span><em class="sig-param">m_set_all_blocks</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.reconstruction.cumulants_all_blocks" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate cumulant-reconstructed images from moment-reconstructed images
 of each block. Similar to ‘calc_cumulants_from_moments’.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="functions.reconstruction.cut_frames">
-<code class="sig-prename descclassname">functions.reconstruction.</code><code class="sig-name descname">cut_frames</code><span class="sig-paren">(</span><em class="sig-param">signal_level</em>, <em class="sig-param">fbc=0.04</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.reconstruction.cut_frames" title="Permalink to this definition">¶</a></dt>
+<dt id="pysofi.reconstruction.cut_frames">
+<code class="sig-prename descclassname">pysofi.reconstruction.</code><code class="sig-name descname">cut_frames</code><span class="sig-paren">(</span><em class="sig-param">signal_level</em>, <em class="sig-param">fbc=0.04</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.reconstruction.cut_frames" title="Permalink to this definition">¶</a></dt>
 <dd><p>Find the list of frame number to cut the whole signal plot into seperate
 blocks based on the change of total signal intensity.</p>
 <dl class="field-list simple">
@@ -426,8 +426,8 @@ initial intensity is much smaller than the maximum.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="functions.reconstruction.min_image">
-<code class="sig-prename descclassname">functions.reconstruction.</code><code class="sig-name descname">min_image</code><span class="sig-paren">(</span><em class="sig-param">filepath</em>, <em class="sig-param">filename</em>, <em class="sig-param">frames=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.reconstruction.min_image" title="Permalink to this definition">¶</a></dt>
+<dt id="pysofi.reconstruction.min_image">
+<code class="sig-prename descclassname">pysofi.reconstruction.</code><code class="sig-name descname">min_image</code><span class="sig-paren">(</span><em class="sig-param">filepath</em>, <em class="sig-param">filename</em>, <em class="sig-param">frames=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.reconstruction.min_image" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the minimum image for a video file (tiff stack), either for the
 whole video or for user defined frames.</p>
 <dl class="field-list simple">
@@ -448,8 +448,8 @@ whole video or for user defined frames.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="functions.reconstruction.moment_im_with_finterp">
-<code class="sig-prename descclassname">functions.reconstruction.</code><code class="sig-name descname">moment_im_with_finterp</code><span class="sig-paren">(</span><em class="sig-param">filepath</em>, <em class="sig-param">filename</em>, <em class="sig-param">order</em>, <em class="sig-param">interp_num</em>, <em class="sig-param">frames=[]</em>, <em class="sig-param">mean_im=None</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.reconstruction.moment_im_with_finterp" title="Permalink to this definition">¶</a></dt>
+<dt id="pysofi.reconstruction.moment_im_with_finterp">
+<code class="sig-prename descclassname">pysofi.reconstruction.</code><code class="sig-name descname">moment_im_with_finterp</code><span class="sig-paren">(</span><em class="sig-param">filepath</em>, <em class="sig-param">filename</em>, <em class="sig-param">order</em>, <em class="sig-param">interp_num</em>, <em class="sig-param">frames=[]</em>, <em class="sig-param">mean_im=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.reconstruction.moment_im_with_finterp" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get one moment-reconstructed image of a defined order for a video file.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -472,8 +472,8 @@ whole video or for user defined frames.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="functions.reconstruction.moments_all_blocks">
-<code class="sig-prename descclassname">functions.reconstruction.</code><code class="sig-name descname">moments_all_blocks</code><span class="sig-paren">(</span><em class="sig-param">filepath</em>, <em class="sig-param">filename</em>, <em class="sig-param">highest_order</em>, <em class="sig-param">smooth_kernel=251</em>, <em class="sig-param">fbc=0.04</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.reconstruction.moments_all_blocks" title="Permalink to this definition">¶</a></dt>
+<dt id="pysofi.reconstruction.moments_all_blocks">
+<code class="sig-prename descclassname">pysofi.reconstruction.</code><code class="sig-name descname">moments_all_blocks</code><span class="sig-paren">(</span><em class="sig-param">filepath</em>, <em class="sig-param">filename</em>, <em class="sig-param">highest_order</em>, <em class="sig-param">smooth_kernel=251</em>, <em class="sig-param">fbc=0.04</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.reconstruction.moments_all_blocks" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get moment-reconstructed images for seperate blocks with user-defined
 noise filtering and bleaching correction factor (fbc).</p>
 <p>Within each block, the amount of signal decrease is identical. This
@@ -506,8 +506,8 @@ frames and takes shorter calculation time.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="functions.reconstruction.sorted_k_partitions">
-<code class="sig-prename descclassname">functions.reconstruction.</code><code class="sig-name descname">sorted_k_partitions</code><span class="sig-paren">(</span><em class="sig-param">seq</em>, <em class="sig-param">k</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.reconstruction.sorted_k_partitions" title="Permalink to this definition">¶</a></dt>
+<dt id="pysofi.reconstruction.sorted_k_partitions">
+<code class="sig-prename descclassname">pysofi.reconstruction.</code><code class="sig-name descname">sorted_k_partitions</code><span class="sig-paren">(</span><em class="sig-param">seq</em>, <em class="sig-param">k</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.reconstruction.sorted_k_partitions" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a list of all unique k-partitions of <cite>seq</cite>.
 Each partition is a list of parts, and each part is a tuple.</p>
 </dd></dl>
@@ -548,7 +548,6 @@ signal decrease is 4% of the total signal decrease:</p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="start.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="demos.html">Demos</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://github.com/xiyuyi-at-LLNL/pysofi/blob/master/Notebooks/notebooks_html/E11_pysofiExample_LiveCellActinFilaments.html.ipynb">SOFI 2.0 Tutorial</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="manual.html">Reference manual</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="manual.html#introduction">Introduction</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="manual.html#modules">Modules</a></li>

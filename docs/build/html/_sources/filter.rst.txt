@@ -10,9 +10,9 @@ is small enough so that users canomit the effect of photobleaching. Each block c
 considered as an individual `PysofiData` object. After the reconstruction step, all 
 reconstructed images are saved in separate object, and can be put together for the filtration.
 
-Functions
+functions
 ---------
-.. automodule:: functions.filtering
+.. automodule:: pysofi.filtering
    :members:
    :undoc-members:
    :show-inheritance:
