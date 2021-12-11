@@ -11,8 +11,8 @@ PySOFI - SOFI 2.0 Analysis in Python
 We provide tested implementaions of `SOFI2.0 <https://github.com/xiyuyi/SOFI2.0>`__ on live-cell imaging data in Jupyter notebook, as well as demos and examples on each step of the processing.
 
 - Development: https://github.com/xiyuyi-at-LLNL/pysofi
-- Documentation: 
-- PyPI:
+- Documentation: https://xiyuyi-at-llnl.github.io/pysofi/build/html
+- PyPI: https://pypi.org/project/pysofi/
 
 Documentation
 =================
