@@ -55,7 +55,7 @@ Contributing
 ------------
 `PySOFI` is an open source project. We welcome contributions via pull requests
 on Github as well as questions, feature requests, or bug reports via issues. 
-Please also refer to our `code of conduct <https://github.com/xiyuyi-at-LLNL/pysofi/master/CODE_OF_CONDUCT.md>`__.
+Please also refer to our `code of conduct <https://github.com/xiyuyi-at-LLNL/pysofi/blob/master/CODE_OF_CONDUCT.md>`__.
 
 If you are a developer, create a branch, include your changes and create a pull 
 request to merge your branch to the master branch. If you are not a developer of 
