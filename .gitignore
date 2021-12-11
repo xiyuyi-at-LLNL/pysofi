@@ -6,3 +6,6 @@
 /Notebooks/demo_pysofi.avi
 /*/test.ipynb
 .DS_Store
+.pypirc
+/docs/.DS_Store
+/docs/build/.DS_Store

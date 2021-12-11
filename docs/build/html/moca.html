@@ -53,17 +53,17 @@ of the emitters.</p>
 multi-order SOFI cumulants and photophysical parameters of emitters (blinking on-time ratio
 and on-time brightness), and locally search for the mostlikely spatial distribution of these
 parameters. For more detailed information on MOCA theory, please refer to the paper.</p>
-<div class="section" id="module-functions.moca">
-<span id="functions"></span><h2>Functions<a class="headerlink" href="#module-functions.moca" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-pysofi.moca">
+<span id="functions"></span><h2>Functions<a class="headerlink" href="#module-pysofi.moca" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
-<dt id="functions.moca.ensure_positive">
-<code class="sig-prename descclassname">functions.moca.</code><code class="sig-name descname">ensure_positive</code><span class="sig-paren">(</span><em class="sig-param">data</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.moca.ensure_positive" title="Permalink to this definition">¶</a></dt>
+<dt id="pysofi.moca.ensure_positive">
+<code class="sig-prename descclassname">pysofi.moca.</code><code class="sig-name descname">ensure_positive</code><span class="sig-paren">(</span><em class="sig-param">data</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.moca.ensure_positive" title="Permalink to this definition">¶</a></dt>
 <dd><p>Make sure data is positive and has no zeros.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="functions.moca.esti_rhoeps">
-<code class="sig-prename descclassname">functions.moca.</code><code class="sig-name descname">esti_rhoeps</code><span class="sig-paren">(</span><em class="sig-param">xn_set</em>, <em class="sig-param">res=1000</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.moca.esti_rhoeps" title="Permalink to this definition">¶</a></dt>
+<dt id="pysofi.moca.esti_rhoeps">
+<code class="sig-prename descclassname">pysofi.moca.</code><code class="sig-name descname">esti_rhoeps</code><span class="sig-paren">(</span><em class="sig-param">xn_set</em>, <em class="sig-param">res=1000</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.moca.esti_rhoeps" title="Permalink to this definition">¶</a></dt>
 <dd><p>Estimate on-time-ratio (rho_map) and brightness (eps_map) with X3 - X7
 (xn_set) by fitting and finding the minimun values difference for 5
 functions with user defined precision (res). Xn can be directly computed
@@ -73,16 +73,16 @@ Xn = ACn * U**(2n/(n-2)) / AC2, where n is the order and U is the PSF.</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="functions.moca.fit_sigma">
-<code class="sig-prename descclassname">functions.moca.</code><code class="sig-name descname">fit_sigma</code><span class="sig-paren">(</span><em class="sig-param">filepath</em>, <em class="sig-param">filename</em>, <em class="sig-param">frames=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.moca.fit_sigma" title="Permalink to this definition">¶</a></dt>
+<dt id="pysofi.moca.fit_sigma">
+<code class="sig-prename descclassname">pysofi.moca.</code><code class="sig-name descname">fit_sigma</code><span class="sig-paren">(</span><em class="sig-param">filepath</em>, <em class="sig-param">filename</em>, <em class="sig-param">frames=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.moca.fit_sigma" title="Permalink to this definition">¶</a></dt>
 <dd><p>Use the second-order auto- and cross-cumulants to determine
 the sigma of the gaussian psf by fitting SOFI-XC2 / SOFI-AC2 =
 exp(-(r1-r2)**2/(4*sigma**2)).</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="functions.moca.moca">
-<code class="sig-prename descclassname">functions.moca.</code><code class="sig-name descname">moca</code><span class="sig-paren">(</span><em class="sig-param">filename</em>, <em class="sig-param">filepath</em>, <em class="sig-param">tauSeries</em>, <em class="sig-param">frames=[]</em>, <em class="sig-param">mask_dim=(301</em>, <em class="sig-param">301)</em>, <em class="sig-param">res=1000</em><span class="sig-paren">)</span><a class="headerlink" href="#functions.moca.moca" title="Permalink to this definition">¶</a></dt>
+<dt id="pysofi.moca.moca">
+<code class="sig-prename descclassname">pysofi.moca.</code><code class="sig-name descname">moca</code><span class="sig-paren">(</span><em class="sig-param">filename</em>, <em class="sig-param">filepath</em>, <em class="sig-param">tauSeries</em>, <em class="sig-param">frames=[]</em>, <em class="sig-param">mask_dim=(301</em>, <em class="sig-param">301)</em>, <em class="sig-param">res=1000</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.moca.moca" title="Permalink to this definition">¶</a></dt>
 <dd><p>Conduct multi-order cumulant analysis (MOCA) to extract the photo-
 physical information (on-time-ratio rho and brightness eps) of emitters
 at high labeling density.</p>
@@ -141,7 +141,6 @@ lags.</p></li>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="start.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="demos.html">Demos</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://nbviewer.jupyter.org/github/xiyuyi-at-LLNL/pysofi/blob/master/Notebooks/E13_pysofiExample_LiveCellActinFilaments.ipynb">SOFI 2.0 Tutorial</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="manual.html">Reference manual</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="manual.html#introduction">Introduction</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="manual.html#modules">Modules</a></li>

@@ -6,7 +6,7 @@ This module provides several kernels for filtering.
 
 Functions
 ---------
-.. automodule:: functions.masks
+.. automodule:: pysofi.masks
    :members:
    :undoc-members:
    :show-inheritance:

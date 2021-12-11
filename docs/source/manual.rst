@@ -12,27 +12,27 @@ as extra.py modules to the PySOFI package, and integrated by implementing the
 relevant methods and attributes to the `pysofiData` class. 
 
 In summary, PySOFI contains various function modules relevant to SOFI analysis:
-* `reconstruction.py <https://github.com/xiyuyi-at-LLNL/pysofi/blob/master/functions/reconstruction.py>`__
+* `reconstruction.py <https://github.com/xiyuyi-at-LLNL/pysofi/blob/master/pysofi/reconstruction.py>`__
 provides capabilities for moments and SOFI cumulants calculations. 
 The cumulant calculation is implemented using recursive relations and is capable of 
 calculating cumulants up to arbitrary orders. It also provides functions for bleaching 
 correctionof a .tiff movie necessary where bleaching of the signal level greatly 
 influences the validity of SOFI cumulants. 
 
-* `finterp.py <https://github.com/xiyuyi-at-LLNL/pysofi/blob/master/functions/finterp.py>`__
+* `finterp.py <https://github.com/xiyuyi-at-LLNL/pysofi/blob/master/pysofi/finterp.py>`__
 provides Fourier interpolation on .tiff stacks for fSOFI processing.pysofi also contains 
 the modules for SOFI 2.0 calculations listes below.
  
-* `filtering.py <https://github.com/xiyuyi-at-LLNL/pysofi/blob/master/functions/filtering.py>`__
+* `filtering.py <https://github.com/xiyuyi-at-LLNL/pysofi/blob/master/pysofi/filtering.py>`__
 for pixel-wise noise filtering along the time axis.
 
-* `deconvsk.py <https://github.com/xiyuyi-at-LLNL/pysofi/blob/master/functions/deconsk.py>`__
+* `deconvsk.py <https://github.com/xiyuyi-at-LLNL/pysofi/blob/master/pysofi/deconvsk.py>`__
 provides functions forshrinking kernel deconvolution (DeconvSK).
 
-* `ldrc.py <https://github.com/xiyuyi-at-LLNL/pysofi/blob/master/functions/ldrc.py>`__
+* `ldrc.py <https://github.com/xiyuyi-at-LLNL/pysofi/blob/master/pysofi/ldrc.py>`__
 provides local dynamic range compression (ldrc) of images with large dynamic range of pixel values.
 
-* `visualization.py <https://github.com/xiyuyi-at-LLNL/pysofi/blob/master/functions/visualization.py>`__
+* `visualization.py <https://github.com/xiyuyi-at-LLNL/pysofi/blob/master/pysofi/visualization.py>`__
 module is implemented for interactive visualization of the results using 
 `Bokeh <https://docs.bokeh.org/en/latest/index.html>`__. 
 

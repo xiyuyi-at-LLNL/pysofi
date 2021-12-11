@@ -10,5 +10,5 @@ setup(
     url = 'https://github.com/xiyuyi-at-LLNL/pysofi',
     download_url = 'https://github.com/xiyuyi-at-LLNL/pysofi/archive/refs/tags/v0.1.0-alpha.tar.gz',
     keywords = ['pysofi'],
-    classifiers = ['Intended Audience :: Science/Research'],
+    classifiers = [],
 )

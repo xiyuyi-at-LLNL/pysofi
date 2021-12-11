@@ -1,4 +1,4 @@
-Demos 
+Demos
 ======
 
 Overview
@@ -40,7 +40,7 @@ List of Jupyter Notebooks
 
 * `E10 - Reconstruction Convergence: Sample Analysis <https://nbviewer.org/github/xiyuyi-at-LLNL/pysofi/blob/master/Notebooks/E10_ReconstructionConvergence_SampleAnalysis.ipynb>`__
 
-* `E11 - PySOFI Example, Live Cell with Actin Filaments <https://nbviewer.org/github/xiyuyi-at-LLNL/pysofi/blob/master/Notebooks/E11_pysofiExample_LiveCellActinFilaments.ipynb>`__
+* `E11 - SOFI 2.0 example - Live-Cell Actin Filaments <https://nbviewer.org/github/xiyuyi-at-LLNL/pysofi/blob/master/Notebooks/E11_pysofiExample_LiveCellActinFilaments.ipynb>`__
 
 * `E12 - Cusp-Artifacts Demo 1 - 3 emitters <https://nbviewer.org/github/xiyuyi-at-LLNL/pysofi/blob/master/Notebooks/E12_CuspArtifactsDemo1_3Emitters.ipynb>`__
 

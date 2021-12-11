@@ -56,31 +56,31 @@ the <cite>pysofiData</cite> class. Extensions of extra functionalities can be im
 as extra.py modules to the PySOFI package, and integrated by implementing the
 relevant methods and attributes to the <cite>pysofiData</cite> class.</p>
 <p>In summary, PySOFI contains various function modules relevant to SOFI analysis:
-* <a class="reference external" href="https://github.com/xiyuyi-at-LLNL/pysofi/blob/master/functions/reconstruction.py">reconstruction.py</a>
+* <a class="reference external" href="https://github.com/xiyuyi-at-LLNL/pysofi/blob/master/pysofi/reconstruction.py">reconstruction.py</a>
 provides capabilities for moments and SOFI cumulants calculations.
 The cumulant calculation is implemented using recursive relations and is capable of
 calculating cumulants up to arbitrary orders. It also provides functions for bleaching
 correctionof a .tiff movie necessary where bleaching of the signal level greatly
 influences the validity of SOFI cumulants.</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://github.com/xiyuyi-at-LLNL/pysofi/blob/master/functions/finterp.py">finterp.py</a></p></li>
+<li><p><a class="reference external" href="https://github.com/xiyuyi-at-LLNL/pysofi/blob/master/pysofi/finterp.py">finterp.py</a></p></li>
 </ul>
 <p>provides Fourier interpolation on .tiff stacks for fSOFI processing.pysofi also contains
 the modules for SOFI 2.0 calculations listes below.</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://github.com/xiyuyi-at-LLNL/pysofi/blob/master/functions/filtering.py">filtering.py</a></p></li>
+<li><p><a class="reference external" href="https://github.com/xiyuyi-at-LLNL/pysofi/blob/master/pysofi/filtering.py">filtering.py</a></p></li>
 </ul>
 <p>for pixel-wise noise filtering along the time axis.</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://github.com/xiyuyi-at-LLNL/pysofi/blob/master/functions/deconsk.py">deconvsk.py</a></p></li>
+<li><p><a class="reference external" href="https://github.com/xiyuyi-at-LLNL/pysofi/blob/master/pysofi/deconvsk.py">deconvsk.py</a></p></li>
 </ul>
 <p>provides functions forshrinking kernel deconvolution (DeconvSK).</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://github.com/xiyuyi-at-LLNL/pysofi/blob/master/functions/ldrc.py">ldrc.py</a></p></li>
+<li><p><a class="reference external" href="https://github.com/xiyuyi-at-LLNL/pysofi/blob/master/pysofi/ldrc.py">ldrc.py</a></p></li>
 </ul>
 <p>provides local dynamic range compression (ldrc) of images with large dynamic range of pixel values.</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://github.com/xiyuyi-at-LLNL/pysofi/blob/master/functions/visualization.py">visualization.py</a></p></li>
+<li><p><a class="reference external" href="https://github.com/xiyuyi-at-LLNL/pysofi/blob/master/pysofi/visualization.py">visualization.py</a></p></li>
 </ul>
 <p>module is implemented for interactive visualization of the results using
 <a class="reference external" href="https://docs.bokeh.org/en/latest/index.html">Bokeh</a>.</p>
@@ -92,47 +92,47 @@ tutorial implemented in Jupyter notebook (see Demos)).</p>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="data_class.html">PysofiData class</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="data_class.html#module-functions.pysofi">Attributes and Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_class.html#module-pysofi.pysofi">Attributes and Methods</a></li>
 <li class="toctree-l2"><a class="reference internal" href="data_class.html#load-data">Load Data</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="finterp.html">Fourier Interpolation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="finterp.html#module-functions.finterp">Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="finterp.html#module-pysofi.finterp">Functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="finterp.html#examples">Examples</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="reconstruction.html">Reconstructions</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="reconstruction.html#module-functions.reconstruction">Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reconstruction.html#module-pysofi.reconstruction">Functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reconstruction.html#examples">Examples</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="filter.html">Noise Filtration</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="filter.html#module-functions.filtering">Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="filter.html#module-pysofi.filtering">functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="filter.html#example">Example</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="deconvsk.html">Shrinking Kernel Deconvolution</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="deconvsk.html#module-functions.deconvsk">Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deconvsk.html#module-pysofi.deconvsk">functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="deconvsk.html#example">Example</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="ldrc.html">LDRC Method</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="ldrc.html#module-functions.ldrc">Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ldrc.html#module-pysofi.ldrc">Functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ldrc.html#example">Example</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="moca.html">Multi-Order Cumulant Analysis (MOCA)</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="moca.html#module-functions.moca">Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="moca.html#module-pysofi.moca">Functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="moca.html#example">Example</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="visualization.html">Result visualizations</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="visualization.html#module-functions.visualization">Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="visualization.html#module-pysofi.visualization">Functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="visualization.html#examples">Examples</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="masks.html">Filtering Masks</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="masks.html#module-functions.masks">Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="masks.html#module-pysofi.masks">Functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="masks.html#examples">Examples</a></li>
 </ul>
 </li>
@@ -151,7 +151,6 @@ tutorial implemented in Jupyter notebook (see Demos)).</p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="start.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="demos.html">Demos</a></li>
-<li class="toctree-l1"><a class="reference external" href="https://github.com/xiyuyi-at-LLNL/pysofi/blob/master/Notebooks/notebooks_html/E11_pysofiExample_LiveCellActinFilaments.html.ipynb">SOFI 2.0 Tutorial</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Reference manual</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#modules">Modules</a></li>

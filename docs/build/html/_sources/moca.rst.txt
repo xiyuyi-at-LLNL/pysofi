@@ -12,7 +12,7 @@ parameters. For more detailed information on MOCA theory, please refer to the pa
 
 Functions
 ---------
-.. automodule:: functions.moca
+.. automodule:: pysofi.moca
    :members:
    :undoc-members:
    :show-inheritance:
