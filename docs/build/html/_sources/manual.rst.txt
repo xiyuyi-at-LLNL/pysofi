@@ -26,7 +26,7 @@ the modules for SOFI 2.0 calculations listes below.
 * `filtering.py <https://github.com/xiyuyi-at-LLNL/pysofi/blob/master/pysofi/filtering.py>`__
 for pixel-wise noise filtering along the time axis.
 
-* `deconvsk.py <https://github.com/xiyuyi-at-LLNL/pysofi/blob/master/pysofi/deconsk.py>`__
+* `deconvsk.py <https://github.com/xiyuyi-at-LLNL/pysofi/blob/master/pysofi/deconvsk.py>`__
 provides functions forshrinking kernel deconvolution (DeconvSK).
 
 * `ldrc.py <https://github.com/xiyuyi-at-LLNL/pysofi/blob/master/pysofi/ldrc.py>`__
