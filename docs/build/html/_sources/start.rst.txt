@@ -19,6 +19,12 @@ PySOFI requires installation of `Anaconda <https://docs.anaconda.com/anaconda/in
 The latest version of PySOFI can cloned or downloaded from
 https://github.com/xiyuyi-at-LLNL/pysofi.
 
+It can also be acquired through pip install:
+
+::
+
+    pip install pysofi
+
 Before running PySOFI, create the environment by running the following code
 in Anaconda prompt or the mac terminal:
 
