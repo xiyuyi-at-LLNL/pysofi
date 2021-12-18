@@ -1,7 +1,13 @@
-from . import finterp as f
-from . import filtering
+try:
+    from . import finterp as f
+    from . import filtering
+    from . import switches as s
+except:
+    import finterp as f
+    import filtering
+    import switches as s
+
 import numpy as np
-from . import switches as s
 if s.SPHINX_SWITCH is False:
     import tifffile as tiff
 

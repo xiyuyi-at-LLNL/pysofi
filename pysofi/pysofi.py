@@ -1,6 +1,12 @@
-from . import (deconvsk, ldrc, masks, reconstruction)
-from . import finterp as f
-from . import switches as s
+try:
+    from . import (deconvsk, ldrc, masks, reconstruction)
+    from . import finterp as f
+    from . import switches as s
+except:
+    import deconvsk, ldrc, masks, reconstruction
+    import finterp as f
+    import switches as s
+
 if s.SPHINX_SWITCH is False:
     import tifffile as tiff
 

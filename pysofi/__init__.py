@@ -1,4 +1,4 @@
-__all__ = ["switches", "deconvsk", "finterp", "ldrc", "masks", "reconstruction", "visualization"]
+__all__ = ["switches", "filtering", "deconvsk", "finterp", "ldrc", "masks", "reconstruction", "visualization"]
 
 
 # TODO: add citation information after paper gets accepted.

@@ -3,9 +3,6 @@ This file runs the tests for all pysofi methods. To run this test, put 'test_vid
 and this file in the same folder as pysofi.py, and run the command ‘python -m unittest discover -s .’ 
 
 """
-import sys
-sys.path.append('../src/')
-
 import unittest
 from ddt import ddt, data, unpack
 import masks #change to file name

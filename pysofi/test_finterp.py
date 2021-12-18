@@ -1,6 +1,3 @@
-import sys
-sys.path.append('../src/')
-
 import unittest
 from ddt import ddt, data, unpack
 import finterp

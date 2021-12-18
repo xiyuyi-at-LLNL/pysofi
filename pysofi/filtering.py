@@ -1,8 +1,14 @@
-import numpy as np
-from . import masks
 import sys
-from scipy import signal
+import os
+sys.path.append('.')
+import numpy as np
 
+try:
+    from . import masks
+except:
+    import masks
+
+from scipy import signal
 
 def filter1d_same(time_series, noise_filter):
     """
