@@ -6,24 +6,24 @@ import numpy as np
 
 @ddt
 class TestReconstruction(unittest.TestCase):
-    def assertNestedArrayEqual(self, calculatedNestedArray, expectedNestedArray, places=4):
+    def assertNestedArrayEqual(self, calculatedNestedArray, expectedNestedArray, places=3):
         for i in range(len(calculatedNestedArray)):
             for j in range(len(calculatedNestedArray[i])):
-                self.assertAlmostEqual(calculatedNestedArray[i][j], expectedNestedArray[i][j], places=4)
+                self.assertAlmostEqual(calculatedNestedArray[i][j], expectedNestedArray[i][j], places=3)
 
-    def assertArrayAlmostEqual(self, calculatedArray, expectedArray, places=4):
+    def assertArrayAlmostEqual(self, calculatedArray, expectedArray, places=3):
         for i in range(len(calculatedArray)):
-            self.assertAlmostEqual(calculatedArray[i], expectedArray[i], places=4)
+            self.assertAlmostEqual(calculatedArray[i], expectedArray[i], places=3)
     
-    def assertNumericDictAlmostEqual(self, calculatedDictionary, expectedDictionary, places=4):
+    def assertNumericDictAlmostEqual(self, calculatedDictionary, expectedDictionary, places=3):
         self.assertEqual(calculatedDictionary.keys(), expectedDictionary.keys())
         for key in calculatedDictionary.keys():
-            self.assertNestedArrayEqual(calculatedDictionary[key], expectedDictionary[key], places=4)
+            self.assertNestedArrayEqual(calculatedDictionary[key], expectedDictionary[key], places=3)
 
-    def assertNestedDictAlmostEqual(self, calculatedDictionary, expectedDictionary, places=4):
+    def assertNestedDictAlmostEqual(self, calculatedDictionary, expectedDictionary, places=3):
         self.assertEqual(calculatedDictionary.keys(), expectedDictionary.keys())
         for key in calculatedDictionary.keys():
-            self.assertNumericDictAlmostEqual(calculatedDictionary[key], expectedDictionary[key], places=4)
+            self.assertNumericDictAlmostEqual(calculatedDictionary[key], expectedDictionary[key], places=3)
 
 
     @data({'filepath': '../sampledata', 'filename': 'test_vid.tif', 'frames': [0,5], 'ave_im': [[0,2],[3,5]]}) 
@@ -81,7 +81,26 @@ class TestReconstruction(unittest.TestCase):
         calculatedResult = reconstruction.min_image(filepath, filename, frames)
         self.assertNestedArrayEqual(calculatedResult, min_im)
 
-    @data({'filepath': '../sampledata', 'filename': 'test_vid2.tif', 'highest_order': 4, 'smooth_kernel': 21, 'fbc': 0.2, 'm_all': {0: {1: [[0, 0],[0, 0]], 2: [[0,47],[191,0]], 3: [[0, 0],[0, 0]], 4: [[0,4123],[65971,0]]}, 1: {1: [[0, 0],[0, 0]], 2: [[0,26],[107,0]], 3: [[0, 0],[0, 0]], 4: [[0,1298],[20779,0]]}, 2: {1: [[0, 0],[0, 0]], 2: [[0,26],[107,0]], 3: [[0, 0],[0, 0]], 4: [[0,1298],[20779,0]]}, 3: {1: [[0, 0],[0, 0]], 2: [[0,26],[107,0]], 3: [[0, 0],[0, 0]], 4: [[0,1298],[20779,0]]}, 4: {1: [[0, 0],[0, 0]], 2: [[0,44],[176,0]], 3: [[0,0],[0,0]], 4: [[0,3476],[55616,0]]}}}) 
+    @data({'filepath': '../sampledata', 'filename': 'test_vid2.tif', 'highest_order': 4, 'smooth_kernel': 21, 'fbc': 0.2, 'm_all': {0: {1: [[0, 0],[0, 0]],
+                                                                                                                                        2: [[0,47.9166666],[191.66666,0]],
+                                                                                                                                        3: [[0, 0],[0, 0]],
+                                                                                                                                        4: [[0,4123.22916],[65971.66666,0]]},
+                                                                                                                                    1: {1: [[0, 0],[0, 0]],
+                                                                                                                                        2: [[0,26.9166666],[107.666666,0]],
+                                                                                                                                        3: [[0, 0],[0, 0]],
+                                                                                                                                        4: [[0,1298.72916],[20779.66666,0]]},
+                                                                                                                                    2: {1: [[0, 0],[0, 0]],
+                                                                                                                                        2: [[0,26.916666],[107.66666,0]],
+                                                                                                                                        3: [[0, 0],[0, 0]],
+                                                                                                                                        4: [[0,1298.729166],[20779.66666,0]]},
+                                                                                                                                    3: {1: [[0, 0],[0, 0]],
+                                                                                                                                        2: [[0, 26.91666],[107.666666,0]],
+                                                                                                                                        3: [[0, 0],[0, 0]],
+                                                                                                                                        4: [[0,1298.72916],[20779.666666,0]]},
+                                                                                                                                    4: {1: [[0, 0],[0, 0]],
+                                                                                                                                        2: [[0,44],[176,0]],
+                                                                                                                                        3: [[0,0],[0,0]],
+                                                                                                                                        4: [[0,3476],[55616,0]]}}})
     @unpack
     def test_moments_all_blocks(self, filepath, filename, highest_order, smooth_kernel, fbc, m_all):
         calculatedResult = reconstruction.moments_all_blocks(filepath, filename, highest_order, smooth_kernel, fbc)
@@ -93,14 +112,20 @@ class TestReconstruction(unittest.TestCase):
         calculatedResult = reconstruction.cumulants_all_blocks(m_all)
         self.assertNestedDictAlmostEqual(calculatedResult, k_all)
 
-    @data({'filepath': '../sampledata', 'filename': 'test_vid2.tif', 'highest_order': 4, 'smooth_kernel': 21, 'fbc': 0.2, 'ave_moments':{1: [[0, 0],[0, 0]], 2: [[0,33.8],[137.6,0]], 3: [[0, 0],[0, 0]], 4: [[0, 2298.6],[36784.8,0]]}}) 
+    @data({'filepath': '../sampledata', 'filename': 'test_vid2.tif', 'highest_order': 4, 'smooth_kernel': 21, 'fbc': 0.2, 'ave_moments':{1: [[0, 0],[0, 0]],
+                                                                                                                                         2: [[0,34.533],[138.13333,0]],
+                                                                                                                                         3: [[0, 0],[0, 0]],
+                                                                                                                                         4: [[0, 2299.0833333],[36785.333333,0]]}})
     @unpack
     def test_block_ave_moments(self, filepath, filename, highest_order, smooth_kernel, fbc, ave_moments):
         calculatedResult = reconstruction.block_ave_moments(filepath, filename, highest_order, smooth_kernel, fbc)
         self.assertNumericDictAlmostEqual(calculatedResult, ave_moments)
 
 
-    @data({'filepath': '../sampledata', 'filename': 'test_vid2.tif', 'highest_order': 4, 'smooth_kernel': 21, 'fbc': 0.2, 'ave_cumulants':{1: [[0, 0],[0, 0]], 2: [[0,33.8],[137.6,0]], 3: [[0, 0],[0, 0]], 4: [[0, -1405.2],[-24297.6,0]]}}) 
+    @data({'filepath': '../sampledata', 'filename': 'test_vid2.tif', 'highest_order': 4, 'smooth_kernel': 21, 'fbc': 0.2, 'ave_cumulants':{1: [[0, 0],[0, 0]],
+                                                                                                                                           2: [[0,34.533],[138.133333,0]],
+                                                                                                                                           3: [[0, 0],[0, 0]],
+                                                                                                                                           4: [[0, -1544.2333333],[-24707.73333,0]]}})
     @unpack
     def test_block_ave_cumulants(self, filepath, filename, highest_order, smooth_kernel, fbc, ave_cumulants):
         calculatedResult = reconstruction.block_ave_cumulants(filepath, filename, highest_order, smooth_kernel, fbc)

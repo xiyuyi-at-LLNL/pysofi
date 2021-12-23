@@ -54,14 +54,14 @@ class TestPysofi(unittest.TestCase):
         calculatedResult = d.calc_moments_set(order)
         self.assertNumericDictAlmostEqual(calculatedResult, moment_set)
 
-    @data({'filepath': '../sampledata', 'filename': 'test_vid.tif', 'order': 4, 'cumulant_set': {1:[[0,0],[0,0]], 2:[[0,6],[6,0]], 3:[[0,6],[-6,0]], 4:[[0,-66],[-66,0]]}}) 
+    @data({'filepath': '../sampledata', 'filename': 'test_vid.tif', 'order': 4, 'cumulant_set': {1:[[0,0], [0,0]], 2:[[0,6], [6,0]], 3:[[0,6],[-6,0]], 4:[[0,-66],[-66,0]]}})
     @unpack
     def test_cumulant_set(self, filepath, filename, order, cumulant_set):
         d = pysofi.PysofiData(filepath, filename)
         calculatedResult = d.cumulants_images(order)
         self.assertNumericDictAlmostEqual(calculatedResult, cumulant_set)
 
-    @data({'filepath': '../sampledata', 'filename': 'test_vid.tif', 'window_size': [1,2], 'order': 4, 'ldrc': [[2,0],[0,5]]}) 
+    @data({'filepath': '../sampledata', 'filename': 'test_vid.tif', 'window_size': [1, 2], 'order': 4, 'ldrc': [[2,0],[0,5]]})
     @unpack
     def test_ldrc(self, filepath, filename, window_size, order, ldrc):
         d = pysofi.PysofiData(filepath, filename)
@@ -70,7 +70,7 @@ class TestPysofi(unittest.TestCase):
         calculatedResult = d.ldrc(order, window_size, mask_im, input_im)
         self.assertNestedArrayEqual(calculatedResult, ldrc)
 
-    @data({'filepath': '../sampledata', 'filename': 'test_vid.tif', 'est_psf': masks.gauss2d_mask((1,1),2), 'order': 4, 'deconv_lambda': 1.5, 'deconv_iter': 2, 'deconvsk': [[0,0],[0,0]]}) 
+    @data({'filepath': '../sampledata', 'filename': 'test_vid.tif', 'est_psf': masks.gauss2d_mask((1, 1), 2), 'order': 4, 'deconv_lambda': 1.5, 'deconv_iter': 2, 'deconvsk': [[0,0],[0,0]]})
     @unpack
     def test_deconvsk(self, filepath, filename, est_psf, order, deconv_lambda, deconv_iter, deconvsk):
         d = pysofi.PysofiData(filepath, filename)
