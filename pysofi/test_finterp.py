@@ -46,7 +46,7 @@ class TestFinterp(unittest.TestCase):
     @data({'xrange': 4, 'yrange': 4, 'interp_num': 3, 'interp_im': np.array([[0.01831564, 0.01831564, 0.01831564, 0.01831564], [0.01831564, 0.01831564, 0.01831564, 0.01831564], [0.01831564, 0.01831564, 0.01831564, 0.01831564], [0.01831564, 0.01831564, 0.01831564, 0.01831564]])}) 
     @unpack
     def test_interpolate_image(self, xrange, yrange, interp_num, interp_im):
-        x, y = np.meshgrid(np.linspace(-1, 1, xrange/2), np.linspace(-1, 1, xrange/2))
+        x, y = np.meshgrid(np.linspace(-1, 1, np.int(xrange/2)), np.linspace(-1, 1, np.int(xrange/2)))
         im = np.exp(-((np.sqrt(x*x + y*y))**2 / (2*0.5**2)))
         fx, fy = finterp.ft_matrix2d(xrange, yrange)
         ifx, ify = finterp.ift_matrix2d(xrange, yrange, interp_num)
