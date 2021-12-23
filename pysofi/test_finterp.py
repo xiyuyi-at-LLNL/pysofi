@@ -40,7 +40,14 @@ class TestFinterp(unittest.TestCase):
     @unpack
     def test_ift_matrix2d(self, xrange, yrange, interp_num, ifx, ify):
         calculatediFx, calculatediFy = finterp.ift_matrix2d(xrange, yrange, interp_num)
-        self.assertNestedArrayEqual(calculatediFx, ifx)
+        print('asserting ifx...')
+        print('--------------------------- desired iFx:' )
+        print(ifx)
+        print('--------------------------- calculated ifx:')
+        print(calculatediFx)
+        print('---------------------------')
+        o=self.assertNestedArrayEqual(calculatediFx, ifx)
+        print(o)
         self.assertNestedArrayEqual(calculatediFy, ify)
 
     @data({'xrange': 4, 'yrange': 4, 'interp_num': 3, 'interp_im': np.array([[0.01831564, 0.01831564, 0.01831564, 0.01831564], [0.01831564, 0.01831564, 0.01831564, 0.01831564], [0.01831564, 0.01831564, 0.01831564, 0.01831564], [0.01831564, 0.01831564, 0.01831564, 0.01831564]])}) 
