@@ -29,6 +29,11 @@ if you would like to avoid interfacing with the source code, you can also instal
 ### Documentation
 The documentation for this repository is currently under construction (under `./docs`) using Sphinx, which is also simultaneously being updated on the [online documentation](https://xiyuyi-at-llnl.github.io/pysofi/build/html/index.html) page. We welcome community contribution to the project! 
 
+### Unit tests:
+If you have cloned the repository, made modifications to the existing modules and would like to test the codes and make sure the modifications do not cuase break-down of the current fuction, you can go to the pysofi data where all the *.py are enclosed, then type the following command for unit test:
+
+`python -m unittest discover -s .`
+
 ### Get involved as a developer
 Please refer to our [documentation page about contributing to PySOFI](https://xiyuyi-at-llnl.github.io/pysofi/build/html/about.html#contributing) for details.
 If you have further inquiries, please email Xiyu Yi (yi10@llnl.gov) or Yuting Miao (ytmiao@ucla.edu).
