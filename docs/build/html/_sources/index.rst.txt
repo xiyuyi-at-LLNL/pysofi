@@ -3,7 +3,7 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-PySOFI - SOFI 2.0 Analysis in Python
+PySOFI - a Python package for SOFI
 =======================================================================
 
 **PySOFI** is an open-source python pacakge for the super-solution image processing method `SOFI <https://en.wikipedia.org/wiki/Super-resolution_optical_fluctuation_imaging>`__. PySOFI supports tiff files with image stacks. Data can be acquired from cameras like EMCCD or sCMOS, or `simulations <https://github.com/xiyuyi/RealisticSimulator_3D>`__.

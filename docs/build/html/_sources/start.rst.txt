@@ -5,7 +5,7 @@ Getting Started
 .. https://epidemicsonnetworks.readthedocs.io/en/latest/GettingStarted.html#installation
 
 PySOFI can be used as a standard python package. We are currently working on a `pip` release.
-PySOFI is tested on OS X, Windows and Linux.
+PySOFI is tested on OS (MacOS Mojave, 10.14.16), Windows (Windows 10) and Linux (the high performance computer from Livermore Computing).
 
 .. For updates on the latest FRETBursts version please refer to the
 .. :doc:`Release Notes (What's new?) <releasenotes>`.
@@ -30,7 +30,14 @@ in Anaconda prompt or the mac terminal:
 
 ::
 
-    conda env create -f pysofi.yml
+    conda env create -f env_MacOS_Majave.yml (tested for MacOS Majave 10.14.3)
+
+or
+
+::
+
+    cconda env create -f env_Win10.yml (tested for Windows 10)
+
 
 Then activate the environment with:
 
