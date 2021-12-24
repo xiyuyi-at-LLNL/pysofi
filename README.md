@@ -13,7 +13,7 @@ if you would like to avoid interfacing with the source code, you can also instal
 ### 3. Configuration
 PySOFI requires installation of [Anaconda](https://docs.anaconda.com/anaconda/install/).
 
-## 3.1. Create the pysofi virtual environment from the provided .yml file.
+### 3.1. Create the pysofi virtual environment from the provided .yml file.
 Before running PySOFI, create the environment by running the following code in Anaconda prompt or the mac terminal:
 
 `conda env create -f env_MacOS_Majave.yml` (tested for MacOS Majave 10.14.3)
@@ -31,7 +31,7 @@ Then activate the environment with:
 
 `conda activate pysofi`
 
-## 3.2. ccreate the pysofi virtual environment manually
+### 3.2. ccreate the pysofi virtual environment manually
 First create a conda virtual environment:
 
 `conda create --name pysofi`
@@ -45,7 +45,7 @@ Next, install basic packages either through conda or through pip. The basic pack
 Due to system variations, other packages may still be missing. This can be identified by trying to perform the unit tests (see section 5 below) or executing the Jupyter notebooks (after step 3.3 shown below) to identify missing packages for additional manual installation.
 
 
-## 3.3. Add the pysofi kernel of the pysofi virtual environment to Jupyter Notebook
+### 3.3. Add the pysofi kernel of the pysofi virtual environment to Jupyter Notebook
 Before running notebook files, set up the environment of Ipython kernel with the following code:
 
 `ipython kernel install --user --name=pysofi`
