@@ -7,7 +7,7 @@ You can find a collection of examples under Notebooks folder presented in jupyte
 `git clone https://github.com/xiyuyi-at-LLNL/pysofi.git`
 
 ### 2. Pip install
-if you would like to avoid interfacing with the source code, you can also install this package using hte following command from the terminal:
+if you would like to avoid interfacing with the source code, you can also install this package using the following command from a terminal or the Anaconda prompt:
 
 `pip install pysofi`
 ### 3. Configuration
