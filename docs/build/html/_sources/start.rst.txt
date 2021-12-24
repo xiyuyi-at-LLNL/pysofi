@@ -30,13 +30,19 @@ in Anaconda prompt or the mac terminal:
 
 ::
 
-    conda env create -f env_MacOS_Majave.yml (tested for MacOS Majave 10.14.3)
+    conda env create -f env_MacOS_Majave.yml #(tested for MacOS Majave 10.14.3)
 
 or
 
 ::
 
-    cconda env create -f env_Win10.yml (tested for Windows 10)
+    cconda env create -f env_Win10.yml #(tested for Windows 10)
+
+or
+
+::
+
+    conda env create -f env_linux.yml #(tested for Linux kernal version of 3.10.0-1160.45.1.1chaos.ch6.x86_64)
 
 
 Then activate the environment with:
