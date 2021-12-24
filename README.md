@@ -3,12 +3,20 @@ PySOFI is a Python package for SOFI analysis.
 
 You can find a collection of examples under Notebooks folder presented in jupyter notebooks.
 
+### Clone the PySOFI repository
+`git clone https://github.com/xiyuyi-at-LLNL/pysofi.git`
+
 ### Configuration
 PySOFI requires installation of [Anaconda](https://docs.anaconda.com/anaconda/install/).
 
 Before running PySOFI, create the environment by running the following code in Anaconda prompt or the mac terminal:
 
-`conda env create -f pysofi.yml`
+`conda env create -f env_MacOS_Majave.yml` (tested for MacOS Majave 10.14.3)
+
+or
+
+`conda env create -f env_Win10.yml` (tested for Windows 10)
+
 
 Then activate the environment with:
 
