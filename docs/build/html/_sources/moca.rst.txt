@@ -1,13 +1,13 @@
-Multi-Order Cumulant Analysis (MOCA)
+Multi-Order Cumulant Analysis (MOCA, non-peer reviewed)
 =====================================
 
 This module helps to perform MOCA on the measurements and extract photophysical properties
-of the emitters.
+of the emitters. MCOA is non-peer reivewed.
 
 Multi-order cumulant analysis (MOCA) is based on an analytical relationship between 
 multi-order SOFI cumulants and photophysical parameters of emitters (blinking on-time ratio 
 and on-time brightness), and locally search for the mostlikely spatial distribution of these
-parameters. For more detailed information on MOCA theory, please refer to the paper.
+parameters. 
 
 
 Functions

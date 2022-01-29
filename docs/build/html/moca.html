@@ -1,18 +1,19 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
     <meta charset="utf-8" />
-    <title>Multi-Order Cumulant Analysis (MOCA) &#8212; pysofi 0.1.1 documentation</title>
-    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Multi-Order Cumulant Analysis (MOCA, non-peer reviewed) &#8212; pysofi 0.1.1 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css" />
     
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
     
     <link rel="author" title="About these documents" href="about.html" />
     <link rel="index" title="Index" href="genindex.html" />
@@ -36,7 +37,8 @@
           <a href="ldrc.html" title="Local Dynamic Range Compression (LDRC) Method"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">pysofi 0.1.1 documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="manual.html" accesskey="U">PySOFI Reference Manual</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="manual.html" accesskey="U">PySOFI Reference Manual</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Multi-Order Cumulant Analysis (MOCA, non-peer reviewed)</a></li> 
       </ul>
     </div>  
 
@@ -45,79 +47,18 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="multi-order-cumulant-analysis-moca">
-<h1>Multi-Order Cumulant Analysis (MOCA)<a class="headerlink" href="#multi-order-cumulant-analysis-moca" title="Permalink to this headline">¶</a></h1>
+  <section id="multi-order-cumulant-analysis-moca-non-peer-reviewed">
+<h1>Multi-Order Cumulant Analysis (MOCA, non-peer reviewed)<a class="headerlink" href="#multi-order-cumulant-analysis-moca-non-peer-reviewed" title="Permalink to this headline">¶</a></h1>
 <p>This module helps to perform MOCA on the measurements and extract photophysical properties
-of the emitters.</p>
+of the emitters. MCOA is non-peer reivewed.</p>
 <p>Multi-order cumulant analysis (MOCA) is based on an analytical relationship between
 multi-order SOFI cumulants and photophysical parameters of emitters (blinking on-time ratio
 and on-time brightness), and locally search for the mostlikely spatial distribution of these
-parameters. For more detailed information on MOCA theory, please refer to the paper.</p>
-<div class="section" id="module-pysofi.moca">
-<span id="functions"></span><h2>Functions<a class="headerlink" href="#module-pysofi.moca" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
-<dt id="pysofi.moca.ensure_positive">
-<code class="sig-prename descclassname">pysofi.moca.</code><code class="sig-name descname">ensure_positive</code><span class="sig-paren">(</span><em class="sig-param">data</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.moca.ensure_positive" title="Permalink to this definition">¶</a></dt>
-<dd><p>Make sure data is positive and has no zeros.</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="pysofi.moca.esti_rhoeps">
-<code class="sig-prename descclassname">pysofi.moca.</code><code class="sig-name descname">esti_rhoeps</code><span class="sig-paren">(</span><em class="sig-param">xn_set</em>, <em class="sig-param">res=1000</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.moca.esti_rhoeps" title="Permalink to this definition">¶</a></dt>
-<dd><p>Estimate on-time-ratio (rho_map) and brightness (eps_map) with X3 - X7
-(xn_set) by fitting and finding the minimun values difference for 5
-functions with user defined precision (res). Xn can be directly computed
-from fluorescence signal and cross-correlation of fluorescence signal
-from different pixels.
-Xn = ACn * U**(2n/(n-2)) / AC2, where n is the order and U is the PSF.</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="pysofi.moca.fit_sigma">
-<code class="sig-prename descclassname">pysofi.moca.</code><code class="sig-name descname">fit_sigma</code><span class="sig-paren">(</span><em class="sig-param">filepath</em>, <em class="sig-param">filename</em>, <em class="sig-param">frames=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.moca.fit_sigma" title="Permalink to this definition">¶</a></dt>
-<dd><p>Use the second-order auto- and cross-cumulants to determine
-the sigma of the gaussian psf by fitting SOFI-XC2 / SOFI-AC2 =
-exp(-(r1-r2)**2/(4*sigma**2)).</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="pysofi.moca.moca">
-<code class="sig-prename descclassname">pysofi.moca.</code><code class="sig-name descname">moca</code><span class="sig-paren">(</span><em class="sig-param">filename</em>, <em class="sig-param">filepath</em>, <em class="sig-param">tauSeries</em>, <em class="sig-param">frames=[]</em>, <em class="sig-param">mask_dim=(301</em>, <em class="sig-param">301)</em>, <em class="sig-param">res=1000</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.moca.moca" title="Permalink to this definition">¶</a></dt>
-<dd><p>Conduct multi-order cumulant analysis (MOCA) to extract the photo-
-physical information (on-time-ratio rho and brightness eps) of emitters
-at high labeling density.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>filepath</strong> (<em>str</em>) – Path to the tiff file.</p></li>
-<li><p><strong>filename</strong> (<em>str</em>) – Name of the tiff file.</p></li>
-<li><p><strong>tauSeries</strong> (<em>list of int</em>) – A list of time lags for frames contribute to moment reconstruction.
-The first element is recommended to be 0, and there should be seven
-elements in the list. This time lag is used for moments and cumulants
-calculations.</p></li>
-<li><p><strong>frames</strong> (<em>list of int</em>) – The start and end frame number.</p></li>
-<li><p><strong>mask_dim</strong> (<em>tuple</em><em> (</em><em>int</em><em>, </em><em>int</em><em>)</em>) – Initial guess for the PSF size.</p></li>
-<li><p><strong>res</strong> (<em>int</em>) – Resolution / precision for the fitting step ‘esti_rhoeps’ to get rho
-and eps for each pixel.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><ul class="simple">
-<li><p><strong>k_set</strong> (<em>dict</em>) – order number (int) -&gt; image (ndarray)
-A dictionary of calcualted cumulant-reconstructed images with time
-lags.</p></li>
-<li><p><strong>rho_map</strong> (<em>2darray</em>) – Fitted on-time-ratio (rho) for each pixel. It has the same dimension
-(x,y) as the original input video.</p></li>
-<li><p><strong>eps_map</strong> (<em>2darray</em>) – Fitted brightness (eps) for each pixel. It has the same dimension
-(x,y) as the original input video.</p></li>
-</ul>
-</p>
-</dd>
-</dl>
-</dd></dl>
-
-</div>
-<div class="section" id="example">
+parameters.</p>
+<section id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
 <p>To calculate moment-reconstructed images, on-time ratio map and brightness map:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ac</span><span class="p">,</span> <span class="n">rho_map</span><span class="p">,</span> <span class="n">eps_map</span> <span class="o">=</span> <span class="n">moca</span><span class="o">.</span><span class="n">moca</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">filepath</span><span class="p">,</span> <span class="n">tauSeries</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span><span class="n">frames</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1000</span><span class="p">],</span> <span class="n">mask_dim</span><span class="o">=</span><span class="p">(</span><span class="mi">301</span><span class="p">,</span><span class="mi">301</span><span class="p">),</span> <span class="n">res</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
@@ -128,10 +69,11 @@ lags.</p></li>
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">rho_map_color</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;cool&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
@@ -167,12 +109,12 @@ lags.</p></li>
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -193,12 +135,13 @@ lags.</p></li>
           <a href="ldrc.html" title="Local Dynamic Range Compression (LDRC) Method"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">pysofi 0.1.1 documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="manual.html" >PySOFI Reference Manual</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="manual.html" >PySOFI Reference Manual</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Multi-Order Cumulant Analysis (MOCA, non-peer reviewed)</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2020, Yuting Miao.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.3.1.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
     </div>
   </body>
 </html>

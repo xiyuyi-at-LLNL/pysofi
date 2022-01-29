@@ -1,18 +1,19 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Getting Started &#8212; pysofi 0.1.1 documentation</title>
-    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css" />
     
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
     
     <link rel="author" title="About these documents" href="about.html" />
     <link rel="index" title="Index" href="genindex.html" />
@@ -35,7 +36,8 @@
         <li class="right" >
           <a href="index.html" title="PySOFI - a Python package for SOFI"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">pysofi 0.1.1 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">pysofi 0.1.1 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Getting Started</a></li> 
       </ul>
     </div>  
 
@@ -44,11 +46,11 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="getting-started">
+  <section id="getting-started">
 <h1>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
 <p>PySOFI can be used as a standard python package. We are currently working on a <cite>pip</cite> release.
 PySOFI is tested on OS (MacOS Mojave, 10.14.16), Windows (Windows 10) and Linux (the high performance computer from Livermore Computing).</p>
-<div class="section" id="installation">
+<section id="installation">
 <span id="package-install"></span><h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
 <p>PySOFI requires installation of <a class="reference external" href="https://docs.anaconda.com/anaconda/install/">Anaconda</a>.</p>
 <p>The latest version of PySOFI can cloned or downloaded from
@@ -81,13 +83,13 @@ the following code:</p>
 </div>
 <p>After starting jupyter notebook, switch kernel to current environment by clicking
 “Kernel -&gt; Change kernel -&gt; pysofi” from the jupyter notebook dropdown menu.</p>
-</div>
-<div class="section" id="pysofi-overview">
+</section>
+<section id="pysofi-overview">
 <span id="id1"></span><h2>PySOFI Overview<a class="headerlink" href="#pysofi-overview" title="Permalink to this headline">¶</a></h2>
 <p>PySOFI implements three primary collection of SOFI analysis routines, including the shared process
 that enables the traditional SOFI analysis, the SOFI 2.0 analysis routines and a a separate SOFI
-relevant routine named Multi Order Cumulant Analysis (MOCA) to demonstrate the modular extension
-of PySOFI for additional analysis method.</p>
+relevant routine named Multi Order Cumulant Analysis (MOCA, non-peer reviewed) to demonstrate the
+modular extension of PySOFI for additional analysis method.</p>
 <p>Specifically, one can load input data (.tiff format) or partially processed data (such as .tiff
 movie with bleaching correction and/or .with Fourier interpolation) into the <cite>pysofiData</cite> class,
 and perform bleaching correction, Fourier interpolation, moments calculations and cumulant
@@ -100,14 +102,15 @@ a final local dynamic range compression processing to obtain the SOFI 2.0 result
 cumulants, and perform the processing step to produce spatial brigthness distribution and
 blinking statistics distribution. Detailed implementation examples of the analysis routines will
 be discussed in the paper in accompany with tutorials implemented Jupyter notebooks (see demos).</p>
-</div>
-<div class="section" id="sample-data">
+</section>
+<section id="sample-data">
 <h2>Sample Data<a class="headerlink" href="#sample-data" title="Permalink to this headline">¶</a></h2>
 <p>All simulated and experimental data are shared on figshare: <a class="reference external" href="https://figshare.com/s/47d97a2df930380c96bb">https://figshare.com/s/47d97a2df930380c96bb</a></p>
-</div>
-</div>
+</section>
+</section>
 
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
@@ -144,12 +147,12 @@ be discussed in the paper in accompany with tutorials implemented Jupyter notebo
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -169,12 +172,13 @@ be discussed in the paper in accompany with tutorials implemented Jupyter notebo
         <li class="right" >
           <a href="index.html" title="PySOFI - a Python package for SOFI"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">pysofi 0.1.1 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">pysofi 0.1.1 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Getting Started</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2020, Yuting Miao.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.3.1.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
     </div>
   </body>
 </html>

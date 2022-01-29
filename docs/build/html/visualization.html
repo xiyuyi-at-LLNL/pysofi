@@ -1,24 +1,25 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Result visualizations &#8212; pysofi 0.1.1 documentation</title>
-    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css" />
     
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
     
     <link rel="author" title="About these documents" href="about.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Filtering Masks" href="masks.html" />
-    <link rel="prev" title="Multi-Order Cumulant Analysis (MOCA)" href="moca.html" /> 
+    <link rel="prev" title="Multi-Order Cumulant Analysis (MOCA, non-peer reviewed)" href="moca.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
@@ -33,10 +34,11 @@
           <a href="masks.html" title="Filtering Masks"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="moca.html" title="Multi-Order Cumulant Analysis (MOCA)"
+          <a href="moca.html" title="Multi-Order Cumulant Analysis (MOCA, non-peer reviewed)"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">pysofi 0.1.1 documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="manual.html" accesskey="U">PySOFI Reference Manual</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="manual.html" accesskey="U">PySOFI Reference Manual</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Result visualizations</a></li> 
       </ul>
     </div>  
 
@@ -45,154 +47,15 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="result-visualizations">
+  <section id="result-visualizations">
 <h1>Result visualizations<a class="headerlink" href="#result-visualizations" title="Permalink to this headline">¶</a></h1>
 <p>This module provides multiple options to visualize result images. For instance, the
 image can be demonstrated interactively with Bokeh, with adjusted contrast to better
 visualize detailed features, and with a transparency map.</p>
-<div class="section" id="module-pysofi.visualization">
-<span id="functions"></span><h2>Functions<a class="headerlink" href="#module-pysofi.visualization" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
-<dt id="pysofi.visualization.add_transmap">
-<code class="sig-prename descclassname">pysofi.visualization.</code><code class="sig-name descname">add_transmap</code><span class="sig-paren">(</span><em class="sig-param">im</em>, <em class="sig-param">trans_map</em>, <em class="sig-param">cmap='cool'</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.visualization.add_transmap" title="Permalink to this definition">¶</a></dt>
-<dd><p>Prepare the image for visualization by adding a transparency map.
-It colorcodes ‘im’ with colormap ‘cmap’, and multiplied by the
-transparancy map ‘trans_map’.
-:param im: A gray-scale image encoding the parameters that need to be color-</p>
-<blockquote>
-<div><p>coded.</p>
-</div></blockquote>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>trans_map</strong> (<em>2darray</em>) – A grey-scale mask encoding the intensity information.</p></li>
-<li><p><strong>cmap</strong> (<em>str</em>) – A colormap provided by ‘matplotlib’ or defined by the user.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>im_color</strong> – A RGBA image array for visualization.</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>3darray</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="function">
-<dt id="pysofi.visualization.bokeh_visualization">
-<code class="sig-prename descclassname">pysofi.visualization.</code><code class="sig-name descname">bokeh_visualization</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">palette=None</em>, <em class="sig-param">save_option=False</em>, <em class="sig-param">filename='Image'</em>, <em class="sig-param">imshow_same=True</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.visualization.bokeh_visualization" title="Permalink to this definition">¶</a></dt>
-<dd><p>Show interactive grayscale image with Bokeh in Jupyter Notebook.
-:param image: The grayscale image array for visualization.
-:type image: ndarray
-:param palette: Name of the Bokeh palettes.</p>
-<blockquote>
-<div><p>The default palette is ‘pink’ from matplotlib.
-For a complete palette list in bokeh documentation:</p>
-<blockquote>
-<div><p><a class="reference external" href="https://docs.bokeh.org/en/latest/docs/reference/palettes.html">https://docs.bokeh.org/en/latest/docs/reference/palettes.html</a></p>
-</div></blockquote>
-</div></blockquote>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>save_option</strong> (<em>bool</em>) – Whether to save the Bokeh image as a .html file.</p></li>
-<li><p><strong>-49</strong><strong>,</strong><strong>39 +54</strong><strong>,</strong><strong>70 &#64;&#64; def bokeh_visualization</strong><strong>(</strong><strong>image</strong><strong>, </strong><strong>palette=None</strong><strong>, </strong><strong>save_option=False</strong><strong>,</strong> (<em>&#64;&#64;</em>) – </p></li>
-</ul>
-</dd>
-</dl>
-<p class="rubric">Notes</p>
-<p>For more information about interactive visualization library Bokeh:
-<a class="reference external" href="https://docs.bokeh.org/en/latest/index.html">https://docs.bokeh.org/en/latest/index.html</a>.</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="pysofi.visualization.bokeh_visualization_mult">
-<code class="sig-prename descclassname">pysofi.visualization.</code><code class="sig-name descname">bokeh_visualization_mult</code><span class="sig-paren">(</span><em class="sig-param">image_lst</em>, <em class="sig-param">title_lst=None</em>, <em class="sig-param">palette=None</em>, <em class="sig-param">save_option=False</em>, <em class="sig-param">filename='Image'</em>, <em class="sig-param">imshow_same=True</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.visualization.bokeh_visualization_mult" title="Permalink to this definition">¶</a></dt>
-<dd><p>Show interactive grayscale image with Bokeh in Jupyter Notebook.
-:param image_lst: A list of grayscale images array for visualization and comparison.
-:type image_lst: list(ndarray)
-:param title_lst: A list of titles for images plotted in Bokeh.
-:type title_lst: list of str
-:param palette: Name of the Bokeh palettes.</p>
-<blockquote>
-<div><p>The default palette is ‘pink’ from matplotlib.
-For a complete palette list in bokeh documentation:</p>
-<blockquote>
-<div><p><a class="reference external" href="https://docs.bokeh.org/en/latest/docs/reference/palettes.html">https://docs.bokeh.org/en/latest/docs/reference/palettes.html</a></p>
-</div></blockquote>
-</div></blockquote>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>save_option</strong> (<em>bool</em>) – Whether to save the Bokeh image as a .html file.</p></li>
-<li><p><strong>-49</strong><strong>,</strong><strong>39 +54</strong><strong>,</strong><strong>70 &#64;&#64; def bokeh_visualization</strong><strong>(</strong><strong>image</strong><strong>, </strong><strong>palette=None</strong><strong>, </strong><strong>save_option=False</strong><strong>,</strong> (<em>&#64;&#64;</em>) – </p></li>
-</ul>
-</dd>
-</dl>
-<p class="rubric">Notes</p>
-<p>For more information about interactive visualization library Bokeh:
-<a class="reference external" href="https://docs.bokeh.org/en/latest/index.html">https://docs.bokeh.org/en/latest/index.html</a>.</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="pysofi.visualization.bokeh_visualization_rgba">
-<code class="sig-prename descclassname">pysofi.visualization.</code><code class="sig-name descname">bokeh_visualization_rgba</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">save_option=False</em>, <em class="sig-param">filename='RGBAimage'</em>, <em class="sig-param">imshow_same=True</em>, <em class="sig-param">saturation_factor=1</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.visualization.bokeh_visualization_rgba" title="Permalink to this definition">¶</a></dt>
-<dd><p>Show interactive RGBA image with Bokeh in Jupyter Notebook.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>image</strong> (<em>ndarray</em>) – The RGBA image array for visualization.</p></li>
-<li><p><strong>save_option</strong> (<em>bool</em>) – Whether to save the Bokeh image as a .html file.</p></li>
-<li><p><strong>filename</strong> (<em>str</em>) – Name of the .html file.</p></li>
-<li><p><strong>imshow_same</strong> (<em>bool</em>) – Whether to reversse y-axis to show the same image as using matplotlib.</p></li>
-</ul>
-</dd>
-</dl>
-<p class="rubric">Notes</p>
-<p>For more information about interactive visualization library Bokeh:
-<a class="reference external" href="https://docs.bokeh.org/en/latest/index.html">https://docs.bokeh.org/en/latest/index.html</a>.</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="pysofi.visualization.enhance_contrast">
-<code class="sig-prename descclassname">pysofi.visualization.</code><code class="sig-name descname">enhance_contrast</code><span class="sig-paren">(</span><em class="sig-param">im</em>, <em class="sig-param">cmap='pink'</em>, <em class="sig-param">display_contrast=1</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.visualization.enhance_contrast" title="Permalink to this definition">¶</a></dt>
-<dd><p>Enhance contrast of the input image.</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="pysofi.visualization.ensure_positive">
-<code class="sig-prename descclassname">pysofi.visualization.</code><code class="sig-name descname">ensure_positive</code><span class="sig-paren">(</span><em class="sig-param">data</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.visualization.ensure_positive" title="Permalink to this definition">¶</a></dt>
-<dd><p>Make sure data is positive and has no zeros.</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="pysofi.visualization.ind2cmap">
-<code class="sig-prename descclassname">pysofi.visualization.</code><code class="sig-name descname">ind2cmap</code><span class="sig-paren">(</span><em class="sig-param">im</em>, <em class="sig-param">cmap='pink'</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.visualization.ind2cmap" title="Permalink to this definition">¶</a></dt>
-<dd><p>Convert a grayscale image array to a rgba color image((0,1) float).</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="pysofi.visualization.save_avi">
-<code class="sig-prename descclassname">pysofi.visualization.</code><code class="sig-name descname">save_avi</code><span class="sig-paren">(</span><em class="sig-param">vid_array</em>, <em class="sig-param">cmap='pink'</em>, <em class="sig-param">filename='out.avi'</em>, <em class="sig-param">display_contrast=1</em>, <em class="sig-param">os='macos'</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.visualization.save_avi" title="Permalink to this definition">¶</a></dt>
-<dd><p>Save a image stack with a specific colormap. If the user is using windows,
-please set os=’windows’.</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="pysofi.visualization.save_png">
-<code class="sig-prename descclassname">pysofi.visualization.</code><code class="sig-name descname">save_png</code><span class="sig-paren">(</span><em class="sig-param">im</em>, <em class="sig-param">cmap='pink'</em>, <em class="sig-param">filename='out.png'</em>, <em class="sig-param">display_contrast=1</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.visualization.save_png" title="Permalink to this definition">¶</a></dt>
-<dd><p>Save a image with a specific colormap.
-Please refer to the demo Jupyter Notebook for examples.</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="pysofi.visualization.set_range">
-<code class="sig-prename descclassname">pysofi.visualization.</code><code class="sig-name descname">set_range</code><span class="sig-paren">(</span><em class="sig-param">im, range_set=[0, 1]</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.visualization.set_range" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set display range of the input image to a given value range (norm_range).</p>
-</dd></dl>
-
-</div>
-<div class="section" id="examples">
+<section id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
 <p>Plot a single grayscale image interactively:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>visaulization.bokeh_visualization(d.get_frame(0), palette=’pink’, save_option=False, imshow_same=True)
@@ -215,10 +78,11 @@ Please refer to the demo Jupyter Notebook for examples.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">trans_im</span> <span class="o">=</span> <span class="n">add_transmap</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">trans_map</span><span class="o">=</span><span class="n">d</span><span class="o">.</span><span class="n">average_image</span><span class="p">(),</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;pink&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
@@ -239,7 +103,7 @@ Please refer to the demo Jupyter Notebook for examples.</p>
 
   <h4>Previous topic</h4>
   <p class="topless"><a href="moca.html"
-                        title="previous chapter">Multi-Order Cumulant Analysis (MOCA)</a></p>
+                        title="previous chapter">Multi-Order Cumulant Analysis (MOCA, non-peer reviewed)</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="masks.html"
                         title="next chapter">Filtering Masks</a></p>
@@ -254,12 +118,12 @@ Please refer to the demo Jupyter Notebook for examples.</p>
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -277,15 +141,16 @@ Please refer to the demo Jupyter Notebook for examples.</p>
           <a href="masks.html" title="Filtering Masks"
              >next</a> |</li>
         <li class="right" >
-          <a href="moca.html" title="Multi-Order Cumulant Analysis (MOCA)"
+          <a href="moca.html" title="Multi-Order Cumulant Analysis (MOCA, non-peer reviewed)"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">pysofi 0.1.1 documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="manual.html" >PySOFI Reference Manual</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="manual.html" >PySOFI Reference Manual</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Result visualizations</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2020, Yuting Miao.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.3.1.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
     </div>
   </body>
 </html>

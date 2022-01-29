@@ -1,18 +1,19 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>pysofi package &#8212; pysofi 0.1.1 documentation</title>
-    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css" />
     
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
     
     <link rel="author" title="About these documents" href="about.html" />
     <link rel="index" title="Index" href="genindex.html" />
@@ -27,7 +28,8 @@
         <li class="right" >
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">pysofi 0.1.1 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">pysofi 0.1.1 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">pysofi package</a></li> 
       </ul>
     </div>  
 
@@ -36,16 +38,16 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="pysofi-package">
+  <section id="pysofi-package">
 <h1>pysofi package<a class="headerlink" href="#pysofi-package" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="submodules">
+<section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="module-pysofi.pysofi">
+</section>
+<section id="module-pysofi.pysofi">
 <span id="pysofi-pysofi-module"></span><h2>pysofi.pysofi module<a class="headerlink" href="#module-pysofi.pysofi" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
-<dt id="pysofi.pysofi.PysofiData">
-<em class="property">class </em><code class="sig-prename descclassname">pysofi.pysofi.</code><code class="sig-name descname">PysofiData</code><span class="sig-paren">(</span><em class="sig-param">filepath</em>, <em class="sig-param">filename</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.pysofi.PysofiData" title="Permalink to this definition">¶</a></dt>
+<dl class="py class">
+<dt class="sig sig-object py" id="pysofi.pysofi.PysofiData">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">pysofi.pysofi.</span></span><span class="sig-name descname"><span class="pre">PysofiData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.pysofi.PysofiData" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Data object contains the information of a dataset (e.g. dimensions,
 frame numbers), and provides SOFI methods to perform analysis and
@@ -63,9 +65,9 @@ are listed below. New data-attributes can be added or updated using
 </ul>
 </dd>
 </dl>
-<dl class="attribute">
-<dt id="pysofi.pysofi.PysofiData.filename">
-<code class="sig-name descname">filename</code><a class="headerlink" href="#pysofi.pysofi.PysofiData.filename" title="Permalink to this definition">¶</a></dt>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pysofi.pysofi.PysofiData.filename">
+<span class="sig-name descname"><span class="pre">filename</span></span><a class="headerlink" href="#pysofi.pysofi.PysofiData.filename" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"><p>str</p>
@@ -73,9 +75,9 @@ are listed below. New data-attributes can be added or updated using
 </dl>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="pysofi.pysofi.PysofiData.filepath">
-<code class="sig-name descname">filepath</code><a class="headerlink" href="#pysofi.pysofi.PysofiData.filepath" title="Permalink to this definition">¶</a></dt>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pysofi.pysofi.PysofiData.filepath">
+<span class="sig-name descname"><span class="pre">filepath</span></span><a class="headerlink" href="#pysofi.pysofi.PysofiData.filepath" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"><p>str</p>
@@ -83,9 +85,9 @@ are listed below. New data-attributes can be added or updated using
 </dl>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="pysofi.pysofi.PysofiData.ave">
-<code class="sig-name descname">ave</code><a class="headerlink" href="#pysofi.pysofi.PysofiData.ave" title="Permalink to this definition">¶</a></dt>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pysofi.pysofi.PysofiData.ave">
+<span class="sig-name descname"><span class="pre">ave</span></span><a class="headerlink" href="#pysofi.pysofi.PysofiData.ave" title="Permalink to this definition">¶</a></dt>
 <dd><p>The average image of the image stack / tiff video.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
@@ -94,9 +96,9 @@ are listed below. New data-attributes can be added or updated using
 </dl>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="pysofi.pysofi.PysofiData.finterp_factor">
-<code class="sig-name descname">finterp_factor</code><a class="headerlink" href="#pysofi.pysofi.PysofiData.finterp_factor" title="Permalink to this definition">¶</a></dt>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pysofi.pysofi.PysofiData.finterp_factor">
+<span class="sig-name descname"><span class="pre">finterp_factor</span></span><a class="headerlink" href="#pysofi.pysofi.PysofiData.finterp_factor" title="Permalink to this definition">¶</a></dt>
 <dd><p>The interpolation factor for Fourier interpolation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
@@ -105,9 +107,9 @@ are listed below. New data-attributes can be added or updated using
 </dl>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="pysofi.pysofi.PysofiData.morder_lst">
-<code class="sig-name descname">morder_lst</code><a class="headerlink" href="#pysofi.pysofi.PysofiData.morder_lst" title="Permalink to this definition">¶</a></dt>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pysofi.pysofi.PysofiData.morder_lst">
+<span class="sig-name descname"><span class="pre">morder_lst</span></span><a class="headerlink" href="#pysofi.pysofi.PysofiData.morder_lst" title="Permalink to this definition">¶</a></dt>
 <dd><p>All orders of moments-reconstructions that have been calculated.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
@@ -116,9 +118,9 @@ are listed below. New data-attributes can be added or updated using
 </dl>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="pysofi.pysofi.PysofiData.morder_finterp_lst">
-<code class="sig-name descname">morder_finterp_lst</code><a class="headerlink" href="#pysofi.pysofi.PysofiData.morder_finterp_lst" title="Permalink to this definition">¶</a></dt>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pysofi.pysofi.PysofiData.morder_finterp_lst">
+<span class="sig-name descname"><span class="pre">morder_finterp_lst</span></span><a class="headerlink" href="#pysofi.pysofi.PysofiData.morder_finterp_lst" title="Permalink to this definition">¶</a></dt>
 <dd><p>All orders of moments-reconstructions after Fourier interpolation
 that have been calculated.</p>
 <dl class="field-list simple">
@@ -128,9 +130,9 @@ that have been calculated.</p>
 </dl>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="pysofi.pysofi.PysofiData.moments_set">
-<code class="sig-name descname">moments_set</code><a class="headerlink" href="#pysofi.pysofi.PysofiData.moments_set" title="Permalink to this definition">¶</a></dt>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pysofi.pysofi.PysofiData.moments_set">
+<span class="sig-name descname"><span class="pre">moments_set</span></span><a class="headerlink" href="#pysofi.pysofi.PysofiData.moments_set" title="Permalink to this definition">¶</a></dt>
 <dd><p>moment order (int) -&gt; moment-reconstructed image (ndarray)
 A dictionary of orders and corrensponding moment reconstructions.</p>
 <dl class="field-list simple">
@@ -140,9 +142,9 @@ A dictionary of orders and corrensponding moment reconstructions.</p>
 </dl>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="pysofi.pysofi.PysofiData.moments_set_bc">
-<code class="sig-name descname">moments_set_bc</code><a class="headerlink" href="#pysofi.pysofi.PysofiData.moments_set_bc" title="Permalink to this definition">¶</a></dt>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pysofi.pysofi.PysofiData.moments_set_bc">
+<span class="sig-name descname"><span class="pre">moments_set_bc</span></span><a class="headerlink" href="#pysofi.pysofi.PysofiData.moments_set_bc" title="Permalink to this definition">¶</a></dt>
 <dd><p>moment order (int) -&gt; moment-reconstructed image (ndarray)
 A dictionary of orders and corrensponding moment reconstructions
 with bleaching correction.</p>
@@ -153,9 +155,9 @@ with bleaching correction.</p>
 </dl>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="pysofi.pysofi.PysofiData.cumulants_set">
-<code class="sig-name descname">cumulants_set</code><a class="headerlink" href="#pysofi.pysofi.PysofiData.cumulants_set" title="Permalink to this definition">¶</a></dt>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pysofi.pysofi.PysofiData.cumulants_set">
+<span class="sig-name descname"><span class="pre">cumulants_set</span></span><a class="headerlink" href="#pysofi.pysofi.PysofiData.cumulants_set" title="Permalink to this definition">¶</a></dt>
 <dd><p>cumulant order (int) -&gt; cumulant-reconstructed image (ndarray)
 A dictionary of orders and corrensponding cumulant reconstructions.</p>
 <dl class="field-list simple">
@@ -165,9 +167,9 @@ A dictionary of orders and corrensponding cumulant reconstructions.</p>
 </dl>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="pysofi.pysofi.PysofiData.cumulants_set_bc">
-<code class="sig-name descname">cumulants_set_bc</code><a class="headerlink" href="#pysofi.pysofi.PysofiData.cumulants_set_bc" title="Permalink to this definition">¶</a></dt>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pysofi.pysofi.PysofiData.cumulants_set_bc">
+<span class="sig-name descname"><span class="pre">cumulants_set_bc</span></span><a class="headerlink" href="#pysofi.pysofi.PysofiData.cumulants_set_bc" title="Permalink to this definition">¶</a></dt>
 <dd><p>cumulant order (int) -&gt; cumulant-reconstructed image (ndarray)
 A dictionary of orders and corrensponding cumulant reconstructions
 with bleaching correction.</p>
@@ -178,9 +180,9 @@ with bleaching correction.</p>
 </dl>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="pysofi.pysofi.PysofiData.morder">
-<code class="sig-name descname">morder</code><a class="headerlink" href="#pysofi.pysofi.PysofiData.morder" title="Permalink to this definition">¶</a></dt>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pysofi.pysofi.PysofiData.morder">
+<span class="sig-name descname"><span class="pre">morder</span></span><a class="headerlink" href="#pysofi.pysofi.PysofiData.morder" title="Permalink to this definition">¶</a></dt>
 <dd><p>The highest order of moment reconstruction that has been calculated.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
@@ -189,9 +191,9 @@ with bleaching correction.</p>
 </dl>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="pysofi.pysofi.PysofiData.corder">
-<code class="sig-name descname">corder</code><a class="headerlink" href="#pysofi.pysofi.PysofiData.corder" title="Permalink to this definition">¶</a></dt>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pysofi.pysofi.PysofiData.corder">
+<span class="sig-name descname"><span class="pre">corder</span></span><a class="headerlink" href="#pysofi.pysofi.PysofiData.corder" title="Permalink to this definition">¶</a></dt>
 <dd><p>The highest order of cumulant reconstruction that has been
 calculated.</p>
 <dl class="field-list simple">
@@ -201,9 +203,9 @@ calculated.</p>
 </dl>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="pysofi.pysofi.PysofiData.fbc">
-<code class="sig-name descname">fbc</code><a class="headerlink" href="#pysofi.pysofi.PysofiData.fbc" title="Permalink to this definition">¶</a></dt>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pysofi.pysofi.PysofiData.fbc">
+<span class="sig-name descname"><span class="pre">fbc</span></span><a class="headerlink" href="#pysofi.pysofi.PysofiData.fbc" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bleaching correction factor.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
@@ -212,9 +214,9 @@ calculated.</p>
 </dl>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="pysofi.pysofi.PysofiData.n_frames">
-<code class="sig-name descname">n_frames</code><a class="headerlink" href="#pysofi.pysofi.PysofiData.n_frames" title="Permalink to this definition">¶</a></dt>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pysofi.pysofi.PysofiData.n_frames">
+<span class="sig-name descname"><span class="pre">n_frames</span></span><a class="headerlink" href="#pysofi.pysofi.PysofiData.n_frames" title="Permalink to this definition">¶</a></dt>
 <dd><p>The number of frames of the image stack / tiff video.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
@@ -223,9 +225,9 @@ calculated.</p>
 </dl>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="pysofi.pysofi.PysofiData.xdim">
-<code class="sig-name descname">xdim</code><a class="headerlink" href="#pysofi.pysofi.PysofiData.xdim" title="Permalink to this definition">¶</a></dt>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pysofi.pysofi.PysofiData.xdim">
+<span class="sig-name descname"><span class="pre">xdim</span></span><a class="headerlink" href="#pysofi.pysofi.PysofiData.xdim" title="Permalink to this definition">¶</a></dt>
 <dd><p>The number of pixels in x dimension.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
@@ -234,9 +236,9 @@ calculated.</p>
 </dl>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="pysofi.pysofi.PysofiData.ydim">
-<code class="sig-name descname">ydim</code><a class="headerlink" href="#pysofi.pysofi.PysofiData.ydim" title="Permalink to this definition">¶</a></dt>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pysofi.pysofi.PysofiData.ydim">
+<span class="sig-name descname"><span class="pre">ydim</span></span><a class="headerlink" href="#pysofi.pysofi.PysofiData.ydim" title="Permalink to this definition">¶</a></dt>
 <dd><p>The number of pixels in y dimension.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
@@ -260,32 +262,32 @@ be saved into a new tiff file with the colormap user selects.</p>
 <p>“Moments reconstruction and local dynamic range compression of high order
 superresolution optical fluctuation imaging,” Biomed. Opt. Express 10,
 2430-2445 (2019).</p>
-<dl class="method">
-<dt id="pysofi.pysofi.PysofiData.add">
-<code class="sig-name descname">add</code><span class="sig-paren">(</span><em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.pysofi.PysofiData.add" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pysofi.pysofi.PysofiData.add">
+<span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.pysofi.PysofiData.add" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add or update elements (attributes and/or dict entries).</p>
 </dd></dl>
 
-<dl class="method">
-<dt id="pysofi.pysofi.PysofiData.add_filtered">
-<code class="sig-name descname">add_filtered</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">filter_name='noise filter'</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.pysofi.PysofiData.add_filtered" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pysofi.pysofi.PysofiData.add_filtered">
+<span class="sig-name descname"><span class="pre">add_filtered</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'noise</span> <span class="pre">filter'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.pysofi.PysofiData.add_filtered" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add (noise) filtered image as an attribute of the object.</p>
 </dd></dl>
 
-<dl class="method">
-<dt id="pysofi.pysofi.PysofiData.average_image">
-<code class="sig-name descname">average_image</code><span class="sig-paren">(</span><em class="sig-param">frames=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.pysofi.PysofiData.average_image" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pysofi.pysofi.PysofiData.average_image">
+<span class="sig-name descname"><span class="pre">average_image</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">frames</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.pysofi.PysofiData.average_image" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate average image of the tiff video.</p>
 </dd></dl>
 
-<dl class="method">
-<dt id="pysofi.pysofi.PysofiData.average_image_with_finterp">
-<code class="sig-name descname">average_image_with_finterp</code><span class="sig-paren">(</span><em class="sig-param">interp_num</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.pysofi.PysofiData.average_image_with_finterp" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pysofi.pysofi.PysofiData.average_image_with_finterp">
+<span class="sig-name descname"><span class="pre">average_image_with_finterp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interp_num</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.pysofi.PysofiData.average_image_with_finterp" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
-<dt id="pysofi.pysofi.PysofiData.bleach_correct">
-<code class="sig-name descname">bleach_correct</code><span class="sig-paren">(</span><em class="sig-param">fbc=0.04</em>, <em class="sig-param">smooth_kernel=251</em>, <em class="sig-param">save_option=True</em>, <em class="sig-param">return_option=False</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.pysofi.PysofiData.bleach_correct" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pysofi.pysofi.PysofiData.bleach_correct">
+<span class="sig-name descname"><span class="pre">bleach_correct</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fbc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.04</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">smooth_kernel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">251</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_option</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_option</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.pysofi.PysofiData.bleach_correct" title="Permalink to this definition">¶</a></dt>
 <dd><p>Performs bleaching correction on a tiff image (stack) with a
 bleaching correction factor.</p>
 <dl class="field-list simple">
@@ -308,9 +310,9 @@ is True.</p></li>
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="pysofi.pysofi.PysofiData.calc_moments_set">
-<code class="sig-name descname">calc_moments_set</code><span class="sig-paren">(</span><em class="sig-param">highest_order=4</em>, <em class="sig-param">frames=[]</em>, <em class="sig-param">mean_im=None</em>, <em class="sig-param">bleach_correction=False</em>, <em class="sig-param">smooth_kernel=251</em>, <em class="sig-param">fbc=0.04</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.pysofi.PysofiData.calc_moments_set" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pysofi.pysofi.PysofiData.calc_moments_set">
+<span class="sig-name descname"><span class="pre">calc_moments_set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">highest_order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frames</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mean_im</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bleach_correction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">smooth_kernel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">251</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fbc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.04</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.pysofi.PysofiData.calc_moments_set" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate moment-reconstructed images to the highest order.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -336,9 +338,9 @@ A dictionary of calcualted moment-reconstructed images.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="pysofi.pysofi.PysofiData.cumulants_images">
-<code class="sig-name descname">cumulants_images</code><span class="sig-paren">(</span><em class="sig-param">highest_order=4</em>, <em class="sig-param">frames=[]</em>, <em class="sig-param">m_set=None</em>, <em class="sig-param">bleach_correction=False</em>, <em class="sig-param">smooth_kernel=251</em>, <em class="sig-param">fbc=0.04</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.pysofi.PysofiData.cumulants_images" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pysofi.pysofi.PysofiData.cumulants_images">
+<span class="sig-name descname"><span class="pre">cumulants_images</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">highest_order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frames</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">m_set</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bleach_correction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">smooth_kernel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">251</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fbc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.04</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.pysofi.PysofiData.cumulants_images" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate cumulant-reconstructed images to the highest order.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -365,9 +367,9 @@ A dictionary of calcualted cumulant-reconstructed images.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="pysofi.pysofi.PysofiData.deconvsk">
-<code class="sig-name descname">deconvsk</code><span class="sig-paren">(</span><em class="sig-param">est_psf=array([[0., 0., 0., ..., 0., 0., 0.],        [0., 0., 0., ..., 0., 0., 0.],        [0., 0., 0., ..., 0., 0., 0.],        ...,        [0., 0., 0., ..., 0., 0., 0.],        [0., 0., 0., ..., 0., 0., 0.],        [0., 0., 0., ..., 0., 0., 0.]]), input_im=None, deconv_lambda=1.5, deconv_iter=20</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.pysofi.PysofiData.deconvsk" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pysofi.pysofi.PysofiData.deconvsk">
+<span class="sig-name descname"><span class="pre">deconvsk</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">est_psf</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">array([[0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0,</span> <span class="pre">...,</span> <span class="pre">0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0],</span> <span class="pre">[0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0,</span> <span class="pre">...,</span> <span class="pre">0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0],</span> <span class="pre">[0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0,</span> <span class="pre">...,</span> <span class="pre">0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0],</span> <span class="pre">...,</span> <span class="pre">[0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0,</span> <span class="pre">...,</span> <span class="pre">0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0],</span> <span class="pre">[0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0,</span> <span class="pre">...,</span> <span class="pre">0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0],</span> <span class="pre">[0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0,</span> <span class="pre">...,</span> <span class="pre">0.0,</span> <span class="pre">0.0,</span> <span class="pre">0.0]])</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_im</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deconv_lambda</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deconv_iter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.pysofi.PysofiData.deconvsk" title="Permalink to this definition">¶</a></dt>
 <dd><p>Perform serial Richardson-Lucy deconvolution with a series of PSFs
 on the input image. For details of shrinking kernel deconvolution,
 refer to deconvsk.py and [1].</p>
@@ -390,15 +392,15 @@ within the range of (1,2).</p></li>
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="pysofi.pysofi.PysofiData.finterp_image">
-<code class="sig-name descname">finterp_image</code><span class="sig-paren">(</span><em class="sig-param">input_im=None, interp_num_lst=[2, 4]</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.pysofi.PysofiData.finterp_image" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pysofi.pysofi.PysofiData.finterp_image">
+<span class="sig-name descname"><span class="pre">finterp_image</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_im</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interp_num_lst</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[2,</span> <span class="pre">4]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.pysofi.PysofiData.finterp_image" title="Permalink to this definition">¶</a></dt>
 <dd><p>Performs fourier interpolation on an image array.</p>
 </dd></dl>
 
-<dl class="method">
-<dt id="pysofi.pysofi.PysofiData.finterp_tiffstack">
-<code class="sig-name descname">finterp_tiffstack</code><span class="sig-paren">(</span><em class="sig-param">interp_num_lst=[2, 4], frames=[], save_option=True, return_option=False</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.pysofi.PysofiData.finterp_tiffstack" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pysofi.pysofi.PysofiData.finterp_tiffstack">
+<span class="sig-name descname"><span class="pre">finterp_tiffstack</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interp_num_lst</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[2,</span> <span class="pre">4]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frames</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_option</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_option</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.pysofi.PysofiData.finterp_tiffstack" title="Permalink to this definition">¶</a></dt>
 <dd><p>Performs fourier interpolation on a tiff image (stack) with a list of
 interpolation factors (the number of pixels to be interpolated between
 two adjacent pixels).</p>
@@ -422,15 +424,15 @@ factor list.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="pysofi.pysofi.PysofiData.get_dims">
-<code class="sig-name descname">get_dims</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.pysofi.PysofiData.get_dims" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pysofi.pysofi.PysofiData.get_dims">
+<span class="sig-name descname"><span class="pre">get_dims</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.pysofi.PysofiData.get_dims" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get dimensions and frame number of the tiff video.</p>
 </dd></dl>
 
-<dl class="method">
-<dt id="pysofi.pysofi.PysofiData.get_frame">
-<code class="sig-name descname">get_frame</code><span class="sig-paren">(</span><em class="sig-param">frame_num=0</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.pysofi.PysofiData.get_frame" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pysofi.pysofi.PysofiData.get_frame">
+<span class="sig-name descname"><span class="pre">get_frame</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">frame_num</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.pysofi.PysofiData.get_frame" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get one frame of the tiff video.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -445,9 +447,9 @@ factor list.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="pysofi.pysofi.PysofiData.ldrc">
-<code class="sig-name descname">ldrc</code><span class="sig-paren">(</span><em class="sig-param">order=6, window_size=[25, 25], mask_im=None, input_im=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.pysofi.PysofiData.ldrc" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pysofi.pysofi.PysofiData.ldrc">
+<span class="sig-name descname"><span class="pre">ldrc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">6</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[25,</span> <span class="pre">25]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask_im</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_im</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.pysofi.PysofiData.ldrc" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compress the dynamic range of moments-/cumulants reconstruced image
 with ldrc method. For details of ldrc, refer to ldrc.py and [1].</p>
 <dl class="field-list simple">
@@ -470,9 +472,9 @@ reconstructed image.</p></li>
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="pysofi.pysofi.PysofiData.moment_image">
-<code class="sig-name descname">moment_image</code><span class="sig-paren">(</span><em class="sig-param">order=6</em>, <em class="sig-param">mean_im=None</em>, <em class="sig-param">mvlength=[]</em>, <em class="sig-param">finterp=False</em>, <em class="sig-param">interp_num=1</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.pysofi.PysofiData.moment_image" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pysofi.pysofi.PysofiData.moment_image">
+<span class="sig-name descname"><span class="pre">moment_image</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">6</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mean_im</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mvlength</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">finterp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interp_num</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.pysofi.PysofiData.moment_image" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate the moment-reconstructed image of a defined order.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -496,12 +498,12 @@ moments-reconstructions.</p></li>
 
 </dd></dl>
 
-</div>
-<div class="section" id="module-pysofi.deconvsk">
+</section>
+<section id="module-pysofi.deconvsk">
 <span id="pysofi-deconvsk-module"></span><h2>pysofi.deconvsk module<a class="headerlink" href="#module-pysofi.deconvsk" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
-<dt id="pysofi.deconvsk.corelucy">
-<code class="sig-prename descclassname">pysofi.deconvsk.</code><code class="sig-name descname">corelucy</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">h</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.deconvsk.corelucy" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="pysofi.deconvsk.corelucy">
+<span class="sig-prename descclassname"><span class="pre">pysofi.deconvsk.</span></span><span class="sig-name descname"><span class="pre">corelucy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.deconvsk.corelucy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Make core for the LR estimation. Calculates f to produce the next
 iteration array that maximizes the likelihood that the entire suite
 satisfies the Poisson statistics.
@@ -533,9 +535,9 @@ R.J. Hanisch, R.L. White, and R.L. Gilliland. in “Deconvolution of Images
 and Spectra”, Ed. P.A. Jansson, 2nd ed., Academic Press, CA, 1997.</p>
 </dd></dl>
 
-<dl class="function">
-<dt id="pysofi.deconvsk.deconvsk">
-<code class="sig-prename descclassname">pysofi.deconvsk.</code><code class="sig-name descname">deconvsk</code><span class="sig-paren">(</span><em class="sig-param">est_psf</em>, <em class="sig-param">input_im</em>, <em class="sig-param">deconv_lambda</em>, <em class="sig-param">deconv_iter</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.deconvsk.deconvsk" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="pysofi.deconvsk.deconvsk">
+<span class="sig-prename descclassname"><span class="pre">pysofi.deconvsk.</span></span><span class="sig-name descname"><span class="pre">deconvsk</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">est_psf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_im</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deconv_lambda</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">deconv_iter</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.deconvsk.deconvsk" title="Permalink to this definition">¶</a></dt>
 <dd><p>Perform serial Richardson-Lucy deconvolution with shrinking PSFs.
 U = (U**(l/(l-1))) * (U**(l**2/(l-1))) * … * (U**(l**n/(l-1))).
 The PSF of the imaging system U can be decomposed into a series a
@@ -577,9 +579,9 @@ superresolution optical fluctuation imaging,” Biomed. Opt. Express 10,
 2430-2445 (2019).</p>
 </dd></dl>
 
-<dl class="function">
-<dt id="pysofi.deconvsk.otf2psf">
-<code class="sig-prename descclassname">pysofi.deconvsk.</code><code class="sig-name descname">otf2psf</code><span class="sig-paren">(</span><em class="sig-param">otf</em>, <em class="sig-param">shape</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.deconvsk.otf2psf" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="pysofi.deconvsk.otf2psf">
+<span class="sig-prename descclassname"><span class="pre">pysofi.deconvsk.</span></span><span class="sig-name descname"><span class="pre">otf2psf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">otf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.deconvsk.otf2psf" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convert optical transfer function (OTF) to point-spread function (PSF).
 Compute the Inverse Fast Fourier Transform (ifft) of the OTF array and
 creates the PSF array that is not influenced by the OTF off-centering.
@@ -601,9 +603,9 @@ Adapted from MATLAB otf2psf function.</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="pysofi.deconvsk.psf2otf">
-<code class="sig-prename descclassname">pysofi.deconvsk.</code><code class="sig-name descname">psf2otf</code><span class="sig-paren">(</span><em class="sig-param">psf</em>, <em class="sig-param">shape</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.deconvsk.psf2otf" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="pysofi.deconvsk.psf2otf">
+<span class="sig-prename descclassname"><span class="pre">pysofi.deconvsk.</span></span><span class="sig-name descname"><span class="pre">psf2otf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">psf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.deconvsk.psf2otf" title="Permalink to this definition">¶</a></dt>
 <dd><p>From https: // github.com/aboucaud/pypher/blob/master/pypher/pypher.py.
 Convert point-spread function to optical transfer function.
 Compute the Fast Fourier Transform(FFT) of the point-spread
@@ -632,9 +634,9 @@ Adapted from MATLAB psf2otf function.</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="pysofi.deconvsk.richardson_lucy">
-<code class="sig-prename descclassname">pysofi.deconvsk.</code><code class="sig-name descname">richardson_lucy</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">psf</em>, <em class="sig-param">iterations=10</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.deconvsk.richardson_lucy" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="pysofi.deconvsk.richardson_lucy">
+<span class="sig-prename descclassname"><span class="pre">pysofi.deconvsk.</span></span><span class="sig-name descname"><span class="pre">richardson_lucy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">psf</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iterations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.deconvsk.richardson_lucy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Richardson-Lucy deconvolution. It deconvolves image using maximum
 likelihood algorithm, returning both deblurred image J and a restored
 point-spread function PSF.
@@ -685,9 +687,9 @@ according to the magnification of the imaging system is an option.</p>
 <p>Restoration Algorithms. Applied Optics 1997, 36 (8), 1766.</p>
 </dd></dl>
 
-<dl class="function">
-<dt id="pysofi.deconvsk.zero_pad">
-<code class="sig-prename descclassname">pysofi.deconvsk.</code><code class="sig-name descname">zero_pad</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">shape</em>, <em class="sig-param">position='center'</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.deconvsk.zero_pad" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="pysofi.deconvsk.zero_pad">
+<span class="sig-prename descclassname"><span class="pre">pysofi.deconvsk.</span></span><span class="sig-name descname"><span class="pre">zero_pad</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">position</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'center'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.deconvsk.zero_pad" title="Permalink to this definition">¶</a></dt>
 <dd><p>From https: // github.com/aboucaud/pypher/blob/master/pypher/pypher.py.
 Extends image to a certain size with zeros.</p>
 <dl class="field-list simple">
@@ -722,12 +724,12 @@ Extends image to a certain size with zeros.</p>
 </dl>
 </dd></dl>
 
-</div>
-<div class="section" id="module-pysofi.filtering">
+</section>
+<section id="module-pysofi.filtering">
 <span id="pysofi-filtering-module"></span><h2>pysofi.filtering module<a class="headerlink" href="#module-pysofi.filtering" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
-<dt id="pysofi.filtering.filter1d_same">
-<code class="sig-prename descclassname">pysofi.filtering.</code><code class="sig-name descname">filter1d_same</code><span class="sig-paren">(</span><em class="sig-param">time_series</em>, <em class="sig-param">noise_filter</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.filtering.filter1d_same" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="pysofi.filtering.filter1d_same">
+<span class="sig-prename descclassname"><span class="pre">pysofi.filtering.</span></span><span class="sig-name descname"><span class="pre">filter1d_same</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time_series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_filter</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.filtering.filter1d_same" title="Permalink to this definition">¶</a></dt>
 <dd><p>Filter original time_series with noise_filter, and return the
 filtered_series with the same length as the original sereis.
 Compared to MATLAB results, when the length of the filter and
@@ -735,16 +737,16 @@ frame number are both even, the filtered result would shift to
 left by one number. In other cases, results are the same.</p>
 </dd></dl>
 
-<dl class="function">
-<dt id="pysofi.filtering.med_smooth">
-<code class="sig-prename descclassname">pysofi.filtering.</code><code class="sig-name descname">med_smooth</code><span class="sig-paren">(</span><em class="sig-param">ori_signal</em>, <em class="sig-param">kernel_size=251</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.filtering.med_smooth" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="pysofi.filtering.med_smooth">
+<span class="sig-prename descclassname"><span class="pre">pysofi.filtering.</span></span><span class="sig-name descname"><span class="pre">med_smooth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ori_signal</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kernel_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">251</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.filtering.med_smooth" title="Permalink to this definition">¶</a></dt>
 <dd><p>Perform a one-dimensional median filter with ‘reflect’ padding.
 For more information, please check scipy.signal.medfilt.</p>
 </dd></dl>
 
-<dl class="function">
-<dt id="pysofi.filtering.noise_filter1d">
-<code class="sig-prename descclassname">pysofi.filtering.</code><code class="sig-name descname">noise_filter1d</code><span class="sig-paren">(</span><em class="sig-param">dset</em>, <em class="sig-param">im_set</em>, <em class="sig-param">noise_filter=[]</em>, <em class="sig-param">filtername='noise filter after M6'</em>, <em class="sig-param">filenames=None</em>, <em class="sig-param">return_option=False</em>, <em class="sig-param">return_type='dict'</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.filtering.noise_filter1d" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="pysofi.filtering.noise_filter1d">
+<span class="sig-prename descclassname"><span class="pre">pysofi.filtering.</span></span><span class="sig-name descname"><span class="pre">noise_filter1d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">im_set</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filtername</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'noise</span> <span class="pre">filter</span> <span class="pre">after</span> <span class="pre">M6'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filenames</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_option</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'dict'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.filtering.noise_filter1d" title="Permalink to this definition">¶</a></dt>
 <dd><p>Perform noise filtering on a image stack along the time axis for each
 pixel independently.</p>
 <dl class="field-list simple">
@@ -771,8 +773,8 @@ A dictionary mapping tiff filenames to images need to be filtered.</p></li>
 </dl>
 </dd></dl>
 
-</div>
-<div class="section" id="module-pysofi.finterp">
+</section>
+<section id="module-pysofi.finterp">
 <span id="pysofi-finterp-module"></span><h2>pysofi.finterp module<a class="headerlink" href="#module-pysofi.finterp" title="Permalink to this headline">¶</a></h2>
 <p>This module performs fourier interpolation on a single image
 or a image stack (tiff file). Interpolated image (stack) can be
@@ -783,16 +785,16 @@ with the original matrix size without interpolation grids, and the
 inverse Fourier transformation matrix encodes the extra interpolation
 position coordinates.</p>
 <p>Adapted from <a class="reference external" href="https://github.com/xiyuyi/xy_fInterp_forTIFF">https://github.com/xiyuyi/xy_fInterp_forTIFF</a>.</p>
-<dl class="function">
-<dt id="pysofi.finterp.fourier_interp_array">
-<code class="sig-prename descclassname">pysofi.finterp.</code><code class="sig-name descname">fourier_interp_array</code><span class="sig-paren">(</span><em class="sig-param">im</em>, <em class="sig-param">interp_num_lst</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.finterp.fourier_interp_array" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="pysofi.finterp.fourier_interp_array">
+<span class="sig-prename descclassname"><span class="pre">pysofi.finterp.</span></span><span class="sig-name descname"><span class="pre">fourier_interp_array</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">im</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interp_num_lst</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.finterp.fourier_interp_array" title="Permalink to this definition">¶</a></dt>
 <dd><p>Performs fourier interpolation on an image array with a list of
 interpolation factors.</p>
 </dd></dl>
 
-<dl class="function">
-<dt id="pysofi.finterp.fourier_interp_tiff">
-<code class="sig-prename descclassname">pysofi.finterp.</code><code class="sig-name descname">fourier_interp_tiff</code><span class="sig-paren">(</span><em class="sig-param">filepath</em>, <em class="sig-param">filename</em>, <em class="sig-param">interp_num_lst</em>, <em class="sig-param">frames=[]</em>, <em class="sig-param">save_option=True</em>, <em class="sig-param">return_option=False</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.finterp.fourier_interp_tiff" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="pysofi.finterp.fourier_interp_tiff">
+<span class="sig-prename descclassname"><span class="pre">pysofi.finterp.</span></span><span class="sig-name descname"><span class="pre">fourier_interp_tiff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interp_num_lst</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frames</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_option</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_option</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.finterp.fourier_interp_tiff" title="Permalink to this definition">¶</a></dt>
 <dd><p>Performs fourier interpolation on a tiff image (stack) with a list of
 interpolation factors (the number of pixels to be interpolated between
 two adjacent pixels).</p>
@@ -818,15 +820,15 @@ factor list.</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="pysofi.finterp.ft_matrix2d">
-<code class="sig-prename descclassname">pysofi.finterp.</code><code class="sig-name descname">ft_matrix2d</code><span class="sig-paren">(</span><em class="sig-param">xrange</em>, <em class="sig-param">yrange</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.finterp.ft_matrix2d" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="pysofi.finterp.ft_matrix2d">
+<span class="sig-prename descclassname"><span class="pre">pysofi.finterp.</span></span><span class="sig-name descname"><span class="pre">ft_matrix2d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">xrange</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yrange</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.finterp.ft_matrix2d" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate fourier transform matrix for x- and y-dimension.</p>
 </dd></dl>
 
-<dl class="function">
-<dt id="pysofi.finterp.ift_matrix2d">
-<code class="sig-prename descclassname">pysofi.finterp.</code><code class="sig-name descname">ift_matrix2d</code><span class="sig-paren">(</span><em class="sig-param">xrange</em>, <em class="sig-param">yrange</em>, <em class="sig-param">interp_num</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.finterp.ift_matrix2d" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="pysofi.finterp.ift_matrix2d">
+<span class="sig-prename descclassname"><span class="pre">pysofi.finterp.</span></span><span class="sig-name descname"><span class="pre">ift_matrix2d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">xrange</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yrange</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interp_num</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.finterp.ift_matrix2d" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate inverse fourier transform matrix without center shift for a
 given fold of interpolation for x- and y-dimension. Here we use 2 times
 the x-dimension of a frame image for xrange and 2 times of y for yrange.
@@ -834,9 +836,9 @@ interp_num is the number of times the resolution enhanced. For instance,
 when interp_num = 2, the resolution is two times the original one.</p>
 </dd></dl>
 
-<dl class="function">
-<dt id="pysofi.finterp.interpolate_image">
-<code class="sig-prename descclassname">pysofi.finterp.</code><code class="sig-name descname">interpolate_image</code><span class="sig-paren">(</span><em class="sig-param">im</em>, <em class="sig-param">fx</em>, <em class="sig-param">fy</em>, <em class="sig-param">ifx</em>, <em class="sig-param">ify</em>, <em class="sig-param">interp_num</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.finterp.interpolate_image" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="pysofi.finterp.interpolate_image">
+<span class="sig-prename descclassname"><span class="pre">pysofi.finterp.</span></span><span class="sig-name descname"><span class="pre">interpolate_image</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">im</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fy</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ifx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ify</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interp_num</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.finterp.interpolate_image" title="Permalink to this definition">¶</a></dt>
 <dd><p>Performs fourier interpolation to increase the resolution of the image.
 The interpolated image can be further processed by SOFI for
 super-resolution imaging.</p>
@@ -880,12 +882,12 @@ for y dimension.</p>
 </div>
 </dd></dl>
 
-</div>
-<div class="section" id="module-pysofi.ldrc">
+</section>
+<section id="module-pysofi.ldrc">
 <span id="pysofi-ldrc-module"></span><h2>pysofi.ldrc module<a class="headerlink" href="#module-pysofi.ldrc" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
-<dt id="pysofi.ldrc.ldrc">
-<code class="sig-prename descclassname">pysofi.ldrc.</code><code class="sig-name descname">ldrc</code><span class="sig-paren">(</span><em class="sig-param">mask_im, input_im, order=1, window_size=[25, 25]</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.ldrc.ldrc" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="pysofi.ldrc.ldrc">
+<span class="sig-prename descclassname"><span class="pre">pysofi.ldrc.</span></span><span class="sig-name descname"><span class="pre">ldrc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mask_im</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_im</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[25,</span> <span class="pre">25]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.ldrc.ldrc" title="Permalink to this definition">¶</a></dt>
 <dd><p>Process the image array with “local dynamic range compression” (ldrc).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -923,28 +925,28 @@ superresolution optical fluctuation imaging,” Biomed. Opt. Express 10,
 2430-2445 (2019).</p>
 </dd></dl>
 
-</div>
-<div class="section" id="module-pysofi.masks">
+</section>
+<section id="module-pysofi.masks">
 <span id="pysofi-masks-module"></span><h2>pysofi.masks module<a class="headerlink" href="#module-pysofi.masks" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
-<dt id="pysofi.masks.gauss1d_mask">
-<code class="sig-prename descclassname">pysofi.masks.</code><code class="sig-name descname">gauss1d_mask</code><span class="sig-paren">(</span><em class="sig-param">shape=(1</em>, <em class="sig-param">3)</em>, <em class="sig-param">sigma=0.5</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.masks.gauss1d_mask" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="pysofi.masks.gauss1d_mask">
+<span class="sig-prename descclassname"><span class="pre">pysofi.masks.</span></span><span class="sig-name descname"><span class="pre">gauss1d_mask</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1,</span> <span class="pre">3)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.masks.gauss1d_mask" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate a 1D gaussian mask.</p>
 </dd></dl>
 
-<dl class="function">
-<dt id="pysofi.masks.gauss2d_mask">
-<code class="sig-prename descclassname">pysofi.masks.</code><code class="sig-name descname">gauss2d_mask</code><span class="sig-paren">(</span><em class="sig-param">shape=(3</em>, <em class="sig-param">3)</em>, <em class="sig-param">sigma=0.5</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.masks.gauss2d_mask" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="pysofi.masks.gauss2d_mask">
+<span class="sig-prename descclassname"><span class="pre">pysofi.masks.</span></span><span class="sig-name descname"><span class="pre">gauss2d_mask</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(3,</span> <span class="pre">3)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sigma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.masks.gauss2d_mask" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generate a 2D gaussian mask - should give the same result as MATLAB’s
 fspecial(‘gaussian’,[shape],[sigma]).</p>
 </dd></dl>
 
-</div>
-<div class="section" id="module-pysofi.reconstruction">
+</section>
+<section id="module-pysofi.reconstruction">
 <span id="pysofi-reconstruction-module"></span><h2>pysofi.reconstruction module<a class="headerlink" href="#module-pysofi.reconstruction" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
-<dt id="pysofi.reconstruction.average_image">
-<code class="sig-prename descclassname">pysofi.reconstruction.</code><code class="sig-name descname">average_image</code><span class="sig-paren">(</span><em class="sig-param">filepath</em>, <em class="sig-param">filename</em>, <em class="sig-param">frames=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.reconstruction.average_image" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="pysofi.reconstruction.average_image">
+<span class="sig-prename descclassname"><span class="pre">pysofi.reconstruction.</span></span><span class="sig-name descname"><span class="pre">average_image</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frames</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.reconstruction.average_image" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the average image for a video file (tiff stack), either for the
 whole video or for user defined frames.</p>
 <dl class="field-list simple">
@@ -964,9 +966,9 @@ whole video or for user defined frames.</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="pysofi.reconstruction.average_image_with_finterp">
-<code class="sig-prename descclassname">pysofi.reconstruction.</code><code class="sig-name descname">average_image_with_finterp</code><span class="sig-paren">(</span><em class="sig-param">filepath</em>, <em class="sig-param">filename</em>, <em class="sig-param">interp_num</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.reconstruction.average_image_with_finterp" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="pysofi.reconstruction.average_image_with_finterp">
+<span class="sig-prename descclassname"><span class="pre">pysofi.reconstruction.</span></span><span class="sig-name descname"><span class="pre">average_image_with_finterp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interp_num</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.reconstruction.average_image_with_finterp" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the average image with fourier interpolation for a video file.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -986,9 +988,9 @@ whole video or for user defined frames.</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="pysofi.reconstruction.block_ave_cumulants">
-<code class="sig-prename descclassname">pysofi.reconstruction.</code><code class="sig-name descname">block_ave_cumulants</code><span class="sig-paren">(</span><em class="sig-param">filepath</em>, <em class="sig-param">filename</em>, <em class="sig-param">highest_order</em>, <em class="sig-param">smooth_kernel=251</em>, <em class="sig-param">fbc=0.04</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.reconstruction.block_ave_cumulants" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="pysofi.reconstruction.block_ave_cumulants">
+<span class="sig-prename descclassname"><span class="pre">pysofi.reconstruction.</span></span><span class="sig-name descname"><span class="pre">block_ave_cumulants</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">highest_order</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">smooth_kernel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">251</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fbc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.04</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.reconstruction.block_ave_cumulants" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get average cumulant-reconstructed images of all blocks determined by
 user-defined noise filtering and bleaching correction factor (fbc).</p>
 <p>Within each block, the amount of signal decrease is identical. This
@@ -1028,9 +1030,9 @@ see appendix 3 of [1].</p>
 <p>optical fluctuation imaging.” bioRxiv: 545574 (2019).</p>
 </dd></dl>
 
-<dl class="function">
-<dt id="pysofi.reconstruction.block_ave_moments">
-<code class="sig-prename descclassname">pysofi.reconstruction.</code><code class="sig-name descname">block_ave_moments</code><span class="sig-paren">(</span><em class="sig-param">filepath</em>, <em class="sig-param">filename</em>, <em class="sig-param">highest_order</em>, <em class="sig-param">smooth_kernel=251</em>, <em class="sig-param">fbc=0.04</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.reconstruction.block_ave_moments" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="pysofi.reconstruction.block_ave_moments">
+<span class="sig-prename descclassname"><span class="pre">pysofi.reconstruction.</span></span><span class="sig-name descname"><span class="pre">block_ave_moments</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">highest_order</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">smooth_kernel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">251</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fbc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.04</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.reconstruction.block_ave_moments" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get average moment-reconstructed images of all blocks determined by
 user-defined noise filtering and bleaching correction factor (fbc).
 Similar to ‘block_ave_cumulants’.</p>
@@ -1055,9 +1057,9 @@ A dictionary of avereage moment-reconstructed images of all blocks.</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="pysofi.reconstruction.calc_block_moments">
-<code class="sig-prename descclassname">pysofi.reconstruction.</code><code class="sig-name descname">calc_block_moments</code><span class="sig-paren">(</span><em class="sig-param">filepath</em>, <em class="sig-param">filename</em>, <em class="sig-param">highest_order</em>, <em class="sig-param">frames=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.reconstruction.calc_block_moments" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="pysofi.reconstruction.calc_block_moments">
+<span class="sig-prename descclassname"><span class="pre">pysofi.reconstruction.</span></span><span class="sig-name descname"><span class="pre">calc_block_moments</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">highest_order</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frames</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.reconstruction.calc_block_moments" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get moment-reconstructed images for user-defined frames (block) of
 a video file(tiff stack).</p>
 <dl class="field-list simple">
@@ -1083,9 +1085,9 @@ and mean_im as inputs since a block usually has much fewer number of
 frames and takes shorter calculation time.</p>
 </dd></dl>
 
-<dl class="function">
-<dt id="pysofi.reconstruction.calc_cumulants_from_moments">
-<code class="sig-prename descclassname">pysofi.reconstruction.</code><code class="sig-name descname">calc_cumulants_from_moments</code><span class="sig-paren">(</span><em class="sig-param">moment_set</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.reconstruction.calc_cumulants_from_moments" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="pysofi.reconstruction.calc_cumulants_from_moments">
+<span class="sig-prename descclassname"><span class="pre">pysofi.reconstruction.</span></span><span class="sig-name descname"><span class="pre">calc_cumulants_from_moments</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">moment_set</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.reconstruction.calc_cumulants_from_moments" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate cumulant images from moment images using the recursive relation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1102,9 +1104,9 @@ A dictionary of calcualted cumulant-reconstructed images.</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="pysofi.reconstruction.calc_cumulants_from_moments_with_lag">
-<code class="sig-prename descclassname">pysofi.reconstruction.</code><code class="sig-name descname">calc_cumulants_from_moments_with_lag</code><span class="sig-paren">(</span><em class="sig-param">m_set</em>, <em class="sig-param">tauSeries</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.reconstruction.calc_cumulants_from_moments_with_lag" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="pysofi.reconstruction.calc_cumulants_from_moments_with_lag">
+<span class="sig-prename descclassname"><span class="pre">pysofi.reconstruction.</span></span><span class="sig-name descname"><span class="pre">calc_cumulants_from_moments_with_lag</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m_set</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tauSeries</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.reconstruction.calc_cumulants_from_moments_with_lag" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate cumulant-reconstructed images from moment-reconstructed images
 with time lags.</p>
 <dl class="field-list simple">
@@ -1130,9 +1132,9 @@ lags.</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="pysofi.reconstruction.calc_moment_im">
-<code class="sig-prename descclassname">pysofi.reconstruction.</code><code class="sig-name descname">calc_moment_im</code><span class="sig-paren">(</span><em class="sig-param">filepath</em>, <em class="sig-param">filename</em>, <em class="sig-param">order</em>, <em class="sig-param">frames=[]</em>, <em class="sig-param">mean_im=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.reconstruction.calc_moment_im" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="pysofi.reconstruction.calc_moment_im">
+<span class="sig-prename descclassname"><span class="pre">pysofi.reconstruction.</span></span><span class="sig-name descname"><span class="pre">calc_moment_im</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frames</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mean_im</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.reconstruction.calc_moment_im" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get one moment-reconstructed image of a defined order for a video file.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1153,9 +1155,9 @@ lags.</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="pysofi.reconstruction.calc_moments">
-<code class="sig-prename descclassname">pysofi.reconstruction.</code><code class="sig-name descname">calc_moments</code><span class="sig-paren">(</span><em class="sig-param">filepath</em>, <em class="sig-param">filename</em>, <em class="sig-param">highest_order</em>, <em class="sig-param">frames=None</em>, <em class="sig-param">m_set=None</em>, <em class="sig-param">mean_im=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.reconstruction.calc_moments" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="pysofi.reconstruction.calc_moments">
+<span class="sig-prename descclassname"><span class="pre">pysofi.reconstruction.</span></span><span class="sig-name descname"><span class="pre">calc_moments</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">highest_order</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frames</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">m_set</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mean_im</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.reconstruction.calc_moments" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get all moment-reconstructed images to the user-defined highest order for
 a video file(tiff stack).</p>
 <dl class="field-list simple">
@@ -1180,9 +1182,9 @@ A dictionary of calcualted moment-reconstructed images.</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="pysofi.reconstruction.calc_moments_with_lag">
-<code class="sig-prename descclassname">pysofi.reconstruction.</code><code class="sig-name descname">calc_moments_with_lag</code><span class="sig-paren">(</span><em class="sig-param">filepath</em>, <em class="sig-param">filename</em>, <em class="sig-param">tauSeries</em>, <em class="sig-param">frames=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.reconstruction.calc_moments_with_lag" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="pysofi.reconstruction.calc_moments_with_lag">
+<span class="sig-prename descclassname"><span class="pre">pysofi.reconstruction.</span></span><span class="sig-name descname"><span class="pre">calc_moments_with_lag</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tauSeries</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frames</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.reconstruction.calc_moments_with_lag" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get moment-reconnstructed images with defined time lags.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1205,9 +1207,9 @@ A nested dictionary of moment-reconstructions of all partitions.</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="pysofi.reconstruction.calc_total_signal">
-<code class="sig-prename descclassname">pysofi.reconstruction.</code><code class="sig-name descname">calc_total_signal</code><span class="sig-paren">(</span><em class="sig-param">filepath</em>, <em class="sig-param">filename</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.reconstruction.calc_total_signal" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="pysofi.reconstruction.calc_total_signal">
+<span class="sig-prename descclassname"><span class="pre">pysofi.reconstruction.</span></span><span class="sig-name descname"><span class="pre">calc_total_signal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.reconstruction.calc_total_signal" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate the total signal intensity of each frame for the whole
 video (tiff stack).</p>
 <dl class="field-list simple">
@@ -1226,9 +1228,9 @@ video (tiff stack).</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="pysofi.reconstruction.calc_xc_im">
-<code class="sig-prename descclassname">pysofi.reconstruction.</code><code class="sig-name descname">calc_xc_im</code><span class="sig-paren">(</span><em class="sig-param">filepath</em>, <em class="sig-param">filename</em>, <em class="sig-param">ri_range</em>, <em class="sig-param">frames=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.reconstruction.calc_xc_im" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="pysofi.reconstruction.calc_xc_im">
+<span class="sig-prename descclassname"><span class="pre">pysofi.reconstruction.</span></span><span class="sig-name descname"><span class="pre">calc_xc_im</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ri_range</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frames</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.reconstruction.calc_xc_im" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get cross-cumulant image with different pixel combinations.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1249,9 +1251,9 @@ A dictionary of reconstructed images with pixel index as keys.</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="pysofi.reconstruction.correct_bleaching">
-<code class="sig-prename descclassname">pysofi.reconstruction.</code><code class="sig-name descname">correct_bleaching</code><span class="sig-paren">(</span><em class="sig-param">filepath</em>, <em class="sig-param">filename</em>, <em class="sig-param">fbc=0.04</em>, <em class="sig-param">smooth_kernel=251</em>, <em class="sig-param">save_option=True</em>, <em class="sig-param">return_option=False</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.reconstruction.correct_bleaching" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="pysofi.reconstruction.correct_bleaching">
+<span class="sig-prename descclassname"><span class="pre">pysofi.reconstruction.</span></span><span class="sig-name descname"><span class="pre">correct_bleaching</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fbc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.04</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">smooth_kernel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">251</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_option</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_option</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.reconstruction.correct_bleaching" title="Permalink to this definition">¶</a></dt>
 <dd><p>Performs bleaching correction on a tiff image (stack).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1273,16 +1275,16 @@ is True.</p></li>
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="pysofi.reconstruction.cumulants_all_blocks">
-<code class="sig-prename descclassname">pysofi.reconstruction.</code><code class="sig-name descname">cumulants_all_blocks</code><span class="sig-paren">(</span><em class="sig-param">m_set_all_blocks</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.reconstruction.cumulants_all_blocks" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="pysofi.reconstruction.cumulants_all_blocks">
+<span class="sig-prename descclassname"><span class="pre">pysofi.reconstruction.</span></span><span class="sig-name descname"><span class="pre">cumulants_all_blocks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m_set_all_blocks</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.reconstruction.cumulants_all_blocks" title="Permalink to this definition">¶</a></dt>
 <dd><p>Calculate cumulant-reconstructed images from moment-reconstructed images
 of each block. Similar to ‘calc_cumulants_from_moments’.</p>
 </dd></dl>
 
-<dl class="function">
-<dt id="pysofi.reconstruction.cut_frames">
-<code class="sig-prename descclassname">pysofi.reconstruction.</code><code class="sig-name descname">cut_frames</code><span class="sig-paren">(</span><em class="sig-param">signal_level</em>, <em class="sig-param">fbc=0.04</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.reconstruction.cut_frames" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="pysofi.reconstruction.cut_frames">
+<span class="sig-prename descclassname"><span class="pre">pysofi.reconstruction.</span></span><span class="sig-name descname"><span class="pre">cut_frames</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">signal_level</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fbc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.04</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.reconstruction.cut_frames" title="Permalink to this definition">¶</a></dt>
 <dd><p>Find the list of frame number to cut the whole signal plot into seperate
 blocks based on the change of total signal intensity.</p>
 <dl class="field-list simple">
@@ -1313,9 +1315,9 @@ of frames is not too large. The user can add in extra blocks if the
 initial intensity is much smaller than the maximum.</p>
 </dd></dl>
 
-<dl class="function">
-<dt id="pysofi.reconstruction.min_image">
-<code class="sig-prename descclassname">pysofi.reconstruction.</code><code class="sig-name descname">min_image</code><span class="sig-paren">(</span><em class="sig-param">filepath</em>, <em class="sig-param">filename</em>, <em class="sig-param">frames=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.reconstruction.min_image" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="pysofi.reconstruction.min_image">
+<span class="sig-prename descclassname"><span class="pre">pysofi.reconstruction.</span></span><span class="sig-name descname"><span class="pre">min_image</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frames</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.reconstruction.min_image" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the minimum image for a video file (tiff stack), either for the
 whole video or for user defined frames.</p>
 <dl class="field-list simple">
@@ -1335,9 +1337,9 @@ whole video or for user defined frames.</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="pysofi.reconstruction.moment_im_with_finterp">
-<code class="sig-prename descclassname">pysofi.reconstruction.</code><code class="sig-name descname">moment_im_with_finterp</code><span class="sig-paren">(</span><em class="sig-param">filepath</em>, <em class="sig-param">filename</em>, <em class="sig-param">order</em>, <em class="sig-param">interp_num</em>, <em class="sig-param">frames=[]</em>, <em class="sig-param">mean_im=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.reconstruction.moment_im_with_finterp" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="pysofi.reconstruction.moment_im_with_finterp">
+<span class="sig-prename descclassname"><span class="pre">pysofi.reconstruction.</span></span><span class="sig-name descname"><span class="pre">moment_im_with_finterp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interp_num</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frames</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mean_im</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.reconstruction.moment_im_with_finterp" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get one moment-reconstructed image of a defined order for a video file.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1359,9 +1361,9 @@ whole video or for user defined frames.</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="pysofi.reconstruction.moments_all_blocks">
-<code class="sig-prename descclassname">pysofi.reconstruction.</code><code class="sig-name descname">moments_all_blocks</code><span class="sig-paren">(</span><em class="sig-param">filepath</em>, <em class="sig-param">filename</em>, <em class="sig-param">highest_order</em>, <em class="sig-param">smooth_kernel=251</em>, <em class="sig-param">fbc=0.04</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.reconstruction.moments_all_blocks" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="pysofi.reconstruction.moments_all_blocks">
+<span class="sig-prename descclassname"><span class="pre">pysofi.reconstruction.</span></span><span class="sig-name descname"><span class="pre">moments_all_blocks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">highest_order</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">smooth_kernel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">251</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fbc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.04</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.reconstruction.moments_all_blocks" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get moment-reconstructed images for seperate blocks with user-defined
 noise filtering and bleaching correction factor (fbc).</p>
 <p>Within each block, the amount of signal decrease is identical. This
@@ -1393,162 +1395,24 @@ and mean_im as inputs since a block usually has much fewer number of
 frames and takes shorter calculation time.</p>
 </dd></dl>
 
-<dl class="function">
-<dt id="pysofi.reconstruction.sorted_k_partitions">
-<code class="sig-prename descclassname">pysofi.reconstruction.</code><code class="sig-name descname">sorted_k_partitions</code><span class="sig-paren">(</span><em class="sig-param">seq</em>, <em class="sig-param">k</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.reconstruction.sorted_k_partitions" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="pysofi.reconstruction.sorted_k_partitions">
+<span class="sig-prename descclassname"><span class="pre">pysofi.reconstruction.</span></span><span class="sig-name descname"><span class="pre">sorted_k_partitions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seq</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.reconstruction.sorted_k_partitions" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a list of all unique k-partitions of <cite>seq</cite>.
 Each partition is a list of parts, and each part is a tuple.</p>
 </dd></dl>
 
-</div>
-<div class="section" id="module-pysofi.visualization">
-<span id="pysofi-visualization-module"></span><h2>pysofi.visualization module<a class="headerlink" href="#module-pysofi.visualization" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
-<dt id="pysofi.visualization.add_transmap">
-<code class="sig-prename descclassname">pysofi.visualization.</code><code class="sig-name descname">add_transmap</code><span class="sig-paren">(</span><em class="sig-param">im</em>, <em class="sig-param">trans_map</em>, <em class="sig-param">cmap='cool'</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.visualization.add_transmap" title="Permalink to this definition">¶</a></dt>
-<dd><p>Prepare the image for visualization by adding a transparency map.
-It colorcodes ‘im’ with colormap ‘cmap’, and multiplied by the
-transparancy map ‘trans_map’.
-:param im: A gray-scale image encoding the parameters that need to be color-</p>
-<blockquote>
-<div><p>coded.</p>
-</div></blockquote>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>trans_map</strong> (<em>2darray</em>) – A grey-scale mask encoding the intensity information.</p></li>
-<li><p><strong>cmap</strong> (<em>str</em>) – A colormap provided by ‘matplotlib’ or defined by the user.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>im_color</strong> – A RGBA image array for visualization.</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>3darray</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="function">
-<dt id="pysofi.visualization.bokeh_visualization">
-<code class="sig-prename descclassname">pysofi.visualization.</code><code class="sig-name descname">bokeh_visualization</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">palette=None</em>, <em class="sig-param">save_option=False</em>, <em class="sig-param">filename='Image'</em>, <em class="sig-param">imshow_same=True</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.visualization.bokeh_visualization" title="Permalink to this definition">¶</a></dt>
-<dd><p>Show interactive grayscale image with Bokeh in Jupyter Notebook.
-:param image: The grayscale image array for visualization.
-:type image: ndarray
-:param palette: Name of the Bokeh palettes.</p>
-<blockquote>
-<div><p>The default palette is ‘pink’ from matplotlib.
-For a complete palette list in bokeh documentation:</p>
-<blockquote>
-<div><p><a class="reference external" href="https://docs.bokeh.org/en/latest/docs/reference/palettes.html">https://docs.bokeh.org/en/latest/docs/reference/palettes.html</a></p>
-</div></blockquote>
-</div></blockquote>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>save_option</strong> (<em>bool</em>) – Whether to save the Bokeh image as a .html file.</p></li>
-<li><p><strong>-49</strong><strong>,</strong><strong>39 +54</strong><strong>,</strong><strong>70 &#64;&#64; def bokeh_visualization</strong><strong>(</strong><strong>image</strong><strong>, </strong><strong>palette=None</strong><strong>, </strong><strong>save_option=False</strong><strong>,</strong> (<em>&#64;&#64;</em>) – </p></li>
-</ul>
-</dd>
-</dl>
-<p class="rubric">Notes</p>
-<p>For more information about interactive visualization library Bokeh:
-<a class="reference external" href="https://docs.bokeh.org/en/latest/index.html">https://docs.bokeh.org/en/latest/index.html</a>.</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="pysofi.visualization.bokeh_visualization_mult">
-<code class="sig-prename descclassname">pysofi.visualization.</code><code class="sig-name descname">bokeh_visualization_mult</code><span class="sig-paren">(</span><em class="sig-param">image_lst</em>, <em class="sig-param">title_lst=None</em>, <em class="sig-param">palette=None</em>, <em class="sig-param">save_option=False</em>, <em class="sig-param">filename='Image'</em>, <em class="sig-param">imshow_same=True</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.visualization.bokeh_visualization_mult" title="Permalink to this definition">¶</a></dt>
-<dd><p>Show interactive grayscale image with Bokeh in Jupyter Notebook.
-:param image_lst: A list of grayscale images array for visualization and comparison.
-:type image_lst: list(ndarray)
-:param title_lst: A list of titles for images plotted in Bokeh.
-:type title_lst: list of str
-:param palette: Name of the Bokeh palettes.</p>
-<blockquote>
-<div><p>The default palette is ‘pink’ from matplotlib.
-For a complete palette list in bokeh documentation:</p>
-<blockquote>
-<div><p><a class="reference external" href="https://docs.bokeh.org/en/latest/docs/reference/palettes.html">https://docs.bokeh.org/en/latest/docs/reference/palettes.html</a></p>
-</div></blockquote>
-</div></blockquote>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>save_option</strong> (<em>bool</em>) – Whether to save the Bokeh image as a .html file.</p></li>
-<li><p><strong>-49</strong><strong>,</strong><strong>39 +54</strong><strong>,</strong><strong>70 &#64;&#64; def bokeh_visualization</strong><strong>(</strong><strong>image</strong><strong>, </strong><strong>palette=None</strong><strong>, </strong><strong>save_option=False</strong><strong>,</strong> (<em>&#64;&#64;</em>) – </p></li>
-</ul>
-</dd>
-</dl>
-<p class="rubric">Notes</p>
-<p>For more information about interactive visualization library Bokeh:
-<a class="reference external" href="https://docs.bokeh.org/en/latest/index.html">https://docs.bokeh.org/en/latest/index.html</a>.</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="pysofi.visualization.bokeh_visualization_rgba">
-<code class="sig-prename descclassname">pysofi.visualization.</code><code class="sig-name descname">bokeh_visualization_rgba</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">save_option=False</em>, <em class="sig-param">filename='RGBAimage'</em>, <em class="sig-param">imshow_same=True</em>, <em class="sig-param">saturation_factor=1</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.visualization.bokeh_visualization_rgba" title="Permalink to this definition">¶</a></dt>
-<dd><p>Show interactive RGBA image with Bokeh in Jupyter Notebook.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>image</strong> (<em>ndarray</em>) – The RGBA image array for visualization.</p></li>
-<li><p><strong>save_option</strong> (<em>bool</em>) – Whether to save the Bokeh image as a .html file.</p></li>
-<li><p><strong>filename</strong> (<em>str</em>) – Name of the .html file.</p></li>
-<li><p><strong>imshow_same</strong> (<em>bool</em>) – Whether to reversse y-axis to show the same image as using matplotlib.</p></li>
-</ul>
-</dd>
-</dl>
-<p class="rubric">Notes</p>
-<p>For more information about interactive visualization library Bokeh:
-<a class="reference external" href="https://docs.bokeh.org/en/latest/index.html">https://docs.bokeh.org/en/latest/index.html</a>.</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="pysofi.visualization.enhance_contrast">
-<code class="sig-prename descclassname">pysofi.visualization.</code><code class="sig-name descname">enhance_contrast</code><span class="sig-paren">(</span><em class="sig-param">im</em>, <em class="sig-param">cmap='pink'</em>, <em class="sig-param">display_contrast=1</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.visualization.enhance_contrast" title="Permalink to this definition">¶</a></dt>
-<dd><p>Enhance contrast of the input image.</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="pysofi.visualization.ensure_positive">
-<code class="sig-prename descclassname">pysofi.visualization.</code><code class="sig-name descname">ensure_positive</code><span class="sig-paren">(</span><em class="sig-param">data</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.visualization.ensure_positive" title="Permalink to this definition">¶</a></dt>
-<dd><p>Make sure data is positive and has no zeros.</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="pysofi.visualization.ind2cmap">
-<code class="sig-prename descclassname">pysofi.visualization.</code><code class="sig-name descname">ind2cmap</code><span class="sig-paren">(</span><em class="sig-param">im</em>, <em class="sig-param">cmap='pink'</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.visualization.ind2cmap" title="Permalink to this definition">¶</a></dt>
-<dd><p>Convert a grayscale image array to a rgba color image((0,1) float).</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="pysofi.visualization.save_avi">
-<code class="sig-prename descclassname">pysofi.visualization.</code><code class="sig-name descname">save_avi</code><span class="sig-paren">(</span><em class="sig-param">vid_array</em>, <em class="sig-param">cmap='pink'</em>, <em class="sig-param">filename='out.avi'</em>, <em class="sig-param">display_contrast=1</em>, <em class="sig-param">os='macos'</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.visualization.save_avi" title="Permalink to this definition">¶</a></dt>
-<dd><p>Save a image stack with a specific colormap. If the user is using windows,
-please set os=’windows’.</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="pysofi.visualization.save_png">
-<code class="sig-prename descclassname">pysofi.visualization.</code><code class="sig-name descname">save_png</code><span class="sig-paren">(</span><em class="sig-param">im</em>, <em class="sig-param">cmap='pink'</em>, <em class="sig-param">filename='out.png'</em>, <em class="sig-param">display_contrast=1</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.visualization.save_png" title="Permalink to this definition">¶</a></dt>
-<dd><p>Save a image with a specific colormap.
-Please refer to the demo Jupyter Notebook for examples.</p>
-</dd></dl>
-
-<dl class="function">
-<dt id="pysofi.visualization.set_range">
-<code class="sig-prename descclassname">pysofi.visualization.</code><code class="sig-name descname">set_range</code><span class="sig-paren">(</span><em class="sig-param">im, range_set=[0, 1]</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.visualization.set_range" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set display range of the input image to a given value range (norm_range).</p>
-</dd></dl>
-
-</div>
-<div class="section" id="module-pysofi">
+</section>
+<section id="pysofi-visualization-module">
+<h2>pysofi.visualization module<a class="headerlink" href="#pysofi-visualization-module" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="module-pysofi">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-pysofi" title="Permalink to this headline">¶</a></h2>
-</div>
-</div>
+</section>
+</section>
 
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
@@ -1574,12 +1438,12 @@ Please refer to the demo Jupyter Notebook for examples.</p>
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -1593,12 +1457,13 @@ Please refer to the demo Jupyter Notebook for examples.</p>
         <li class="right" >
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">pysofi 0.1.1 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">pysofi 0.1.1 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">pysofi package</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2020, Yuting Miao.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.3.1.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
     </div>
   </body>
 </html>

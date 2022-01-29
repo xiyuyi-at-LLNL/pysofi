@@ -67,8 +67,8 @@ PySOFI Overview
 ----------------
 PySOFI implements three primary collection of SOFI analysis routines, including the shared process
 that enables the traditional SOFI analysis, the SOFI 2.0 analysis routines and a a separate SOFI 
-relevant routine named Multi Order Cumulant Analysis (MOCA) to demonstrate the modular extension 
-of PySOFI for additional analysis method.
+relevant routine named Multi Order Cumulant Analysis (MOCA, non-peer reviewed) to demonstrate the 
+modular extension of PySOFI for additional analysis method.
 
 Specifically, one can load input data (.tiff format) or partially processed data (such as .tiff 
 movie with bleaching correction and/or .with Fourier interpolation) into the `pysofiData` class, 

@@ -1,18 +1,19 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Noise Filtration &#8212; pysofi 0.1.1 documentation</title>
-    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css" />
     
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
     
     <link rel="author" title="About these documents" href="about.html" />
     <link rel="index" title="Index" href="genindex.html" />
@@ -36,7 +37,8 @@
           <a href="reconstruction.html" title="Reconstruction Options"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">pysofi 0.1.1 documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="manual.html" accesskey="U">PySOFI Reference Manual</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="manual.html" accesskey="U">PySOFI Reference Manual</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Noise Filtration</a></li> 
       </ul>
     </div>  
 
@@ -45,7 +47,7 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="noise-filtration">
+  <section id="noise-filtration">
 <h1>Noise Filtration<a class="headerlink" href="#noise-filtration" title="Permalink to this headline">¶</a></h1>
 <p>This module carries out noise filtration over multiple tiff blocks.</p>
 <p>One way to reduce the effect of photobleaching on SOFI analysis is to divide a long video
@@ -53,11 +55,11 @@ into multiple blocks with fewer frames. In each block, the decrease in fluoresce
 is small enough so that users canomit the effect of photobleaching. Each block can be
 considered as an individual <cite>PysofiData</cite> object. After the reconstruction step, all
 reconstructed images are saved in separate object, and can be put together for the filtration.</p>
-<div class="section" id="module-pysofi.filtering">
+<section id="module-pysofi.filtering">
 <span id="functions"></span><h2>functions<a class="headerlink" href="#module-pysofi.filtering" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
-<dt id="pysofi.filtering.filter1d_same">
-<code class="sig-prename descclassname">pysofi.filtering.</code><code class="sig-name descname">filter1d_same</code><span class="sig-paren">(</span><em class="sig-param">time_series</em>, <em class="sig-param">noise_filter</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.filtering.filter1d_same" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="pysofi.filtering.filter1d_same">
+<span class="sig-prename descclassname"><span class="pre">pysofi.filtering.</span></span><span class="sig-name descname"><span class="pre">filter1d_same</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time_series</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_filter</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.filtering.filter1d_same" title="Permalink to this definition">¶</a></dt>
 <dd><p>Filter original time_series with noise_filter, and return the
 filtered_series with the same length as the original sereis.
 Compared to MATLAB results, when the length of the filter and
@@ -65,16 +67,16 @@ frame number are both even, the filtered result would shift to
 left by one number. In other cases, results are the same.</p>
 </dd></dl>
 
-<dl class="function">
-<dt id="pysofi.filtering.med_smooth">
-<code class="sig-prename descclassname">pysofi.filtering.</code><code class="sig-name descname">med_smooth</code><span class="sig-paren">(</span><em class="sig-param">ori_signal</em>, <em class="sig-param">kernel_size=251</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.filtering.med_smooth" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="pysofi.filtering.med_smooth">
+<span class="sig-prename descclassname"><span class="pre">pysofi.filtering.</span></span><span class="sig-name descname"><span class="pre">med_smooth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ori_signal</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kernel_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">251</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.filtering.med_smooth" title="Permalink to this definition">¶</a></dt>
 <dd><p>Perform a one-dimensional median filter with ‘reflect’ padding.
 For more information, please check scipy.signal.medfilt.</p>
 </dd></dl>
 
-<dl class="function">
-<dt id="pysofi.filtering.noise_filter1d">
-<code class="sig-prename descclassname">pysofi.filtering.</code><code class="sig-name descname">noise_filter1d</code><span class="sig-paren">(</span><em class="sig-param">dset</em>, <em class="sig-param">im_set</em>, <em class="sig-param">noise_filter=[]</em>, <em class="sig-param">filtername='noise filter after M6'</em>, <em class="sig-param">filenames=None</em>, <em class="sig-param">return_option=False</em>, <em class="sig-param">return_type='dict'</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.filtering.noise_filter1d" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="pysofi.filtering.noise_filter1d">
+<span class="sig-prename descclassname"><span class="pre">pysofi.filtering.</span></span><span class="sig-name descname"><span class="pre">noise_filter1d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">im_set</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">noise_filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filtername</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'noise</span> <span class="pre">filter</span> <span class="pre">after</span> <span class="pre">M6'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filenames</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_option</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'dict'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.filtering.noise_filter1d" title="Permalink to this definition">¶</a></dt>
 <dd><p>Perform noise filtering on a image stack along the time axis for each
 pixel independently.</p>
 <dl class="field-list simple">
@@ -101,8 +103,8 @@ A dictionary mapping tiff filenames to images need to be filtered.</p></li>
 </dl>
 </dd></dl>
 
-</div>
-<div class="section" id="example">
+</section>
+<section id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
 <p>A one-dimensional Gaussian mask (kernel) is first generated, and passed to the filtration along
 with an array of images in sequence that needs to be filtered (m_set):</p>
@@ -110,10 +112,11 @@ with an array of images in sequence that needs to be filtered (m_set):</p>
 <span class="n">m_filtered</span> <span class="o">=</span> <span class="n">filtering</span><span class="o">.</span><span class="n">noise_filter1d</span><span class="p">(</span><span class="n">dset</span><span class="p">,</span> <span class="n">m_set</span><span class="p">,</span> <span class="n">nf</span><span class="p">,</span> <span class="n">filenames</span><span class="o">=</span><span class="n">filenames</span><span class="p">,</span> <span class="n">return_option</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
@@ -149,12 +152,12 @@ with an array of images in sequence that needs to be filtered (m_set):</p>
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -175,12 +178,13 @@ with an array of images in sequence that needs to be filtered (m_set):</p>
           <a href="reconstruction.html" title="Reconstruction Options"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">pysofi 0.1.1 documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="manual.html" >PySOFI Reference Manual</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="manual.html" >PySOFI Reference Manual</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Noise Filtration</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2020, Yuting Miao.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.3.1.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
     </div>
   </body>
 </html>

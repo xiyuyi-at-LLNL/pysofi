@@ -27,7 +27,7 @@ the modules for SOFI 2.0 calculations listes below.
 for pixel-wise noise filtering along the time axis.
 
 * `deconvsk.py <https://github.com/xiyuyi-at-LLNL/pysofi/blob/master/pysofi/deconvsk.py>`__
-provides functions forshrinking kernel deconvolution (DeconvSK).
+provides functions forshrinking kernel deconvolution (DeconvSK, non-peer reviewed).
 
 * `ldrc.py <https://github.com/xiyuyi-at-LLNL/pysofi/blob/master/pysofi/ldrc.py>`__
 provides local dynamic range compression (ldrc) of images with large dynamic range of pixel values.

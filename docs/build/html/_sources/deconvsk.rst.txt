@@ -1,7 +1,8 @@
-Shrinking Kernel Deconvolution
+Shrinking Kernel Deconvolution (DeconvSK, non-peer reviewed)
 ==============================
 
 This module carries out shrinking kernel deconvolution on SOFI reconstructed images. 
+The DeconvSK method is non-peer reviewed.
 
 
 With the help of high-order SOFI analysis, the point spread function (PSF) of the 

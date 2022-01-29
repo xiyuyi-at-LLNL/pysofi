@@ -1,18 +1,19 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Local Dynamic Range Compression (LDRC) Method &#8212; pysofi 0.1.1 documentation</title>
-    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/classic.css" />
     
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
     
     <link rel="author" title="About these documents" href="about.html" />
     <link rel="index" title="Index" href="genindex.html" />
@@ -36,7 +37,8 @@
           <a href="deconvsk.html" title="Shrinking Kernel Deconvolution"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">pysofi 0.1.1 documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="manual.html" accesskey="U">PySOFI Reference Manual</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="manual.html" accesskey="U">PySOFI Reference Manual</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Local Dynamic Range Compression (LDRC) Method</a></li> 
       </ul>
     </div>  
 
@@ -45,7 +47,7 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="local-dynamic-range-compression-ldrc-method">
+  <section id="local-dynamic-range-compression-ldrc-method">
 <h1>Local Dynamic Range Compression (LDRC) Method<a class="headerlink" href="#local-dynamic-range-compression-ldrc-method" title="Permalink to this headline">¶</a></h1>
 <p>This module provides an option to compress the high dynamic range of high-order
 SOFI-reconstructed images.</p>
@@ -55,11 +57,11 @@ the ldrc algorithm rescales pixel intensities of high-order reconstructions base
 reference image. The compression is performed locally in a small window that scans
 across the original image. In each window, the pixel intensities of the original image
 are linearly rescaled so that they have the same dynamic range as the reference window.</p>
-<div class="section" id="module-pysofi.ldrc">
+<section id="module-pysofi.ldrc">
 <span id="functions"></span><h2>Functions<a class="headerlink" href="#module-pysofi.ldrc" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
-<dt id="pysofi.ldrc.ldrc">
-<code class="sig-prename descclassname">pysofi.ldrc.</code><code class="sig-name descname">ldrc</code><span class="sig-paren">(</span><em class="sig-param">mask_im, input_im, order=1, window_size=[25, 25]</em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.ldrc.ldrc" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="pysofi.ldrc.ldrc">
+<span class="sig-prename descclassname"><span class="pre">pysofi.ldrc.</span></span><span class="sig-name descname"><span class="pre">ldrc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mask_im</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_im</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">window_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[25,</span> <span class="pre">25]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pysofi.ldrc.ldrc" title="Permalink to this definition">¶</a></dt>
 <dd><p>Process the image array with “local dynamic range compression” (ldrc).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -97,18 +99,19 @@ superresolution optical fluctuation imaging,” Biomed. Opt. Express 10,
 2430-2445 (2019).</p>
 </dd></dl>
 
-</div>
-<div class="section" id="example">
+</section>
+<section id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
 <p>The reference image (second-order moment reconstruction), the input image that needs
 dynamic range compression, and the scanning window size is passed to the ldrc function:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ldrc_im</span> <span class="o">=</span> <span class="n">ldrc</span><span class="o">.</span><span class="n">ldrc</span><span class="p">(</span><span class="n">mask_im</span><span class="o">=</span><span class="n">d</span><span class="o">.</span><span class="n">moment_image</span><span class="p">(</span><span class="n">order</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span> <span class="n">input_im</span><span class="o">=</span><span class="n">d</span><span class="o">.</span><span class="n">filtered</span><span class="p">,</span> <span class="n">window_size</span><span class="o">=</span><span class="p">[</span><span class="mi">25</span><span class="p">,</span> <span class="mi">25</span><span class="p">])</span>
 </pre></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
@@ -144,12 +147,12 @@ dynamic range compression, and the scanning window size is passed to the ldrc fu
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -170,12 +173,13 @@ dynamic range compression, and the scanning window size is passed to the ldrc fu
           <a href="deconvsk.html" title="Shrinking Kernel Deconvolution"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">pysofi 0.1.1 documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="manual.html" >PySOFI Reference Manual</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="manual.html" >PySOFI Reference Manual</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Local Dynamic Range Compression (LDRC) Method</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2020, Yuting Miao.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.3.1.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
     </div>
   </body>
 </html>
