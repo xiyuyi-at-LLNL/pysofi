@@ -31,7 +31,7 @@ Then activate the environment with:
 
 `conda activate pysofi`
 
-### 3.2. ccreate the pysofi virtual environment manually
+### 3.2. Create the pysofi virtual environment manually
 First create a conda virtual environment:
 
 `conda create --name pysofi`
