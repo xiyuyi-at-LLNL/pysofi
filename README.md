@@ -1,3 +1,4 @@
+![logo](https://github.com/xiyuyi-at-LLNL/pysofi/blob/master/docs/PySOFI-Logo.png)
 # PySOFI
 PySOFI is a Python package for SOFI analysis.
 
